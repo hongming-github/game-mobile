@@ -1134,7 +1134,7 @@ function moveMap(){
   levelUpOk=true;//用来使游戏一开始自己移动的时候，阻止用户鼠标在画布四周触发地图滚动事件
   mapRightMov=true;
   ourTurn.play();
-  canvas.removeEventListener('click', cCheck, false);
+  canvas.removeEventListener('touchstart', touchStart,false); 
   drawAll();
 //  drawAll();
   clearArray(everything2);
@@ -2622,7 +2622,7 @@ function nextGuanKaOpen(){
 }
 //显示第几关和地图名称
 function showMapName(){
-	canvas.removeEventListener('click', cCheck, false);
+	canvas.removeEventListener('touchstart', touchStart,false); 
     var roundString = "第 " + mapLevel + " 关   "+mapName;
 	//drawAll();
 	//drawAll();
@@ -2637,13 +2637,13 @@ function showMapName(){
 						  if(mapLevel==1){
 							  setTimeout(function(){
 								  dialogShowFlag=true;
-								  setTimeout(function(){canvas.addEventListener('click', cCheck, false);},1000);
+								  setTimeout(function(){canvas.addEventListener('touchstart', touchStart,false);},1000);
 								  dialogShow();}
 							  ,300);
 							  }
 						  else{
 						  roundShow();
-						  setTimeout(function(){canvas.addEventListener('click', cCheck, false);},3500);
+						  setTimeout(function(){canvas.addEventListener('touchstart', touchStart,false);},3500);
 						  }
 						   //drawAll();}
 						  clearArray(everything2);}

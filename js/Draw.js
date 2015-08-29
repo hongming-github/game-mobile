@@ -125,39 +125,39 @@ function drawAll() {
 	}
 
 	if(isTouchMove){
-       bg.sx -= slideX;
-       bg.sy -= slideY;
-       mapMovX -= slideX;
-       mapMovY -= slideY;
-       if(bg.sx <= -288){bg.sx = -288;}
-       if(bg.sx >= 0){bg.sx = 0;}
-       if(bg.sy <= -192){bg.sy = -192;}
-       if(bg.sy >= 0){bg.sy = 0;}
+       clearArray(everything3);//清除由于touchstart触发的菜单栏
+       bg.sx += slideX;
+       bg.sy += slideY;
+       mapMovX += slideX;
+       mapMovY += slideY;
+       if(bg.sx <= -288){bg.sx = -288;mapMovX = -288;}
+       if(bg.sx >= 0){bg.sx = 0;mapMovX = 0;}
+       if(bg.sy <= -192){bg.sy = -192;mapMovY = -192;}
+       if(bg.sy >= 0){bg.sy = 0;mapMovY = 0;}
 }
 	
     changeSxSy(rolesArray);//changeSxSy用于更新人物的坐标，rolesArray放我方角色
     changeSxSy(enemysArray);//changeSxSy用于更新人物的坐标，rolesArray放敌方角色	
     changeSxSy(everything1);
-	drawArr(everything3);//drawArr方法用于画那些UI位置不随地图滚动变化的UI,即相对于canvas是固定不变的,everything3放的是菜单，不包括系统的那菜单
+	  drawArr(everything3);//drawArr方法用于画那些UI位置不随地图滚动变化的UI,即相对于canvas是固定不变的,everything3放的是菜单，不包括系统的那菜单
     changeSxSy(rangeShow);
     drawArr(itemArray);
     drawArr(skillArray);
     drawArr(powerArray); 
-	drawArr(spiritArray);
+	  drawArr(spiritArray);
     changeSxSy(everything2);
     drawArr(everything);
-	drawArr(shadowShow);
+  	drawArr(shadowShow);
     changeSxSy(attackShow);
     changeSxSy(hpShow);
     drawArr(statusArray);
     drawArr(speArray);
-	drawArr(dialogArray);
-	drawArr(confirmArray);
-	drawArr(info);
-	drawArr(tishi);
-nihao=window.requestAnimationFrame(drawAll);	
-if(shumei){window.cancelAnimationFrame(nihao);}
-
+	  drawArr(dialogArray);
+	  drawArr(confirmArray);
+	  drawArr(info);
+  	drawArr(tishi);
+    nihao=window.requestAnimationFrame(drawAll);	
+    if(shumei){window.cancelAnimationFrame(nihao);}
 }
 /*
 	遍历对象数组，调用每个对象的draw方法

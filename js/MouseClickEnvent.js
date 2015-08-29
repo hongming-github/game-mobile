@@ -2,8 +2,12 @@
 鼠标点击事件侦听
 *///canvas.removeEventListener('click', cCheck, false);
 function cCheck(e) {
-    x = e.pageX - canvas.offsetLeft;
-    y = e.pageY - canvas.offsetTop;
+	e.preventDefault();
+	var touch = e.touches[0];
+	startX = touch.pageX;    //刚触摸时的坐标   
+    startY = touch.pageY;   
+    x = touch.pageX - canvas.offsetLeft;
+    y = touch.pageY - canvas.offsetTop;
 	console.log("x:   "+x+"Y:    "+y);
     tx = Math.floor(x / rpx) * rpx; //鼠标点击时的方格左上角的x坐标
     ty = Math.floor(y / rpx) * rpx; //鼠标点击时方格右上角的x坐标  
@@ -1665,7 +1669,7 @@ function cCheck(e) {
 					if(rolesArray[rolesIndex].spiritShenXing==1){rolesArray[rolesIndex].not_sure_use_ShenXing=1;console.log("已经使用神行");}
 					clearArray(everything1);
 					end=true;
-					change(find);				
+					change(find);			
 				}
 
 				closelist=[],openlist=[];											
@@ -1673,7 +1677,7 @@ function cCheck(e) {
             }else
 			if(!firstClick && !MouseOnMovement(x,y))// && !(MouseOnObj(x, y, menu2)) && !(MouseOnObj(x, y, menu))
 			{				
-					    clearArray(everything1); //把数组everything1清空
+					    clearArray(everything1); //把数组everything1清空;l[[]]
 						firstClick = true;				
 			}
 			else

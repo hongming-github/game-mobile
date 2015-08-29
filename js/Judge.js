@@ -115,14 +115,6 @@ function MouseOnMovement(x,y) {
 		
 	}
 	return false;
-  /*  var sx = rolesArray[rolesIndex].mapX;console.log("sx:   "+sx);
-    var sy = rolesArray[rolesIndex].mapY;console.log("sy:   "+sy);
-    var m = rolesArray[rolesIndex].movement;
-	var mapMoveRpx=Math.floor((x-mapMovX)/rpx)* rpx;console.log("mapMoveRpx:   "+mapMoveRpx);
-	var mapMoveRpy=Math.floor((y-mapMovY)/rpx)* rpx;console.log("mapMoveRpy:   "+mapMoveRpy);
-    var dis = Math.abs(mapMoveRpx - sx) + Math.abs(mapMoveRpy - sy); console.log("dis:   "+dis);//absÎª¾ø¶ÔÖµ
-    if (dis <= m * rpx) {console.log("aaaatrue");return true;}
-	else {console.log("aaaafalse");return false;}*/
 }
 
 /*

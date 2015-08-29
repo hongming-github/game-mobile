@@ -6,10 +6,10 @@ function init() {
     showStart = true;//body onload的时候从false变为true
     ctx = document.getElementById('canvas').getContext('2d'); //获得画布上下文环境对象
     var canvas = document.getElementById('canvas'); //获得画布对象
-    canvas.addEventListener('click', cCheck, false); //画布中添加鼠标点击事件
-    canvas.addEventListener('mousemove', mMove, false); //画布中添加鼠标移动事件
-	canvas.addEventListener('mousedown', mDown, false); //画布中添加鼠标点击事件
-	canvas.addEventListener('mouseup', mUp, false); //画布中添加鼠标放开事件
+    //canvas.addEventListener('click', cCheck, false); //画布中添加鼠标点击事件
+    //canvas.addEventListener('mousemove', mMove, false); //画布中添加鼠标移动事件
+	//canvas.addEventListener('mousedown', mDown, false); //画布中添加鼠标点击事件
+	//canvas.addEventListener('mouseup', mUp, false); //画布中添加鼠标放开事件
 	canvas.addEventListener('touchstart', touchStart,false); //画布中添加开始触摸事件 
     canvas.addEventListener('touchmove', touchMove,false); //画布中添加触摸移动事件  
     canvas.addEventListener('touchend', touchEnd,false); //画布中添加触摸结束事件 
