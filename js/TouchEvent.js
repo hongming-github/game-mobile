@@ -9,7 +9,12 @@ var slideY;
 var aboveX=0;
 var aboveY=0; //设一个全局变量记录上一次内部块滑动的位置 
 var ax,ay;  //存取滑动距离的临时变量
-
+var mapMovX=0;//记录地图水平的位移量
+var mapMovY=0;//记录地图竖值方向的位移量
+var mapLeftMov=false;//地图向左移动的开关
+var mapRightMov=false;//地图向右移动的开关
+var mapUpMov=false;//地图向上移动的开关
+var mapDownMov=false;//地图向下移动的开关
         
 function touchStart(e){//触摸
     e.preventDefault();
@@ -1713,7 +1718,92 @@ function touchStart(e){//触摸
 function touchMove(e){//滑动  
         isTouchMove = true;        
         e.preventDefault();        
-        var touch = e.touches[0];   
+        var touch = e.touches[0];
+        mx = touch.pageX - canvas.offsetLeft;
+        my = touch.pageY - canvas.offsetTop; 
+        if(itemNumChange){//跳出改变道具的数量的框
+        if(isdown){//如果鼠标按下了
+        var movex=mx-startX;
+        if((huaKuai.sx==274&&movex>0)||(huaKuai.sx==454&&movex<0)||(huaKuai.sx>274&&huaKuai.sx<454) && itemOption!=12){//如果滑块的坐标在基准线的范围内，【274,454】  
+         //更新滑块的坐标
+         huaKuai.sx=huaKuai.mapX+movex;
+         if(huaKuai.sx>454){huaKuai.sx=454;}
+         else if(huaKuai.sx<274){huaKuai.sx=274;}
+         //根据滑块的坐标计算出数量
+         var index;//用来定位是哪个道具的数量
+         if(itemOption==0||itemOption==1){
+           if(dingzhukuangLeft[0]==1){index=0;}
+           else if(dingzhukuangLeft[1]==1){index=1;}
+           else if(dingzhukuangLeft[2]==1){index=2;}
+           else if(dingzhukuangLeft[3]==1){index=3;}
+           else if(dingzhukuangLeft[4]==1){index=4;}
+           dragNum= Math.ceil(((huaKuai.sx-274)/180)*rolesArray[big_role_index].items[index].num);
+         }else if(itemOption==8){//道具商店
+             if(dingzhukuangLeft[0]==1){index=0;}
+           else if(dingzhukuangLeft[1]==1){index=1;}
+           else if(dingzhukuangLeft[2]==1){index=2;}
+           else if(dingzhukuangLeft[3]==1){index=3;}
+           else if(dingzhukuangLeft[4]==1){index=4;}
+           dragNum= Math.ceil(((huaKuai.sx-274)/180)*storehouse.additems[index].num);
+         }else if(itemOption==2||itemOption==3||itemOption==9||itemOption==11){
+           if(dingzhukuangRight[0]==1){index=0;}
+           else if(dingzhukuangRight[1]==1){index=1;}
+           else if(dingzhukuangRight[2]==1){index=2;}
+           else if(dingzhukuangRight[3]==1){index=3;}
+           else if(dingzhukuangRight[4]==1){index=4;}
+           else if(dingzhukuangRight[5]==1){index=5;}
+           if(itemOption==9){//购买道具
+             //用户选择的道具的数量
+             dragNum= Math.ceil(((huaKuai.sx-274)/180)*store.items[index].num);
+             //如果买不起
+             if(dragNum*returnItemPrice(store.items[index].id)>teamMoney){
+              dragNum=Math.floor(teamMoney/returnItemPrice(store.items[index].id));
+             }
+           }else if(itemOption==11){//购买武器
+                //用户选择的道具的数量
+             dragNum= Math.ceil(((huaKuai.sx-274)/180)*store.equips[index].num);
+             //如果买不起
+             if(dragNum*returnEquipPrice(store.equips[index].id)>teamMoney){
+              dragNum=Math.floor(teamMoney/returnEquipPrice(store.equips[index].id));
+             }
+           }
+          else{dragNum= Math.ceil(((huaKuai.sx-274)/180)*storehouse.additems[index].num);}
+         }    
+         selsectNum.name="您选择了  "+dragNum+"  份该道具";   
+       }
+      if((huaKuai.sx==394&&movex>0)||(huaKuai.sx==574&&movex<0)||(huaKuai.sx>394&&huaKuai.sx<574)&&itemOption==12){//单独仓库中的滑块如果滑块的坐标在基准线的范围内，【394,574】  
+         //更新滑块的坐标
+         huaKuai.sx=huaKuai.mapX+movex;
+         if(huaKuai.sx>574){huaKuai.sx=574;}
+         else if(huaKuai.sx<394){huaKuai.sx=394;}
+         //根据滑块的坐标计算出数量
+         var index;//用来定位是哪个道具的数量
+         if(dingzhukuangRight[0]==1){index=0;}
+           else if(dingzhukuangRight[1]==1){index=1;}
+           else if(dingzhukuangRight[2]==1){index=2;}
+           else if(dingzhukuangRight[3]==1){index=3;}
+           else if(dingzhukuangRight[4]==1){index=4;}
+           else if(dingzhukuangRight[5]==1){index=5;} 
+           if(tempp==00){
+             dragNum= Math.ceil(((huaKuai.sx-394)/180)*storehouse.additems[index].num);
+           }
+               else if(tempp==10||tempp==30){
+             dragNum=1;
+           }
+           else if(tempp==20){           
+             dragNum= Math.ceil(((huaKuai.sx-394)/180)*storehouse.addequips[index].num);
+           }
+         }        
+         selsectNum.name="您选择了  "+dragNum+"  份该道具"; 
+           drawBigMap();
+         } 
+     else{ 
+       huaKuai.mapX=huaKuai.sx;
+       }//鼠标松开的时候更新滑块的mapX.
+  }
+        if(itemNumChange){
+          if(MouseOnObj(mx,my,huaKuai)){isdown=true;}
+        } 
         ax = touch.pageX - startX;        
         ay = touch.pageY - startY;
         slideX = Math.floor(ax/2)*2; //将滑动距离的数值转化为2的倍数，确保不会越界
@@ -1722,5 +1812,6 @@ function touchMove(e){//滑动
 
 function touchEnd(e){//手指离开屏幕
         e.preventDefault();      
-        isTouchMove = false;         
+        isTouchMove = false;     
+        isdown=false;    
 } 
