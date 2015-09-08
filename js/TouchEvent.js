@@ -506,8 +506,8 @@ function touchStart(e){//触摸
             moveMap();
         }
     }else
-    if (showStart) {//开始界面
-        console.log("开始界面  ");
+    if(showStart) {//开始界面
+        console.log("开始界面");
         if (MouseOnObj(x, y, startButton1)) {
             begin.pause();   
             setTimeout(function() {
@@ -1080,6 +1080,7 @@ function touchStart(e){//触摸
              //行走恢复
             recover_walk();
             for (var i = 0; i < skillArrays.length; i++) {
+              console.log("tp:"+tp+"rolesArray[rolesIndex].skills[tp]:"+rolesArray[rolesIndex].skills[tp]+"skillArrays[i].id:"+skillArrays[i].id);
                 if (rolesArray[rolesIndex].skills[tp] == skillArrays[i].id) {
                     fl = skillArrays[i].func;
                     skilltmp = skillArrays[i].mp;
