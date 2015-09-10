@@ -1,5 +1,5 @@
 /*
-	ÈËÎïµÄ¿ÉÒÆ¶¯¾àÀë£¬·½¸ñÏÔÊ¾
+	äººç‰©çš„å¯ç§»åŠ¨è·ç¦»ï¼Œæ–¹æ ¼æ˜¾ç¤º
 */
 function movingrange() { //"rgba(255,0,0,0.3)"  "rgba(0,207,255,0.6)"	
     var m = rolesArray[rolesIndex].movement;
@@ -35,8 +35,8 @@ function movingrange() { //"rgba(255,0,0,0.3)"  "rgba(0,207,255,0.6)"
     }
    // drawAll();
 }
-//----------------------A*Ëã·¨-----------------------------------------------------------------------------------
-function GetRound(pos){//·µ»ØÔ­µãÖÜÎ§µÄ4¸öµã
+//----------------------A*ç®—æ³•-----------------------------------------------------------------------------------
+function GetRound(pos){//è¿”å›åŸç‚¹å‘¨å›´çš„4ä¸ªç‚¹
 	var a=new Array();
  
 	a[0]=(pos[0]+1)+","+pos[1];
@@ -69,17 +69,17 @@ function setObj(x,y){
 	//alert(s_path[3]);
 	Amain();
 }
-function GetF(arr){ //²ÎÊıÎªÔ­µãÖÜÎ§µÄ8¸öµã
-	var t,G,H,F;//F,×ÛºÏµÄ¾àÀëÖµ£¬H,¾àÀëÖµ G,Ë®Æ½\½ÇÂä¸½¼Ó¼ÆËã
+function GetF(arr){ //å‚æ•°ä¸ºåŸç‚¹å‘¨å›´çš„8ä¸ªç‚¹
+	var t,G,H,F;//F,ç»¼åˆçš„è·ç¦»å€¼ï¼ŒH,è·ç¦»å€¼ G,æ°´å¹³\è§’è½é™„åŠ è®¡ç®—
 	for(var i=0;i<arr.length;i++){
-		t=arr[i].split(",");//split() ·½·¨ÓÃÓÚ°ÑÒ»¸ö×Ö·û´®·Ö¸î³É×Ö·û´®Êı×é¡£
+		t=arr[i].split(",");//split() æ–¹æ³•ç”¨äºæŠŠä¸€ä¸ªå­—ç¬¦ä¸²åˆ†å‰²æˆå­—ç¬¦ä¸²æ•°ç»„ã€‚
 		t[0]=parseInt(t[0]);
 		t[1]=parseInt(t[1]);
 		
 		if(IsStart([t[0],t[1]])||IsOutScreen([t[0],t[1]])||IsPass(arr[i])||InClose([t[0],t[1]])||IsObj([t[0],t[1]]))
-			continue;//Èç¹ûÉÏÃæÌõ¼şÓĞÒ»Âú×ã£¬ÔòÌø¹ı±¾´ÎÑ­»·£¬½øĞĞÏÂÒ»´Î¡£
-		G=s_path[1]+gw;//Èç¹ûÔÚG=10;
-		if(InOpen([t[0],t[1]])){//Èç¹ûµ±Ç°µãÒÑ´æÔÚopenlistÊı×éÖĞ
+			continue;//å¦‚æœä¸Šé¢æ¡ä»¶æœ‰ä¸€æ»¡è¶³ï¼Œåˆ™è·³è¿‡æœ¬æ¬¡å¾ªç¯ï¼Œè¿›è¡Œä¸‹ä¸€æ¬¡ã€‚
+		G=s_path[1]+gw;//å¦‚æœåœ¨G=10;
+		if(InOpen([t[0],t[1]])){//å¦‚æœå½“å‰ç‚¹å·²å­˜åœ¨openlistæ•°ç»„ä¸­
 			if(G<openlist[num][1]){
 				openlist[num][0]=(G+openlist[num][2]);
 				openlist[num][1]=G;
@@ -96,7 +96,7 @@ function GetF(arr){ //²ÎÊıÎªÔ­µãÖÜÎ§µÄ8¸öµã
 			arr[i][2]=H;
 			arr[i][3]=[t[0],t[1]];
 			arr[i][4]=s_path[3];
-			openlist[openlist.length]=arr[i];//½«FµÈĞÅÏ¢±£´æµ½openlist
+			openlist[openlist.length]=arr[i];//å°†Fç­‰ä¿¡æ¯ä¿å­˜åˆ°openlist
 		}
 	}
 }
@@ -154,7 +154,7 @@ function IsObj(arr){
 			}
 		}
 	}else{
-		//µĞÈËÅĞ¶ÏÆäÍÅ¶ÓÈËÎïÊÇËüµÄÕÏ°­Îï
+		//æ•Œäººåˆ¤æ–­å…¶å›¢é˜Ÿäººç‰©æ˜¯å®ƒçš„éšœç¢ç‰©
 	  for (var i = 0; i < enemysArray.length; i++) {
 		
         if (arr[0] == enemysArray[i].mapX/48 && arr[1] == enemysArray[i].mapY/48  ) {
@@ -164,7 +164,7 @@ function IsObj(arr){
 			break;
         }
       }
-	  //µĞÈËÅĞ¶ÏÎÒ·½ÈËÎïÊÇËüµÄÕÏ°­Îï
+	  //æ•Œäººåˆ¤æ–­æˆ‘æ–¹äººç‰©æ˜¯å®ƒçš„éšœç¢ç‰©
 	  for (var i =0;i<rolesArray.length ;i++ ){
 			if (arr[0]==rolesArray[i].mapX/rpx && arr[1]==rolesArray[i].mapY/rpx){
 			if (p_end[0]==rolesArray[i].mapX/rpx && p_end[1]==rolesArray[i].mapY/rpx){
@@ -181,13 +181,13 @@ function IsObj(arr){
 	return bool;
 	
 }
-function IsOutScreen(arr){ //ÊÇ·ñ³¬³ö³¡¾°·¶Î§
+function IsOutScreen(arr){ //æ˜¯å¦è¶…å‡ºåœºæ™¯èŒƒå›´
 	//console.log("1");
 	if(arr[0]<0||arr[1]<0||arr[0]>=26||arr[1]>=16)
 		return true;
 	return false;
 }
-function IsPass(pos){ //posÕâ¸öµãÊÇ·ñºÍÕÏ°­µãÖØºÏ
+function IsPass(pos){ //posè¿™ä¸ªç‚¹æ˜¯å¦å’Œéšœç¢ç‚¹é‡åˆ
 	//console.log("2");
 	if((";"+pass+";").indexOf(";"+pos+";")!=-1)
 		if ((";"+p_end[0]+","+p_end[1]+";").indexOf(";"+pos+";")!=-1){
@@ -197,13 +197,13 @@ function IsPass(pos){ //posÕâ¸öµãÊÇ·ñºÍÕÏ°­µãÖØºÏ
 		}
 	return false;
 }
-function IsPass1(pos){ //posÕâ¸öµãÊÇ·ñºÍÕÏ°­µãÖØºÏ
+function IsPass1(pos){ //posè¿™ä¸ªç‚¹æ˜¯å¦å’Œéšœç¢ç‚¹é‡åˆ
 	//console.log("2");
 	if((";"+pass+";").indexOf(";"+pos+";")!=-1)
 			return true;
 	return false;
 }
-function IsStart(arr){ //ÅĞ¶Ï¸ÃµãÊÇ²»ÊÇÆğµã
+function IsStart(arr){ //åˆ¤æ–­è¯¥ç‚¹æ˜¯ä¸æ˜¯èµ·ç‚¹
 	//console.log("4");
 	if(arr[0]==p_start[0]&&arr[1]==p_start[1])
 		return true;
@@ -219,7 +219,7 @@ function InClose(arr){
 	}
 	return bool;
 }
-function InOpen(arr){//»ñµÃ´«ÈëÔÚopenlistÊı×éµÄÎ»ÖÃ£¬Èç²»´æÔÚ·µ»Øfalse£¬´æÔÚÎªtrue£¬Î»ÖÃË÷Òı±£´æÈ«¾Ö±äÁ¿num
+function InOpen(arr){//è·å¾—ä¼ å…¥åœ¨openlistæ•°ç»„çš„ä½ç½®ï¼Œå¦‚ä¸å­˜åœ¨è¿”å›falseï¼Œå­˜åœ¨ä¸ºtrueï¼Œä½ç½®ç´¢å¼•ä¿å­˜å…¨å±€å˜é‡num
 	var bool=false;
 	for(var i=0;i<openlist.length;i++){
 		if(arr[0]==openlist[i][3][0]&&arr[1]==openlist[i][3][1]){
@@ -227,7 +227,7 @@ function InOpen(arr){//»ñµÃ´«ÈëÔÚopenlistÊı×éµÄÎ»ÖÃ£¬Èç²»´æÔÚ·µ»Øfalse£¬´æÔÚÎªtr
 	}
 	return bool;
 }
-function Sort(arr){//ÕûÀíÊı×é£¬ÕÒ³ö×îĞ¡µÄF£¬·ÅÔÚ×îºóµÄÎ»ÖÃ¡£
+function Sort(arr){//æ•´ç†æ•°ç»„ï¼Œæ‰¾å‡ºæœ€å°çš„Fï¼Œæ”¾åœ¨æœ€åçš„ä½ç½®ã€‚
 	var temp;
 	for(var i=0;i<arr.length;i++){
 		if(arr.length==1)break;
@@ -240,7 +240,7 @@ function Sort(arr){//ÕûÀíÊı×é£¬ÕÒ³ö×îĞ¡µÄF£¬·ÅÔÚ×îºóµÄÎ»ÖÃ¡£
 			break;
 	}
 }
-function getPath(){//Ãè»æÂ·¾¶
+function getPath(){//æç»˜è·¯å¾„
 	
 	find.unshift(p_end);
 	var t=closelist[closelist.length-1][4];
@@ -261,18 +261,18 @@ function getPath(){//Ãè»æÂ·¾¶
 }
 
 function Amain(){
-	GetF(					//°ÑÔ­µãÖÜÎ§8µã´«ÈëGetF½øĞĞ´¦Àí¡£ËãA*ºËĞÄº¯ÊıÁË :)£¬½øĞĞÇóF£¬¸üĞÂopenlistÊı×é
-		GetRound(s_path[3]) //ÇóÔ­µãÖÜÎ§8µã
+	GetF(					//æŠŠåŸç‚¹å‘¨å›´8ç‚¹ä¼ å…¥GetFè¿›è¡Œå¤„ç†ã€‚ç®—A*æ ¸å¿ƒå‡½æ•°äº† :)ï¼Œè¿›è¡Œæ±‚Fï¼Œæ›´æ–°openlistæ•°ç»„
+		GetRound(s_path[3]) //æ±‚åŸç‚¹å‘¨å›´8ç‚¹
 	);
-	Sort(openlist);			//ÕûÀíÊı×é£¬ÕÒ³ö×îĞ¡µÄF£¬·ÅÔÚ×îºóµÄÎ»ÖÃ¡£
-	s_path=openlist[openlist.length-1];			//ÉèÖÃµ±Ç°Ô­µãÎªF×îĞ¡µÄµã
-	closelist[closelist.length]=s_path;			//½²µ±Ç°Ô­µãÔö¼Ó½øcloselistÊı×éÖĞ
-	openlist[openlist.length-1]=null;			//´ÓopenlistÖĞÇå³ıF×îĞ¡µÄµã
+	Sort(openlist);			//æ•´ç†æ•°ç»„ï¼Œæ‰¾å‡ºæœ€å°çš„Fï¼Œæ”¾åœ¨æœ€åçš„ä½ç½®ã€‚
+	s_path=openlist[openlist.length-1];			//è®¾ç½®å½“å‰åŸç‚¹ä¸ºFæœ€å°çš„ç‚¹
+	closelist[closelist.length]=s_path;			//è®²å½“å‰åŸç‚¹å¢åŠ è¿›closelistæ•°ç»„ä¸­
+	openlist[openlist.length-1]=null;			//ä»openlistä¸­æ¸…é™¤Fæœ€å°çš„ç‚¹
 	if(openlist.length==0){
 		return;
-	}											//Èç¹ûopenlistÊı×éÖĞÃ»ÓĞÊı¾İÁË£¬ÔòÕÒ²»µ½Â·¾¶
-	openlist.length=openlist.length-1;							//ÉÏ´ÎÉ¾³ı°ÑÊı¾İÉ¾ÁË£¬Î»ÖÃ»¹±£ÁôÁË£¬ÕâÀïÉ¾³ı
-	if((s_path[3][0]==p_end[0])&&(s_path[3][1]==p_end[1])){				//Èç¹ûµ½µ½ÖÕµãÁË£¬Ãè»æÂ·¾¶
+	}											//å¦‚æœopenlistæ•°ç»„ä¸­æ²¡æœ‰æ•°æ®äº†ï¼Œåˆ™æ‰¾ä¸åˆ°è·¯å¾„
+	openlist.length=openlist.length-1;							//ä¸Šæ¬¡åˆ é™¤æŠŠæ•°æ®åˆ äº†ï¼Œä½ç½®è¿˜ä¿ç•™äº†ï¼Œè¿™é‡Œåˆ é™¤
+	if((s_path[3][0]==p_end[0])&&(s_path[3][1]==p_end[1])){				//å¦‚æœåˆ°åˆ°ç»ˆç‚¹äº†ï¼Œæç»˜è·¯å¾„
 		getPath();
 	}else{
 		Amain();

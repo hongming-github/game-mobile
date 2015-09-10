@@ -1,8 +1,8 @@
 /*
-ÈËÎï×´Ì¬ÏÔÊ¾
+äººç‰©çŠ¶æ€æ˜¾ç¤º
 */
 function infoShow(x, y) {
-    //Êó±êÒÆ¶¯µ½Ö÷½ÇµÄÍ¼Æ¬ÉÏ£¬ÏÔÊ¾Ö÷½ÇĞÅÏ¢
+    //é¼ æ ‡ç§»åŠ¨åˆ°ä¸»è§’çš„å›¾ç‰‡ä¸Šï¼Œæ˜¾ç¤ºä¸»è§’ä¿¡æ¯
     if (MouseOnRoles(x, y)) {
         clearArray(info);
         for (var i = 0; i < rolesArray.length; i++) {
@@ -10,13 +10,13 @@ function infoShow(x, y) {
                 if (rolesArray[i].HP > 0) {
 					clearArray(everything2);
 					putRec(x,y);
-                    roleInfoShow(rolesArray[i]); //µ÷ÓÃÏÔÊ¾roleµÄĞÅÏ¢º¯Êı
+                    roleInfoShow(rolesArray[i]); //è°ƒç”¨æ˜¾ç¤ºroleçš„ä¿¡æ¯å‡½æ•°
 			
                 }
             }
         }
     } else
-    //Êó±êÒÆ¶¯µ½µĞÈËµÄÍ¼±êÉÏ£¬ÏÔÊ¾µĞÈËµÄĞÅÏ¢
+    //é¼ æ ‡ç§»åŠ¨åˆ°æ•Œäººçš„å›¾æ ‡ä¸Šï¼Œæ˜¾ç¤ºæ•Œäººçš„ä¿¡æ¯
     if (MouseOnEnemys(x, y)) { //judge.js
         clearArray(info);
         for (var i = 0; i < enemysArray.length; i++) {
@@ -33,7 +33,7 @@ function infoShow(x, y) {
     }
 //	drawAll();
 }
-//ÂÌÉ«µÄ¸ñ×ÓËæÊó±êÒ»Æğ×ß¶¯
+//ç»¿è‰²çš„æ ¼å­éšé¼ æ ‡ä¸€èµ·èµ°åŠ¨
 function putRec(x,y){
         clearArray(everything2);
 		rec.mapX = (Math.floor((x-mapMovX) / rpx)) * rpx;
@@ -41,18 +41,18 @@ function putRec(x,y){
 		everything2.push(rec);
 }
 /*
-¸´»î¿òµÄÄÚÈİ
+å¤æ´»æ¡†çš„å†…å®¹
 */
 function afterRecoverEvent(){
 	afterRecoverShow=true;
-   //±³¾°Í¼Æ¬
+   //èƒŒæ™¯å›¾ç‰‡
    ItemBg = new picture(9 * rpx, 5 * rpx,9 * rpx, 5 * rpx, 8 * rpx, 5 * rpx, infoShowBg);
    itemArray.push(ItemBg);
-   //±êÌâ
-   var title="ÇëÑ¡Ôñ¸´»î¶ÔÏó";
+   //æ ‡é¢˜
+   var title="è¯·é€‰æ‹©å¤æ´»å¯¹è±¡";
    var addtitle = new text(title,ItemBg.sx + 96, ItemBg.sy +  2 / 3 *rpx, ItemBg.sx + 96, ItemBg.sy +  2 / 3 *rpx, "#0000C6", "bold 25px SimSun");
    itemArray.push(addtitle);
-   //ËÀÍöÍ·ÏñºÍÃû×Ö
+   //æ­»äº¡å¤´åƒå’Œåå­—
    for (var j = 0; j < deadArray.length; j++) {
        var deadrole=deadArray[j].name;
 	   var addRoleName=new text(deadrole,ItemBg.sx + 96, ItemBg.sy + 2*rpx-10+j*48, ItemBg.sx + 96, ItemBg.sy + 2*rpx-10+j*48, "#FFFFFF", "bold 25px KaiTi");
@@ -65,7 +65,7 @@ function afterRecoverEvent(){
   // drawAll();
 }
 /*
-	Çå³ı»ØºÏÏÔÊ¾
+	æ¸…é™¤å›åˆæ˜¾ç¤º
 */
 function clearShow() {
     end = false;
@@ -82,7 +82,7 @@ function clearShow() {
    // saveData();
 }
 /*
-	»ØºÏÏÔÊ¾
+	å›åˆæ˜¾ç¤º
 */
 function roundShow() {
 	
@@ -90,9 +90,9 @@ function roundShow() {
 	enemyTurn.pause();
 	ourTurn.currentTime=0;
 	ourTurn.play();
-    var roundString = "µÚ " + count + " »Ø ºÏ";
+    var roundString = "ç¬¬ " + count + " å› åˆ";
     var roundRectangle = new rectangle(0, 4 * rpx,0, 4 * rpx, canvasWidth, 4 * rpx, "rgba(0,0,0,0.8)");
-    var roundText = new text(roundString, (canvasWidth / 2) - 2 * rpx, 7* rpx - rpx / 2,(canvasWidth / 2) - 2 * rpx, 7* rpx - rpx / 2,"rgb(255,255,255)", "50px Ò¶¸ùÓÑÃ«±ÊĞĞÊé");
+    var roundText = new text(roundString, (canvasWidth / 2) - 2 * rpx, 7* rpx - rpx / 2,(canvasWidth / 2) - 2 * rpx, 7* rpx - rpx / 2,"rgb(255,255,255)", "50px å¶æ ¹å‹æ¯›ç¬”è¡Œä¹¦");
     everything.push(roundRectangle);
     everything.push(roundText);
 	//drawAll();
@@ -103,9 +103,9 @@ function enemyRoundShow() {
 	ourTurn.pause();
 	enemyTurn.currentTime = 0;
 	enemyTurn.play();
-    var roundString = "µĞ ·½ ĞĞ ¶¯";
+    var roundString = "æ•Œ æ–¹ è¡Œ åŠ¨";
     var roundRectangle = new rectangle(0, 4 * rpx,0, 4 * rpx, canvasWidth, 4 * rpx, "rgba(0,0,0,0.8)");
-    var roundText = new text(roundString, (canvasWidth / 2) - 2 * rpx, 7* rpx - rpx / 2,(canvasWidth / 2) - 2 * rpx,7* rpx - rpx / 2, "rgb(255,255,255)", "50px Ò¶¸ùÓÑÃ«±ÊĞĞÊé");
+    var roundText = new text(roundString, (canvasWidth / 2) - 2 * rpx, 7* rpx - rpx / 2,(canvasWidth / 2) - 2 * rpx,7* rpx - rpx / 2, "rgb(255,255,255)", "50px å¶æ ¹å‹æ¯›ç¬”è¡Œä¹¦");
     everything.push(roundRectangle);
     everything.push(roundText);
     setTimeout(function() {
@@ -114,12 +114,12 @@ function enemyRoundShow() {
     1000);
 }
 /*
-	Ê¤°ÜÌõ¼şÏÔÊ¾
+	èƒœè´¥æ¡ä»¶æ˜¾ç¤º
 */
 function victoryConditionShow() {
     end = true;
-    var vText = new text("Ê¤ÀûÌõ¼ş:", 0,0,8*rpx,5*rpx+24,"rgb(128,0,128)", "20px FangSong");
-    var lText = new text("Ê§°ÜÌõ¼ş:", 0,0,8*rpx,6*rpx+24, "rgb(128,0,128)", "20px FangSong");
+    var vText = new text("èƒœåˆ©æ¡ä»¶:", 0,0,8*rpx,5*rpx+24,"rgb(128,0,128)", "20px FangSong");
+    var lText = new text("å¤±è´¥æ¡ä»¶:", 0,0,8*rpx,6*rpx+24, "rgb(128,0,128)", "20px FangSong");
     var victoryConditionRectangle = new picture( 0,0,6*rpx,3*rpx, canvasWidth / 2, canvasHeight / 2, image1);
     var victoryConditionText = new text(victoryCondition,  0,0,10*rpx,5*rpx+24, "rgb(255,0,0)", "15px FangSong");
     var lostConditionText = new text(lostCondition, 0,0, 10*rpx,6*rpx+24, "rgb(255,0,0)", "15px FangSong");
@@ -134,11 +134,11 @@ function victoryConditionShow() {
     //drawAll();
 }
 /*
-	¶Ô»°ÊÂ¼şµÄÏÔÊ¾
+	å¯¹è¯äº‹ä»¶çš„æ˜¾ç¤º
 */
 function dialog() {
     var tf = false;
-    var tt = dialogString[0][0] + ": " + dialogString[0][1];//ÁÖÇïË®: ÓÖÊÇÄãÃÇ¡£¡£¡£
+    var tt = dialogString[0][0] + ": " + dialogString[0][1];//æ—ç§‹æ°´: åˆæ˜¯ä½ ä»¬ã€‚ã€‚ã€‚
     for (var i = 0; i < rolesArray.length; i++) {
         if (rolesArray[i].name == dialogString[0][0]) {
             dialogRoleImage.src = rolesArray[i].halfBody;
@@ -164,7 +164,7 @@ function dialog() {
     //drawAll();
 }
 /*
-	ÅĞ¶ÏÓĞÃ»ÓĞ´¥·¢¶Ô»°ÊÂ¼ş   
+	åˆ¤æ–­æœ‰æ²¡æœ‰è§¦å‘å¯¹è¯äº‹ä»¶   
 */
 function dialogShow() {
     if (!dialogShowFlag) {
@@ -178,7 +178,7 @@ function dialogShow() {
             dialogFunction = dialogRoundArray[1][1];		
 			
 		}else
-        if (count == dialogRoundArray[i][0]) {//¶Ô»°ÊÂ¼şÔÚµÚ¼¸»ØºÏ´¥·¢
+        if (count == dialogRoundArray[i][0]) {//å¯¹è¯äº‹ä»¶åœ¨ç¬¬å‡ å›åˆè§¦å‘
             dialogShowFlag = true;
             dialogContentId = dialogRoundArray[i][2];//1
             dialogFunction = dialogRoundArray[i][1];
@@ -196,7 +196,7 @@ function dialogShow() {
    }
 }
 /*
-	ÈËÎï×´Ì¬ÏÔÊ¾
+	äººç‰©çŠ¶æ€æ˜¾ç¤º
 */
 function roleInfoShow(obj) {
     var x;
@@ -210,34 +210,34 @@ function roleInfoShow(obj) {
     var n = obj.HP / obj.fullHP;
     var m = obj.MP / obj.fullMP;
 	var s = obj.SP / obj.fullSP;
-   // console.log("Ö÷½ÇµÄfullSP"+obj.fullSP);
+   // console.log("ä¸»è§’çš„fullSP"+obj.fullSP);
     var j = obj.pow / obj.fullPow;
     var row1 = new text(obj.name + "  LV " + obj.level + "   " + obj.EXP + "/" + obj.nextEXP,0,0, x + 240, y+35, "#FFFFFF", "bold 20px FangSong");
     var hp = new text("   HP    " + obj.HP + "/" + obj.fullHP,0,0, x + 142, y+80, "#FFFFFF", "bold 20px FangSong");
     var mp = new text("   MP    " + obj.MP + "/" + obj.fullMP,0,0, x + 142, y+105, "#FFFFFF", "bold 20px FangSong");
     var pow = new text("   POW   " + obj.pow + "/" + obj.fullPow, 0,0,x + 142, y+156, "#FFFFFF", "bold 20px FangSong");
 	var sp = new text("   SP    " + obj.SP + "/" + obj.fullSP,0,0, x + 142, y+130, "#FFFFFF", "bold 20px FangSong");
-	//---ÏÔÊ¾¾«ÉñÁ¦×´Ì¬----
+	//---æ˜¾ç¤ºç²¾ç¥åŠ›çŠ¶æ€----
     var juesha,shensha,shanbi,shengxing;
 	var i=240;
 	var jsl=false;
 	if(obj.spiritJueSha==1){
-    juesha = new text("[¾ø]" , 0,0,x + i, y+58, "#00FFFF", "bold 20px FangSong");
+    juesha = new text("[ç»]" , 0,0,x + i, y+58, "#00FFFF", "bold 20px FangSong");
 	i+=48;
 	if(jsl==false){jsl=true;}
 	}
 	if(obj.spiritSheSha==1){
-    shensha = new text("[Éñ]" ,0,0, x + i, y+58, "#00FFFF", "bold 20px FangSong");
+    shensha = new text("[ç¥]" ,0,0, x + i, y+58, "#00FFFF", "bold 20px FangSong");
 	i+=48;
 	if(jsl==false){jsl=true;}
 	}
 	if(obj.spiritShanBi==1){
-    shanbi = new text("[ÉÁ]" ,0,0, x + i, y+58, "#00FFFF", "bold 20px FangSong");
+    shanbi = new text("[é—ª]" ,0,0, x + i, y+58, "#00FFFF", "bold 20px FangSong");
 	i+=48;
 	if(jsl==false){jsl=true;}
 	}
 	if(obj.spiritShenXing==1){
-    shengxing = new text("[ĞĞ]" ,0,0, x + i, y+58, "#00FFFF", "bold 20px FangSong");
+    shengxing = new text("[è¡Œ]" ,0,0, x + i, y+58, "#00FFFF", "bold 20px FangSong");
 	i+=48;
 	if(jsl==false){jsl=true;}
 	}
@@ -254,14 +254,14 @@ function roleInfoShow(obj) {
     var powBg = new round(powRec.sx - 1, powRec.sy, 3 * rpx + 2, 8, "rgb(255,255,0)");
     var powBg2 = new round(powRec.sx, powRec.sy, 3 * rpx, 5, "rgb(128,128,128)");
 	
-	var spRec = new round(sp.sx + 9 * rpx/2 + 30, sp.sy - 6, 3 * rpx * s, 5, "rgb(255,255,0)");//¸ÄÑÕÉ«
+	var spRec = new round(sp.sx + 9 * rpx/2 + 30, sp.sy - 6, 3 * rpx * s, 5, "rgb(255,255,0)");//æ”¹é¢œè‰²
     var spBg = new round(spRec.sx - 1, spRec.sy, 3 * rpx + 2, 8, "rgb(255,255,0)");
     var spBg2 = new round(spRec.sx, spRec.sy, 3* rpx, 5, "rgb(128,128,128)");
 
     var infoBg = new picture(0,0,x, y, 12 * rpx, 10 * rpx / 2.5, renWuBeiJing);
     var infoRI = new picture(0,0,x+1*rpx/2, y+1*rpx/2, 140, 150, img);
-    var row2 = new text("ÎÒ·½½ÇÉ«", 0,0,x + 135, y+37, "rgb(0,255,0)", "bold 23px KaiTi");
-	var row3 = new text("¾«ÉñÁ¦", 0,0,x + 135, y+58, "rgb(0,255,0)", "bold 23px KaiTi");
+    var row2 = new text("æˆ‘æ–¹è§’è‰²", 0,0,x + 135, y+37, "rgb(0,255,0)", "bold 23px KaiTi");
+	var row3 = new text("ç²¾ç¥åŠ›", 0,0,x + 135, y+58, "rgb(0,255,0)", "bold 23px KaiTi");
 	
 	
     info.push(infoBg);
@@ -316,7 +316,7 @@ function enemyInfoShow(obj) {
     info.push(hpBg);
 	info.push(hpBg2);
     info.push(hpRec);
-	if(obj.type==1){//Èç¹ûÊÇBOSS
+	if(obj.type==1){//å¦‚æœæ˜¯BOSS
 		var mn = obj.pow / obj.fullPow;
 		var pow = new text("   POW  " + obj.pow + "/" + obj.fullPow,0,0, x + 150, y+142, "#FFFFFF", "bold 20px FangSong");
         var powRec = new round(pow.sx + 9 * rpx/2 + 20, pow.sy - 6, 3 * rpx * mn, 5, "rgb(255,0,0)");
@@ -335,15 +335,15 @@ function enemyInfoShow(obj) {
 		info.push(mpBg);
 		info.push(mpBg2);
 		info.push(mpRec);
-        var row1 = new text("µĞ·½BOSS", 0,0,x + 280, y+36, "rgb(255,0,0)", "bold 23px KaiTi");
+        var row1 = new text("æ•Œæ–¹BOSS", 0,0,x + 280, y+36, "rgb(255,0,0)", "bold 23px KaiTi");
         info.push(row1);
     } else {
-        var row1 = new text("µĞ·½½ÇÉ«",0,0, x + 280, y+36, "rgb(255,0,0)", "bold 23px KaiTi");
+        var row1 = new text("æ•Œæ–¹è§’è‰²",0,0, x + 280, y+36, "rgb(255,0,0)", "bold 23px KaiTi");
         info.push(row1);
     }
 }
 /*
-	ÈËÎï²Ëµ¥ÏÔÊ¾
+	äººç‰©èœå•æ˜¾ç¤º
 */
 function showMenu(obj) {
     var r = obj.range;
@@ -384,7 +384,7 @@ function showMenu(obj) {
 }
 
 /*
-	ÏÔÊ¾µÀ¾ß
+	æ˜¾ç¤ºé“å…·
 */
 function showItem(obj) {
     ItemBg = new picture(0,0,6 * rpx, 4 * rpx, 8 * rpx, 5 * rpx, infoShowBg);
@@ -416,11 +416,11 @@ function showItem(obj) {
             }
         }
     } else {
-        alert("Ã¿¸öÈË×î¶àĞ¯´øÎåÖÖµÀ¾ß");
+        alert("æ¯ä¸ªäººæœ€å¤šæºå¸¦äº”ç§é“å…·");
     }
 }
 /*
-	ÏÔÊ¾¼¼ÄÜ¹¥»÷
+	æ˜¾ç¤ºæŠ€èƒ½æ”»å‡»
 */
 function showSkill(obj) {
     skillBg = new picture(0,0,5 * rpx, 3* rpx, 14 * rpx, 4 * rpx, infoShowBg);
@@ -436,9 +436,9 @@ function showSkill(obj) {
                     var skillImg = new picture(0,0,skillBg.sx + 10, skillBg.sy + 6 + i * rpx, rpx - 10, rpx - 10, img);
                     var name = new text(skillArrays[j].name, 0,0,skillImg.sx + rpx, skillImg.sy + 2 / 3 * rpx - 6, "rgb(255,215,0)", "bold 20px KaiTi");
                     var mp = new text("MP:" + skillArrays[j].mp,0,0, skillImg.sx + 3 * rpx, skillImg.sy + 2 / 3 * rpx - 6, "rgb(0,0,255)", "bold 20px cursive");
-                    var suc = new text("³É¹¦ÂÊ:" + skillArrays[j].success + "%",0,0, skillImg.sx + 9 / 2 * rpx, skillImg.sy + 2 / 3 * rpx - 6, "rgb(255,0,0)", "bold 20px FangSong");
-                    var dis = new text("ËµÃ÷:" + skillArrays[j].discripe, 0,0,skillImg.sx + 7 * rpx, skillImg.sy + 2 / 3 * rpx - 6, "rgb(0,255,0)", "bold 20px FangSong");
-                    skillArray.push(skillImg); //½«²ÎÊıÌí¼Óµ½Ô­Êı×éÄ©Î²£¬²¢·µ»ØÊı×éµÄ³¤¶È 
+                    var suc = new text("æˆåŠŸç‡:" + skillArrays[j].success + "%",0,0, skillImg.sx + 9 / 2 * rpx, skillImg.sy + 2 / 3 * rpx - 6, "rgb(255,0,0)", "bold 20px FangSong");
+                    var dis = new text("è¯´æ˜:" + skillArrays[j].discripe, 0,0,skillImg.sx + 7 * rpx, skillImg.sy + 2 / 3 * rpx - 6, "rgb(0,255,0)", "bold 20px FangSong");
+                    skillArray.push(skillImg); //å°†å‚æ•°æ·»åŠ åˆ°åŸæ•°ç»„æœ«å°¾ï¼Œå¹¶è¿”å›æ•°ç»„çš„é•¿åº¦ 
                     skillArray.push(name);
                     skillArray.push(mp);
                     skillArray.push(suc);
@@ -448,11 +448,11 @@ function showSkill(obj) {
             }
         }
     } else {
-        alert("Ã¿¸öÈË×î¶àÓĞ4ÖÖÃØ¼¼");
+        alert("æ¯ä¸ªäººæœ€å¤šæœ‰4ç§ç§˜æŠ€");
     }
 }
 /*
-	ÏÔÊ¾Å­¹¥»÷
+	æ˜¾ç¤ºæ€’æ”»å‡»
 */
 function showPower(obj) {
     powerBg = new picture(0,0,5 * rpx, 4* rpx, 14 * rpx, 4 * rpx, infoShowBg);
@@ -468,8 +468,8 @@ function showPower(obj) {
                     var powerImg = new picture(0,0,powerBg.sx + 10, powerBg.sy + 6 + i * rpx, rpx - 10, rpx - 10, img);
                     var name = new text(powerArrays[j].name,0,0, powerImg.sx + rpx, powerImg.sy + 2 / 3 * rpx - 6, "rgb(255,215,0)", "bold 20px KaiTi");
                     var p = new text("POW:" + powerArrays[j].p,0,0, powerImg.sx + 3 * rpx, powerImg.sy + 2 / 3 * rpx - 6, "rgb(0,0,255)", "bold 20px cursive");
-                    var suc = new text("³É¹¦ÂÊ:" + powerArrays[j].success + "%",0,0, powerImg.sx + 9 / 2 * rpx, powerImg.sy + 2 / 3 * rpx - 6, "rgb(255,0,0)", "bold 20px FangSong");
-                    var dis = new text("ËµÃ÷:" + powerArrays[j].discripe, 0,0,powerImg.sx + 7 * rpx, powerImg.sy + 2 / 3 * rpx - 6, "rgb(0,255,0)", "bold 20px FangSong");
+                    var suc = new text("æˆåŠŸç‡:" + powerArrays[j].success + "%",0,0, powerImg.sx + 9 / 2 * rpx, powerImg.sy + 2 / 3 * rpx - 6, "rgb(255,0,0)", "bold 20px FangSong");
+                    var dis = new text("è¯´æ˜:" + powerArrays[j].discripe, 0,0,powerImg.sx + 7 * rpx, powerImg.sy + 2 / 3 * rpx - 6, "rgb(0,255,0)", "bold 20px FangSong");
                     powerArray.push(powerImg);
                     powerArray.push(name);
                     powerArray.push(p);
@@ -480,12 +480,12 @@ function showPower(obj) {
             }
         }
     } else {
-        alert("Ã¿¸öÈË×î¶àÓĞ1ÖÖÅ­¹¥»÷¼¼");
+        alert("æ¯ä¸ªäººæœ€å¤šæœ‰1ç§æ€’æ”»å‡»æŠ€");
     }
 }
 
 /*
-	ÏÔÊ¾¾«ÉñÁ¦
+	æ˜¾ç¤ºç²¾ç¥åŠ›
 */
 function showSpirit(obj){
       spiritBg = new picture(0,0,6 * rpx, 3* rpx, 12 * rpx+20, 5 * rpx+10, spirit_Bg);
@@ -514,7 +514,7 @@ function showSpirit(obj){
         }
 }
 
-//---------È·¶¨Ê¹ÓÃÃØóÅ¹¥»÷º¯Êı-------------------------------------
+//---------ç¡®å®šä½¿ç”¨ç§˜ç¬ˆæ”»å‡»å‡½æ•°-------------------------------------
 function showSkillConfirm() {
 	//console.log("hello");
     skillConfirmShow = true;
@@ -522,7 +522,7 @@ function showSkillConfirm() {
     confirmArray.push(confirmBg);
     confirmArray.push(confirmBg);
     confirmArray.push(confirmBg);
-    var s = "È·¶¨ÒªÊ¹ÓÃ¼¼ÄÜÂğ£¿";
+    var s = "ç¡®å®šè¦ä½¿ç”¨æŠ€èƒ½å—ï¼Ÿ";
     var confirmText = new text(s,0,0, confirmBg.sx + rpx, confirmBg.sy + rpx, "rgb(32,11,225)", "bold 20px FangSong");
     confirmArray.push(confirmText);
     ensure = new picture(0,0,confirmBg.sx + 1 / 2 * rpx, confirmBg.sy + 2 * rpx, 2 * rpx, 8 / 15 * rpx, qd);
@@ -530,14 +530,14 @@ function showSkillConfirm() {
     confirmArray.push(ensure);
     confirmArray.push(cancel);
 }
-//-----------------È·¶¨Ê¹ÓÃÅ­¹¥»÷º¯Êı--------------------------
+//-----------------ç¡®å®šä½¿ç”¨æ€’æ”»å‡»å‡½æ•°--------------------------
 function showPowerConfirm() {
     powerConfirmShow = true;
      var confirmBg = new picture(0,0,9 * rpx, 4 * rpx, 6 * rpx, 3 * rpx, confirm);
     confirmArray.push(confirmBg);
     confirmArray.push(confirmBg);
-    confirmArray.push(confirmBg); //push3´ÎÊÇÎªÁË¸²¸ÇµôÔ­À´µÄÄÇ¸ö×Ü¼¼ÄÜÁĞ±íÖĞµÄ±³¾°
-    var s = "È·¶¨ÒªÊ¹ÓÃ¼¼ÄÜÂğ£¿";
+    confirmArray.push(confirmBg); //push3æ¬¡æ˜¯ä¸ºäº†è¦†ç›–æ‰åŸæ¥çš„é‚£ä¸ªæ€»æŠ€èƒ½åˆ—è¡¨ä¸­çš„èƒŒæ™¯
+    var s = "ç¡®å®šè¦ä½¿ç”¨æŠ€èƒ½å—ï¼Ÿ";
     var confirmText = new text(s, 0,0,confirmBg.sx + rpx, confirmBg.sy + rpx, "rgb(32,11,225)", "bold 20px FangSong");
     confirmArray.push(confirmText);
     ensure = new picture(0,0,confirmBg.sx + 1 / 2 * rpx, confirmBg.sy + 2 * rpx, 2 * rpx, 8 / 15 * rpx, qd);
@@ -546,13 +546,13 @@ function showPowerConfirm() {
     confirmArray.push(cancel);
 	//drawAll();
 }
-//---------------------È·¶¨Ê¹ÓÃµÀ¾ßº¯Êı------------
+//---------------------ç¡®å®šä½¿ç”¨é“å…·å‡½æ•°------------
 function showItemConfirm() {
 	clearArray(confirmArray);
     itemConfirmShow = true;
     var confirmBg = new picture(0,0,7* rpx, 5 * rpx, 6 * rpx, 3 * rpx, confirm);
     confirmArray.push(confirmBg);
-    var s = "È·¶¨ÒªÊ¹ÓÃµÀ¾ßÂğ£¿";
+    var s = "ç¡®å®šè¦ä½¿ç”¨é“å…·å—ï¼Ÿ";
     var confirmText = new text(s,0,0, confirmBg.sx + rpx, confirmBg.sy + rpx, "rgb(32,11,225)", "bold 20px FangSong");
     confirmArray.push(confirmText);
     ensure = new picture(0,0,confirmBg.sx + 1 / 2 * rpx, confirmBg.sy + 2 * rpx, 2 * rpx, 8 / 15 * rpx, qd);
@@ -565,7 +565,7 @@ function showSpiritConfirm() {
     spiritConfirmShow = true;
     var confirmBg = new picture(0,0,10 * rpx, 4 * rpx, 6 * rpx, 3 * rpx, confirm);
     confirmArray.push(confirmBg);
-   var s = "È·¶¨ÒªÊ¹ÓÃ¸Ã¾«ÉñÁ¦£¿";
+   var s = "ç¡®å®šè¦ä½¿ç”¨è¯¥ç²¾ç¥åŠ›ï¼Ÿ";
    var confirmText = new text(s, 0,0,confirmBg.sx + rpx, confirmBg.sy + rpx, "rgb(32,11,225)", "bold 20px FangSong");
    confirmArray.push(confirmText);
     ensure = new picture(0,0,confirmBg.sx + 1 / 2 * rpx, confirmBg.sy + 2 * rpx, 2 * rpx, 8 / 15 * rpx, qd);
@@ -576,7 +576,7 @@ function showSpiritConfirm() {
 }
 function mpAlert() {
 	var shadow=new rectangle(0,0,0,0,canvasWidth,canvasHeight,"rgba(0,0,0,0.7)");
-	var aa="MP²»×ã£¡";
+	var aa="MPä¸è¶³ï¼";
 	var r1 = new text(aa,9*rpx,4*rpx ,9*rpx ,4*rpx , "#F9F900", "bold 40px KaiTi");
     tishi.push(shadow);
     tishi.push(r1);
@@ -590,7 +590,7 @@ function mpAlert() {
 
 function powAlert() {
 	var shadow=new rectangle(0,0,0,0,canvasWidth,canvasHeight,"rgba(0,0,0,0.7)");
-	var aa="POW²»×ã£¡";
+	var aa="POWä¸è¶³ï¼";
 	var r1 = new text(aa,9*rpx,4*rpx ,9*rpx ,4*rpx , "#F9F900", "bold 40px KaiTi");
     tishi.push(shadow);
     tishi.push(r1);
@@ -603,7 +603,7 @@ function powAlert() {
 }
 function spAlert() {
 	var shadow=new rectangle(0,0,0,0,canvasWidth,canvasHeight,"rgba(0,0,0,0.7)");
-	var aa="SP²»×ã£¡";
+	var aa="SPä¸è¶³ï¼";
 	var r1 = new text(aa,9*rpx,4*rpx ,9*rpx ,4*rpx , "#F9F900", "bold 40px KaiTi");
     tishi.push(shadow);
     tishi.push(r1);
@@ -617,7 +617,7 @@ function spAlert() {
 
 function hasusedItemAlert(){
 	var shadow=new rectangle(0,0,0,0,canvasWidth,canvasHeight,"rgba(0,0,0,0.7)");
-	var aa="Ã¿Î»Ö÷½ÇÃ¿»ØºÏÖ»ÄÜÊ¹ÓÃÒ»´ÎµÀ¾ß£¡";
+	var aa="æ¯ä½ä¸»è§’æ¯å›åˆåªèƒ½ä½¿ç”¨ä¸€æ¬¡é“å…·ï¼";
 	var r1 = new text(aa,5*rpx,4*rpx ,5*rpx ,4*rpx , "#F9F900", "bold 40px KaiTi");
     tishi.push(shadow);
     tishi.push(r1);
@@ -628,7 +628,7 @@ function hasusedItemAlert(){
 }
 function noDeadAlert() {
 	var shadow=new rectangle(0,0,0,0,canvasWidth,canvasHeight,"rgba(0,0,0,0.7)");
-	var aa="ÎŞÈËËÀÍö£¡";
+	var aa="æ— äººæ­»äº¡ï¼";
 	var r1 = new text(aa,9*rpx,4*rpx ,9*rpx ,4*rpx , "#F9F900", "bold 40px KaiTi");
     tishi.push(shadow);
     tishi.push(r1);
@@ -642,8 +642,8 @@ function noDeadAlert() {
 
 function sellItemAlert(a) {
 	var shadow=new rectangle(0,0,0,0,canvasWidth,canvasHeight,"rgba(0,0,0,0.7)");
-	var aa="´ËµÀ¾ßÂôÁË";
-	var r1 = new text(aa+a+"¿é",9*rpx,4*rpx ,9*rpx ,4*rpx , "#F9F900", "bold 40px KaiTi");
+	var aa="æ­¤é“å…·å–äº†";
+	var r1 = new text(aa+a+"å—",9*rpx,4*rpx ,9*rpx ,4*rpx , "#F9F900", "bold 40px KaiTi");
     tishi.push(shadow);
     tishi.push(r1);
 	drawBigMap();
@@ -656,8 +656,8 @@ function sellItemAlert(a) {
 
 function sellEquipAlert(a) {
 	var shadow=new rectangle(0,0,0,0,canvasWidth,canvasHeight,"rgba(0,0,0,0.7)");
-	var aa="´Ë×°±¸ÂôÁË";
-	var r1 = new text(aa+a+"¿é",9*rpx,4*rpx ,9*rpx ,4*rpx , "#F9F900", "bold 40px KaiTi");
+	var aa="æ­¤è£…å¤‡å–äº†";
+	var r1 = new text(aa+a+"å—",9*rpx,4*rpx ,9*rpx ,4*rpx , "#F9F900", "bold 40px KaiTi");
     tishi.push(shadow);
     tishi.push(r1);
 	drawBigMap();
@@ -670,15 +670,15 @@ function sellEquipAlert(a) {
 
 function spiritAlert(a) {
     var s;
-	if(a==1){s="µã»÷ÎÒ·½·¢¶¯»Ø´º°É";}
-	else if(a==2){s="µã»÷ÆÕÍ¨¹¥»÷¾øÉ±°É";}
-	else if(a==3){s="µã»÷ÆÕÍ¨¹¥»÷ÉñÉ±°É";}
-	else if(a==4){s="±¾»ØºÏ¶ã¹ıÏÂ´Î¹¥»÷";}
-	else if(a==5){s="µã»÷ÎÒ·½ÈËÎïÉñĞĞ°É";}
+	if(a==1){s="ç‚¹å‡»æˆ‘æ–¹å‘åŠ¨å›æ˜¥å§";}
+	else if(a==2){s="ç‚¹å‡»æ™®é€šæ”»å‡»ç»æ€å§";}
+	else if(a==3){s="ç‚¹å‡»æ™®é€šæ”»å‡»ç¥æ€å§";}
+	else if(a==4){s="æœ¬å›åˆèº²è¿‡ä¸‹æ¬¡æ”»å‡»";}
+	else if(a==5){s="ç‚¹å‡»æˆ‘æ–¹äººç‰©ç¥è¡Œå§";}
 	var shadow=new rectangle(0,0,0,0,canvasWidth,canvasHeight,"rgba(0,0,0,0.7)");
 	var nextGuanKaBG = new picture(0,0,6 * rpx, 4 * rpx, 8 * rpx, 5 * rpx, infoShowBg);
     var confirmText = new text(s, 0,0, nextGuanKaBG.sx+48 ,nextGuanKaBG.sy+3*rpx,"#FAF4FF", "bold 30px FangSong");
-	var title = new text("ÌáÊ¾", 0,0,nextGuanKaBG.sx +150, nextGuanKaBG.sy + 2 / 3 * rpx, "#000000", "bold 30px Microsoft Yahei");
+	var title = new text("æç¤º", 0,0,nextGuanKaBG.sx +150, nextGuanKaBG.sy + 2 / 3 * rpx, "#000000", "bold 30px Microsoft Yahei");
 	
 	confirmArray.push(shadow);
 	confirmArray.push(nextGuanKaBG);
@@ -742,33 +742,33 @@ function showRolesDetailStatus(obj,a,b) {
 	statusArray.push(def);
 	
 	
-	var i=10;//ÓÃÀ´Ê¹°´Ë³ĞòÅÅÁĞÏÂÀ´
+	var i=10;//ç”¨æ¥ä½¿æŒ‰é¡ºåºæ’åˆ—ä¸‹æ¥
 		
 		if(obj.spiritJueSha==1)
 		{
-		  var SJueSha=new text("[¾ø]",0,0, statusBg.sx + i* rpx+3 ,  statusBg.sy + 5 / 3 * rpx + 4, "#00FFFF", "bold 25px KaiTi"); 
+		  var SJueSha=new text("[ç»]",0,0, statusBg.sx + i* rpx+3 ,  statusBg.sy + 5 / 3 * rpx + 4, "#00FFFF", "bold 25px KaiTi"); 
 		  statusArray.push(SJueSha);
 		  i++;
 		}
 		if(obj.spiritSheSha==1)
 		{
-		  var SSheSha=new text("[Éñ]",0,0, statusBg.sx + i * rpx+3 , statusBg.sy + 5 / 3 * rpx + 4, "#00FFFF", "bold 25px KaiTi"); 
+		  var SSheSha=new text("[ç¥]",0,0, statusBg.sx + i * rpx+3 , statusBg.sy + 5 / 3 * rpx + 4, "#00FFFF", "bold 25px KaiTi"); 
 		  statusArray.push(SSheSha);
 		 i++;
 		}
 		if(obj.spiritShanBi==1)
 		{
-		  var SShanBi=new text("[ÉÁ]",0,0, statusBg.sx + i * rpx+3 ,  statusBg.sy + 5 / 3 * rpx + 4, "#00FFFF", "bold 25px KaiTi"); 
+		  var SShanBi=new text("[é—ª]",0,0, statusBg.sx + i * rpx+3 ,  statusBg.sy + 5 / 3 * rpx + 4, "#00FFFF", "bold 25px KaiTi"); 
 		  statusArray.push(SShanBi);
 		  i++;
 		}
 		if(obj.spiritShenXing==1)
 		{
-		  var SShenXing=new text("[ĞĞ]", 0,0,statusBg.sx + i * rpx+3,  statusBg.sy + 5 / 3 * rpx + 4, "#00FFFF", "bold 25px KaiTi"); 
+		  var SShenXing=new text("[è¡Œ]", 0,0,statusBg.sx + i * rpx+3,  statusBg.sy + 5 / 3 * rpx + 4, "#00FFFF", "bold 25px KaiTi"); 
 		  statusArray.push(SShenXing);
 		  i++;
 		}
-	skillStatus(rolesArray[tmpIndex]);//µ÷ÓÃÏÔÊ¾¼¼ÄÜ
+	skillStatus(rolesArray[tmpIndex]);//è°ƒç”¨æ˜¾ç¤ºæŠ€èƒ½
  //   drawAll();
 }
 function showEnemysDetailStatus(obj,a,b) {
@@ -834,8 +834,8 @@ function skillStatus(obj) {
                 var skillImg = new picture(0,0,skill.sx, skill.sy + 2 / 3 * rpx + i / 2 * rpx, 1 / 2 * rpx, 1 / 2 * rpx, img);
                 var name = new text(skillArrays[j].name,0,0, skillImg.sx + 2 / 3 * rpx, skillImg.sy + 1 / 3 * rpx + 3, "rgb(255,215,0)", "bold 20px KaiTi");
                 var mp = new text("MP:" + skillArrays[j].mp, 0,0,skillImg.sx + 3 * rpx, skillImg.sy + 1 / 3 * rpx + 3, "rgb(0,0,255)", "bold 20px cursive");
-                var suc = new text("³É¹¦ÂÊ:" + skillArrays[j].success + "%",0,0, skillImg.sx + 9 / 2 * rpx, skillImg.sy + 1 / 3 * rpx + 3, "rgb(255,0,0)", "bold 20px FangSong");
-                var dis = new text("ËµÃ÷:" + skillArrays[j].discripe, 0,0,skillImg.sx + 7 * rpx, skillImg.sy + 1 / 3 * rpx + 3, "rgb(0,255,0)", "bold 20px FangSong");
+                var suc = new text("æˆåŠŸç‡:" + skillArrays[j].success + "%",0,0, skillImg.sx + 9 / 2 * rpx, skillImg.sy + 1 / 3 * rpx + 3, "rgb(255,0,0)", "bold 20px FangSong");
+                var dis = new text("è¯´æ˜:" + skillArrays[j].discripe, 0,0,skillImg.sx + 7 * rpx, skillImg.sy + 1 / 3 * rpx + 3, "rgb(0,255,0)", "bold 20px FangSong");
                 speArray.push(skillImg);
                 speArray.push(name);
                 speArray.push(mp);
@@ -857,8 +857,8 @@ function powerStatus(obj) {
                 var powerImg = new picture(0,0,skill.sx, skill.sy + 2 / 3 * rpx + i / 2 * rpx, 1 / 2 * rpx, 1 / 2 * rpx, img);
                 var name = new text(powerArrays[j].name,0,0, powerImg.sx + 2 / 3 * rpx, powerImg.sy + 1 / 3 * rpx + 3, "rgb(255,215,0)", "bold 20px KaiTi");
                 var p = new text("POW:" + powerArrays[j].p,0,0, powerImg.sx + 3 * rpx, powerImg.sy + 1 / 3 * rpx + 3, "rgb(0,0,255)", "bold 20px cursive");
-                var suc = new text("³É¹¦ÂÊ:" + powerArrays[j].success + "%",0,0, powerImg.sx + 9 / 2 * rpx, powerImg.sy + 1 / 3 * rpx + 3, "rgb(255,0,0)", "bold 20px FangSong");
-                var dis = new text("ËµÃ÷:" + powerArrays[j].discripe,0,0, powerImg.sx + 7 * rpx, powerImg.sy + 1 / 3 * rpx + 3, "rgb(0,255,0)", "bold 20px FangSong");
+                var suc = new text("æˆåŠŸç‡:" + powerArrays[j].success + "%",0,0, powerImg.sx + 9 / 2 * rpx, powerImg.sy + 1 / 3 * rpx + 3, "rgb(255,0,0)", "bold 20px FangSong");
+                var dis = new text("è¯´æ˜:" + powerArrays[j].discripe,0,0, powerImg.sx + 7 * rpx, powerImg.sy + 1 / 3 * rpx + 3, "rgb(0,255,0)", "bold 20px FangSong");
                 speArray.push(powerImg);
                 speArray.push(name);
                 speArray.push(p);
@@ -906,7 +906,7 @@ function getSomething2(a, obj) {
     50);
 }
 
-//Ñ­»·±éÀú´æ·ÅÉı¼¶Êı¾İµÄÊı×é
+//å¾ªç¯éå†å­˜æ”¾å‡çº§æ•°æ®çš„æ•°ç»„
 function getRoleUpData(arr){
    var temp=0;
    for(var i=0;i<arr.length;i++){
@@ -917,34 +917,34 @@ function getRoleUpData(arr){
  
 }
 function aftLevelEvent(objAttack){	 
-	 //Éı¼¶µÄ±³¾°Í¼Æ¬
+	 //å‡çº§çš„èƒŒæ™¯å›¾ç‰‡
 	 var aftLBg =new picture(9 * rpx,5 * rpx,9 * rpx, 5 * rpx, 8* rpx, 4 * rpx, levelBG);
 	 powerArray.push(aftLBg);
 	 if(levelupinfo!='0'){
-		 //·ÅËµÃ÷µÄÎÄ×Ö
+		 //æ”¾è¯´æ˜çš„æ–‡å­—
 		 var LUSM=new picture(9 * rpx,  9* rpx,9 * rpx,  9* rpx,  8*rpx,  rpx, levelUpShuoMing); 
 		 powerArray.push(LUSM);
-		  //ËµÃ÷µÄÎÄ×Ö
-	      var LUSMinfo= new text(levelupinfo,LUSM.sx+50 , LUSM.sy+35 , LUSM.sx+50 , LUSM.sy+35 , "#FAF4FF", "bold 25px ¿¬Ìå");
+		  //è¯´æ˜çš„æ–‡å­—
+	      var LUSMinfo= new text(levelupinfo,LUSM.sx+50 , LUSM.sy+35 , LUSM.sx+50 , LUSM.sy+35 , "#FAF4FF", "bold 25px æ¥·ä½“");
           powerArray.push(LUSMinfo);
 	 }
 	
-	 //title±³¾°Í¼Æ¬
+	 //titleèƒŒæ™¯å›¾ç‰‡
 	 var title=new picture(10* rpx-24, 3* rpx+24,10* rpx-24, 3* rpx+24, 7*rpx, 1*rpx, lvtitleBG);
 	 powerArray.push(title);
-	 //Éı¼¶µÄÖ÷½ÇĞÕÃû
+	 //å‡çº§çš„ä¸»è§’å§“å
 	 var sname=objAttack.name;
-     var name = new text(sname,title.sx+50 , title.sy+35 , title.sx+50 , title.sy+35 , "F9F900", "bold 25px ¿¬Ìå");
+     var name = new text(sname,title.sx+50 , title.sy+35 , title.sx+50 , title.sy+35 , "F9F900", "bold 25px æ¥·ä½“");
 	 powerArray.push(name);
 	 var jia="+";
-	 //Ö÷½ÇµÈ¼¶
+	 //ä¸»è§’ç­‰çº§
 	 var s3="LV";
 	 var slv=objAttack.level;
      var lv=new text(s3,title.sx+4*rpx , title.sy+37 , title.sx+4*rpx , title.sy+37 , "#F9F900", "bold 30px FangSong");
-	 var lvnum=new text(slv,title.sx+6*rpx-30 , title.sy+37 , title.sx+6*rpx-30 , title.sy+37 , "#00DB00", "bold 25px ¿¬Ìå");
+	 var lvnum=new text(slv,title.sx+6*rpx-30 , title.sy+37 , title.sx+6*rpx-30 , title.sy+37 , "#00DB00", "bold 25px æ¥·ä½“");
 	 powerArray.push(lv);
 	 powerArray.push(lvnum);
-	 //ÑªÁ¿
+	 //è¡€é‡
 	 var s1="HP";
 	 var roleHp=objAttack.fullHP;
 	 var addHp=getRoleUpData(objAttack.addHP);
@@ -958,7 +958,7 @@ function aftLevelEvent(objAttack){
 	 }
 	 powerArray.push( hp1);
 	 powerArray.push( hp2);
-	 //SPÁ¿
+	 //SPé‡
 	 var s2="SP";
 	 var roleSP=objAttack.fullSP;
 	 var addSp=getRoleUpData(objAttack.addSP);
@@ -1002,7 +1002,7 @@ function aftLevelEvent(objAttack){
 	 powerArray.push(mov2);
 	 powerArray.push(mov3);
 	 //ATK
-	 var s5="¹¥";
+	 var s5="æ”»";
 	 var roleAtk=objAttack.ATK;
 	 var addATK=getRoleUpData(objAttack.addATK);
 	 var atk1=new text(roleAtk,aftLBg.sx+274 , aftLBg.sy+38 , aftLBg.sx+274 , aftLBg.sy+38 , "#00FFFF", "bold 20px FangSong");
@@ -1015,8 +1015,8 @@ function aftLevelEvent(objAttack){
 	   powerArray.push(atk3);
 	   powerArray.push(atk4);
 	 }
-	 //·À
-	 var s6="·À";
+	 //é˜²
+	 var s6="é˜²";
 	 var roleDef=objAttack.DEF;
 	 var addDEF=getRoleUpData(objAttack.addDEF);
 	 var def1=new text(roleDef, aftLBg.sx+274 , aftLBg.sy+88 ,aftLBg.sx+274 , aftLBg.sy+88 , "#00FFFF", "bold 20px FangSong");
@@ -1029,8 +1029,8 @@ function aftLevelEvent(objAttack){
 	   powerArray.push(def3);
 	   powerArray.push(def4);
 	 }
-	 //ËÙ
-	 var s7="ËÙ";
+	 //é€Ÿ
+	 var s7="é€Ÿ";
 	 var rolespe=objAttack.speed;
 	 var addspe=getRoleUpData(objAttack.addSpeed);
 	 var spe1=new text(rolespe,aftLBg.sx+274 , aftLBg.sy+140 , aftLBg.sx+274 , aftLBg.sy+140 , "#00FFFF", "bold 20px FangSong");
@@ -1044,25 +1044,25 @@ function aftLevelEvent(objAttack){
 	   powerArray.push(spe4);
 	   //drawAll();  
 	 }
-	 //¸üĞÂroleµÄHP,fullHP
+	 //æ›´æ–°roleçš„HP,fullHP
      objAttack.fullHP=Number(addHp)+Number(objAttack.fullHP);
 	 objAttack.HP=objAttack.fullHP;
-     //¸üĞÂroleµÄSP,fullSP
+     //æ›´æ–°roleçš„SP,fullSP
 	 objAttack.fullSP=Number(addSp)+Number(objAttack.fullSP);
 	 objAttack.SP= objAttack.fullSP;
-     //¸üĞÂroleµÄspeed
+     //æ›´æ–°roleçš„speed
 	 objAttack.speed=Number(addspe)+Number(objAttack.speed);
-	 //¸üĞÂroleµÄMp
+	 //æ›´æ–°roleçš„Mp
 	 objAttack.fullMP=Number(addmp)+Number(objAttack.fullMP);
 	 objAttack.MP=objAttack.fullMP;
-     //¸üĞÂroleµÄATK
+     //æ›´æ–°roleçš„ATK
 	 objAttack.ATK= Number(addATK)+Number(objAttack.ATK);
-	 //¸üĞÂroleµÄDEF
+	 //æ›´æ–°roleçš„DEF
 	 objAttack.DEF=Number(addDEF)+Number(objAttack.DEF);
-	 //¸üĞÂroleµÄmov
+	 //æ›´æ–°roleçš„mov
 	 objAttack.movement=Number(objAttack.movement)+Number(addMOV);
 		
-     //°ëÉíÏñ
+     //åŠèº«åƒ
 	  var h = new Image();
       h.src = objAttack.halfBody;
       var s3 = new picture(48*5, 48*4,48*5, 48*4, 4 * rpx, 4 * rpx, h);
@@ -1070,11 +1070,11 @@ function aftLevelEvent(objAttack){
 	  //drawAll();  
 }
 /*
-Ö÷½ÇÖÜÎ§Ã»ÓĞ¿ÕÎ»¿ÉÒÔ¸´»î
+ä¸»è§’å‘¨å›´æ²¡æœ‰ç©ºä½å¯ä»¥å¤æ´»
 */
 function noEmptyPlace(){	
 	 var shadow=new rectangle(0,0,0,0,canvasWidth,canvasHeight,"rgba(0,0,0,0.7)");
-	 var aa="Ö÷½ÇÖÜÎ§Ã»ÓĞ¿ÕÎ»¿ÉÒÔ¸´»î";
+	 var aa="ä¸»è§’å‘¨å›´æ²¡æœ‰ç©ºä½å¯ä»¥å¤æ´»";
 	 var r1 = new text(aa,6*rpx,6*rpx ,6*rpx ,6*rpx , "#F9F900", "bold 40px KaiTi");
     confirmArray.push(shadow);
     confirmArray.push(r1);
@@ -1087,34 +1087,34 @@ function noEmptyPlace(){
  
 
 }
-//¸²¸Ç²ã
+//è¦†ç›–å±‚
 function FuGaiCeng(enemy,role){
 	 var shadow=new rectangle(0,0,0,0,canvasWidth,canvasHeight,"rgba(0,0,0,0.7)");
 	 shadowShow.push(shadow);
 	/*
-   //-------Ìí¼Ó¸²¸Ç²ã£¬ÕâÀïÒÔºó¿Ï¶¨ÒªĞŞ¸ÄµÄ--------
-   //ÔÚµĞÈËµÄÉÏÃæ(OK)
+   //-------æ·»åŠ è¦†ç›–å±‚ï¼Œè¿™é‡Œä»¥åè‚¯å®šè¦ä¿®æ”¹çš„--------
+   //åœ¨æ•Œäººçš„ä¸Šé¢(OK)
 	if(enemy.mapX==role.mapX&&enemy.mapY>role.mapY){
 		var shadow1=new rectangle(0,0,0,0,role.mapX,canvasHeight,"rgba(0,0,0,0.7)");
 		var shadow2=new rectangle(role.mapX+48,0,role.mapX+48,0,canvasWidth-role.mapX-48,canvasHeight,"rgba(0,0,0,0.7)");
 		var shadow3=new rectangle(role.mapX,0,role.mapX,0,48,role.mapY,"rgba(0,0,0,0.7)");
 		var shadow4=new rectangle(enemy.mapX,enemy.mapY+48,enemy.mapX,enemy.mapY+48,48,canvasHeight-enemy.mapY-48,"rgba(0,0,0,0.7)");							
 	}
-	//ÔÚµĞÈËµÄ×ó±ß(OK)
+	//åœ¨æ•Œäººçš„å·¦è¾¹(OK)
 	else if(role.mapX<enemy.mapX&&enemy.mapY==role.mapY){
 		var shadow1=new rectangle(0,0,0,0,role.mapX,canvasHeight,"rgba(0,0,0,0.7)");
 		var shadow2=new rectangle(role.mapX+96,0,role.mapX+96,0,canvasWidth-role.mapX-96,canvasHeight,"rgba(0,0,0,0.7)");
 		var shadow3=new rectangle(role.mapX,0,role.mapX,0,96,role.mapY,"rgba(0,0,0,0.7)");
 		var shadow4=new rectangle(role.mapX,role.mapY+48,role.mapX,role.mapY+48,96,canvasHeight-role.mapY-48,"rgba(0,0,0,0.7)");
 	}
-	//ÔÚµĞÈËµÄÓÒ±ß(OK)
+	//åœ¨æ•Œäººçš„å³è¾¹(OK)
 	else if(enemy.mapX<role.mapX&&enemy.mapY==role.mapY){
 		var shadow1=new rectangle(0,0,0,0,enemy.mapX,canvasHeight,"rgba(0,0,0,0.7)");
 		var shadow2=new rectangle(role.mapX+48,0,role.mapX+48,0,canvasWidth-role.mapX-48,canvasHeight,"rgba(0,0,0,0.7)");
 		var shadow3=new rectangle(enemy.mapX,0,enemy.mapX,0,96,enemy.mapY,"rgba(0,0,0,0.7)");
 		var shadow4=new rectangle(enemy.mapX,enemy.mapY+48,enemy.mapX,enemy.mapY+48,96,canvasHeight-enemy.mapY-48,"rgba(0,0,0,0.7)");
 	}
-	//ÔÚµĞÈËµÄÏÂÃæ(OK)
+	//åœ¨æ•Œäººçš„ä¸‹é¢(OK)
 	else if(enemy.mapX==role.mapX&&enemy.mapY<role.mapY){
 		var shadow1=new rectangle(0,0,0,0,enemy.mapX,canvasHeight,"rgba(0,0,0,0.7)");
 		var shadow2=new rectangle(enemy.mapX+48,0,enemy.mapX+48,0,canvasWidth-enemy.mapX-48,canvasHeight,"rgba(0,0,0,0.7)");
@@ -1129,9 +1129,9 @@ function FuGaiCeng(enemy,role){
     //drawAll();
 
 }
-//ÒÆ¶¯µØÍ¼
+//ç§»åŠ¨åœ°å›¾
 function moveMap(){
-  levelUpOk=true;//ÓÃÀ´Ê¹ÓÎÏ·Ò»¿ªÊ¼×Ô¼ºÒÆ¶¯µÄÊ±ºò£¬×èÖ¹ÓÃ»§Êó±êÔÚ»­²¼ËÄÖÜ´¥·¢µØÍ¼¹ö¶¯ÊÂ¼ş
+  levelUpOk=true;//ç”¨æ¥ä½¿æ¸¸æˆä¸€å¼€å§‹è‡ªå·±ç§»åŠ¨çš„æ—¶å€™ï¼Œé˜»æ­¢ç”¨æˆ·é¼ æ ‡åœ¨ç”»å¸ƒå››å‘¨è§¦å‘åœ°å›¾æ»šåŠ¨äº‹ä»¶
   mapRightMov=true;
   ourTurn.play();
   canvas.removeEventListener('touchstart', touchStart,false);
@@ -1180,7 +1180,7 @@ function moveMap(){
 	  }
   },1000);*/
 }
-//ÓÎÏ·±³¾°Õ¹Ê¾   
+//æ¸¸æˆèƒŒæ™¯å±•ç¤º   
 
 
 function gameBGShow()
@@ -1192,9 +1192,9 @@ function gameBGShow()
    ctx.clearRect(0, 0, canvasWidth, canvasHeight);   
    //var dElem = document.getElementById("canvas");
    //var dCtx = dElem.getContext('2d');    
-   ctx.font ="20px Ò¶¸ùÓÑÃ«±ÊĞĞÊé";  
+   ctx.font ="20px å¶æ ¹å‹æ¯›ç¬”è¡Œä¹¦";  
    ctx.fillStyle = "white";
-   var jump = new text("µã»÷Ìø¹ı",0,0,700,520, "#FFFFFF", "bold 20px FangSong");
+   var jump = new text("ç‚¹å‡»è·³è¿‡",0,0,700,520, "#FFFFFF", "bold 20px FangSong");
    ctx.drawImage(imagehand,800,500,83,37); 
    jump.draw();
    tick();
@@ -1210,9 +1210,9 @@ function ingamewords()
 { 
    var dElem = document.getElementById("canvas");
    var dCtx = dElem.getContext('2d');
-   var text1 = "ÔÚ¹Å´úµÄÎäÁÖÖĞ,ÓĞÒ»¸öÕıÒåµÄ½ÌÅÉ½Ğ²Ğ»ê½Ì,ÁÖ´ºË®ÊÇ²Ğ»ê½ÌµÄ½ÌÖ÷,ËûÊÇÒ»¸öĞÄµØÉÆÁ¼µÄÈË£¬²Ğ»ê½ÌÔÚËûµÄ´øÁìÏÂ£¬Á¦Á¿½¥½¥×³´ó£¬×îÖÕ³ÉÎªÖĞÔ­µÚÒ»´ó½Ì.È»¶øÔÚÄ³ÌìÉîÒ¹Àï£¬Õû¸ö²Ğ»ê½ÌÔâµ½ÁËÒ»ÈºÉñÃØÈËµÄÏ®»÷£¬ÄÇÈºÉñÃØÈË×Ô³ÆÊÇÀ´×ÔÒ»¸ö½Ğ×ö¡°»ê¡±µÄ×éÖ¯£¬ËûÃÇÊÇÒ»¹ÉÒş²ØÔÚÎäÁÖÖĞµÄ»ÒÉ«Á¦Á¿£¬ÒÑ½ü´æÔÚÁËÊı°ÙÄê£¬ËûÃÇÒş²ØÔÚÄ»ºó£¬Î¬Ïµ×ÅÎäÁÖÖĞµÄÆ½ºâ£¬Ã¿µ±ÎäÁÖÖĞ³öÏÖÁËÒ»¸öÇ¿´óµÄ×éÖ¯£¬²¢ÇÒÓĞ¿ÉÄÜÍşĞ²µ½ËûÃÇµÄ´æÔÚ£¬ËûÃÇ±ã»á³ö¶¯ËùÓĞÈË£¬È¥Ä¨É±µôÕâĞ©Á¦Á¿£¬À´±£³ÖÎäÁÖÖĞµÄÆ½ºâ£¬»»¾ä»°Ëµ¾ÍÊÇÀ´È·±£¡°»ê¡±ÔÚÎäÁÖÖĞµÄµØÎ»¡£ÕâĞ©ÉñÃØÈËµÄÁ¦Á¿±È²Ğ»ê½ÌÇ¿´óµÄÌ«¶àÁË£¬ËäÈ»²Ğ»ê½ÌµÄ½ÌÔ±¶¼Æ´ËÀµÖ¿¹£¬È´¶¼²ÒÔâÉ±Â¾£¬½ÌÖ÷ÁÖ´ºË®ÎªÁË±£»¤¶ù×ÓÁÖÇïË®ÎşÉüÁË×Ô¼º£¬×îºóÖ»ÓĞÁÖÇïË®Ò»¸öÈËÌÓÍÑÁËÕâ´ÎÉ±Â¾¡£ ";
+   var text1 = "åœ¨å¤ä»£çš„æ­¦æ—ä¸­,æœ‰ä¸€ä¸ªæ­£ä¹‰çš„æ•™æ´¾å«æ®‹é­‚æ•™,æ—æ˜¥æ°´æ˜¯æ®‹é­‚æ•™çš„æ•™ä¸»,ä»–æ˜¯ä¸€ä¸ªå¿ƒåœ°å–„è‰¯çš„äººï¼Œæ®‹é­‚æ•™åœ¨ä»–çš„å¸¦é¢†ä¸‹ï¼ŒåŠ›é‡æ¸æ¸å£®å¤§ï¼Œæœ€ç»ˆæˆä¸ºä¸­åŸç¬¬ä¸€å¤§æ•™.ç„¶è€Œåœ¨æŸå¤©æ·±å¤œé‡Œï¼Œæ•´ä¸ªæ®‹é­‚æ•™é­åˆ°äº†ä¸€ç¾¤ç¥ç§˜äººçš„è¢­å‡»ï¼Œé‚£ç¾¤ç¥ç§˜äººè‡ªç§°æ˜¯æ¥è‡ªä¸€ä¸ªå«åšâ€œé­‚â€çš„ç»„ç»‡ï¼Œä»–ä»¬æ˜¯ä¸€è‚¡éšè—åœ¨æ­¦æ—ä¸­çš„ç°è‰²åŠ›é‡ï¼Œå·²è¿‘å­˜åœ¨äº†æ•°ç™¾å¹´ï¼Œä»–ä»¬éšè—åœ¨å¹•åï¼Œç»´ç³»ç€æ­¦æ—ä¸­çš„å¹³è¡¡ï¼Œæ¯å½“æ­¦æ—ä¸­å‡ºç°äº†ä¸€ä¸ªå¼ºå¤§çš„ç»„ç»‡ï¼Œå¹¶ä¸”æœ‰å¯èƒ½å¨èƒåˆ°ä»–ä»¬çš„å­˜åœ¨ï¼Œä»–ä»¬ä¾¿ä¼šå‡ºåŠ¨æ‰€æœ‰äººï¼Œå»æŠ¹æ€æ‰è¿™äº›åŠ›é‡ï¼Œæ¥ä¿æŒæ­¦æ—ä¸­çš„å¹³è¡¡ï¼Œæ¢å¥è¯è¯´å°±æ˜¯æ¥ç¡®ä¿â€œé­‚â€åœ¨æ­¦æ—ä¸­çš„åœ°ä½ã€‚è¿™äº›ç¥ç§˜äººçš„åŠ›é‡æ¯”æ®‹é­‚æ•™å¼ºå¤§çš„å¤ªå¤šäº†ï¼Œè™½ç„¶æ®‹é­‚æ•™çš„æ•™å‘˜éƒ½æ‹¼æ­»æŠµæŠ—ï¼Œå´éƒ½æƒ¨é­æ€æˆ®ï¼Œæ•™ä¸»æ—æ˜¥æ°´ä¸ºäº†ä¿æŠ¤å„¿å­æ—ç§‹æ°´ç‰ºç‰²äº†è‡ªå·±ï¼Œæœ€ååªæœ‰æ—ç§‹æ°´ä¸€ä¸ªäººé€ƒè„±äº†è¿™æ¬¡æ€æˆ®ã€‚ ";
    var arr = text1.split('');    
-   dCtx.font ="20px Ò¶¸ùÓÑÃ«±ÊĞĞÊé";  
+   dCtx.font ="20px å¶æ ¹å‹æ¯›ç¬”è¡Œä¹¦";  
    dCtx.fillStyle = "white";
     
    if(gameBackGroundShow)
@@ -1257,29 +1257,29 @@ function tick() {
     now = Date.now();  
     delta = now - then;
     if (delta > interval) {
-    // ÕâÀï²»ÄÜ¼òµ¥then=now£¬·ñÔò»¹»á³öÏÖÉÏ±ß¼òµ¥×ö·¨µÄÏ¸Î¢Ê±¼ä²îÎÊÌâ¡£ÀıÈçfps=10£¬Ã¿Ö¡100ms£¬¶øÏÖÔÚÃ¿16ms£¨60fps£©Ö´ĞĞÒ»´Îdraw¡£16*7=112>100£¬ĞèÒª7´Î²ÅÊµ¼Ê»æÖÆÒ»´Î¡£Õâ¸öÇé¿öÏÂ£¬Êµ¼Ê10Ö¡ĞèÒª112*10=1120ms>1000ms²Å»æÖÆÍê³É¡£
+    // è¿™é‡Œä¸èƒ½ç®€å•then=nowï¼Œå¦åˆ™è¿˜ä¼šå‡ºç°ä¸Šè¾¹ç®€å•åšæ³•çš„ç»†å¾®æ—¶é—´å·®é—®é¢˜ã€‚ä¾‹å¦‚fps=10ï¼Œæ¯å¸§100msï¼Œè€Œç°åœ¨æ¯16msï¼ˆ60fpsï¼‰æ‰§è¡Œä¸€æ¬¡drawã€‚16*7=112>100ï¼Œéœ€è¦7æ¬¡æ‰å®é™…ç»˜åˆ¶ä¸€æ¬¡ã€‚è¿™ä¸ªæƒ…å†µä¸‹ï¼Œå®é™…10å¸§éœ€è¦112*10=1120ms>1000msæ‰ç»˜åˆ¶å®Œæˆã€‚
     then = now - (delta % interval);
     ingamewords(); //Code for Drawing the Frame
 	}
 }
 
-//ÕûÀíµÄº¯Êı
+//æ•´ç†çš„å‡½æ•°
 var DJZLBg;
 function ZhengLi(obj,index){
-	//È«ÆÁµÄ¸²¸Ç²ã
+	//å…¨å±çš„è¦†ç›–å±‚
 	  clearArr(shadowShow);
 	  var shadow=new rectangle(0,0,0,0,canvasWidth,canvasHeight,"rgba(0,0,0,0.7)");
 	  shadowShow.push(shadow);
 	if(index==5){
-		//µÀ¾ßÕûÀíµÄ±³¾°
+		//é“å…·æ•´ç†çš„èƒŒæ™¯
 		 DJZLBg =new picture(0,0,24, 48, 670,550, DJZL);
 		 shadowShow.push(DJZLBg);
 	}else if(index==6){
-		//Å­¼¼ÕûÀíµÄ±³¾°
+		//æ€’æŠ€æ•´ç†çš„èƒŒæ™¯
 		 DJZLBg =new picture(0,0,24, 48, 670,550, NJZL);
 		 shadowShow.push(DJZLBg);
 	}else if(index==7){
-		//ÃÜ¼¼ÕûÀíµÄ±³¾°
+		//å¯†æŠ€æ•´ç†çš„èƒŒæ™¯
 		 DJZLBg =new picture(0,0,24, 48, 670,550, MJZL);
 		 shadowShow.push(DJZLBg);
 	}else if(index==8){
@@ -1292,36 +1292,36 @@ function ZhengLi(obj,index){
 		 DJZLBg =new picture(0,0,24, 48, 670,550, WQSD);
 		 shadowShow.push(DJZLBg);
 	}
-	//¹Ø±ÕµÄ°´Å¥
+	//å…³é—­çš„æŒ‰é’®
 	CloseImg = new picture(0,0,DJZLBg.sx + DJZLBg.swidth - rpx - 4, DJZLBg.sy+2 / 3 * rpx, 2 / 3 * rpx, 2 / 3 * rpx, close);
 	shadowShow.push(CloseImg);
-	//Í·Ïñ
+	//å¤´åƒ
 	var hf = new Image();
 	hf.src = obj.halfBody;
 	var halfBody = new picture(0,0,DJZLBg.sx+60, DJZLBg.sy+80,60, 60, hf);
 	shadowShow.push(halfBody);
-	//×óÓÒ¼ıÍ·
+	//å·¦å³ç®­å¤´
 	leftArrow=new picture(0,0,DJZLBg.sx+25, DJZLBg.sy+95,25, 25, zjt);
 	rightArrow=new picture(0,0,DJZLBg.sx+277, DJZLBg.sy+95,25, 25, yjt);
 	shadowShow.push(leftArrow);
 	shadowShow.push(rightArrow);
 	if(index!=9&&index!=10){
-		//ĞÕÃû
+		//å§“å
 		var name = new text(obj.name, 0,0,DJZLBg.sx+140 , DJZLBg.sy+100 , "rgb(255,255,255)", "bold 25px KaiTi");
 		shadowShow.push(name);
-		//µÈ¼¶
+		//ç­‰çº§
 		var lv = new text("LV " + obj.level + "  " + obj.EXP + "/" + obj.nextEXP,0,0, DJZLBg.sx +140,DJZLBg.sy+140, "rgb(255,255,255)", "bold 25px KaiTi");
 		shadowShow.push(lv);
 	}else{
-	    //È«¶Ó½ğÇ®
-		var name = new text("È«¶Ó½ğÇ®", 0,0,DJZLBg.sx+140 , DJZLBg.sy+100 , "rgb(255,255,255)", "bold 25px KaiTi");
+	    //å…¨é˜Ÿé‡‘é’±
+		var name = new text("å…¨é˜Ÿé‡‘é’±", 0,0,DJZLBg.sx+140 , DJZLBg.sy+100 , "rgb(255,255,255)", "bold 25px KaiTi");
 		shadowShow.push(name);
-		//½ğÇ®
+		//é‡‘é’±
 		var lv = new text(teamMoney,0,0, DJZLBg.sx +140,DJZLBg.sy+140, "rgb(255,255,255)", "bold 25px KaiTi");
 		shadowShow.push(lv);
 	}
 if(index==5){
-	//²Ö¿âÖĞµÄµÀ¾ß
+	//ä»“åº“ä¸­çš„é“å…·
 	var tt=0;
 	if(storehouse.additems.length!=0){
 	    for (var i = 0; i < storehouse.additems.length; i++) {
@@ -1341,7 +1341,7 @@ if(index==5){
 		   }
 		}
 	}
-	//µÀ¾ßÁĞ±í
+	//é“å…·åˆ—è¡¨
 	var t = 0;
     for (var i = 0; i < obj.items.length; i++) {
         for (var j = 0; j < itemArrays.length; j++) {
@@ -1363,7 +1363,7 @@ if(index==5){
     }
 }else
 if(index==6){
-	//²Ö¿âÖĞµÄÅ­¼¼
+	//ä»“åº“ä¸­çš„æ€’æŠ€
 	var tt=0;
 	if(storehouse.addpowers.length!=0){
 	    for (var i = 0; i < storehouse.addpowers.length; i++) {
@@ -1380,7 +1380,7 @@ if(index==6){
 		   }
 		}
 	}
-	//Å­¼¼ÁĞ±í
+	//æ€’æŠ€åˆ—è¡¨
 	var t = 0;
 	if(obj.powers.length!=0){
 		for (var i = 0; i < obj.powers.length; i++) {
@@ -1403,7 +1403,7 @@ if(index==6){
 	}
 }else 
 if(index==7){
-	//²Ö¿âÖĞµÄÃÜ¼¼
+	//ä»“åº“ä¸­çš„å¯†æŠ€
 	var tt=0;
 	if(storehouse.addskills.length!=0){
 	    for (var i = 0; i < storehouse.addskills.length; i++) {
@@ -1420,7 +1420,7 @@ if(index==7){
 		   }
 		}
 	}
-	//ÃÜ¼¼ÁĞ±í
+	//å¯†æŠ€åˆ—è¡¨
 	var t = 0;
 	for (var i = 0; i < obj.skills.length; i++) {
 	    for (var j = 0; j < skillArrays.length; j++) {
@@ -1437,7 +1437,7 @@ if(index==7){
 	}
 }else
 if(index==8){
-	//²Ö¿âÖĞµÄ×°±¸
+	//ä»“åº“ä¸­çš„è£…å¤‡
 	var tt=0;
 	if(storehouse.addequips.length!=0){
 	    for (var i = 0; i < storehouse.addequips.length; i++) {
@@ -1457,7 +1457,7 @@ if(index==8){
 		   }
 		}
 	}
-	//×°±¸ÁĞ±í
+	//è£…å¤‡åˆ—è¡¨
 	var t = 0;
     for (var i = 0; i < obj.equips.length; i++) {
         for (var j = 0; j < equipArrays.length; j++) {
@@ -1479,7 +1479,7 @@ if(index==8){
     }
 }else
 if(index==9){
-	//ÉÌÖĞµÄµÀ¾ß
+	//å•†ä¸­çš„é“å…·
 	var tt=0;
 	if(store.items.length!=0){
 	    for (var i = 0; i < store.items.length; i++) {
@@ -1499,7 +1499,7 @@ if(index==9){
 		   }
 		}
 	}
-	//²Ö¿âµÀ¾ßÁĞ±í
+	//ä»“åº“é“å…·åˆ—è¡¨
                     
 	var t = 0;
     for (var i = 0; i < storehouse.additems.length; i++) {
@@ -1522,7 +1522,7 @@ if(index==9){
     }
 }else
 if(index==10){
-    //ÉÌµêÖĞµÄÎäÆ÷
+    //å•†åº—ä¸­çš„æ­¦å™¨
 	var tt=0;
 	if(store.equips.length!=0){
 	    for (var i = 0; i < store.equips.length; i++) {
@@ -1542,7 +1542,7 @@ if(index==10){
 		   }
 		}
 	}
-	//²Ö¿âÖĞµÄ×°±¸ÁĞ±í                  
+	//ä»“åº“ä¸­çš„è£…å¤‡åˆ—è¡¨                  
 	var t = 0;
     for (var i = 0; i < storehouse.addequips.length; i++) {
 		console.log("equipArrays.length                   "+equipArrays.length);
@@ -1574,11 +1574,11 @@ if(index==10){
 	else if(index==9){itemStore=true;}
 	else if(index==10){equipStore=true;}
 }
-//ËµÃ÷¿ò,ÔÚÊı×éarrÖĞÕÒµ½indexµÄµÀ¾ß,which==0ËµÃ÷ÊÇµÀ¾ßÕûÀíµÄµÀ¾ß£¬==1ËµÃ÷ÊÇÃØ¼¼,==2ËµÃ÷ÊÇÎäÆ÷ÉÌµê==3ËµÃ÷ÊÇÅ­¼¼ÕûÀíµÄ²Ö¿â
+//è¯´æ˜æ¡†,åœ¨æ•°ç»„arrä¸­æ‰¾åˆ°indexçš„é“å…·,which==0è¯´æ˜æ˜¯é“å…·æ•´ç†çš„é“å…·ï¼Œ==1è¯´æ˜æ˜¯ç§˜æŠ€,==2è¯´æ˜æ˜¯æ­¦å™¨å•†åº—==3è¯´æ˜æ˜¯æ€’æŠ€æ•´ç†çš„ä»“åº“
 function getShuoMingText(arr,index,which){ 
 	
-	if(which==0){//µÀ¾ß
-		everything2.push(informaitionSow);//·ÅÈëËµÃ÷µÄ±³¾°¿ò
+	if(which==0){//é“å…·
+		everything2.push(informaitionSow);//æ”¾å…¥è¯´æ˜çš„èƒŒæ™¯æ¡†
         for (var j = 0; j < itemArrays.length; j++) {
             if (arr[index].id == itemArrays[j].id) {
                 if (arr[index].num > 0) {
@@ -1593,8 +1593,8 @@ function getShuoMingText(arr,index,which){
                 }
             }
         }
-	}else if(which==1){//ÃØ¼¼
-		everything2.push(informaitionSow);//·ÅÈëËµÃ÷µÄ±³¾°¿ò
+	}else if(which==1){//ç§˜æŠ€
+		everything2.push(informaitionSow);//æ”¾å…¥è¯´æ˜çš„èƒŒæ™¯æ¡†
 	    for (var j = 0; j < skillArrays.length; j++) {
 			if(arr[index]==skillArrays[j].id){
 			   var skillname = new text(skillArrays[j].name+":",0,0,informaitionSow.sx+10,informaitionSow.sy+150, "rgb(255,255,255)", "bold 20px Microsoft Yahei");
@@ -1610,8 +1610,8 @@ function getShuoMingText(arr,index,which){
 			   everything2.push(dis1);
 			}
 		}
-	}else if(which==2){//ÎäÆ÷
-		everything2.push(informaitionSow);//·ÅÈëËµÃ÷µÄ±³¾°¿ò
+	}else if(which==2){//æ­¦å™¨
+		everything2.push(informaitionSow);//æ”¾å…¥è¯´æ˜çš„èƒŒæ™¯æ¡†
 		 for (var j = 0; j < equipArrays.length; j++) {
             if (arr[index].id == equipArrays[j].id) {
                 if (arr[index].num > 0) {
@@ -1626,7 +1626,7 @@ function getShuoMingText(arr,index,which){
                 }
             }
         }
-	}else if(which==3){//Å­¼¼ÄÜµÄËµÃ÷
+	}else if(which==3){//æ€’æŠ€èƒ½çš„è¯´æ˜
 	     for (var j = 0; j < powerArrays.length; j++) {
             if (arr[index] == powerArrays[j].id) {
                  var name1 = new text(powerArrays[j].name+":",0,0,DJZLBg.sx+50,DJZLBg.sy+340, "rgb(255,255,255)", "bold 20px Microsoft Yahei");
@@ -1638,11 +1638,11 @@ function getShuoMingText(arr,index,which){
 	}
 }
 /*
-²Ö¿âÖĞµÄËµÃ÷
+ä»“åº“ä¸­çš„è¯´æ˜
 */
 function getShuoMingText1(arr,index,which){ 
-		if(which==00){//µÀ¾ß
-		everything2.push(informaitionSow1);//·ÅÈëËµÃ÷µÄ±³¾°¿ò
+		if(which==00){//é“å…·
+		everything2.push(informaitionSow1);//æ”¾å…¥è¯´æ˜çš„èƒŒæ™¯æ¡†
         for (var j = 0; j < itemArrays.length; j++) {
             if (arr[index].id == itemArrays[j].id) {
                 if (arr[index].num > 0) {
@@ -1657,8 +1657,8 @@ function getShuoMingText1(arr,index,which){
                 }
             }
         }
-	}else if(which==10){//ÃØ¼¼
-		everything2.push(informaitionSow1);//·ÅÈëËµÃ÷µÄ±³¾°¿ò
+	}else if(which==10){//ç§˜æŠ€
+		everything2.push(informaitionSow1);//æ”¾å…¥è¯´æ˜çš„èƒŒæ™¯æ¡†
 	    for (var j = 0; j < skillArrays.length; j++) {
 			if(arr[index]==skillArrays[j].id){
 			   var skillname = new text(skillArrays[j].name+":",0,0,informaitionSow.sx+30,informaitionSow.sy+150, "rgb(255,255,255)", "bold 20px Microsoft Yahei");
@@ -1674,8 +1674,8 @@ function getShuoMingText1(arr,index,which){
 			   everything2.push(dis1);
 			}
 		}
-	}else if(which==20){//ÎäÆ÷
-		everything2.push(informaitionSow1);//·ÅÈëËµÃ÷µÄ±³¾°¿ò
+	}else if(which==20){//æ­¦å™¨
+		everything2.push(informaitionSow1);//æ”¾å…¥è¯´æ˜çš„èƒŒæ™¯æ¡†
 		 for (var j = 0; j < equipArrays.length; j++) {
             if (arr[index].id == equipArrays[j].id) {
                 if (arr[index].num > 0) {
@@ -1690,8 +1690,8 @@ function getShuoMingText1(arr,index,which){
                 }
             }
         }
-	}else if(which==30){//Å­¼¼ÄÜµÄËµÃ÷
-		everything2.push(informaitionSow1);//·ÅÈëËµÃ÷µÄ±³¾°¿ò
+	}else if(which==30){//æ€’æŠ€èƒ½çš„è¯´æ˜
+		everything2.push(informaitionSow1);//æ”¾å…¥è¯´æ˜çš„èƒŒæ™¯æ¡†
 	     for (var j = 0; j < powerArrays.length; j++) {
             if (arr[index] == powerArrays[j].id) {
                  var name1 = new text(powerArrays[j].name+":",0,0,DJZLBg.sx+565,DJZLBg.sy+230, "rgb(255,255,255)", "bold 18px Microsoft Yahei");
@@ -1703,13 +1703,13 @@ function getShuoMingText1(arr,index,which){
 	}
 }
 /*
-°ÑºìÉ«¿ò¶¨×¡
+æŠŠçº¢è‰²æ¡†å®šä½
 */
 function DZKuang(copyMrec){
  var dingZhuKuan= new box(0,0,copyMrec.sx,copyMrec.sy,copyMrec.swidth,copyMrec.sheight, "rgb(255,0,0)");everything1.push(dingZhuKuan);
 }
 /*
-°ÑµÀ¾ßµÄ½ğ¶î¶¨×¡,which=0,±íÊ¾ÔÚ±³°üÕâ±ß¶¨×¡£¬1±íÊ¾ÔÚ²Ö¿âÕâ±ß¶¨×¡,2±íÊ¾ÔÚÎäÆ÷ÉÌµêÕâ±ß¶¨×¡
+æŠŠé“å…·çš„é‡‘é¢å®šä½,which=0,è¡¨ç¤ºåœ¨èƒŒåŒ…è¿™è¾¹å®šä½ï¼Œ1è¡¨ç¤ºåœ¨ä»“åº“è¿™è¾¹å®šä½,2è¡¨ç¤ºåœ¨æ­¦å™¨å•†åº—è¿™è¾¹å®šä½
 */
 function DZGold(index,which){
    if(which==0){
@@ -1720,7 +1720,7 @@ function DZGold(index,which){
       var itemMoney1=returnItemPrice(store.items[index].id);
 	  var Money1=new text(itemMoney1,0,0,DJZLBg.sx+400 ,DJZLBg.sy+498, "rgb(255,255,255)", "bold 25px KaiTi");
 	  everything1.push(Money1);
-   }else if(which==2){//ÎäÆ÷ÉÌµêµÄÓÒ±ß
+   }else if(which==2){//æ­¦å™¨å•†åº—çš„å³è¾¹
       var itemMoney2=returnEquipPrice(store.equips[index].id);
 	  var Money2=new text(itemMoney2,0,0,DJZLBg.sx+400 ,DJZLBg.sy+498, "rgb(255,255,255)", "bold 25px KaiTi");
 	  everything1.push(Money2);
@@ -1731,11 +1731,11 @@ function DZGold(index,which){
    }
 }
 /*
-  È·ÈÏµÄ»¬¿é
+  ç¡®è®¤çš„æ»‘å—
 */
 
-var huaKuai;//»¬¿é
-var selsectNum;//±íÊ¾ÒÑ¾­Ñ¡ÖĞ¶àÉÙµÄ×Ö·û´®
+var huaKuai;//æ»‘å—
+var selsectNum;//è¡¨ç¤ºå·²ç»é€‰ä¸­å¤šå°‘çš„å­—ç¬¦ä¸²
 function changeItemNumber(option){
  if(tempp==10||tempp==30){dragNum=1;}
  itemNumChange=true;
@@ -1746,8 +1746,8 @@ function changeItemNumber(option){
  var confirmBg = new picture(0,0,DJZLBg.sx+210,DJZLBg.sy+167, 6 * rpx, 3 * rpx, confirm);
  minusButton = new picture(0,0,confirmBg.sx+250,confirmBg.sy+55,16,17, minus);
  addButton = new picture(0,0,confirmBg.sx+250,confirmBg.sy+75,16,17, add);
- var numAll = new round(DJZLBg.sx +250, DJZLBg.sy +240, 4*rpx, 7, "#0080FF");//»ù×¼µÄÏßÌõ
- selsectNum=new text("ÄúÑ¡ÔñÁË  "+dragNum+"  ·İ¸ÃµÀ¾ß",0,0,DJZLBg.sx+250,DJZLBg.sy +210, "#000000", "bold 20px Microsoft Yahei");
+ var numAll = new round(DJZLBg.sx +250, DJZLBg.sy +240, 4*rpx, 7, "#0080FF");//åŸºå‡†çš„çº¿æ¡
+ selsectNum=new text("æ‚¨é€‰æ‹©äº†  "+dragNum+"  ä»½è¯¥é“å…·",0,0,DJZLBg.sx+250,DJZLBg.sy +210, "#000000", "bold 20px Microsoft Yahei");
  huaKuai=new rectangle(DJZLBg.sx+250,0,DJZLBg.sx+250,DJZLBg.sy +230, 10, 20, "red");
  confirmArray.push(confirmBg);
  confirmArray.push(minusButton);
@@ -1761,7 +1761,7 @@ function changeItemNumber(option){
  confirmArray.push(cancel);
  drawBigMap();
 }
-//È·¶¨·âÓ¡
+//ç¡®å®šå°å°
 function areUSureFX(){
    sureToFX=true;
    NJZhengLi=false;
@@ -1772,14 +1772,14 @@ function areUSureFX(){
        ensure = new picture(0,0,DJZLBg.sx +250 , DJZLBg.sy +270, 2 * rpx, 8 / 15 * rpx, qd);
        cancel = new picture(0,0,ensure.sx + 120, DJZLBg.sy+270, 2 * rpx, 8 / 15 * rpx, qx);
        confirmArray.push(confirmBg);
-       var dis= new text("È·¶¨·âÓ¡£¿",0,0,DJZLBg.sx+280,DJZLBg.sy +230, "#000000", "bold 30px Microsoft Yahei");
+       var dis= new text("ç¡®å®šå°å°ï¼Ÿ",0,0,DJZLBg.sx+280,DJZLBg.sy +230, "#000000", "bold 30px Microsoft Yahei");
        confirmArray.push(dis);
    }else if(itemOption==5||itemOption==7){
 	   var confirmBg = new picture(0,0,DJZLBg.sx+210,DJZLBg.sy+167, 6 * rpx, 3 * rpx, confirm);
 	   ensure = new picture(0,0,DJZLBg.sx +250 , DJZLBg.sy +270, 2 * rpx, 8 / 15 * rpx, qd);
 	   cancel = new picture(0,0,ensure.sx + 120, DJZLBg.sy+270, 2 * rpx, 8 / 15 * rpx, qx);
 	   confirmArray.push(confirmBg);
-       var dis= new text("È·¶¨¿ªÆô£¿",0,0,DJZLBg.sx+280,DJZLBg.sy +230, "#000000", "bold 30px Microsoft Yahei");
+       var dis= new text("ç¡®å®šå¼€å¯ï¼Ÿ",0,0,DJZLBg.sx+280,DJZLBg.sy +230, "#000000", "bold 30px Microsoft Yahei");
        confirmArray.push(dis);
    }else if(itemOption==10){
 	  var shadow=new rectangle(0,0,0,0,canvasWidth,canvasHeight,"rgba(0,0,0,0.7)");
@@ -1788,35 +1788,35 @@ function areUSureFX(){
       ensure = new picture(0,0,confirmBg.sx+30,confirmBg.sy+100 , 2 * rpx, 8 / 15 * rpx, qd);
       cancel = new picture(0,0,ensure.sx + 130,confirmBg.sy+100, 2 * rpx, 8 / 15 * rpx, qx);
       confirmArray.push(confirmBg);
-      var dis= new text("È·¶¨½øÈëÏÂÒ»¹Ø£¿",0,0,confirmBg.sx+70,confirmBg.sy +60, "#000000", "bold 20px Microsoft Yahei");
+      var dis= new text("ç¡®å®šè¿›å…¥ä¸‹ä¸€å…³ï¼Ÿ",0,0,confirmBg.sx+70,confirmBg.sy +60, "#000000", "bold 20px Microsoft Yahei");
       confirmArray.push(dis);
    }else if(itemOption==11){
        var confirmBg = new picture(0,0,DJZLBg.sx+210,DJZLBg.sy+167, 6 * rpx, 3 * rpx, confirm);
 	   ensure = new picture(0,0,DJZLBg.sx +250 , DJZLBg.sy +270, 2 * rpx, 8 / 15 * rpx, qd);
 	   cancel = new picture(0,0,ensure.sx + 120, DJZLBg.sy+270, 2 * rpx, 8 / 15 * rpx, qx);
 	   confirmArray.push(confirmBg);
-       var dis= new text("È·¶¨¹ºÂòÒ»·İ£¿",0,0,DJZLBg.sx+280,DJZLBg.sy +230, "#000000", "bold 30px Microsoft Yahei");
+       var dis= new text("ç¡®å®šè´­ä¹°ä¸€ä»½ï¼Ÿ",0,0,DJZLBg.sx+280,DJZLBg.sy +230, "#000000", "bold 30px Microsoft Yahei");
        confirmArray.push(dis);
    }else if(itemOption==12){
 	   var confirmBg = new picture(0,0,DJZLBg.sx+210,DJZLBg.sy+167, 6 * rpx, 3 * rpx, confirm);
 	   ensure = new picture(0,0,DJZLBg.sx +250 , DJZLBg.sy +270, 2 * rpx, 8 / 15 * rpx, qd);
 	   cancel = new picture(0,0,ensure.sx + 120, DJZLBg.sy+270, 2 * rpx, 8 / 15 * rpx, qx);
 	   confirmArray.push(confirmBg);
-       var dis= new text("È·¶¨×°±¸£¿",0,0,DJZLBg.sx+280,DJZLBg.sy +230, "#000000", "bold 30px Microsoft Yahei");
+       var dis= new text("ç¡®å®šè£…å¤‡ï¼Ÿ",0,0,DJZLBg.sx+280,DJZLBg.sy +230, "#000000", "bold 30px Microsoft Yahei");
        confirmArray.push(dis);
    }else if(itemOption==13){
        var confirmBg = new picture(0,0,DJZLBg.sx+210,DJZLBg.sy+167, 6 * rpx, 3 * rpx, confirm);
 	   ensure = new picture(0,0,DJZLBg.sx +250 , DJZLBg.sy +270, 2 * rpx, 8 / 15 * rpx, qd);
 	   cancel = new picture(0,0,ensure.sx + 120, DJZLBg.sy+270, 2 * rpx, 8 / 15 * rpx, qx);
 	   confirmArray.push(confirmBg);
-       var dis= new text("È·¶¨Ğ¶ÔØ£¿",0,0,DJZLBg.sx+280,DJZLBg.sy +230, "#000000", "bold 30px Microsoft Yahei");
+       var dis= new text("ç¡®å®šå¸è½½ï¼Ÿ",0,0,DJZLBg.sx+280,DJZLBg.sy +230, "#000000", "bold 30px Microsoft Yahei");
        confirmArray.push(dis);
    }else if(itemOption==14){
        var confirmBg = new picture(0,0,DJZLBg.sx+210,DJZLBg.sy+167, 6 * rpx, 3 * rpx, confirm);
 	   ensure = new picture(0,0,DJZLBg.sx +250 , DJZLBg.sy +270, 2 * rpx, 8 / 15 * rpx, qd);
 	   cancel = new picture(0,0,ensure.sx + 120, DJZLBg.sy+270, 2 * rpx, 8 / 15 * rpx, qx);
 	   confirmArray.push(confirmBg);
-       var dis= new text("È·¶¨··Âô£¿",0,0,DJZLBg.sx+280,DJZLBg.sy +230, "#000000", "bold 30px Microsoft Yahei");
+       var dis= new text("ç¡®å®šè´©å–ï¼Ÿ",0,0,DJZLBg.sx+280,DJZLBg.sy +230, "#000000", "bold 30px Microsoft Yahei");
        confirmArray.push(dis);
    }
    confirmArray.push(ensure);
@@ -1824,21 +1824,21 @@ function areUSureFX(){
    drawBigMap();
 
 }
-//·Å»Ø²Ö¿âµÄº¯Êı
+//æ”¾å›ä»“åº“çš„å‡½æ•°
 function backToStoreHouse(obj,fromArr,destArr,caSeNum,select,drop){
     for(var i=0;i<select.length;i++){
-	  //==1±íÊ¾µÚI¸ö¸ñ×Ó±»Ñ¡ÖĞÁË
+	  //==1è¡¨ç¤ºç¬¬Iä¸ªæ ¼å­è¢«é€‰ä¸­äº†
 	  if(select[i]==1){
-		  //caSeNum==5,±íÊ¾¶ÔµÀ¾ß½øĞĞ²Ù×÷
+		  //caSeNum==5,è¡¨ç¤ºå¯¹é“å…·è¿›è¡Œæ“ä½œ
 	      if(caSeNum==5){
-			  //Èç¹ûÊÇ¶ªÆú
+			  //å¦‚æœæ˜¯ä¸¢å¼ƒ
 		      if(drop){
                   fromArr[i].num-=dragNum;
 				  if(fromArr[i].num!=0){
 					  var copyItem1=new item();
 					  copyItem1.id=fromArr[i].id;
 					  copyItem1.num=fromArr[i].num;
-					  //ÅĞ¶ÏÖĞ×ªÕ½ÊÇ·ñÓĞÕâ¸öIDµÄµÀ¾ßÔÚÁË
+					  //åˆ¤æ–­ä¸­è½¬æˆ˜æ˜¯å¦æœ‰è¿™ä¸ªIDçš„é“å…·åœ¨äº†
 					  if(isIdOfItemThere(storehouse.tempArr,copyItem1.id)){
 						 for(var j=0;j<storehouse.tempArr.length;j++){
 							 if(storehouse.tempArr[j].id==copyItem1.id){storehouse.tempArr[j].num+=copyItem1.num;}
@@ -1846,15 +1846,15 @@ function backToStoreHouse(obj,fromArr,destArr,caSeNum,select,drop){
 					  }else{storehouse.tempArr.push(copyItem1);}
 				  }
 			  }
-			  //Èç¹ûÊÇ·Å»Ø²Ö¿â
+			  //å¦‚æœæ˜¯æ”¾å›ä»“åº“
 			  else{
-				  //¸´ÖÆ¸ÃµÀ¾ßµÄIDºÍÊıÁ¿
+				  //å¤åˆ¶è¯¥é“å…·çš„IDå’Œæ•°é‡
 				  var copyItem=new item();
 				  copyItem.id=fromArr[i].id;
 				  copyItem.num=dragNum;
-				  //¸üĞÂ±³°üÀïÃæµÄÊıÁ¿
+				  //æ›´æ–°èƒŒåŒ…é‡Œé¢çš„æ•°é‡
 				  fromArr[i].num-=dragNum;
-				  //ÅĞ¶ÏÖĞ×ªÕ½ÊÇ·ñÓĞÕâ¸öIDµÄµÀ¾ßÔÚÁË
+				  //åˆ¤æ–­ä¸­è½¬æˆ˜æ˜¯å¦æœ‰è¿™ä¸ªIDçš„é“å…·åœ¨äº†
 				  if(fromArr[i].num!=0){
 					  var copyItem1=new item();
 				      copyItem1.id=fromArr[i].id;
@@ -1865,111 +1865,111 @@ function backToStoreHouse(obj,fromArr,destArr,caSeNum,select,drop){
 						 }
 					  }else{storehouse.tempArr.push(copyItem1);}
 				  }
-				  //ÅĞ¶ÏÊÇ·ñÒÑ¾­ÓĞ¸ÃIDÔÚ²Ö¿âÄÚ
+				  //åˆ¤æ–­æ˜¯å¦å·²ç»æœ‰è¯¥IDåœ¨ä»“åº“å†…
 				  if(isIdOfItemThere(destArr,copyItem.id)){
 				     for(var j=0;j<destArr.length;j++){
 					     if(destArr[j].id==copyItem.id){destArr[j].num+=copyItem.num;}
 					 }
-				  }else{destArr.push(copyItem);}//°Ñ¸´ÖÆµÄµÀ¾ß·Åµ½ÈËÎïµÄadditemsÖĞ£¬Õâ¸öÊÇµÀ¾ßµÄ²Ö¿â
+				  }else{destArr.push(copyItem);}//æŠŠå¤åˆ¶çš„é“å…·æ”¾åˆ°äººç‰©çš„additemsä¸­ï¼Œè¿™ä¸ªæ˜¯é“å…·çš„ä»“åº“
 			  }
 		  }else if(caSeNum==6){
 			   if(drop){
 			   }else{
-				 //°ÑcopypowerID·ÅÈë²Ö¿â
+				 //æŠŠcopypowerIDæ”¾å…¥ä»“åº“
 				 var copypowerID=fromArr[i];
 			     destArr.push(copypowerID);
 			   }
 		  }else if(caSeNum==7){
                if(drop){
 			   }else{
-				 //°ÑcopypowerID·ÅÈë²Ö¿â
+				 //æŠŠcopypowerIDæ”¾å…¥ä»“åº“
 				 var copyskillID=fromArr[i];
 			     destArr.push(copyskillID);
 			   }
 		  }else if(caSeNum==8){
-			     //²úÉúÒª¸´ÖÆµÄ×°±¸
+			     //äº§ç”Ÿè¦å¤åˆ¶çš„è£…å¤‡
 		         var copyequip=new equipZB();
 			     copyequip.id=fromArr[i].id;
                  copyequip.num=fromArr[i].num;
                  fullFillEquip(obj,copyequip.id);
-				 //ÅĞ¶ÏÔÚ²Ö¿âÖĞÊÇ·ñÒÑ¾­ÓĞ¸Ã×°±¸´æÔÚÁË
+				 //åˆ¤æ–­åœ¨ä»“åº“ä¸­æ˜¯å¦å·²ç»æœ‰è¯¥è£…å¤‡å­˜åœ¨äº†
 				 if(isIdOfItemThere(destArr,copyequip.id)){
                      for(var j=0;j<destArr.length;j++){
 					     if(destArr[j].id==copyequip.id){destArr[j].num+=copyequip.num;}
 					 }
 			     }else{destArr.push(copyequip);}
 		  }else if(caSeNum==9){
-			     //°ÑÂôÁËµÄµÀ¾ßµÄÇ®¼Óµ½È«¶ÓµÄÇ®ÖĞ
+			     //æŠŠå–äº†çš„é“å…·çš„é’±åŠ åˆ°å…¨é˜Ÿçš„é’±ä¸­
 		         var itemMoney=dragNum*returnItemPrice(fromArr[i].id);
 				 sellItemAlert(itemMoney);
 			     teamMoney+=itemMoney;
-                 //¸´ÖÆ¸ÃµÀ¾ßµÄIDºÍÊıÁ¿
+                 //å¤åˆ¶è¯¥é“å…·çš„IDå’Œæ•°é‡
 				  var copyItem=new item();
 				  copyItem.id=fromArr[i].id;
 				  copyItem.num=dragNum;
-				  //¸üĞÂ²Ö¿âÀïÃæµÄÊıÁ¿
+				  //æ›´æ–°ä»“åº“é‡Œé¢çš„æ•°é‡
 				  fromArr[i].num-=dragNum;
 				  if(fromArr[i].num!=0){
 					  var copyItem1=new item();
 					  copyItem1.id=fromArr[i].id;
 					  copyItem1.num=fromArr[i].num;
-					  //ÅĞ¶ÏÖĞ×ªÕ½ÊÇ·ñÓĞÕâ¸öIDµÄµÀ¾ßÔÚÁË
+					  //åˆ¤æ–­ä¸­è½¬æˆ˜æ˜¯å¦æœ‰è¿™ä¸ªIDçš„é“å…·åœ¨äº†
 					  if(isIdOfItemThere(storehouse.tempArr,copyItem1.id)){
 						 for(var j=0;j<storehouse.tempArr.length;j++){
 							 if(storehouse.tempArr[j].id==copyItem1.id){storehouse.tempArr[j].num+=copyItem1.num;}
 						 }
 					  }else{storehouse.tempArr.push(copyItem1);}
 				  }
-				  //ÅĞ¶ÏÊÇ·ñÒÑ¾­ÓĞ¸ÃIDÔÚÉÌµêÄÚ
+				  //åˆ¤æ–­æ˜¯å¦å·²ç»æœ‰è¯¥IDåœ¨å•†åº—å†…
 				  if(isIdOfItemThere(destArr,copyItem.id)){
 				     for(var j=0;j<destArr.length;j++){
 					     if(destArr[j].id==copyItem.id){destArr[j].num+=copyItem.num;}
 					 }
-				  }else{destArr.push(copyItem);}//°Ñ¸´ÖÆµÄµÀ¾ß·Åµ½ÈËÎïµÄadditemsÖĞ£¬Õâ¸öÊÇµÀ¾ßµÄ²Ö¿â
+				  }else{destArr.push(copyItem);}//æŠŠå¤åˆ¶çš„é“å…·æ”¾åˆ°äººç‰©çš„additemsä¸­ï¼Œè¿™ä¸ªæ˜¯é“å…·çš„ä»“åº“
 		  }else if(caSeNum==10){
-			  //°Ñ×°±¸µÄÇ®¼ÓÉÏÈ¥
+			  //æŠŠè£…å¤‡çš„é’±åŠ ä¸Šå»
               var equipMoney=returnEquipPrice(fromArr[i].id);
               sellEquipAlert(equipMoney);
 			  teamMoney+=equipMoney;
-			  //°ÑÒªÂôµÄ×°±¸·ÅÈëÉÌµê
+			  //æŠŠè¦å–çš„è£…å¤‡æ”¾å…¥å•†åº—
 			  var copyequip=new equipZB();
 			  copyequip.id=fromArr[i].id;
 			  copyequip.num=1;
-			  //ÅĞ¶ÏÔÚdextArrÖĞÊÇ·ñÓĞ¸ÃIDµÄÎäÆ÷´æÔÚ
+			  //åˆ¤æ–­åœ¨dextArrä¸­æ˜¯å¦æœ‰è¯¥IDçš„æ­¦å™¨å­˜åœ¨
 			  if(isIdOfItemThere(destArr,copyequip.id)){
 				     for(var j=0;j<destArr.length;j++){
 					     if(destArr[j].id==copyequip.id){destArr[j].num+=copyequip.num;}
 					 }
 			  }else{destArr.push(copyequip);}
 		  }
-	  }else{//ËµÃ÷Õâ¸öµÀ¾ßÃ»ÓĞ±»Ñ¡ÖĞ
+	  }else{//è¯´æ˜è¿™ä¸ªé“å…·æ²¡æœ‰è¢«é€‰ä¸­
 	      if(caSeNum==5){
-		      //¸´ÖÆÕâ¸öµÀ¾ß
+		      //å¤åˆ¶è¿™ä¸ªé“å…·
 			  var copyItem;
 			  copyItem=new item();
               copyItem.id=fromArr[i].id;
               copyItem.num=fromArr[i].num;
-			  //°Ñ¸´ÖÆµÄµÀ¾ß·Åµ½ÈËÎïµÄadditemsÖĞ£¬Õâ¸öÊÇµÀ¾ßµÄ²Ö¿â
+			  //æŠŠå¤åˆ¶çš„é“å…·æ”¾åˆ°äººç‰©çš„additemsä¸­ï¼Œè¿™ä¸ªæ˜¯é“å…·çš„ä»“åº“
               if(isIdOfItemThere(storehouse.tempArr,copyItem.id)){
 				     for(var j=0;j<storehouse.tempArr.length;j++){
 					     if(storehouse.tempArr[j].id==copyItem.id){storehouse.tempArr[j].num+=copyItem.num;}
 					 }
 			  }else{storehouse.tempArr.push(copyItem);}
-		  }else if(caSeNum==7){//Ã»ÓĞÑ¡ÖĞµÄÃØ¼¼·ÅÈëÖĞ×ªÕ¾
+		  }else if(caSeNum==7){//æ²¡æœ‰é€‰ä¸­çš„ç§˜æŠ€æ”¾å…¥ä¸­è½¬ç«™
                 var copyskillID=obj.skills[i];
 			    storehouse.tempArr.push(copyskillID);
 		  }else if(caSeNum==8){
-			    //¸´ÖÆÎ´±»Ñ¡ÖĞµÄ×°±¸·ÅÈëÖĞ×ªÕ¾
+			    //å¤åˆ¶æœªè¢«é€‰ä¸­çš„è£…å¤‡æ”¾å…¥ä¸­è½¬ç«™
                 var copyEquip1=new equipZB();
 				copyEquip1.id=fromArr[i].id;
 				copyEquip1.num=fromArr[i].num;
 			    storehouse.tempArr.push(copyEquip1);
 		  }else if(caSeNum==9){
-		        //¸´ÖÆÕâ¸öµÀ¾ß
+		        //å¤åˆ¶è¿™ä¸ªé“å…·
 				var copyItem=new item();
 				copyItem.id=fromArr[i].id;
 				copyItem.num=fromArr[i].num;
-			    //°Ñ¸´ÖÆµÄµÀ¾ß·Åµ½ÈËÎïµÄadditemsÖĞ£¬Õâ¸öÊÇµÀ¾ßµÄ²Ö¿â
+			    //æŠŠå¤åˆ¶çš„é“å…·æ”¾åˆ°äººç‰©çš„additemsä¸­ï¼Œè¿™ä¸ªæ˜¯é“å…·çš„ä»“åº“
                 if(isIdOfItemThere(storehouse.tempArr,copyItem.id)){
 				     for(var j=0;j<storehouse.tempArr.length;j++){
 					     if(storehouse.tempArr[j].id==copyItem.id){storehouse.tempArr[j].num+=copyItem.num;}
@@ -1979,7 +1979,7 @@ function backToStoreHouse(obj,fromArr,destArr,caSeNum,select,drop){
 		          var copyequip=new equipZB();
 				  copyequip.id=fromArr[i].id;
 				  copyequip.num=fromArr[i].num;
-				  //°Ñ²Ö¿âÖĞÃ»Ñ¡ÖĞµÄ×°±¸·ÅÈëÖĞ×ªÕ¾
+				  //æŠŠä»“åº“ä¸­æ²¡é€‰ä¸­çš„è£…å¤‡æ”¾å…¥ä¸­è½¬ç«™
 				  if(isIdOfItemThere(storehouse.tempArr,copyequip.id)){
 						 for(var j=0;j<storehouse.tempArr.length;j++){
 							 if(storehouse.tempArr[j].id==copyequip.id){storehouse.tempArr[j].num+=copyequip.num;}
@@ -1994,7 +1994,7 @@ function backToStoreHouse(obj,fromArr,destArr,caSeNum,select,drop){
 	  else if(caSeNum==9){if(i==storehouse.additems.length-1){break;}}
 	  else if(caSeNum==10){if(i==storehouse.addequips.length-1){break;}}
 	}
-	//°ÑÖĞ×ªÕ½µÄµÀ¾ß·Å»ØÈËÎïµÄ±³°ü
+	//æŠŠä¸­è½¬æˆ˜çš„é“å…·æ”¾å›äººç‰©çš„èƒŒåŒ…
 	if(caSeNum==5){
 		clearArr(obj.items);
 		obj.items=[].concat(storehouse.tempArr);
@@ -2023,11 +2023,11 @@ function backToStoreHouse(obj,fromArr,destArr,caSeNum,select,drop){
     ZhengLi(obj,caSeNum);
 }
 
-//ÊµÏÖ×°±¸µÄ¹¦ÄÜ,num=0ËµÃ÷ÊÇ×°±¸£¬num=1ËµÃ÷ÊÇĞ¶ÔØ
+//å®ç°è£…å¤‡çš„åŠŸèƒ½,num=0è¯´æ˜æ˜¯è£…å¤‡ï¼Œnum=1è¯´æ˜æ˜¯å¸è½½
 function fullFillEquip(obj,id,num){
     for (var j = 0; j < equipArrays.length; j++) {
 	     if(id==equipArrays[j].id){
-			 //½èskillVar,flÀ´ÓÃÏÂ
+			 //å€ŸskillVar,flæ¥ç”¨ä¸‹
 		    if(num){skillVar=equipArrays[j].equipVar;}
 			else{skillVar=-equipArrays[j].equipVar;}
 			fl=equipArrays[j].func;
@@ -2035,14 +2035,14 @@ function fullFillEquip(obj,id,num){
 		 }
 	}
 }
-//ÕâÀï·Å»Ø²Ö¿âµÄº¯ÊıºÍ·Å»Ø±³°üµÄº¯ÊıÊÇ¿ÉÒÔºÏ²¢µÄ£¬µ«ÎÒÃ»ÕâÑù×ö£¬ÒòÎªÅÂÒÔºó×Ô¼º¿´²»À´
-//·Å»Ø±³°üµÄº¯Êı
+//è¿™é‡Œæ”¾å›ä»“åº“çš„å‡½æ•°å’Œæ”¾å›èƒŒåŒ…çš„å‡½æ•°æ˜¯å¯ä»¥åˆå¹¶çš„ï¼Œä½†æˆ‘æ²¡è¿™æ ·åšï¼Œå› ä¸ºæ€•ä»¥åè‡ªå·±çœ‹ä¸æ¥
+//æ”¾å›èƒŒåŒ…çš„å‡½æ•°
 function backToBag(obj,fromArr,destArr,caSeNum,select,drop){
     for(var i=0;i<select.length;i++){
-	  //==1±íÊ¾µÚI¸ö¸ñ×Ó±»Ñ¡ÖĞÁË
+	  //==1è¡¨ç¤ºç¬¬Iä¸ªæ ¼å­è¢«é€‰ä¸­äº†
 	  if(select[i]==1){
 	      if(caSeNum==5){
-			  //Èç¹ûÊÇ¶ªÆú
+			  //å¦‚æœæ˜¯ä¸¢å¼ƒ
 		      if(drop){
 				  console.log(fromArr[i].num+"   1 ");
                   fromArr[i].num-=dragNum;console.log(dragNum+"aa"+fromArr[i].num+"   2 ");
@@ -2050,7 +2050,7 @@ function backToBag(obj,fromArr,destArr,caSeNum,select,drop){
 					  var copyItem1=new item();
 					  copyItem1.id=fromArr[i].id;
 					  copyItem1.num=fromArr[i].num;
-					  //ÅĞ¶ÏÖĞ×ªÕ½ÊÇ·ñÓĞÕâ¸öIDµÄµÀ¾ßÔÚÁË
+					  //åˆ¤æ–­ä¸­è½¬æˆ˜æ˜¯å¦æœ‰è¿™ä¸ªIDçš„é“å…·åœ¨äº†
 					  if(isIdOfItemThere(storehouse.tempArr,copyItem1.id)){
 						 for(var j=0;j<storehouse.tempArr.length;j++){
 							 if(storehouse.tempArr[j].id==copyItem1.id){storehouse.tempArr[j].num+=copyItem1.num;}
@@ -2058,36 +2058,36 @@ function backToBag(obj,fromArr,destArr,caSeNum,select,drop){
 					  }else{storehouse.tempArr.push(copyItem1);}
 					  }
 			  }
-			  //Èç¹ûÊÇ·Å»Ø±³°ü
+			  //å¦‚æœæ˜¯æ”¾å›èƒŒåŒ…
 			  else{
-				  //¸´ÖÆ¸ÃµÀ¾ßµÄIDºÍÊıÁ¿
+				  //å¤åˆ¶è¯¥é“å…·çš„IDå’Œæ•°é‡
 				  var copyItem=new item();
 				  copyItem.id=fromArr[i].id;
 				  copyItem.num=dragNum;
-				  //¸üĞÂ±³°üÀïÃæµÄÊıÁ¿
+				  //æ›´æ–°èƒŒåŒ…é‡Œé¢çš„æ•°é‡
 				  fromArr[i].num-=dragNum;
 				  var copyItem1=new item();
 				  copyItem1.id=fromArr[i].id;
 				  copyItem1.num=fromArr[i].num;
 				  if(fromArr[i].num!=0){
-					  //ÅĞ¶ÏÖĞ×ªÕ½ÊÇ·ñÓĞÕâ¸öIDµÄµÀ¾ßÔÚÁË
+					  //åˆ¤æ–­ä¸­è½¬æˆ˜æ˜¯å¦æœ‰è¿™ä¸ªIDçš„é“å…·åœ¨äº†
 					  if(isIdOfItemThere(storehouse.tempArr,copyItem1.id)){
 						 for(var j=0;j<storehouse.tempArr.length;j++){
 							 if(storehouse.tempArr[j].id==copyItem1.id){storehouse.tempArr[j].num+=copyItem1.num;}
 						 }
 					  }else{storehouse.tempArr.push(copyItem1);}
 				  }
-				  //ÅĞ¶ÏÊÇ·ñÒÑ¾­ÓĞ¸ÃIDÔÚ±³°üÄÚ
+				  //åˆ¤æ–­æ˜¯å¦å·²ç»æœ‰è¯¥IDåœ¨èƒŒåŒ…å†…
 				  if(isIdOfItemThere(destArr,copyItem.id)){
 				     for(var j=0;j<destArr.length;j++){
 					     if(destArr[j].id==copyItem.id){obj.items[j].num+=copyItem.num;}
 					 }
-				  }else{destArr.push(copyItem);}//°Ñ¸´ÖÆµÄµÀ¾ß·Åµ½ÈËÎïµÄadditemsÖĞ£¬Õâ¸öÊÇµÀ¾ßµÄ²Ö¿â
+				  }else{destArr.push(copyItem);}//æŠŠå¤åˆ¶çš„é“å…·æ”¾åˆ°äººç‰©çš„additemsä¸­ï¼Œè¿™ä¸ªæ˜¯é“å…·çš„ä»“åº“
 			  }
 		  }else if(caSeNum==6){
 			  if(drop){
 			   }else{
-				 //°ÑcopypowerID·ÅÈë²Ö¿â
+				 //æŠŠcopypowerIDæ”¾å…¥ä»“åº“
 				 var copypowerID=fromArr[i];
 			     destArr.push(copypowerID);
 			   }
@@ -2095,48 +2095,48 @@ function backToBag(obj,fromArr,destArr,caSeNum,select,drop){
 			     var copyskillID=fromArr[i];
 			     destArr.push(copyskillID);
 		  }else if(caSeNum==8){
-			     //²úÉúÒª¸´ÖÆµÄ×°±¸
+			     //äº§ç”Ÿè¦å¤åˆ¶çš„è£…å¤‡
 		         var copyequip=new equipZB();
 			     copyequip.id=fromArr[i].id;
                  copyequip.num=1;
-				 //µÃµ½¸Ã×°±¸µÄÀàĞÍ
+				 //å¾—åˆ°è¯¥è£…å¤‡çš„ç±»å‹
 			     for (var j = 0; j < equipArrays.length; j++) {  
                     if(copyequip.id==equipArrays[j].id){
 					   copyequip.type=equipArrays[j].type;
 					}
 				 }
-				 //ÊÖ³ÖµÄÊıÁ¿
+				 //æ‰‹æŒçš„æ•°é‡
 				 var equipHandNum=0;
-				 //ÊÎÆ·µÄÊıÁ¿
+				 //é¥°å“çš„æ•°é‡
 				 var equipAdornNum=0;
-				 //µÃµ½ÊÖ³ÖµÄ×°±¸ºÍÊÎÆ·×°±¸µÄÊıÁ¿
+				 //å¾—åˆ°æ‰‹æŒçš„è£…å¤‡å’Œé¥°å“è£…å¤‡çš„æ•°é‡
                  for (var m = 0; m < obj.equips.length; m++) {
                       for (var j = 0; j < equipArrays.length; j++) {
                          if (obj.equips[m].id == equipArrays[j].id) {
-							 //ËµÃ÷ÊÇÊÖ³ÖµÄ
+							 //è¯´æ˜æ˜¯æ‰‹æŒçš„
                              if(equipArrays[j].type==0){equipHandNum++;}
 							 else {equipAdornNum++;}
 						 }
 					  }
 				 }
-				 //Èç¹û¸Ã×°±¸ÊÇÊÖ³ÖµÄ,²¢ÇÒÒÑ¾­×°±¸µÄÊıÁ¿ÊÇĞ¡ÓÚ2µÄ
+				 //å¦‚æœè¯¥è£…å¤‡æ˜¯æ‰‹æŒçš„,å¹¶ä¸”å·²ç»è£…å¤‡çš„æ•°é‡æ˜¯å°äº2çš„
 				 if(copyequip.type==0&&equipHandNum<2){
-				     //ÅĞ¶Ï±³°üÄÚÊÇ·ñÒÑ¾­×°±¸ÁË¸Ã×¼±¸
+				     //åˆ¤æ–­èƒŒåŒ…å†…æ˜¯å¦å·²ç»è£…å¤‡äº†è¯¥å‡†å¤‡
 				     if(isIdOfItemThere(destArr,copyequip.id)){
-				        alert("ÒÑ¾­×°±¸¸Ã×°±¸");
+				        alert("å·²ç»è£…å¤‡è¯¥è£…å¤‡");
 			         }else{destArr.push(copyequip); fromArr[i].num-=1;fullFillEquip(obj,copyequip.id,true);}
-				 }else if(copyequip.type==1&&equipAdornNum==0){//Èç¹ûÊÇ¸Ã×°±¸ÊÇÊÎÆ·²¢ÇÒ»¹Ã»ÓĞ×°±¸¹ıÊÎÆ·
+				 }else if(copyequip.type==1&&equipAdornNum==0){//å¦‚æœæ˜¯è¯¥è£…å¤‡æ˜¯é¥°å“å¹¶ä¸”è¿˜æ²¡æœ‰è£…å¤‡è¿‡é¥°å“
 				     if(isIdOfItemThere(destArr,copyequip.id)){
-				        alert("ÒÑ¾­×°±¸¸Ã×°±¸");
+				        alert("å·²ç»è£…å¤‡è¯¥è£…å¤‡");
 			         }else{destArr.push(copyequip); fromArr[i].num-=1;fullFillEquip(obj,copyequip.id,true);}
 				 }
-				 //°ÑÉÌµêÖĞÊ£ÏÂµÄ·ÅÈëÖĞ×ªÕ¾
+				 //æŠŠå•†åº—ä¸­å‰©ä¸‹çš„æ”¾å…¥ä¸­è½¬ç«™
 			    
 				 if(fromArr[i].num!=0){
 				    var copyequip1=new equipZB();
 				    copyequip1.id=fromArr[i].id;
 				    copyequip1.num=fromArr[i].num;
-					//Èç¹ûÔÚÉÌµêµÄÖĞ×ªÕ¾ÖĞÒÑ¾­ÓĞ¸Ã×°±¸ÁË
+					//å¦‚æœåœ¨å•†åº—çš„ä¸­è½¬ç«™ä¸­å·²ç»æœ‰è¯¥è£…å¤‡äº†
 				    if(isIdOfItemThere(storehouse.tempArr,copyequip1.id)){
 						 for(var j=0;j<storehouse.tempArr.length;j++){
 							 if(storehouse.tempArr[j].id==copyequip1.id){storehouse.tempArr[j].num+=copyequip1.num;}
@@ -2144,10 +2144,10 @@ function backToBag(obj,fromArr,destArr,caSeNum,select,drop){
 				    }else{storehouse.tempArr.push(copyequip1);}
 			    }
 		  }else if(caSeNum==9){
-			  //¿Û³ı¹ºÂòµÄµÀ¾ß
+			  //æ‰£é™¤è´­ä¹°çš„é“å…·
               var itemMoney=dragNum*returnItemPrice(fromArr[i].id);
 			  teamMoney-=itemMoney;
-			  //°ÑÒªÂòµÄµÀ¾ß·ÅÈë±³°ü
+			  //æŠŠè¦ä¹°çš„é“å…·æ”¾å…¥èƒŒåŒ…
 			  var copyItem=new item();
 			  copyItem.id=fromArr[i].id;
 			  copyItem.num=dragNum;
@@ -2156,7 +2156,7 @@ function backToBag(obj,fromArr,destArr,caSeNum,select,drop){
 					     if(destArr[j].id==copyItem.id){destArr[j].num+=copyItem.num;}
 					 }
 			  }else{destArr.push(copyItem);}
-			  //°ÑÉÌµêÖĞÊ£ÏÂµÄ·ÅÈëÖĞ×ªÕ¾
+			  //æŠŠå•†åº—ä¸­å‰©ä¸‹çš„æ”¾å…¥ä¸­è½¬ç«™
 			  fromArr[i].num-=dragNum;
 			  if(fromArr[i].num!=0){
 				  var copyItem1=new item();
@@ -2169,20 +2169,20 @@ function backToBag(obj,fromArr,destArr,caSeNum,select,drop){
 				  }else{storehouse.tempArr.push(copyItem1);}
 			  }
 		  }else if(caSeNum==10){
-		      //¿Û³ı¹ºÂòµÄÎäÆ÷
+		      //æ‰£é™¤è´­ä¹°çš„æ­¦å™¨
               var equipMoney=dragNum*returnEquipPrice(fromArr[i].id);
 			  teamMoney-=equipMoney;
-			  //°ÑÒªÂòµÄ×°±¸·ÅÈë²Ö¿â
+			  //æŠŠè¦ä¹°çš„è£…å¤‡æ”¾å…¥ä»“åº“
 			  var copyequip=new equipZB();
 			  copyequip.id=fromArr[i].id;
 			  copyequip.num=dragNum;
-			  //ÅĞ¶ÏÔÚdextArrÖĞÊÇ·ñÓĞ¸ÃIDµÄÎäÆ÷´æÔÚ
+			  //åˆ¤æ–­åœ¨dextArrä¸­æ˜¯å¦æœ‰è¯¥IDçš„æ­¦å™¨å­˜åœ¨
 			  if(isIdOfItemThere(destArr,copyequip.id)){
 				     for(var j=0;j<destArr.length;j++){
 					     if(destArr[j].id==copyequip.id){destArr[j].num+=copyequip.num;}
 					 }
 			  }else{destArr.push(copyequip);}
-			  //°ÑÉÌµêÖĞÊ£ÏÂµÄ·ÅÈëÖĞ×ªÕ¾
+			  //æŠŠå•†åº—ä¸­å‰©ä¸‹çš„æ”¾å…¥ä¸­è½¬ç«™
 			  fromArr[i].num-=dragNum;
 			  if(fromArr[i].num!=0){
 				  var copyequip1=new equipZB();
@@ -2195,13 +2195,13 @@ function backToBag(obj,fromArr,destArr,caSeNum,select,drop){
 				  }else{storehouse.tempArr.push(copyequip1);}
 			  }
 		  }
-	  }else{//ËµÃ÷Õâ¸öµÀ¾ßÃ»ÓĞ±»Ñ¡ÖĞ
+	  }else{//è¯´æ˜è¿™ä¸ªé“å…·æ²¡æœ‰è¢«é€‰ä¸­
 	      if(caSeNum==5){
-		      //¸´ÖÆÕâ¸öµÀ¾ß
+		      //å¤åˆ¶è¿™ä¸ªé“å…·
 			  var copyItem=new item();
               copyItem.id=fromArr[i].id;
               copyItem.num=fromArr[i].num;
-			  //°Ñ¸´ÖÆµÄµÀ¾ß·Åµ½ÈËÎïµÄadditemsÖĞ£¬Õâ¸öÊÇµÀ¾ßµÄ²Ö¿â
+			  //æŠŠå¤åˆ¶çš„é“å…·æ”¾åˆ°äººç‰©çš„additemsä¸­ï¼Œè¿™ä¸ªæ˜¯é“å…·çš„ä»“åº“
               if(isIdOfItemThere(storehouse.tempArr,copyItem.id)){
 				     for(var j=0;j<storehouse.tempArr.length;j++){
 					     if(storehouse.tempArr[j].id==copyItem.id){storehouse.tempArr[j].num+=copyItem.num;}
@@ -2217,7 +2217,7 @@ function backToBag(obj,fromArr,destArr,caSeNum,select,drop){
 			     var copyequip=new equipZB();
 				  copyequip.id=fromArr[i].id;
 				  copyequip.num=fromArr[i].num;
-				  //°Ñ¸´ÖÆµÄµÀ¾ß·Åµ½ÈËÎïµÄadditemsÖĞ£¬Õâ¸öÊÇµÀ¾ßµÄ²Ö¿â
+				  //æŠŠå¤åˆ¶çš„é“å…·æ”¾åˆ°äººç‰©çš„additemsä¸­ï¼Œè¿™ä¸ªæ˜¯é“å…·çš„ä»“åº“
 				  if(isIdOfItemThere(storehouse.tempArr,copyequip.id)){
 						 for(var j=0;j<storehouse.tempArr.length;j++){
 							 if(storehouse.tempArr[j].id==copyequip.id){storehouse.tempArr[j].num+=copyequip.num;}
@@ -2227,7 +2227,7 @@ function backToBag(obj,fromArr,destArr,caSeNum,select,drop){
 			      var copyItem=new item();
 				  copyItem.id=fromArr[i].id;
 				  copyItem.num=fromArr[i].num;
-				  //°Ñ¸´ÖÆµÄµÀ¾ß·Åµ½ÈËÎïµÄadditemsÖĞ£¬Õâ¸öÊÇµÀ¾ßµÄ²Ö¿â
+				  //æŠŠå¤åˆ¶çš„é“å…·æ”¾åˆ°äººç‰©çš„additemsä¸­ï¼Œè¿™ä¸ªæ˜¯é“å…·çš„ä»“åº“
 				  if(isIdOfItemThere(storehouse.tempArr,copyItem.id)){
 						 for(var j=0;j<storehouse.tempArr.length;j++){
 							 if(storehouse.tempArr[j].id==copyItem.id){storehouse.tempArr[j].num+=copyItem.num;}
@@ -2237,7 +2237,7 @@ function backToBag(obj,fromArr,destArr,caSeNum,select,drop){
 			      var copyequip=new equipZB();
 				  copyequip.id=fromArr[i].id;
 				  copyequip.num=fromArr[i].num;
-				  //°Ñ¸´ÖÆµÄÎäÆ÷·Åµ½ÈËÎïµÄaddequipsÖĞ£¬Õâ¸öÊÇ×¼±¸µÄ²Ö¿â
+				  //æŠŠå¤åˆ¶çš„æ­¦å™¨æ”¾åˆ°äººç‰©çš„addequipsä¸­ï¼Œè¿™ä¸ªæ˜¯å‡†å¤‡çš„ä»“åº“
 				  if(isIdOfItemThere(storehouse.tempArr,copyequip.id)){
 						 for(var j=0;j<storehouse.tempArr.length;j++){
 							 if(storehouse.tempArr[j].id==copyequip.id){storehouse.tempArr[j].num+=copyequip.num;}
@@ -2258,7 +2258,7 @@ function backToBag(obj,fromArr,destArr,caSeNum,select,drop){
 	  else if(caSeNum==9){if(i==store.items.length-1){break;}}
 	  else if(caSeNum==10){if(i==store.equips.length-1){break;}}
 	}
-    //°ÑÖĞ×ªÕ½µÄµÀ¾ß·Å»ØÈËÎïµÄ
+    //æŠŠä¸­è½¬æˆ˜çš„é“å…·æ”¾å›äººç‰©çš„
 	if(caSeNum==5){
 		if(tempp==00){clearArr(storehouse.additems);
 		storehouse.additems=[].concat(storehouse.tempArr);}
@@ -2297,21 +2297,21 @@ function backToBag(obj,fromArr,destArr,caSeNum,select,drop){
 	else {ZhengLi(obj,caSeNum);}
 	
 }
-//²Ö¿âµÄº¯Êı
-var CKselect;//²Ö¿âµÄ
+//ä»“åº“çš„å‡½æ•°
+var CKselect;//ä»“åº“çš„
 function showCangKU(obj,tempp){
 
 	   clearArr(shadowShow);
-	   //È«ÆÁµÄ¸²¸Ç²ã
+	   //å…¨å±çš„è¦†ç›–å±‚
 	   var shadow=new rectangle(0,0,0,0,canvasWidth,canvasHeight,"rgba(0,0,0,0.7)");
 	   shadowShow.push(shadow);
-	   //±³¾°Í¼Æ¬
+	   //èƒŒæ™¯å›¾ç‰‡
 	   DJZLBg =new picture(0,0,144, 48,561,495, CKZL);
 	   shadowShow.push(DJZLBg);
-	   //Ñ¡ÖĞµÄÍ¼Æ¬
+	   //é€‰ä¸­çš„å›¾ç‰‡
 	   CKselect=new picture(0,0,173,64 ,116,45, CKSelect);
 	   shadowShow.push(CKselect);
-	   //4¸ö±êÌâ
+	   //4ä¸ªæ ‡é¢˜
 	   var title=new picture(0,0,DJZLBg.sx+40,DJZLBg.sy+20 ,469,24, titleOfCK);
 	   shadowShow.push(title);
 	   CloseImg = new picture(0,0,DJZLBg.sx + DJZLBg.swidth-28, DJZLBg.sy+2 / 3 * rpx-30, 25, 25, close);
@@ -2410,42 +2410,42 @@ if(tempp==30){
 	   cangKuShow=true;
 	   bigMapoption=false;
 }
-//µã»÷¶ÓÔ±µ¯³öÀ´µÄĞÅÏ¢,tempÓÃÀ´¼ÇÂ¼ÊÇµã»÷ÁËÃØ¼¼0£¬Å­¼¼1£¬×°±¸2
+//ç‚¹å‡»é˜Ÿå‘˜å¼¹å‡ºæ¥çš„ä¿¡æ¯,tempç”¨æ¥è®°å½•æ˜¯ç‚¹å‡»äº†ç§˜æŠ€0ï¼Œæ€’æŠ€1ï¼Œè£…å¤‡2
 function teamMember(obj,temp){
    clearArr(shadowShow);
-   //È«ÆÁµÄ¸²¸Ç²ã
+   //å…¨å±çš„è¦†ç›–å±‚
    var shadow=new rectangle(0,0,0,0,canvasWidth,canvasHeight,"rgba(0,0,0,0.7)");
    shadowShow.push(shadow);
-   //±³¾°Í¼Æ¬
+   //èƒŒæ™¯å›¾ç‰‡
    DJZLBg =new picture(0,0,48, 48, 670,550, DYBJ);
    shadowShow.push(DJZLBg);
    shadowShow.push(DJZLBg);
-   //ÓÒÉÏ½ÇµÄXX
+   //å³ä¸Šè§’çš„XX
    CloseImg = new picture(0,0,DJZLBg.sx + DJZLBg.swidth-30, DJZLBg.sy+2 / 3 * rpx-20, 2 / 3 * rpx, 2 / 3 * rpx, close);
    shadowShow.push(CloseImg);
-   //ÈËÎïµÄÍ·Ïñ
+   //äººç‰©çš„å¤´åƒ
    var hf = new Image();
    hf.src = obj.halfBody;
    var halfBody = new picture(0,0,DJZLBg.sx+80, DJZLBg.sy+50,200, 200, hf);
    shadowShow.push(halfBody);
-   //×óÓÒµÄ¼ıÍ·
+   //å·¦å³çš„ç®­å¤´
    leftArrow = new picture(0,0,DJZLBg.sx + 1 / 2 * rpx, DJZLBg.sy + 3 * rpx - 10, 38, 30, zjt);
    rightArrow = new picture(0,0,DJZLBg.sx + 11 / 2 * rpx + 18, DJZLBg.sy + 3 * rpx - 10, 38, 30, yjt);
    shadowShow.push(leftArrow);
    shadowShow.push(rightArrow);
-   //ĞÕÃû
+   //å§“å
    var name = new text(obj.name, 0,0,DJZLBg.sx+428 , DJZLBg.sy+80 , "rgb(255,255,255)", "bold 25px KaiTi");
    shadowShow.push(name);
-   //µÈ¼¶
+   //ç­‰çº§
    var lv = new text(obj.level + "  " + obj.EXP + "/" + obj.nextEXP,0,0, DJZLBg.sx +428,DJZLBg.sy+130, "rgb(255,255,255)", "bold 25px KaiTi");
    shadowShow.push(lv);
-   //ÒÆ¶¯Á¦
+   //ç§»åŠ¨åŠ›
    var MOV=new text(obj.movement,0,0, DJZLBg.sx+155 , DJZLBg.sy+290 , "rgb(255,255,255)", "bold 25px KaiTi");
    shadowShow.push(MOV);
-   //ËÙ¶È
+   //é€Ÿåº¦
    var speed=new text(obj.speed,0,0,DJZLBg.sx+155 , DJZLBg.sy+330 , "rgb(255,255,255)", "bold 25px KaiTi");
    shadowShow.push(speed);
-   //·ÀÓùÁ¦
+   //é˜²å¾¡åŠ›
    var DEF=new text(obj.DEF,0,0, DJZLBg.sx+155 , DJZLBg.sy+370 , "rgb(255,255,255)", "bold 25px KaiTi");
    shadowShow.push(DEF);
    //HP
@@ -2463,10 +2463,10 @@ function teamMember(obj,temp){
    //ATK
    var ATK=new text(obj.ATK,0,0, DJZLBg.sx+500 , DJZLBg.sy+290 , "rgb(255,255,255)", "bold 25px KaiTi");
    shadowShow.push(ATK);
-   //¹¥»÷·¶Î§
+   //æ”»å‡»èŒƒå›´
    var range=new text(obj.range,0,0, DJZLBg.sx+500, DJZLBg.sy+330 , "rgb(255,255,255)", "bold 25px KaiTi");
    shadowShow.push(range);
-   //Å­¼¼£¬ÃØ¼¼£¬×°±¸µÄÍ¼Æ¬
+   //æ€’æŠ€ï¼Œç§˜æŠ€ï¼Œè£…å¤‡çš„å›¾ç‰‡
    if(temp==0){
 	   skill = new picture(0,0,DJZLBg.sx + 1 / 2 * rpx - 3, DJZLBg.sy + 394, 110, 30, mj2);
 	   power = new picture(0,0,skill.sx + skill.swidth - 2, DJZLBg.sy +394, 110, 30, nj1);
@@ -2493,8 +2493,8 @@ function teamMember(obj,temp){
                 var skillImg = new picture(0,0,skill.sx, skill.sy + 2 / 3 * rpx + i / 2 * rpx, 1 / 2 * rpx, 1 / 2 * rpx, img);
                 var name = new text(skillArrays[j].name, 0,0,skillImg.sx + 2 / 3 * rpx, skillImg.sy + 1 / 3 * rpx + 3, "rgb(255,215,0)", "bold 20px KaiTi");
                 var mp = new text("MP:" + skillArrays[j].mp, 0,0,skillImg.sx + 3 * rpx, skillImg.sy + 1 / 3 * rpx + 3, "rgb(0,0,255)", "bold 20px cursive");
-                var suc = new text("³É¹¦ÂÊ:" + skillArrays[j].success + "%",0,0, skillImg.sx + 9 / 2 * rpx, skillImg.sy + 1 / 3 * rpx + 3, "rgb(255,0,0)", "bold 20px FangSong");
-                var dis = new text("ËµÃ÷:" + skillArrays[j].discripe,0,0, skillImg.sx + 7 * rpx, skillImg.sy + 1 / 3 * rpx + 3, "rgb(0,255,0)", "bold 20px FangSong");
+                var suc = new text("æˆåŠŸç‡:" + skillArrays[j].success + "%",0,0, skillImg.sx + 9 / 2 * rpx, skillImg.sy + 1 / 3 * rpx + 3, "rgb(255,0,0)", "bold 20px FangSong");
+                var dis = new text("è¯´æ˜:" + skillArrays[j].discripe,0,0, skillImg.sx + 7 * rpx, skillImg.sy + 1 / 3 * rpx + 3, "rgb(0,255,0)", "bold 20px FangSong");
                 shadowShow.push(skillImg);
                 shadowShow.push(name);
                 shadowShow.push(mp);
@@ -2512,8 +2512,8 @@ function teamMember(obj,temp){
                 var powerImg = new picture(0,0,skill.sx, skill.sy + 2 / 3 * rpx + i / 2 * rpx, 1 / 2 * rpx, 1 / 2 * rpx, img);
                 var name = new text(powerArrays[j].name,0,0, powerImg.sx + 2 / 3 * rpx, powerImg.sy + 1 / 3 * rpx + 3, "rgb(255,215,0)", "bold 20px KaiTi");
                 var p = new text("POW:" + powerArrays[j].p,0,0, powerImg.sx + 3 * rpx, powerImg.sy + 1 / 3 * rpx + 3, "rgb(0,0,255)", "bold 20px cursive");
-                var suc = new text("³É¹¦ÂÊ:" + powerArrays[j].success + "%",0,0, powerImg.sx + 9 / 2 * rpx, powerImg.sy + 1 / 3 * rpx + 3, "rgb(255,0,0)", "bold 20px FangSong");
-                var dis = new text("ËµÃ÷:" + powerArrays[j].discripe,0,0, powerImg.sx + 7 * rpx, powerImg.sy + 1 / 3 * rpx + 3, "rgb(0,255,0)", "bold 20px FangSong");
+                var suc = new text("æˆåŠŸç‡:" + powerArrays[j].success + "%",0,0, powerImg.sx + 9 / 2 * rpx, powerImg.sy + 1 / 3 * rpx + 3, "rgb(255,0,0)", "bold 20px FangSong");
+                var dis = new text("è¯´æ˜:" + powerArrays[j].discripe,0,0, powerImg.sx + 7 * rpx, powerImg.sy + 1 / 3 * rpx + 3, "rgb(0,255,0)", "bold 20px FangSong");
                 shadowShow.push(powerImg);
                 shadowShow.push(name);
                 shadowShow.push(p);
@@ -2531,11 +2531,11 @@ function teamMember(obj,temp){
                 img.src = equipArrays[j].img;
                 var equipImg = new picture(0,0,skill.sx+100, skill.sy + 2 / 3 * rpx + i / 2 * rpx, 1 / 2 * rpx, 1 / 2 * rpx, img);
                 var name = new text(equipArrays[j].name,0,0, equipImg.sx + 2 / 3 * rpx, equipImg.sy + 1 / 3 * rpx + 3, "rgb(255,215,0)", "bold 20px KaiTi");
-                var dis = new text("ËµÃ÷:" + equipArrays[j].discripe,0,0, name.sx +100, equipImg.sy + 1 / 3 * rpx + 3, "rgb(0,255,0)", "bold 20px FangSong");
-				if(equipArrays[j].type==1){ var shipin = new text("ÊÎÆ·×°±¸:",0,0, skill.sx, equipImg.sy + 1 / 3 * rpx + 3, "rgb(255,215,0)", "bold 20px KaiTi"); shadowShow.push(shipin);}
+                var dis = new text("è¯´æ˜:" + equipArrays[j].discripe,0,0, name.sx +100, equipImg.sy + 1 / 3 * rpx + 3, "rgb(0,255,0)", "bold 20px FangSong");
+				if(equipArrays[j].type==1){ var shipin = new text("é¥°å“è£…å¤‡:",0,0, skill.sx, equipImg.sy + 1 / 3 * rpx + 3, "rgb(255,215,0)", "bold 20px KaiTi"); shadowShow.push(shipin);}
                 else if(equipArrays[j].type==0){
-					if(!tempp){tempp=true;var lefthand = new text("×óÊÖ×°±¸:",0,0, skill.sx, equipImg.sy + 1 / 3 * rpx + 3, "rgb(255,215,0)", "bold 20px KaiTi"); shadowShow.push(lefthand);}
-					else{var righthand = new text("ÓÒÊÖ×°±¸:",0,0, skill.sx, equipImg.sy + 1 / 3 * rpx + 3, "rgb(255,215,0)", "bold 20px KaiTi"); shadowShow.push(righthand);}
+					if(!tempp){tempp=true;var lefthand = new text("å·¦æ‰‹è£…å¤‡:",0,0, skill.sx, equipImg.sy + 1 / 3 * rpx + 3, "rgb(255,215,0)", "bold 20px KaiTi"); shadowShow.push(lefthand);}
+					else{var righthand = new text("å³æ‰‹è£…å¤‡:",0,0, skill.sx, equipImg.sy + 1 / 3 * rpx + 3, "rgb(255,215,0)", "bold 20px KaiTi"); shadowShow.push(righthand);}
 				}
 				shadowShow.push(equipImg);
                 shadowShow.push(name);
@@ -2549,7 +2549,7 @@ function teamMember(obj,temp){
    bigMapoption=false;
    DuiYuan=true;
 }
-//Êó±êÒÆ¶¯µ½ÏàÓ¦µÄµÀ¾ßµÄÊ±ºò£¬ÏÔÊ¾¸ÃµÀ¾ßµÄ½ğ¶îwhich==0±íÊ¾ÊÇ±³°üÄÚµÄµÀ¾ß²Ù×÷,which==1±íÊ¾ÊÇÉÌµêÄÚµÄµÀ¾ß²Ù×÷£¬which==2±íÊ¾ÊÇÉÌµêÄÚµÄ×¼±¸²Ù×÷
+//é¼ æ ‡ç§»åŠ¨åˆ°ç›¸åº”çš„é“å…·çš„æ—¶å€™ï¼Œæ˜¾ç¤ºè¯¥é“å…·çš„é‡‘é¢which==0è¡¨ç¤ºæ˜¯èƒŒåŒ…å†…çš„é“å…·æ“ä½œ,which==1è¡¨ç¤ºæ˜¯å•†åº—å†…çš„é“å…·æ“ä½œï¼Œwhich==2è¡¨ç¤ºæ˜¯å•†åº—å†…çš„å‡†å¤‡æ“ä½œ
 function showItemGold(index,which){
 	if(which==0){
 	  var itemMoney=returnItemPrice(storehouse.additems[index].id);
@@ -2569,21 +2569,21 @@ function showItemGold(index,which){
 	  everything2.push(Money4);
 	}
 }
-//·µ»Ø¸ÃµÀ¾ßµÄ½ğÇ®
+//è¿”å›è¯¥é“å…·çš„é‡‘é’±
 function returnItemPrice(id){
   for(var i=0;i<itemArrays.length;i++){
      if(id==itemArrays[i].id){return itemArrays[i].gold;}
   }
   return false;
 }
-//·µ»Ø¸Ã×°±¸µÄ½ğÇ®
+//è¿”å›è¯¥è£…å¤‡çš„é‡‘é’±
 function returnEquipPrice(id){
   for(var i=0;i<equipArrays.length;i++){
      if(id==equipArrays[i].id){return equipArrays[i].gold;}
   }
   return false;
 }
-//½øÈëÏÂÒ»¹Ø
+//è¿›å…¥ä¸‹ä¸€å…³
 function nextLevel(){
   clearAll();
 //  ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -2599,7 +2599,7 @@ function nextLevel(){
   nextProgress();
   
 }
-//ÔÚ½øÈëÏÂÒ»¹ØÖ®Ç°µÄÌáÊ¾£¬¸æËßÍæ¼Ò¹ı¹ØÁË£¬»ñµÃµÄ½±Æ·ÓĞÄÄĞ©
+//åœ¨è¿›å…¥ä¸‹ä¸€å…³ä¹‹å‰çš„æç¤ºï¼Œå‘Šè¯‰ç©å®¶è¿‡å…³äº†ï¼Œè·å¾—çš„å¥–å“æœ‰å“ªäº›
 function nextGuanKaOpen(){
      clearArray(everything2);
      clearArray(everything1);
@@ -2607,30 +2607,30 @@ function nextGuanKaOpen(){
      clearArray(info);
 	 nextloading=true;
 	 IntoGuanKa=true;
-	 //¸²¸Ç²ã
+	 //è¦†ç›–å±‚
 	 var shadow=new rectangle(0,0,0,0,canvasWidth,canvasHeight,"rgba(0,0,0,0.7)");
 	 shadowShow.push(shadow);
-	 //±³¾°
+	 //èƒŒæ™¯
 	 var nextGuanKaBG = new picture(0,0,6 * rpx, 4 * rpx, 8 * rpx, 5 * rpx, infoShowBg);
 	 shadowShow.push(nextGuanKaBG);
-	 //±êÌâ
-	 var title = new text("¹ı¹Ø½±Àø", 0,0,nextGuanKaBG.sx +110, nextGuanKaBG.sy + 2 / 3 * rpx, "#000000", "bold 30px Microsoft Yahei");
+	 //æ ‡é¢˜
+	 var title = new text("è¿‡å…³å¥–åŠ±", 0,0,nextGuanKaBG.sx +110, nextGuanKaBG.sy + 2 / 3 * rpx, "#000000", "bold 30px Microsoft Yahei");
 	 shadowShow.push(title);
-	 //È·¶¨°´Å¥
+	 //ç¡®å®šæŒ‰é’®
 	 ensure = new picture(0,0,nextGuanKaBG.sx +130 , nextGuanKaBG.sy +200, 2 * rpx, 8 / 15 * rpx, qd);
 	 shadowShow.push(ensure);
 	 recoverSpirit();
 }
-//ÏÔÊ¾µÚ¼¸¹ØºÍµØÍ¼Ãû³Æ
+//æ˜¾ç¤ºç¬¬å‡ å…³å’Œåœ°å›¾åç§°
 function showMapName(){
 	canvas.removeEventListener('touchstart', touchStart,false); 
     canvas.removeEventListener('touchmove', touchMove,false); 
-    var roundString = "µÚ " + mapLevel + " ¹Ø   "+mapName;
+    var roundString = "ç¬¬ " + mapLevel + " å…³   "+mapName;
 	//drawAll();
 	//drawAll();
 //	drawAll();
     var roundRectangle = new rectangle(0, 4 * rpx,0, 4 * rpx, canvasWidth, 4 * rpx, "rgba(0,0,0,0.8)");
-    var roundText = new text(roundString, (canvasWidth / 2) - 3 * rpx, 7* rpx - rpx / 2,(canvasWidth / 2) - 3 * rpx, 7* rpx - rpx / 2,"rgb(255,255,255)", "50px Ò¶¸ùÓÑÃ«±ÊĞĞÊé");
+    var roundText = new text(roundString, (canvasWidth / 2) - 3 * rpx, 7* rpx - rpx / 2,(canvasWidth / 2) - 3 * rpx, 7* rpx - rpx / 2,"rgb(255,255,255)", "50px å¶æ ¹å‹æ¯›ç¬”è¡Œä¹¦");
     everything.push(roundRectangle);
     everything.push(roundText);
 //	drawAll();

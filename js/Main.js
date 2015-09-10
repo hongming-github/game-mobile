@@ -1,22 +1,22 @@
 /*
-	³õÊ¼»¯º¯Êı£¬Ò³Ãæ¼ÓÔØÊ±µ÷ÓÃ(OK)
-ËµÃ÷£ºÓÉIndex.htmlµÄonloadµ÷ÓÃinit()£¬Ö÷Òª¹¦ÄÜÊÇ»ñµÃ»­²¼ÉÏÏÂÎÄ»·¾³¶ÔÏó£¬¶Ô»­²¼canvasÌí¼ÓÊó±êµã»÷ÊÂ¼ş£¬Ìí¼ÓÊó±êÒÆ¶¯ÊÂ¼şµÄÕìÌı£¬
+	åˆå§‹åŒ–å‡½æ•°ï¼Œé¡µé¢åŠ è½½æ—¶è°ƒç”¨(OK)
+è¯´æ˜ï¼šç”±Index.htmlçš„onloadè°ƒç”¨init()ï¼Œä¸»è¦åŠŸèƒ½æ˜¯è·å¾—ç”»å¸ƒä¸Šä¸‹æ–‡ç¯å¢ƒå¯¹è±¡ï¼Œå¯¹ç”»å¸ƒcanvasæ·»åŠ é¼ æ ‡ç‚¹å‡»äº‹ä»¶ï¼Œæ·»åŠ é¼ æ ‡ç§»åŠ¨äº‹ä»¶çš„ä¾¦å¬ï¼Œ
 */
 function init() {  
-    showStart = true;//body onloadµÄÊ±ºò´Ófalse±äÎªtrue
-    ctx = document.getElementById('canvas').getContext('2d'); //»ñµÃ»­²¼ÉÏÏÂÎÄ»·¾³¶ÔÏó
-    var canvas = document.getElementById('canvas'); //»ñµÃ»­²¼¶ÔÏó
-    //canvas.addEventListener('click', cCheck, false); //»­²¼ÖĞÌí¼ÓÊó±êµã»÷ÊÂ¼ş
-    //canvas.addEventListener('mousemove', mMove, false); //»­²¼ÖĞÌí¼ÓÊó±êÒÆ¶¯ÊÂ¼ş
-	//canvas.addEventListener('mousedown', mDown, false); //»­²¼ÖĞÌí¼ÓÊó±êµã»÷ÊÂ¼ş
-	//canvas.addEventListener('mouseup', mUp, false); //»­²¼ÖĞÌí¼ÓÊó±ê·Å¿ªÊÂ¼ş
-	canvas.addEventListener('touchstart', touchStart,false); //»­²¼ÖĞÌí¼Ó¿ªÊ¼´¥ÃşÊÂ¼ş 
-    canvas.addEventListener('touchmove', touchMove,false); //»­²¼ÖĞÌí¼Ó´¥ÃşÒÆ¶¯ÊÂ¼ş  
-    canvas.addEventListener('touchend', touchEnd,false); //»­²¼ÖĞÌí¼Ó´¥Ãş½áÊøÊÂ¼ş 
+    showStart = true;//body onloadçš„æ—¶å€™ä»falseå˜ä¸ºtrue
+    ctx = document.getElementById('canvas').getContext('2d'); //è·å¾—ç”»å¸ƒä¸Šä¸‹æ–‡ç¯å¢ƒå¯¹è±¡
+    var canvas = document.getElementById('canvas'); //è·å¾—ç”»å¸ƒå¯¹è±¡
+    //canvas.addEventListener('click', cCheck, false); //ç”»å¸ƒä¸­æ·»åŠ é¼ æ ‡ç‚¹å‡»äº‹ä»¶
+    //canvas.addEventListener('mousemove', mMove, false); //ç”»å¸ƒä¸­æ·»åŠ é¼ æ ‡ç§»åŠ¨äº‹ä»¶
+	//canvas.addEventListener('mousedown', mDown, false); //ç”»å¸ƒä¸­æ·»åŠ é¼ æ ‡ç‚¹å‡»äº‹ä»¶
+	//canvas.addEventListener('mouseup', mUp, false); //ç”»å¸ƒä¸­æ·»åŠ é¼ æ ‡æ”¾å¼€äº‹ä»¶
+	canvas.addEventListener('touchstart', touchStart,false); //ç”»å¸ƒä¸­æ·»åŠ å¼€å§‹è§¦æ‘¸äº‹ä»¶ 
+    canvas.addEventListener('touchmove', touchMove,false); //ç”»å¸ƒä¸­æ·»åŠ è§¦æ‘¸ç§»åŠ¨äº‹ä»¶  
+    canvas.addEventListener('touchend', touchEnd,false); //ç”»å¸ƒä¸­æ·»åŠ è§¦æ‘¸ç»“æŸäº‹ä»¶ 
 	Index_page();
 }
 
-//Ê×Ò³µÄ»­Ãæ
+//é¦–é¡µçš„ç”»é¢
 function Index_page(){
     var startBg = new picture(0,0,0, 0, 960, 576, startImage);
     startShow.push(startBg);
@@ -28,7 +28,7 @@ function Index_page(){
     startShow.push(startButton3);
     drawArr(startShow);  
 }
-//ÓÎÏ·½áÊø»­Ãæ
+//æ¸¸æˆç»“æŸç”»é¢
 function game_over_page(){
   gameover=true;
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -51,7 +51,7 @@ function big_map(a){
 	bigMapoption=true;
 	IntoGuanKa=false;
 	startShow.push(bigBg);
-	if(temp==0){big_option=0;}//ËµÃ÷ÊÇ´ÓĞ¡µØÍ¼¹ıÀ´µÄ
+	if(temp==0){big_option=0;}//è¯´æ˜æ˜¯ä»å°åœ°å›¾è¿‡æ¥çš„
     if(temp==1){startShow.push(zhengLiButton1);}
 	else{startShow.push(zhengLiButton);}
 	if(temp==2){startShow.push(duiWuButton1);}

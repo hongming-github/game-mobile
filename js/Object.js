@@ -1,162 +1,162 @@
 /*
-	ËµÃ÷£ºÏÈÔÚClass,jsÖĞ¶¨Òå£¬È»ºóÔÚÕâÀïÊµÀı»¯¶ÔÏó£¨OK£©
+	è¯´æ˜ï¼šå…ˆåœ¨Class,jsä¸­å®šä¹‰ï¼Œç„¶ååœ¨è¿™é‡Œå®ä¾‹åŒ–å¯¹è±¡ï¼ˆOKï¼‰
 */
 
 //-------------------------------------------------------------------------------------
 
-var rec;// = new box(0, 0, rpx, rpx, "rgb(0,255,0)"); //ÊµÀı»¯Êó±êÒÆ¶¯Ê±·½¿ò
-var mrec;// = new box(0, 0, rpx * 4, rpx, "rgb(0,255,0)"); //ÊµÀı»¯²Ëµ¥ÖĞÑ¡Ïî·½¿ò
-var menu;// = new picture(0, 4 * rpx, rpx * 4, rpx * 8, menuImage); //ÊµÀı»¯ÈËÎï²Ëµ¥
-var menu2;// = new picture(0, 5 * rpx, rpx * 4, rpx * 4, menuImage); //ÊµÀı»¯Ö÷²Ëµ¥
-//---------------µ¥Ò»µÄÍ¼Æ¬---
-var bgImage = new Image(); //µØÍ¼£¬µØÍ¼µÄSRCÔÚReadXml.jsÖĞÓĞ¶¨Òå
-var dialogRoleImage = new Image(); //¶Ô»°ÊÂ¼şÈËÎï°ëÉíÏñ
-var loadPicArr=new Array();//·ÅÍ¼Æ¬¶ÔÏó
-var loadPicArrSrc=new Array();//·ÅÍ¼Æ¬µØÖ·
+var rec;// = new box(0, 0, rpx, rpx, "rgb(0,255,0)"); //å®ä¾‹åŒ–é¼ æ ‡ç§»åŠ¨æ—¶æ–¹æ¡†
+var mrec;// = new box(0, 0, rpx * 4, rpx, "rgb(0,255,0)"); //å®ä¾‹åŒ–èœå•ä¸­é€‰é¡¹æ–¹æ¡†
+var menu;// = new picture(0, 4 * rpx, rpx * 4, rpx * 8, menuImage); //å®ä¾‹åŒ–äººç‰©èœå•
+var menu2;// = new picture(0, 5 * rpx, rpx * 4, rpx * 4, menuImage); //å®ä¾‹åŒ–ä¸»èœå•
+//---------------å•ä¸€çš„å›¾ç‰‡---
+var bgImage = new Image(); //åœ°å›¾ï¼Œåœ°å›¾çš„SRCåœ¨ReadXml.jsä¸­æœ‰å®šä¹‰
+var dialogRoleImage = new Image(); //å¯¹è¯äº‹ä»¶äººç‰©åŠèº«åƒ
+var loadPicArr=new Array();//æ”¾å›¾ç‰‡å¯¹è±¡
+var loadPicArrSrc=new Array();//æ”¾å›¾ç‰‡åœ°å€
 //-------------------------------------------------------------------------------------------------------------------
 
-var lvlup=new Image();//Éı¼¶µÄĞ§¹û
+var lvlup=new Image();//å‡çº§çš„æ•ˆæœ
 lvlup.src="image/effect/10.png";
-var getAlive=new Image();//¸´»îµÄĞ§¹û
+var getAlive=new Image();//å¤æ´»çš„æ•ˆæœ
 getAlive.src="image/effect/6.png";
-var GuanKa = new Image();//¹Ø¿¨µÄ¶¯»­
+var GuanKa = new Image();//å…³å¡çš„åŠ¨ç”»
 GuanKa.src="image/effect/GK.png";
 /*
-var startImage = new Image();//±³¾°Í¼Æ¬
+var startImage = new Image();//èƒŒæ™¯å›¾ç‰‡
 startImage.src="image/background/StartShow.png";
-var xdlc = new Image();//ĞÂµÄÂÃ³Ì°´Å¥
+var xdlc = new Image();//æ–°çš„æ—…ç¨‹æŒ‰é’®
 xdlc.src="image/button/Xdlc.png";
-var jdhy = new Image();//¾ÉµÄ»ØÒä°´Å¥
+var jdhy = new Image();//æ—§çš„å›å¿†æŒ‰é’®
 jdhy.src= "image/button/Jdhy.png";
-var tyjh = new Image();//ÍËÒş½­ºş°´Å¥
+var tyjh = new Image();//é€€éšæ±Ÿæ¹–æŒ‰é’®
 tyjh.src="image/button/Tyjh.png";
 
 
-var bigMap = new Image();//´óµØÍ¼Í¼Æ¬
+var bigMap = new Image();//å¤§åœ°å›¾å›¾ç‰‡
 bigMap.src = "image/map/bigmap.jpg";
-var smallMap= new Image();//´óµØÍ¼ÉÏ¹Ø¿¨µÄÍ¼Æ¬
+var smallMap= new Image();//å¤§åœ°å›¾ä¸Šå…³å¡çš„å›¾ç‰‡
 smallMap.src = "image/map/smallmap.png";
-var DJSD=new Image();//µÀ¾ßÉÌµêµÄ±³¾°
+var DJSD=new Image();//é“å…·å•†åº—çš„èƒŒæ™¯
 DJSD.src="image/background/DJSD.png";
-var DYBJ=new Image();//¶ÓÎéĞÅÏ¢µÄ±³¾°
+var DYBJ=new Image();//é˜Ÿä¼ä¿¡æ¯çš„èƒŒæ™¯
 DYBJ.src="image/background/DYBJ.png";
-var SuoMing=new Image();//ËµÃ÷Í¼Æ¬µÄ°´Å¥
+var SuoMing=new Image();//è¯´æ˜å›¾ç‰‡çš„æŒ‰é’®
 SuoMing.src="image/background/SuoMing.png";
-var ZBZL=new Image();//×°±¸ÕûÀí°´Å¥
+var ZBZL=new Image();//è£…å¤‡æ•´ç†æŒ‰é’®
 ZBZL.src="image/background/ZBZL.png";
-var MJZL=new Image();//ÃÜ¼¼ÕûÀí°´Å¥
+var MJZL=new Image();//å¯†æŠ€æ•´ç†æŒ‰é’®
 MJZL.src="image/background/MJZL.png";
-var NJZL=new Image();//Å­¼¼ÕûÀí°´Å¥
+var NJZL=new Image();//æ€’æŠ€æ•´ç†æŒ‰é’®
 NJZL.src="image/background/NJZL.png";
-var DJZL=new Image();//µÀ¾ßÕûÀí°´Å¥
+var DJZL=new Image();//é“å…·æ•´ç†æŒ‰é’®
 DJZL.src="image/background/DJZL.png";
-var UI_butto=new Image();//´óµØÍ¼µÄ¹¦ÄÜ°´Å¥
+var UI_butto=new Image();//å¤§åœ°å›¾çš„åŠŸèƒ½æŒ‰é’®
 UI_butto.src="image/button/UI_butto.png";
 
-var game_over=new Image();//ÓÎÏ·½áÊøµÄÍ¼Æ¬
+var game_over=new Image();//æ¸¸æˆç»“æŸçš„å›¾ç‰‡
 game_over.src="image/background/gameover.jpg"; 
-var jiazai=new Image();//¼ÓÔØ°´Å¥µÄÍ¼Æ¬
+var jiazai=new Image();//åŠ è½½æŒ‰é’®çš„å›¾ç‰‡
 jiazai.src="image/button/jia_zai.jpg"; 
-var fanHui=new Image();//·µ»Ø°´Å¥µÄÍ¼Æ¬
+var fanHui=new Image();//è¿”å›æŒ‰é’®çš„å›¾ç‰‡
 fanHui.src="image/button/fan_hui.jpg"; 
 
-var levelBG=new Image();//Éı¼¶µÄ±³¾°
+var levelBG=new Image();//å‡çº§çš„èƒŒæ™¯
 levelBG.src = "image/background/levelBG.jpg";
-var lvtitleBG=new Image();//Éı¼¶µÄ·ÅÈËÎïĞÕÃûµÄÍ¼Æ¬
+var lvtitleBG=new Image();//å‡çº§çš„æ”¾äººç‰©å§“åçš„å›¾ç‰‡
 lvtitleBG.src = "image/background/LVtitle.png";
 
-var loadpic= new Image();//¼ÓÔØµÄÍ¼Æ¬
+var loadpic= new Image();//åŠ è½½çš„å›¾ç‰‡
 loadpic.src = "image/background/loadpic.png";
-var loadline= new Image();//¼ÓÔØµÄÏß
+var loadline= new Image();//åŠ è½½çš„çº¿
 loadline.src = "image/background/loadline.png";
-var statusShowBg = new Image();//ÈËÎïĞÅÏ¢µÄ±³¾°ÏÔÊ¾
+var statusShowBg = new Image();//äººç‰©ä¿¡æ¯çš„èƒŒæ™¯æ˜¾ç¤º
 statusShowBg.src = "image/background/Rwzt.png";
-var spirit_Bg=new Image();//¾«ÉñÁ¦µÄÍ¼Æ¬
+var spirit_Bg=new Image();//ç²¾ç¥åŠ›çš„å›¾ç‰‡
 spirit_Bg.src="image/background/spirit_bg.png"; 
-var image1 = new Image(); //Ê¤°ÜÌõ¼ş¿ò
+var image1 = new Image(); //èƒœè´¥æ¡ä»¶æ¡†
 image1.src = "image/background/Kk.png";
-var menuImage = new Image(); //ÈËÎï²Ëµ¥
+var menuImage = new Image(); //äººç‰©èœå•
 menuImage.src = "image/background/Menu.png"; 
-var dialogBoxImage = new Image(); //¶Ô»°ÊÂ¼ş±³¾°Í¼Æ¬
+var dialogBoxImage = new Image(); //å¯¹è¯äº‹ä»¶èƒŒæ™¯å›¾ç‰‡
 dialogBoxImage.src = "image/background/Dialog.png";
-var infoShowBg = new Image(); //ÈËÎï×´Ì¬±³¾°Í¼Æ¬
+var infoShowBg = new Image(); //äººç‰©çŠ¶æ€èƒŒæ™¯å›¾ç‰‡
 infoShowBg.src = "image/background/Info.png"; 
-var renWuBeiJing=new Image();//ÈËÎï±³¾°µÄÍ¼Æ¬
+var renWuBeiJing=new Image();//äººç‰©èƒŒæ™¯çš„å›¾ç‰‡
 renWuBeiJing.src = "image/background/RWBJ.png";
 
-var Dz=  new Image();//µØÕğÍ¼Æ¬
+var Dz=  new Image();//åœ°éœ‡å›¾ç‰‡
 Dz.src = "image/halfbody/Dz.png";
-var Lqs=  new Image();//Ö÷½ÇÍ¼Æ¬
+var Lqs=  new Image();//ä¸»è§’å›¾ç‰‡
 Lqs.src = "image/halfbody/Lqs.png";
-var Lj=  new Image();//ÁÁ½£Í¼Æ¬
+var Lj=  new Image();//äº®å‰‘å›¾ç‰‡
 Lj.src = "image/halfbody/Lj.png";
-var Kj=  new Image();//¿ì½£Í¼Æ¬
+var Kj=  new Image();//å¿«å‰‘å›¾ç‰‡
 Kj.src = "image/halfbody/Kj.png";
 
-var Dxc=  new Image();//´óĞ§²İÍ¼Æ¬
+var Dxc=  new Image();//å¤§æ•ˆè‰å›¾ç‰‡
 Dxc.src = "image/item/Dxc.png";
-var Dbw=  new Image();//´ó²¹ÍèÍ¼Æ¬
+var Dbw=  new Image();//å¤§è¡¥ä¸¸å›¾ç‰‡
 Dbw.src = "image/item/Dbw.png";
-var Fhc=  new Image();//¸´»î²İÍ¼Æ¬
+var Fhc=  new Image();//å¤æ´»è‰å›¾ç‰‡
 Fhc.src = "image/item/Fhc.png";
 
-var Chdf = new Image();//²Ğ»ê´ó·¨Í¼Æ¬
+var Chdf = new Image();//æ®‹é­‚å¤§æ³•å›¾ç‰‡
 Chdf.src = "image/skill/Chdf.jpg";
-var Lhfs = new Image();//ÁÒ»ğ·ÙÉíÍ¼Æ¬
+var Lhfs = new Image();//çƒˆç«ç„šèº«å›¾ç‰‡
 Lhfs.src = "image/skill/Lhfs.jpg";
 
-var Cstd = new Image();//²ĞÊ³ÌìµØÍ¼Æ¬
+var Cstd = new Image();//æ®‹é£Ÿå¤©åœ°å›¾ç‰‡
 Cstd.src = "image/skill/Cstd.jpg";
-var Lhz = new Image();//ÁÒ»ğÕÆÍ¼Æ¬
+var Lhz = new Image();//çƒˆç«æŒå›¾ç‰‡
 Lhz.src = "image/skill/Lhz.jpg";
 
-var Huichun = new Image();//»Ø´ºÍ¼Æ¬
+var Huichun = new Image();//å›æ˜¥å›¾ç‰‡
 Huichun.src = "image/spirit/Huichun.jpg";
-var Juesha  = new Image();//¾øÉ±Í¼Æ¬
+var Juesha  = new Image();//ç»æ€å›¾ç‰‡
 Juesha.src = "image/spirit/Juesha.jpg";
-var Shanbi  = new Image();//ÉÁ±ÜÍ¼Æ¬
+var Shanbi  = new Image();//é—ªé¿å›¾ç‰‡
 Shanbi.src = "image/spirit/Shanbi.jpg";
-var Shesha  = new Image();//ÉñÉ±Í¼Æ¬
+var Shesha  = new Image();//ç¥æ€å›¾ç‰‡
 Shesha.src = "image/spirit/Shesha.jpg";
-var Shexing = new Image();//ÉñĞĞÍ¼Æ¬
+var Shexing = new Image();//ç¥è¡Œå›¾ç‰‡
 Shexing.src = "image/spirit/Shexing.jpg";
 
-var confirm=new Image();//È·ÈÏ°´Å¥
+var confirm=new Image();//ç¡®è®¤æŒ‰é’®
 confirm.src="image/background/Confirm.png";
-var close = new Image(); //ÓÒÉÏ½Ç¹ØµôµÄ°´Å¥
+var close = new Image(); //å³ä¸Šè§’å…³æ‰çš„æŒ‰é’®
 close.src = "image/button/Close.png"; 
-var zjt = new Image();//×ó¼ıÍ·°´Å¥Í¼Æ¬
+var zjt = new Image();//å·¦ç®­å¤´æŒ‰é’®å›¾ç‰‡
 zjt.src = "image/button/Jt1.png"; 
-var yjt = new Image();//ÓÒ¼ıÍ·°´Å¥Í¼Æ¬
+var yjt = new Image();//å³ç®­å¤´æŒ‰é’®å›¾ç‰‡
 yjt.src = "image/button/Jt2.png";
-var mj1 = new Image();//ÃØ¼¼°´Å¥Í¼Æ¬
+var mj1 = new Image();//ç§˜æŠ€æŒ‰é’®å›¾ç‰‡
 mj1.src = "image/button/Mj1.png"; 
-var mj2 = new Image();//ÃØ¼¼°´Å¥Í¼Æ¬
+var mj2 = new Image();//ç§˜æŠ€æŒ‰é’®å›¾ç‰‡
 mj2.src = "image/button/Mj2.png";
-var nj1 = new Image();//Å­¼¼°´Å¥Í¼Æ¬
+var nj1 = new Image();//æ€’æŠ€æŒ‰é’®å›¾ç‰‡
 nj1.src = "image/button/Nj1.png"; 
-var nj2 = new Image();//Å­¼¼°´Å¥Í¼Æ¬
+var nj2 = new Image();//æ€’æŠ€æŒ‰é’®å›¾ç‰‡
 nj2.src = "image/button/Nj2.png"; 
-var zb1 = new Image();//×°±¸°´Å¥Í¼Æ¬
+var zb1 = new Image();//è£…å¤‡æŒ‰é’®å›¾ç‰‡
 zb1.src = "image/button/Zb1.png"; 
-var zb2 = new Image();//×°±¸°´Å¥Í¼Æ¬
+var zb2 = new Image();//è£…å¤‡æŒ‰é’®å›¾ç‰‡
 zb2.src = "image/button/Zb2.png";
-var qd = new Image(); //È·¶¨°´Å¥
+var qd = new Image(); //ç¡®å®šæŒ‰é’®
 qd.src = "image/button/Qd.png"; 
-var qx = new Image(); //È¡Ïû°´Å¥
+var qx = new Image(); //å–æ¶ˆæŒ‰é’®
 qx.src = "image/button/Qx.png"; 
 
-var c2 = []; //µ¥»÷¿Õ°×´¦£¨Ã»µãÔÚÈËÎïÉÏµÄ£©Ìø³öµÄ²Ëµ¥£¬¾ÍÊÇÖ÷²Ëµ¥
+var c2 = []; //å•å‡»ç©ºç™½å¤„ï¼ˆæ²¡ç‚¹åœ¨äººç‰©ä¸Šçš„ï¼‰è·³å‡ºçš„èœå•ï¼Œå°±æ˜¯ä¸»èœå•
 for (var j = 0; j < 5; j++) {
     c2[j] = new Image();
 }
 
-var c1 = [];//ÈËÎï²Ëµ¥¸÷¸öÑ¡ÏîÍ¼Æ¬£¬×ß½üÊ±µ¯³öµÄ²Ëµ¥£¬c1ÓÃÀ´·ÅÈËÎï²Ëµ¥µÄ¸÷¸ö¶ÔÏó
+var c1 = [];//äººç‰©èœå•å„ä¸ªé€‰é¡¹å›¾ç‰‡ï¼Œèµ°è¿‘æ—¶å¼¹å‡ºçš„èœå•ï¼Œc1ç”¨æ¥æ”¾äººç‰©èœå•çš„å„ä¸ªå¯¹è±¡
 for (var i = 0; i < 8; i++) {
 		c1[i] = new Image();
 }
 
-var c3 = [];//ÊµÀı»¯Êó±êÒÆ¶¯µ½ÏµÍ³¿ØÖÆµ¯³öÀ´µÄ²Ëµ¥
+var c3 = [];//å®ä¾‹åŒ–é¼ æ ‡ç§»åŠ¨åˆ°ç³»ç»Ÿæ§åˆ¶å¼¹å‡ºæ¥çš„èœå•
 for (var i = 0; i < 3; i++) {
 		c3[i] = new Image();
 }
@@ -178,213 +178,213 @@ c3[1].src = "image/menu/C27.png";
 c3[2].src = "image/menu/C28.png";
 */	
 
-var menu3C=[];//Êó±êÒÆµ½ÏµÍ³ÉèÖÃÌø³öµÄÈıÕÅÍ¼Æ¬
-var menu2C = [];//·Åµã»÷¿Õ°×µÄÊ±ºòÌø³öµÄÖ÷²Ëµ¥
-var menuC = [];//·ÅÈËÎï×ß½üµÄÊ±ºòÌø³öµÄÈËÎï²Ëµ¥
+var menu3C=[];//é¼ æ ‡ç§»åˆ°ç³»ç»Ÿè®¾ç½®è·³å‡ºçš„ä¸‰å¼ å›¾ç‰‡
+var menu2C = [];//æ”¾ç‚¹å‡»ç©ºç™½çš„æ—¶å€™è·³å‡ºçš„ä¸»èœå•
+var menuC = [];//æ”¾äººç‰©èµ°è¿‘çš„æ—¶å€™è·³å‡ºçš„äººç‰©èœå•
 
 
 //--------------music----------------------
-var begin =new Audio();//¿ªÊ¼µÄÒôÀÖ
+var begin =new Audio();//å¼€å§‹çš„éŸ³ä¹
 	begin.src ='music/begin.mp3';
-var gamebgShow =new Audio();//ÓÎÏ·±³¾°½éÉÜµÄ±³¾°ÒôÀÖ
+var gamebgShow =new Audio();//æ¸¸æˆèƒŒæ™¯ä»‹ç»çš„èƒŒæ™¯éŸ³ä¹
     gamebgShow.src ='music/gamebgShow.mp3';
-var recoverHP=new Audio();//²¹ÑªµÄÒôĞ§
+var recoverHP=new Audio();//è¡¥è¡€çš„éŸ³æ•ˆ
     recoverHP.src ='music/HealTarget.mp3';
-var putongattack=new Audio();//¹¥»÷µÄÒôĞ§
+var putongattack=new Audio();//æ”»å‡»çš„éŸ³æ•ˆ
     putongattack.src ='music/putongattack.mp3';	
-var enemyTurn=new Audio();//µĞ·½ĞĞ¶¯
+var enemyTurn=new Audio();//æ•Œæ–¹è¡ŒåŠ¨
     enemyTurn.src='music/enemy.mp3';	
-var ourTurn=new Audio();//ÎÒ·½ĞĞ¶¯
+var ourTurn=new Audio();//æˆ‘æ–¹è¡ŒåŠ¨
     ourTurn.src='music/our_turn.mp3';
-var bigMapAudio=new Audio();//´óµØÍ¼µÄÒôĞ§
+var bigMapAudio=new Audio();//å¤§åœ°å›¾çš„éŸ³æ•ˆ
     bigMapAudio.src='music/bigmap.mp3';
 
 //--------------------------------------------
 function picOnload(){
 /*
- Ê×Ò³µÄÍ¼Æ¬
+ é¦–é¡µçš„å›¾ç‰‡
 */
-	startImage = new Image();//±³¾°Í¼Æ¬
+	startImage = new Image();//èƒŒæ™¯å›¾ç‰‡
 	startImage.src="image/background/StartShow.png";
-	xdlc = new Image();//ĞÂµÄÂÃ³Ì°´Å¥
+	xdlc = new Image();//æ–°çš„æ—…ç¨‹æŒ‰é’®
 	xdlc.src="image/button/Xdlc.png";
-	jdhy = new Image();//¾ÉµÄ»ØÒä°´Å¥
+	jdhy = new Image();//æ—§çš„å›å¿†æŒ‰é’®
 	jdhy.src= "image/button/Jdhy.png";
-	tyjh = new Image();//ÍËÒş½­ºş°´Å¥
+	tyjh = new Image();//é€€éšæ±Ÿæ¹–æŒ‰é’®
 	tyjh.src="image/button/Tyjh.png";
 /*
- ´óµØÍ¼µÄÍ¼Æ¬
+ å¤§åœ°å›¾çš„å›¾ç‰‡
 */
-	bigMap = new Image();//´óµØÍ¼Í¼Æ¬
+	bigMap = new Image();//å¤§åœ°å›¾å›¾ç‰‡
 	bigMap.src = "image/map/bigmap.jpg";
-	smallMap= new Image();//´óµØÍ¼ÉÏ¹Ø¿¨µÄÍ¼Æ¬
+	smallMap= new Image();//å¤§åœ°å›¾ä¸Šå…³å¡çš„å›¾ç‰‡
 	smallMap.src = "image/map/smallmap.png";
-	DJSD=new Image();//µÀ¾ßÉÌµêµÄ±³¾°
+	DJSD=new Image();//é“å…·å•†åº—çš„èƒŒæ™¯
 	DJSD.src="image/background/DJSD.png";
-	WQSD=new Image();//ÎäÆ÷ÉÌµêµÄ±³¾°
+	WQSD=new Image();//æ­¦å™¨å•†åº—çš„èƒŒæ™¯
     WQSD.src="image/background/WQSD.png";
-	DYBJ=new Image();//¶ÓÎéĞÅÏ¢µÄ±³¾°
+	DYBJ=new Image();//é˜Ÿä¼ä¿¡æ¯çš„èƒŒæ™¯
 	DYBJ.src="image/background/DYBJ.png";
-	SuoMing=new Image();//ËµÃ÷Í¼Æ¬µÄ°´Å¥
+	SuoMing=new Image();//è¯´æ˜å›¾ç‰‡çš„æŒ‰é’®
 	SuoMing.src="image/background/SuoMing.png";
-	ZBZL=new Image();//×°±¸ÕûÀí°´Å¥
+	ZBZL=new Image();//è£…å¤‡æ•´ç†æŒ‰é’®
 	ZBZL.src="image/background/ZBZL.png";
-	MJZL=new Image();//ÃÜ¼¼ÕûÀí°´Å¥
+	MJZL=new Image();//å¯†æŠ€æ•´ç†æŒ‰é’®
 	MJZL.src="image/background/MJZL.png";
-	NJZL=new Image();//Å­¼¼ÕûÀí°´Å¥
+	NJZL=new Image();//æ€’æŠ€æ•´ç†æŒ‰é’®
 	NJZL.src="image/background/NJZL.png";
-	DJZL=new Image();//µÀ¾ßÕûÀí°´Å¥
+	DJZL=new Image();//é“å…·æ•´ç†æŒ‰é’®
 	DJZL.src="image/background/DJZL.png";
-	UI_butto=new Image();//´óµØÍ¼µÄ¹¦ÄÜ°´Å¥
+	UI_butto=new Image();//å¤§åœ°å›¾çš„åŠŸèƒ½æŒ‰é’®
 	UI_butto.src="image/button/UI_butto.png";
-	CKZL=new Image();//²Ö¿âÕûÀíµÄÍ¼Æ¬
+	CKZL=new Image();//ä»“åº“æ•´ç†çš„å›¾ç‰‡
 	CKZL.src="image/background/CKZL.png";
-	titleOfCK=new Image();//²Ö¿âÉÏ°´Å¥µÄÍ¼±ê
+	titleOfCK=new Image();//ä»“åº“ä¸ŠæŒ‰é’®çš„å›¾æ ‡
 	titleOfCK.src="image/background/titleOfCangKu.png";
-	CKSelect=new Image();//²Ö¿âÉÏ°´Å¥µÄÍ¼±ê
+	CKSelect=new Image();//ä»“åº“ä¸ŠæŒ‰é’®çš„å›¾æ ‡
 	CKSelect.src="image/background/cangKuSelect.png";
 	
 /*
- ËÀÍöµÄ»­Ãæ
+ æ­»äº¡çš„ç”»é¢
 */
-	game_over=new Image();//ÓÎÏ·½áÊøµÄÍ¼Æ¬
+	game_over=new Image();//æ¸¸æˆç»“æŸçš„å›¾ç‰‡
 	game_over.src="image/background/gameover.jpg";
-	jiazai=new Image();//¼ÓÔØ°´Å¥µÄÍ¼Æ¬
+	jiazai=new Image();//åŠ è½½æŒ‰é’®çš„å›¾ç‰‡
 	jiazai.src="image/button/jia_zai.jpg"; 
-	fanHui=new Image();//·µ»Ø°´Å¥µÄÍ¼Æ¬
+	fanHui=new Image();//è¿”å›æŒ‰é’®çš„å›¾ç‰‡
 	fanHui.src="image/button/fan_hui.jpg";
 /*
- Éı¼¶
+ å‡çº§
 */
-	levelBG=new Image();//Éı¼¶µÄ±³¾°
+	levelBG=new Image();//å‡çº§çš„èƒŒæ™¯
 	levelBG.src = "image/background/levelBG.jpg";
-    lvtitleBG=new Image();//Éı¼¶µÄ·ÅÈËÎïĞÕÃûµÄÍ¼Æ¬
+    lvtitleBG=new Image();//å‡çº§çš„æ”¾äººç‰©å§“åçš„å›¾ç‰‡
 	lvtitleBG.src = "image/background/LVtitle.png";
-	levelUpShuoMing=new Image();//ËµÃ÷µÄ±³¾°
+	levelUpShuoMing=new Image();//è¯´æ˜çš„èƒŒæ™¯
 	levelUpShuoMing.src = "image/background/LVSM.png";
 /*
- ¸÷ÖÖÆäËûµÄ±³¾°
+ å„ç§å…¶ä»–çš„èƒŒæ™¯
 */
-	loadpic= new Image();//¼ÓÔØµÄÍ¼Æ¬
+	loadpic= new Image();//åŠ è½½çš„å›¾ç‰‡
 	loadpic.src = "image/background/loadpic.png";
-	loadline= new Image();//¼ÓÔØµÄÏß
+	loadline= new Image();//åŠ è½½çš„çº¿
 	loadline.src = "image/background/loadline.png";
-	statusShowBg = new Image();//ÈËÎïĞÅÏ¢µÄ±³¾°ÏÔÊ¾
+	statusShowBg = new Image();//äººç‰©ä¿¡æ¯çš„èƒŒæ™¯æ˜¾ç¤º
 	statusShowBg.src = "image/background/Rwzt.png";
-	spirit_Bg=new Image();//¾«ÉñÁ¦µÄÍ¼Æ¬
+	spirit_Bg=new Image();//ç²¾ç¥åŠ›çš„å›¾ç‰‡
 	spirit_Bg.src="image/background/spirit_bg.png"; 
-	image1 = new Image(); //Ê¤°ÜÌõ¼ş¿ò
+	image1 = new Image(); //èƒœè´¥æ¡ä»¶æ¡†
 	image1.src = "image/background/Kk.png";
-	menuImage = new Image(); //ÈËÎï²Ëµ¥
+	menuImage = new Image(); //äººç‰©èœå•
 	menuImage.src = "image/background/Menu.png"; 
-	dialogBoxImage = new Image(); //¶Ô»°ÊÂ¼ş±³¾°Í¼Æ¬
+	dialogBoxImage = new Image(); //å¯¹è¯äº‹ä»¶èƒŒæ™¯å›¾ç‰‡
 	dialogBoxImage.src = "image/background/Dialog.png";
-	infoShowBg = new Image(); //ÈËÎï×´Ì¬±³¾°Í¼Æ¬
+	infoShowBg = new Image(); //äººç‰©çŠ¶æ€èƒŒæ™¯å›¾ç‰‡
 	infoShowBg.src = "image/background/Info.png"; 
-	renWuBeiJing=new Image();//ÈËÎï±³¾°µÄÍ¼Æ¬
+	renWuBeiJing=new Image();//äººç‰©èƒŒæ™¯çš„å›¾ç‰‡
 	renWuBeiJing.src = "image/background/RWBJ.png";
 /*
- °ëÉíÏñ
+ åŠèº«åƒ
 */
-	Dz=  new Image();//µØÕğÍ¼Æ¬
+	Dz=  new Image();//åœ°éœ‡å›¾ç‰‡
 	Dz.src = "image/halfbody/Dz.png";
-	Lqs=  new Image();//Ö÷½ÇÍ¼Æ¬
+	Lqs=  new Image();//ä¸»è§’å›¾ç‰‡
 	Lqs.src = "image/halfbody/Lqs.png";
-	Xlh=new Image();//Ğ¡ÁÒ»ğÍ¼Æ¬
+	Xlh=new Image();//å°çƒˆç«å›¾ç‰‡
 	Xlh.src="image/halfbody/Xlh.png";
-	Lj=  new Image();//ÁÁ½£Í¼Æ¬
+	Lj=  new Image();//äº®å‰‘å›¾ç‰‡
 	Lj.src = "image/halfbody/Lj.png";
-	Kj=  new Image();//¿ì½£Í¼Æ¬
+	Kj=  new Image();//å¿«å‰‘å›¾ç‰‡
 	Kj.src = "image/halfbody/Kj.png";
-	smallLqs=new Image();//ÁÖÇïË®µÄĞ¡Í·Ïñ
+	smallLqs=new Image();//æ—ç§‹æ°´çš„å°å¤´åƒ
 	smallLqs.src="image/halfbody/smallLqs.png";
 /*
- µÀ¾ß
+ é“å…·
 */
-	Dxc=  new Image();//´óĞ§²İÍ¼Æ¬
+	Dxc=  new Image();//å¤§æ•ˆè‰å›¾ç‰‡
 	Dxc.src = "image/item/Dxc.png";
-	Dbw=  new Image();//´ó²¹ÍèÍ¼Æ¬
+	Dbw=  new Image();//å¤§è¡¥ä¸¸å›¾ç‰‡
 	Dbw.src = "image/item/Dbw.png";
-	Fhc=  new Image();//¸´»î²İÍ¼Æ¬
+	Fhc=  new Image();//å¤æ´»è‰å›¾ç‰‡
 	Fhc.src = "image/item/Fhc.png";
 /*
- ×°±¸
+ è£…å¤‡
 */
-    Qszj= new Image();//ÆïÊ¿Ö®½£Í¼Æ¬
+    Qszj= new Image();//éª‘å£«ä¹‹å‰‘å›¾ç‰‡
     Qszj.src = "image/equip/QSZJ.jpg";
 /*
- Å­¹¥»÷
+ æ€’æ”»å‡»
 */
-	Chdf = new Image();//²Ğ»ê´ó·¨Í¼Æ¬
+	Chdf = new Image();//æ®‹é­‚å¤§æ³•å›¾ç‰‡
 	Chdf.src = "image/skill/Chdf.jpg";
-	Lhfs = new Image();//ÁÒ»ğ·ÙÉíÍ¼Æ¬
+	Lhfs = new Image();//çƒˆç«ç„šèº«å›¾ç‰‡
 	Lhfs.src = "image/skill/Lhfs.jpg";
 /*
- ÃØ¼¼¹¥»÷
+ ç§˜æŠ€æ”»å‡»
 */
-	Cstd = new Image();//²ĞÊ³ÌìµØÍ¼Æ¬
+	Cstd = new Image();//æ®‹é£Ÿå¤©åœ°å›¾ç‰‡
 	Cstd.src = "image/skill/Cstd.jpg";
-	Lhz = new Image();//ÁÒ»ğÕÆÍ¼Æ¬
+	Lhz = new Image();//çƒˆç«æŒå›¾ç‰‡
 	Lhz.src = "image/skill/Lhz.jpg";
 /*
- ¾«ÉñÁ¦
+ ç²¾ç¥åŠ›
 */
-	Huichun = new Image();//»Ø´ºÍ¼Æ¬
+	Huichun = new Image();//å›æ˜¥å›¾ç‰‡
 	Huichun.src = "image/spirit/Huichun.jpg";
-	Juesha  = new Image();//¾øÉ±Í¼Æ¬
+	Juesha  = new Image();//ç»æ€å›¾ç‰‡
 	Juesha.src = "image/spirit/Juesha.jpg";
-	Shanbi  = new Image();//ÉÁ±ÜÍ¼Æ¬
+	Shanbi  = new Image();//é—ªé¿å›¾ç‰‡
 	Shanbi.src = "image/spirit/Shanbi.jpg";
-	Shesha  = new Image();//ÉñÉ±Í¼Æ¬
+	Shesha  = new Image();//ç¥æ€å›¾ç‰‡
 	Shesha.src = "image/spirit/Shesha.jpg";
-	Shexing = new Image();//ÉñĞĞÍ¼Æ¬
+	Shexing = new Image();//ç¥è¡Œå›¾ç‰‡
 	Shexing.src = "image/spirit/Shexing.jpg";
 /*
- ¸÷ÖÖ°´Å¥
+ å„ç§æŒ‰é’®
 */
-	confirm=new Image();//È·ÈÏ°´Å¥
+	confirm=new Image();//ç¡®è®¤æŒ‰é’®
 	confirm.src="image/background/Confirm.png";
-	close = new Image(); //ÓÒÉÏ½Ç¹ØµôµÄ°´Å¥
+	close = new Image(); //å³ä¸Šè§’å…³æ‰çš„æŒ‰é’®
 	close.src = "image/button/Close.png"; 
-	zjt = new Image();//×ó¼ıÍ·°´Å¥Í¼Æ¬
+	zjt = new Image();//å·¦ç®­å¤´æŒ‰é’®å›¾ç‰‡
 	zjt.src = "image/button/Jt1.png"; 
-	yjt = new Image();//ÓÒ¼ıÍ·°´Å¥Í¼Æ¬
+	yjt = new Image();//å³ç®­å¤´æŒ‰é’®å›¾ç‰‡
 	yjt.src = "image/button/Jt2.png";
-	mj1 = new Image();//ÃØ¼¼°´Å¥Í¼Æ¬
+	mj1 = new Image();//ç§˜æŠ€æŒ‰é’®å›¾ç‰‡
 	mj1.src = "image/button/Mj1.png"; 
-	mj2 = new Image();//ÃØ¼¼°´Å¥Í¼Æ¬
+	mj2 = new Image();//ç§˜æŠ€æŒ‰é’®å›¾ç‰‡
 	mj2.src = "image/button/Mj2.png";
-	nj1 = new Image();//Å­¼¼°´Å¥Í¼Æ¬
+	nj1 = new Image();//æ€’æŠ€æŒ‰é’®å›¾ç‰‡
 	nj1.src = "image/button/Nj1.png"; 
-	nj2 = new Image();//Å­¼¼°´Å¥Í¼Æ¬
+	nj2 = new Image();//æ€’æŠ€æŒ‰é’®å›¾ç‰‡
 	nj2.src = "image/button/Nj2.png"; 
-	zb1 = new Image();//×°±¸°´Å¥Í¼Æ¬
+	zb1 = new Image();//è£…å¤‡æŒ‰é’®å›¾ç‰‡
 	zb1.src = "image/button/Zb1.png"; 
-	zb2 = new Image();//×°±¸°´Å¥Í¼Æ¬
+	zb2 = new Image();//è£…å¤‡æŒ‰é’®å›¾ç‰‡
 	zb2.src = "image/button/Zb2.png";
-	qd = new Image(); //È·¶¨°´Å¥
+	qd = new Image(); //ç¡®å®šæŒ‰é’®
 	qd.src = "image/button/Qd.png"; 
-	qx = new Image(); //È¡Ïû°´Å¥
+	qx = new Image(); //å–æ¶ˆæŒ‰é’®
 	qx.src = "image/button/Qx.png";
-	minus=new Image();//¼õµÄ°´Å¥
+	minus=new Image();//å‡çš„æŒ‰é’®
     minus.src="image/button/minus.png";
-	add=new Image();//¼ÓµÄ°´Å¥
+	add=new Image();//åŠ çš„æŒ‰é’®
 	add.src="image/button/add.png";
 	imagehand=new Image();
 	imagehand.src="image/button/hand.png";
 /*
- ²Ëµ¥À¸µÄ°´Å¥
+ èœå•æ çš„æŒ‰é’®
 */
-	c2 = []; //µ¥»÷¿Õ°×´¦£¨Ã»µãÔÚÈËÎïÉÏµÄ£©Ìø³öµÄ²Ëµ¥£¬¾ÍÊÇÖ÷²Ëµ¥
-	c1 = [];//ÈËÎï²Ëµ¥¸÷¸öÑ¡ÏîÍ¼Æ¬£¬×ß½üÊ±µ¯³öµÄ²Ëµ¥£¬c1ÓÃÀ´·ÅÈËÎï²Ëµ¥µÄ¸÷¸ö¶ÔÏó
-	c3 = [];//ÊµÀı»¯Êó±êÒÆ¶¯µ½ÏµÍ³¿ØÖÆµ¯³öÀ´µÄ²Ëµ¥
+	c2 = []; //å•å‡»ç©ºç™½å¤„ï¼ˆæ²¡ç‚¹åœ¨äººç‰©ä¸Šçš„ï¼‰è·³å‡ºçš„èœå•ï¼Œå°±æ˜¯ä¸»èœå•
+	c1 = [];//äººç‰©èœå•å„ä¸ªé€‰é¡¹å›¾ç‰‡ï¼Œèµ°è¿‘æ—¶å¼¹å‡ºçš„èœå•ï¼Œc1ç”¨æ¥æ”¾äººç‰©èœå•çš„å„ä¸ªå¯¹è±¡
+	c3 = [];//å®ä¾‹åŒ–é¼ æ ‡ç§»åŠ¨åˆ°ç³»ç»Ÿæ§åˆ¶å¼¹å‡ºæ¥çš„èœå•
 
- //Ê×Ò³
+ //é¦–é¡µ
   loadPicArr.push(startImage);
   loadPicArr.push(xdlc);
   loadPicArr.push(jdhy);
   loadPicArr.push(tyjh);
- //´óµØÍ¼
+ //å¤§åœ°å›¾
   loadPicArr.push(bigMap);
   loadPicArr.push(smallMap);
   loadPicArr.push(DJSD);
@@ -396,14 +396,14 @@ function picOnload(){
   loadPicArr.push(NJZL);
   loadPicArr.push(DJZL);
   loadPicArr.push(UI_butto);
- //ËÀÍö
+ //æ­»äº¡
   loadPicArr.push(game_over);
   loadPicArr.push(jiazai);
   loadPicArr.push(fanHui);
- //Éı¼¶
+ //å‡çº§
   loadPicArr.push(levelBG);
   loadPicArr.push(lvtitleBG);
-//ÆäËû¸÷ÖÖ±³¾°
+//å…¶ä»–å„ç§èƒŒæ™¯
   loadPicArr.push(loadpic);
   loadPicArr.push(loadline);
   loadPicArr.push(statusShowBg);
@@ -413,32 +413,32 @@ function picOnload(){
   loadPicArr.push(dialogBoxImage);
   loadPicArr.push(infoShowBg);
   loadPicArr.push(renWuBeiJing);
-//°ëÉíÏñ
+//åŠèº«åƒ
   loadPicArr.push(Dz);
   loadPicArr.push(Lqs);
   loadPicArr.push(Xlh);
   loadPicArr.push(Lj);
   loadPicArr.push(Kj);
   loadPicArr.push(smallLqs);
-//µÀ¾ß
+//é“å…·
   loadPicArr.push(Dxc);
   loadPicArr.push(Dbw);
   loadPicArr.push(Fhc);
-//×°±¸
+//è£…å¤‡
   loadPicArr.push(Qszj);
-//Å­¼¼
+//æ€’æŠ€
   loadPicArr.push(Chdf);
   loadPicArr.push(Lhfs);
-//ÃØ¼¼
+//ç§˜æŠ€
   loadPicArr.push(Cstd);
   loadPicArr.push(Lhz);
-//¾«ÉñÁ¦
+//ç²¾ç¥åŠ›
   loadPicArr.push(Huichun);
   loadPicArr.push(Juesha);
   loadPicArr.push(Shanbi);
   loadPicArr.push(Shesha);
   loadPicArr.push(Shexing);
-//¸÷ÖÖ°´Å¥
+//å„ç§æŒ‰é’®
   loadPicArr.push(confirm);
   loadPicArr.push(close);
   loadPicArr.push(zjt);
@@ -454,7 +454,7 @@ function picOnload(){
   loadPicArr.push(minus);
   loadPicArr.push(add);
   loadPicArr.push(imagehand);
-//²Ëµ¥À¸°´Å¥
+//èœå•æ æŒ‰é’®
 	for (var i = 0; i < 8; i++) {
 		c1[i] = new Image();
 	    loadPicArr.push(c1[i]);
@@ -483,7 +483,7 @@ function picOnload(){
 	c3[0].src = "image/menu/C26.png";
 	c3[1].src = "image/menu/C27.png";
 	c3[2].src = "image/menu/C28.png";
-//ÕûÀíÒ»À¸
+//æ•´ç†ä¸€æ 
 	zhengLiButton=new pic(0,0,885,10,75,75,0,124,120,120,UI_butto);
 	zhengLiButton1=new pic(0,0,885,10,70,70,124,124,120,120,UI_butto);
 	daojuZLButton=new pic(0,0,810,6,75,75,0,0,120,120,UI_butto);
@@ -492,23 +492,23 @@ function picOnload(){
 	mijiButton=new pic(0,0,660,6,75,75,0,744,120,120,UI_butto);
 	informaitionSow=new picture(0,0,685,76, 207,501, SuoMing);
 	informaitionSow1=new picture(0,0,702,47, 207,501, SuoMing);
-//¶ÓÎéÒ»À¸
+//é˜Ÿä¼ä¸€æ 
 	duiWuButton=new pic(0,0,885,85,75,75,0,868,120,120,UI_butto);
 	duiWuButton1=new pic(0,0,885,85,70,70,124,868,120,120,UI_butto);
 	changkuButton=new pic(0,0,810,80,75,75,0,620,120,120,UI_butto);
 	duiyuanButton=new pic(0,0,735,80,75,75,0,1240,120,120,UI_butto);
-//ÉÌµêÒ»À¸
+//å•†åº—ä¸€æ 
 	shangDianButton=new pic(0,0,885,160,75,75,0,1364,120,120,UI_butto);
 	shangDianButton1=new pic(0,0,885,160,70,70,124,1364,120,120,UI_butto);
 	daojuStore=new pic(0,0,810,160,75,75,0,1488,120,120,UI_butto);
 	wuqiStore=new pic(0,0,735,160,75,75,0,1116,120,120,UI_butto);
-//ÏµÍ³Ò»À¸
+//ç³»ç»Ÿä¸€æ 
 	systemButton=new pic(0,0,885,235,75,75,0,1860,120,120,UI_butto);
 	systemButton1=new pic(0,0,885,235,70,70,124,1860,120,120,UI_butto);
 	CDButton=new pic(0,0,810,235,75,75,0,248,120,120,UI_butto);
 	JZButton=new pic(0,0,735,235,75,75,0,496,120,120,UI_butto);
 	TCButton=new pic(0,0,660,235,75,75,0,1736,120,120,UI_butto);
-//´óµØÍ¼
+//å¤§åœ°å›¾
 	smallLQS=new picture(0,0,40,170,50,50,smallLqs);//40,170;140,205
 	bigBg = new picture(0,0,0, 0, 960, 576, bigMap);
 	level_1=new pic(0,0,0,144,100,100,0,0,100,100,smallMap);
@@ -522,43 +522,43 @@ function picOnload(){
 	level_9=new pic(0,0,520,140,100,100,300,100,100,100,smallMap);
 	level_10=new pic(0,0,600,100,100,100,400,100,100,100,smallMap);
 
-//²úÉúÒ»¸ö²Ö¿â	
+//äº§ç”Ÿä¸€ä¸ªä»“åº“	
 	storehouse=new cangKu();
 	
-	rec = new box(0,0,0, 0, rpx, rpx, "rgb(0,255,0)"); //ÊµÀı»¯Êó±êÒÆ¶¯Ê±·½¿ò
-	mrec = new box(0,0,0, 0, rpx * 4, rpx, "rgb(0,255,0)"); //ÊµÀı»¯²Ëµ¥ÖĞÑ¡Ïî·½¿ò
-	menu = new picture(0,2 * rpx,0, 2* rpx, rpx * 4, rpx * 8, menuImage); //ÊµÀı»¯ÈËÎï²Ëµ¥
-	menu2 = new picture(0, 4 * rpx,0, 4 * rpx, rpx * 4, rpx * 5, menuImage); //ÊµÀı»¯Ö÷²Ëµ¥
-	menu3= new picture(rpx * 4,8* rpx,rpx * 4, 8* rpx, rpx * 4, rpx * 3, menuImage); //ÊµÀı»¯Ö÷²Ëµ¥
-	for (var k = 0; k < 8; k++) { //ÊµÀı»¯ÈËÎï×ß½üµÄÊ±ºòÌø³öµÄÈËÎï²Ëµ¥
+	rec = new box(0,0,0, 0, rpx, rpx, "rgb(0,255,0)"); //å®ä¾‹åŒ–é¼ æ ‡ç§»åŠ¨æ—¶æ–¹æ¡†
+	mrec = new box(0,0,0, 0, rpx * 4, rpx, "rgb(0,255,0)"); //å®ä¾‹åŒ–èœå•ä¸­é€‰é¡¹æ–¹æ¡†
+	menu = new picture(0,2 * rpx,0, 2* rpx, rpx * 4, rpx * 8, menuImage); //å®ä¾‹åŒ–äººç‰©èœå•
+	menu2 = new picture(0, 4 * rpx,0, 4 * rpx, rpx * 4, rpx * 5, menuImage); //å®ä¾‹åŒ–ä¸»èœå•
+	menu3= new picture(rpx * 4,8* rpx,rpx * 4, 8* rpx, rpx * 4, rpx * 3, menuImage); //å®ä¾‹åŒ–ä¸»èœå•
+	for (var k = 0; k < 8; k++) { //å®ä¾‹åŒ–äººç‰©èµ°è¿‘çš„æ—¶å€™è·³å‡ºçš„äººç‰©èœå•
 	menuC[k] = new picture(0, menu.sy + k * rpx,0, menu.sy + k * rpx, menu.swidth, rpx, c1[k]);
 	}
-	for (var l = 0; l < 5; l++) { //ÊµÀı»¯µã»÷¿Õ°×µÄÊ±ºòÌø³öµÄÖ÷²Ëµ¥
+	for (var l = 0; l < 5; l++) { //å®ä¾‹åŒ–ç‚¹å‡»ç©ºç™½çš„æ—¶å€™è·³å‡ºçš„ä¸»èœå•
 	menu2C[l] = new picture(0,menu2.sy + l * rpx,0, menu2.sy + l * rpx, menu2.swidth, rpx, c2[l]);
 	}
-	for(var m=0;m<3;m++){         //ÊµÀı»¯Êó±êÒÆ¶¯µ½ÏµÍ³¿ØÖÆµ¯³öÀ´µÄ²Ëµ¥
+	for(var m=0;m<3;m++){         //å®ä¾‹åŒ–é¼ æ ‡ç§»åŠ¨åˆ°ç³»ç»Ÿæ§åˆ¶å¼¹å‡ºæ¥çš„èœå•
 		menu3C[m] = new picture(menu3.sx+m*rpx,menu3.sy + m* rpx,menu3.sx+m*rpx, menu3.sy + m* rpx, menu3.swidth, rpx, c3[m]);
 	}
 	
-}//×îÍâÃæµÄÀ¨ºÅ
+}//æœ€å¤–é¢çš„æ‹¬å·
 
 
-//¿ªÊ¼¼ÓÔØ
+//å¼€å§‹åŠ è½½
 var loadX=0;//380
 var next=0;
 var handle=0;
 function progress(){
 	picOnload();
-	//¿ªÊ¼ÒôÀÖµÄ²¥·Å
+	//å¼€å§‹éŸ³ä¹çš„æ’­æ”¾
 	begin.play();
-	//xmlÊı¾İÇëÇó
+	//xmlæ•°æ®è¯·æ±‚
 	startRequest();
     //var dElem = document.getElementById("canvas");
     //var dCtx = dElem.getContext('2d');
     //dCtx.drawImage(loadpic,0,0,960,576);
-    //µÃµ½ÄÇ¸ö¼ÓÔØµÄµã
+    //å¾—åˆ°é‚£ä¸ªåŠ è½½çš„ç‚¹
     //dCtx.drawImage(loadline,410,15,40,30,loadX+265,380,40,30);
-    //¼ÓÔØµÄ½ø¶ÈÌõ
+    //åŠ è½½çš„è¿›åº¦æ¡
     //dCtx.drawImage(loadline,0,20,loadX,20,286,380,loadX,20);
 	drawProgress();
 }
@@ -582,7 +582,7 @@ function upload()
 		loadPicArr[i].onload = function()
 		{
 							setTimeout(function(){drawProgress();},  addTime);
-							//Ôö¼ÓµÈ´ıÊ±¼ä£¬Ò²¾ÍÊÇËµÃ¿¼ÓÔØÒ»ÕÅ¾ÍÓÃµÈ250ms
+							//å¢åŠ ç­‰å¾…æ—¶é—´ï¼Œä¹Ÿå°±æ˜¯è¯´æ¯åŠ è½½ä¸€å¼ å°±ç”¨ç­‰250ms
 							addTime+=100;						
 	    };
 	    }	
@@ -594,9 +594,9 @@ function drawProgress(){
             var dCtx = dElem.getContext('2d');
 			loadX+=Math.floor(400/loadPicArr.length);
 			 dCtx.drawImage(loadpic,0,0,960,576);
-			//µÃµ½ÄÇ¸ö¼ÓÔØµÄµã
+			//å¾—åˆ°é‚£ä¸ªåŠ è½½çš„ç‚¹
 			dCtx.drawImage(loadline,410,15,40,30,loadX+266,380,40,30);
-			//¼ÓÔØµÄ½ø¶ÈÌõ
+			//åŠ è½½çš„è¿›åº¦æ¡
 			dCtx.drawImage(loadline,0,20,loadX,20,286,385,loadX,20);
 			
 			if(next<loadPicArr.length)
@@ -607,7 +607,7 @@ function drawProgress(){
 				loadX=0;
 				     dCtx.clearRect(0, 0, canvasWidth, canvasHeight);
 					  window.cancelAnimationFrame(handle);
-			         console.log("Í¼Æ¬Ò»¹²¼ÓÔØ"+next);
+			         console.log("å›¾ç‰‡ä¸€å…±åŠ è½½"+next);
 				  
 				init();}
 }
@@ -617,14 +617,14 @@ function nextProgress(){
 	var dElem = document.getElementById("canvas");
     var dCtx = dElem.getContext('2d');
     loadX+=Math.floor(400/loadPicArr.length);
-    //µÃµ½ÄÇ¸ö¼ÓÔØµÄµã
+    //å¾—åˆ°é‚£ä¸ªåŠ è½½çš„ç‚¹
 	
 	        
-		    //µÃµ½ÄÇ¸ö¼ÓÔØµÄµã
+		    //å¾—åˆ°é‚£ä¸ªåŠ è½½çš„ç‚¹
 		    //dCtx.clearRect(0, 0, canvasWidth, canvasHeight);
 		    dCtx.drawImage(loadpic,0,0,960,576);
 			dCtx.drawImage(loadline,410,15,40,30,loadX+260,380,40,30);
-			//¼ÓÔØµÄ½ø¶ÈÌõ
+			//åŠ è½½çš„è¿›åº¦æ¡
 			dCtx.drawImage(loadline,0,20,loadX,20,286,385,loadX,20);
 			if(next<loadPicArr.length)
 			   handle = window.requestAnimationFrame(nextProgress);

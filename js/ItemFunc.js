@@ -1,5 +1,5 @@
 
-//µÀ¾ß´¥·¢º¯Êý
+//é“å…·è§¦å‘å‡½æ•°
 function IRecoverHP() {
 	recoverHP.play();
     var thp = rolesArray[rolesIndex].HP;
@@ -68,7 +68,7 @@ function IRecoverPower(){
 
 function reconverAction(obj) {
 	var aaaa=100;
-	//ÅÐ¶ÏÖ»ÒªÊÇ»î×ÅµÄ¶ÓÓÑ¼´¿É£»----------------
+	//åˆ¤æ–­åªè¦æ˜¯æ´»ç€çš„é˜Ÿå‹å³å¯ï¼›----------------
 	
 	//var a=rolesArray[0].sx/48;
 	//var b=rolesArray[0].sy/48;
@@ -77,20 +77,20 @@ function reconverAction(obj) {
 	var a=obj.mapX/48;
 	var b=obj.mapY/48;
 	var needDongHua=true;
-	//console.log("Ö´ÐÐ¸´»îÈËÊÇ"+obj.name);
+	//console.log("æ‰§è¡Œå¤æ´»äººæ˜¯"+obj.name);
 	//----------------------------------
-	var pos=[a,b];//Ö÷½ÇµÄ×óÉÏ½Ç/48µÄ×ø±ê
-	var aa=GetRound(pos);//µÃµ½Ö÷½ÇÉÏÏÂ×óÓÒµÄËÄ¸öµãµÄÊý×é,ÓÒÏÂ×óÉÏµÄË³Ðò
-	//ÅÐ¶Ï1.ÊÇ·ñºÍÕÏ°­ÎïÖØºÏ£¬2.ÊÇ·ñÓÐµÐÈËÔÚÕâ¸öÎ»ÖÃ£¬3.ÊÇ·ñÓÐ¶ÓÓÑÔÚÕâ¸öÎ»ÖÃÉÏ£¬4.ÊÇ·ñÔÚ»­²¼·¶Î§ÄÚ È»ºó¸´»î
+	var pos=[a,b];//ä¸»è§’çš„å·¦ä¸Šè§’/48çš„åæ ‡
+	var aa=GetRound(pos);//å¾—åˆ°ä¸»è§’ä¸Šä¸‹å·¦å³çš„å››ä¸ªç‚¹çš„æ•°ç»„,å³ä¸‹å·¦ä¸Šçš„é¡ºåº
+	//åˆ¤æ–­1.æ˜¯å¦å’Œéšœç¢ç‰©é‡åˆï¼Œ2.æ˜¯å¦æœ‰æ•Œäººåœ¨è¿™ä¸ªä½ç½®ï¼Œ3.æ˜¯å¦æœ‰é˜Ÿå‹åœ¨è¿™ä¸ªä½ç½®ä¸Šï¼Œ4.æ˜¯å¦åœ¨ç”»å¸ƒèŒƒå›´å†… ç„¶åŽå¤æ´»
 	
 	for(var i=0;i<aa.length;i++){
-		var t=aa[i].split(",");//split() ·½·¨ÓÃÓÚ°ÑÒ»¸ö×Ö·û´®·Ö¸î³É×Ö·û´®Êý×é¡£
+		var t=aa[i].split(",");//split() æ–¹æ³•ç”¨äºŽæŠŠä¸€ä¸ªå­—ç¬¦ä¸²åˆ†å‰²æˆå­—ç¬¦ä¸²æ•°ç»„ã€‚
 		console.log("t0"+t[0]+" ");
 		console.log("t1"+t[1]+" ");
 		t[0]=parseInt(t[0]);
 		t[1]=parseInt(t[1]);
 	  if(IsObstacle(aa[i])||IsOutScreen([t[0],t[1]])||IsEnemyHere([t[0],t[1]])||IsBuddyHere([t[0],t[1]])){
-	 console.log("iÊÇ");
+	 console.log("iæ˜¯");
          if(i!=3){ continue;}
 		 else {needDongHua=false;noEmptyPlace();}	 
       
@@ -111,22 +111,22 @@ function reconverAction(obj) {
 				   aaaa=ii;
 		       }
 	       }
-		   //´¦ÀíºóÊÂ
-		   rolesArray[rolesIndex].items[tp].num -= 1;//µÀ¾ßÊýÁ¿-1
+		   //å¤„ç†åŽäº‹
+		   rolesArray[rolesIndex].items[tp].num -= 1;//é“å…·æ•°é‡-1
 		   if (rolesArray[rolesIndex].items[tp].num == 0) {
-				//console.log("É¾³ýµÀ¾ßµÄÈËÎïÏÂ±êb"+rolesIndex);
-			  rolesArray[rolesIndex].items.splice(tp, 1);//ÌÞ³ýÕâ¸öµÀ¾ß
+				//console.log("åˆ é™¤é“å…·çš„äººç‰©ä¸‹æ ‡b"+rolesIndex);
+			  rolesArray[rolesIndex].items.splice(tp, 1);//å‰”é™¤è¿™ä¸ªé“å…·
 		   }
-		   deadArray.splice(tpp-1, 1);//ËÀÍöÊý×éÉ¾³ýÄÇ¸ö¸´»îµÄ¶ÔÏó
-		 //  console.log("deadArray³¤¶È"+deadArray.length);
+		   deadArray.splice(tpp-1, 1);//æ­»äº¡æ•°ç»„åˆ é™¤é‚£ä¸ªå¤æ´»çš„å¯¹è±¡
+		 //  console.log("deadArrayé•¿åº¦"+deadArray.length);
 		   //drawAll();
 		   break;
 	  }//else
 	  
 	}//for
 
-//	console.log("aaaaÊÇ"+aaaa);
-//	console.log("aaaaÊÇ"+rolesArray[aaaa].name);
+//	console.log("aaaaæ˜¯"+aaaa);
+//	console.log("aaaaæ˜¯"+rolesArray[aaaa].name);
 	
 	//var RecoverShow = new pic(rolesArray[aaaa].sx - rpx, rolesArray[aaaa].sy - rpx,rolesArray[aaaa].sx - rpx, rolesArray[aaaa].sy - rpx, 3 * rpx, 3 * rpx, 0, 0, 350, 350, getAlive);
 	if(needDongHua){

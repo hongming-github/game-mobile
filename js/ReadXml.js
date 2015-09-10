@@ -1,18 +1,18 @@
-//×ÜËµÃ÷£ºÀûÓÃAjax¼¼Êõ°Ñmap,role,enemy,Dialog,Item,Skill,Power,SaveÖĞµÄÊı¾İ¶Á³öÀ´²¢ÊµÀı»¯ºó·Åµ½¶ÔÓ¦µÄÊı×éÖĞ
+//æ€»è¯´æ˜ï¼šåˆ©ç”¨AjaxæŠ€æœ¯æŠŠmap,role,enemy,Dialog,Item,Skill,Power,Saveä¸­çš„æ•°æ®è¯»å‡ºæ¥å¹¶å®ä¾‹åŒ–åæ”¾åˆ°å¯¹åº”çš„æ•°ç»„ä¸­
 
 /*
-	µØÍ¼ÄÚÈİ£¬ÈËÎï½ÇÉ«ĞÅÏ¢µÄ¶ÁÈ¡(OK)
-ËµÃ÷£º xmlHttp1===Map.xml=== xmlDoc1£¬
-       xmlHttp2===Role.xml===xmlDoc2£¬
+	åœ°å›¾å†…å®¹ï¼Œäººç‰©è§’è‰²ä¿¡æ¯çš„è¯»å–(OK)
+è¯´æ˜ï¼š xmlHttp1===Map.xml=== xmlDoc1ï¼Œ
+       xmlHttp2===Role.xml===xmlDoc2ï¼Œ
        xmlHttp3===Enemy.xml===xmlDoc3
        
 */
 
 /*
-	µÀ¾ßĞÅÏ¢µÄ¶ÁÈ¡
-ËµÃ÷£ºxmlHttp4===Item.xml===xmlDoc4£¬ 
-	  xmlHttp5===Save.xml===xmlDoc5£¬
-      xmlHttp6===Skill.xml===xmlDoc6£¬
+	é“å…·ä¿¡æ¯çš„è¯»å–
+è¯´æ˜ï¼šxmlHttp4===Item.xml===xmlDoc4ï¼Œ 
+	  xmlHttp5===Save.xml===xmlDoc5ï¼Œ
+      xmlHttp6===Skill.xml===xmlDoc6ï¼Œ
       xmlHttp7===Power.xml===xmlDoc7
 	  xmlHttp8===Spirit.xml===xmlDoc8
 	  xmlHttp9===equip.xml====xmlDoc9
@@ -41,7 +41,7 @@ function createXMLHttpRequest() {
     }
 }
 /*
- ³õÊ¼»¯ÏÂÒ»¹ØµÄÊı¾İ,°üÀ¨ÏÂÒ»¹ØµÄµØÍ¼£¬ÏÂÒ»¹ØµÄµĞÈË¡£
+ åˆå§‹åŒ–ä¸‹ä¸€å…³çš„æ•°æ®,åŒ…æ‹¬ä¸‹ä¸€å…³çš„åœ°å›¾ï¼Œä¸‹ä¸€å…³çš„æ•Œäººã€‚
 */
 function nextRequest(){
     if (window.ActiveXObject) {
@@ -72,8 +72,8 @@ function handleNextStataChange(){
 			var xmlDoc2 = xmlHttp2.responseXML;
 			var xmlDoc3 = xmlHttp3.responseXML;
 			var xmlDoc5 = xmlHttp5.responseXML;
-            //»ñµÃµØÍ¼²¢³õÊ¼»¯Êı¾İ
-			var map = xmlDoc1.getElementById(mapLevel); //Map.xml,mapLevelÔÚÈ«¾Ö±äÁ¿ÖĞ¶¨ÒåÎª1,map»ñÈ¡Map.xmlÖĞid=1µÄÄÇ¸ö½Úµã¡£
+            //è·å¾—åœ°å›¾å¹¶åˆå§‹åŒ–æ•°æ®
+			var map = xmlDoc1.getElementById(mapLevel); //Map.xml,mapLevelåœ¨å…¨å±€å˜é‡ä¸­å®šä¹‰ä¸º1,mapè·å–Map.xmlä¸­id=1çš„é‚£ä¸ªèŠ‚ç‚¹ã€‚
 			bgImage.src = map.getElementsByTagName("path")[0].firstChild.nodeValue; 
 	        mapName=map.getElementsByTagName("mapname")[0].firstChild.nodeValue; 
 			if(mapLevel==2){bg = new picture(0,0,0, 0, 1248, 768, bgImage);mapMovX=0;mapMovY=0;}
@@ -86,23 +86,23 @@ function handleNextStataChange(){
 			else if(mapLevel==9){bg = new picture(0,0,0, 0, 1248, 768, bgImage);mapMovX=0;mapMovY=0;}
 			else if(mapLevel==10){bg = new picture(0,0,0, 0, 1248, 768, bgImage);mapMovX=0;mapMovY=0;}
 			
-			//»ñµÃ¶Ô»°µÄÊı¾İ
-			var dialog = map.getElementsByTagName("dialog"); // dialog»ñÈ¡mapÖĞ dialogÕâ¸ö½Úµã£¬getElementsByTagName·µ»ØµÄÊÇÊı×éµÄ³¤¶È
+			//è·å¾—å¯¹è¯çš„æ•°æ®
+			var dialog = map.getElementsByTagName("dialog"); // dialogè·å–mapä¸­ dialogè¿™ä¸ªèŠ‚ç‚¹ï¼ŒgetElementsByTagNameè¿”å›çš„æ˜¯æ•°ç»„çš„é•¿åº¦
 			for (var x = 0; x < dialog.length; x++) {
 				dialogRoundArray[x] = new Array();
 				dialogRoundArray[x][0] = dialog[x].getElementsByTagName("param")[0].firstChild.nodeValue - 0;
 				dialogRoundArray[x][1] = dialog[x].getElementsByTagName("function")[0].firstChild.nodeValue;
 				dialogRoundArray[x][2] = dialog[x].getElementsByTagName("dialogId")[0].firstChild.nodeValue;
 			}
-			//»ñµÃÊ¤ÀûºÍÊ§°ÜµÄËµÃ÷
-			var vCondition = map.getElementsByTagName("victory"); // vCondition»ñÈ¡mapÖĞ<victory>Õâ¸ö½Úµã
+			//è·å¾—èƒœåˆ©å’Œå¤±è´¥çš„è¯´æ˜
+			var vCondition = map.getElementsByTagName("victory"); // vConditionè·å–mapä¸­<victory>è¿™ä¸ªèŠ‚ç‚¹
 			victoryCondition = vCondition[0].getElementsByTagName("condition")[0].firstChild.nodeValue;
-			var lCondition = map.getElementsByTagName("lost"); // lCondition»ñÈ¡mapÖĞ<lost>Õâ¸ö½Úµã
+			var lCondition = map.getElementsByTagName("lost"); // lConditionè·å–mapä¸­<lost>è¿™ä¸ªèŠ‚ç‚¹
 			lostCondition = lCondition[0].getElementsByTagName("condition")[0].firstChild.nodeValue;
-			//ÊµÀı»¯ÎÒ·½½ÇÉ«
-			var roles = map.getElementsByTagName("role"); //roles »ñÈ¡<role>Õâ¸ö½Úµã
+			//å®ä¾‹åŒ–æˆ‘æ–¹è§’è‰²
+			var roles = map.getElementsByTagName("role"); //roles è·å–<role>è¿™ä¸ªèŠ‚ç‚¹
 			for (var i = 0; i < roles.length; i++) {
-					if(!isRoleIdInrolesArray(roles[i].getElementsByTagName("id")[0].firstChild.nodeValue-0)){//ÅĞ¶ÏÊÇ·ñ¸ÃIDµÄ½ÇÉ«ÔÚ¶ÓÎéÖĞÁË
+					if(!isRoleIdInrolesArray(roles[i].getElementsByTagName("id")[0].firstChild.nodeValue-0)){//åˆ¤æ–­æ˜¯å¦è¯¥IDçš„è§’è‰²åœ¨é˜Ÿä¼ä¸­äº†
 						var roleOBJ=new roleInfo(); 
 					    roleOBJ.id = roles[i].getElementsByTagName("id")[0].firstChild.nodeValue-0;
 						roleOBJ.sx = roles[i].getElementsByTagName("x")[0].firstChild.nodeValue * rpx - 0;
@@ -135,11 +135,11 @@ function handleNextStataChange(){
 						roleOBJ.doubleCRI = role.getElementsByTagName("doubleCRI")[0].firstChild.nodeValue - 0;
 						roleOBJ.tripleCRI = role.getElementsByTagName("tripleCRI")[0].firstChild.nodeValue - 0;
 					
-						var role = xmlDoc5.getElementById(roleOBJ.id); //role»ñµÃÏàÓ¦µÄÔÚSave.xmlÖĞµÄid
-						var roleItem = role.getElementsByTagName("item"); //·µ»ØµÄÊÇsave.xmlÖĞµÄµÀ¾ßµÄÊı×é
-						var roleSkill = role.getElementsByTagName("skill"); //·µ»ØµÄÊÇsave.xmlÖĞµÄ¼¼ÄÜµÄÊı×é
-						var rolePower = role.getElementsByTagName("power"); //·µ»ØµÄÊÇsave.xmlÖĞµÄÅ­¹¥»÷µÄÊı×é
-						var roleSpirit = role.getElementsByTagName("spirit"); //·µ»ØµÄÊÇsave.xmlÖĞµÄÅ­¹¥»÷µÄÊı×é
+						var role = xmlDoc5.getElementById(roleOBJ.id); //roleè·å¾—ç›¸åº”çš„åœ¨Save.xmlä¸­çš„id
+						var roleItem = role.getElementsByTagName("item"); //è¿”å›çš„æ˜¯save.xmlä¸­çš„é“å…·çš„æ•°ç»„
+						var roleSkill = role.getElementsByTagName("skill"); //è¿”å›çš„æ˜¯save.xmlä¸­çš„æŠ€èƒ½çš„æ•°ç»„
+						var rolePower = role.getElementsByTagName("power"); //è¿”å›çš„æ˜¯save.xmlä¸­çš„æ€’æ”»å‡»çš„æ•°ç»„
+						var roleSpirit = role.getElementsByTagName("spirit"); //è¿”å›çš„æ˜¯save.xmlä¸­çš„æ€’æ”»å‡»çš„æ•°ç»„
 		
 						for (var k = 0; k < roleItem.length; k++) {
 							roleOBJ.items[k] = new item();
@@ -189,10 +189,10 @@ function handleNextStataChange(){
 					}
 			
 			}
-			 //ÊµÀı»¯µĞ·½½ÇÉ«
+			 //å®ä¾‹åŒ–æ•Œæ–¹è§’è‰²
 			var enemys = map.getElementsByTagName("enemy");
 			for (var j = 0; j < enemys.length; j++) {
-				enemysArray[j] = new enemyInfo(); //ÔÚclass.jsÖĞÓĞ¶¨Òå
+				enemysArray[j] = new enemyInfo(); //åœ¨class.jsä¸­æœ‰å®šä¹‰
 				enemysArray[j].id = enemys[j].getElementsByTagName("id")[0].firstChild.nodeValue-0;
 				enemysArray[j].sx = enemys[j].getElementsByTagName("x")[0].firstChild.nodeValue * rpx - 0;
 				enemysArray[j].sy = enemys[j].getElementsByTagName("y")[0].firstChild.nodeValue * rpx - 0;
@@ -224,10 +224,10 @@ function handleNextStataChange(){
 				enemysArray[j].tripleCRI = enemy.getElementsByTagName("tripleCRI")[0].firstChild.nodeValue - 0;
 				enemysArray[j].type = enemy.getElementsByTagName("type")[0].firstChild.nodeValue - 0;
 			}
-			 //³õÊ¼»¯BOSSµÄ¼¼ÄÜ
+			 //åˆå§‹åŒ–BOSSçš„æŠ€èƒ½
 			 for(var j = 0; j < enemysArray.length; j++){
 				   if(enemysArray[j].type==1){
-					   //³õÊ¼»¯BOSSµÄÃØ¼¼(skillsÊÇÒ»¸öÊı×é£¬ÀïÃæ·ÅµÄÊÇ±àºÅ)xmlDoc3
+					   //åˆå§‹åŒ–BOSSçš„ç§˜æŠ€(skillsæ˜¯ä¸€ä¸ªæ•°ç»„ï¼Œé‡Œé¢æ”¾çš„æ˜¯ç¼–å·)xmlDoc3
 			    	   //===================
 			          // for (var x = 0; x < dialog.length; x++) {
 			          //     dialogRoundArray[x] = new Array();
@@ -258,13 +258,13 @@ function handleNextStataChange(){
 	                   //alert("1."+enemysArray[j].name+"  "+enemysArray[j].skills[l]);					
 					   	}
 	                   }
-					  //³õÊ¼»¯BOSSµÄÅ­¼¼(powersÊÇÒ»¸öÊı×é£¬ÀïÃæ·ÅµÄÊÇ±àºÅ)
+					  //åˆå§‹åŒ–BOSSçš„æ€’æŠ€(powersæ˜¯ä¸€ä¸ªæ•°ç»„ï¼Œé‡Œé¢æ”¾çš„æ˜¯ç¼–å·)
 					  //var enemyPower=xmlDoc3.getElementsByTagName("power"); 
 					  //enemysArray[j].powers = new Array();
 					  //for (var m = 0; m < enemyPower.length; m++){
 						//enemysArray[j].powers[m] = enemyPower[m].getElementsByTagName("powerId")[0].firstChild.nodeValue;
 					 // }
-	                   var enemyPower1=enemysID2.getElementsByTagName("power");//½Úµã 
+	                   var enemyPower1=enemysID2.getElementsByTagName("power");//èŠ‚ç‚¹ 
 	                   //alert("2."+enemysArray[j].name+"  "+enemySkill1);
 	                if(enemyPower1.length > 0)
 	               	{
@@ -289,8 +289,8 @@ function handleNextStataChange(){
 	  }
    }
 }
-//onloadµÄÊ±ºòµ÷ÓÃ
-function startRequest() { //ÓÉonloadµ÷ÓÃ                                            
+//onloadçš„æ—¶å€™è°ƒç”¨
+function startRequest() { //ç”±onloadè°ƒç”¨                                            
     createXMLHttpRequest();
     xmlHttp1.onreadystatechange = handleStataChange;
     xmlHttp2.onreadystatechange = handleStataChange;
@@ -302,7 +302,7 @@ function startRequest() { //ÓÉonloadµ÷ÓÃ
 	xmlHttp8.onreadystatechange = handleStataChange;
 	xmlHttp9.onreadystatechange = handleStataChange;
 
-    xmlHttp1.open("GET", "xml/Map.xml", true); //Ïò·şÎñÆ÷·¢ËÍHTTPÇëÇó,
+    xmlHttp1.open("GET", "xml/Map.xml", true); //å‘æœåŠ¡å™¨å‘é€HTTPè¯·æ±‚,
     xmlHttp2.open("GET", "xml/Role.xml", true);
     xmlHttp3.open("GET", "xml/Enemy.xml", true);
 	xmlHttp4.open("GET", "xml/Item.xml", true);
@@ -325,9 +325,9 @@ function startRequest() { //ÓÉonloadµ÷ÓÃ
 
 }
 function handleStataChange() {
-  if (xmlHttp1.readyState == 4 && xmlHttp2.readyState == 4 && xmlHttp3.readyState == 4&&xmlHttp4.readyState == 4 && xmlHttp5.readyState == 4 && xmlHttp6.readyState == 4 && xmlHttp7.readyState == 4&& xmlHttp8.readyState == 4&& xmlHttp9.readyState == 4){ //4±íÊ¾ÇëÇóÍê³ÉÁË
+  if (xmlHttp1.readyState == 4 && xmlHttp2.readyState == 4 && xmlHttp3.readyState == 4&&xmlHttp4.readyState == 4 && xmlHttp5.readyState == 4 && xmlHttp6.readyState == 4 && xmlHttp7.readyState == 4&& xmlHttp8.readyState == 4&& xmlHttp9.readyState == 4){ //4è¡¨ç¤ºè¯·æ±‚å®Œæˆäº†
      if (xmlHttp1.status == 200 && xmlHttp2.status == 200 && xmlHttp3.status == 200 && xmlHttp4.status == 200 && xmlHttp5.status == 200 && xmlHttp6.status == 200 && xmlHttp7.status == 200&& xmlHttp8.status == 200&& xmlHttp9.status == 200){
-			var xmlDoc1 = xmlHttp1.responseXML; //responseXMLÊôĞÔ½«ÏìÓ¦Ìá¹©ÎªXML¶ÔÏó
+			var xmlDoc1 = xmlHttp1.responseXML; //responseXMLå±æ€§å°†å“åº”æä¾›ä¸ºXMLå¯¹è±¡
 			var xmlDoc2 = xmlHttp2.responseXML;
 			var xmlDoc3 = xmlHttp3.responseXML;
 			var xmlDoc4 = xmlHttp4.responseXML; //Item.xml
@@ -336,29 +336,29 @@ function handleStataChange() {
 			var xmlDoc7 = xmlHttp7.responseXML; //Power.xml
 			var xmlDoc8 = xmlHttp8.responseXML; //spirit.xml
 			var xmlDoc9 = xmlHttp9.responseXML; //equip.xml
-        //»ñµÃµØÍ¼²¢³õÊ¼»¯Êı¾İ
-        var map = xmlDoc1.getElementById(mapLevel);//Map.xml,mapLevelÔÚÈ«¾Ö±äÁ¿ÖĞ¶¨ÒåÎª1,map»ñÈ¡Map.xmlÖĞid=1µÄÄÇ¸ö½Úµã¡£
+        //è·å¾—åœ°å›¾å¹¶åˆå§‹åŒ–æ•°æ®
+        var map = xmlDoc1.getElementById(mapLevel);//Map.xml,mapLevelåœ¨å…¨å±€å˜é‡ä¸­å®šä¹‰ä¸º1,mapè·å–Map.xmlä¸­id=1çš„é‚£ä¸ªèŠ‚ç‚¹ã€‚
 		bgImage.src = map.getElementsByTagName("path")[0].firstChild.nodeValue; 
 		mapName=map.getElementsByTagName("mapname")[0].firstChild.nodeValue; 
-		bg = new picture(0,0,0, 0, 1248, 768, bgImage); //ÊµÀı»¯Ò»¸öµØÍ¼
+		bg = new picture(0,0,0, 0, 1248, 768, bgImage); //å®ä¾‹åŒ–ä¸€ä¸ªåœ°å›¾
 		mapMovX=0;mapMovY=0;
-		//»ñµÃ¶Ô»°µÄÊı¾İ
-        var dialog = map.getElementsByTagName("dialog"); // dialog»ñÈ¡mapÖĞ dialogÕâ¸ö½Úµã£¬getElementsByTagName·µ»ØµÄÊÇÊı×éµÄ³¤¶È
+		//è·å¾—å¯¹è¯çš„æ•°æ®
+        var dialog = map.getElementsByTagName("dialog"); // dialogè·å–mapä¸­ dialogè¿™ä¸ªèŠ‚ç‚¹ï¼ŒgetElementsByTagNameè¿”å›çš„æ˜¯æ•°ç»„çš„é•¿åº¦
         for (var x = 0; x < dialog.length; x++) {
             dialogRoundArray[x] = new Array();
             dialogRoundArray[x][0] = dialog[x].getElementsByTagName("param")[0].firstChild.nodeValue - 0;
             dialogRoundArray[x][1] = dialog[x].getElementsByTagName("function")[0].firstChild.nodeValue;
             dialogRoundArray[x][2] = dialog[x].getElementsByTagName("dialogId")[0].firstChild.nodeValue;
         }
-		//»ñµÃÊ¤ÀûºÍÊ§°ÜµÄËµÃ÷
-        var vCondition = map.getElementsByTagName("victory"); // vCondition»ñÈ¡mapÖĞ<victory>Õâ¸ö½Úµã
+		//è·å¾—èƒœåˆ©å’Œå¤±è´¥çš„è¯´æ˜
+        var vCondition = map.getElementsByTagName("victory"); // vConditionè·å–mapä¸­<victory>è¿™ä¸ªèŠ‚ç‚¹
         victoryCondition = vCondition[0].getElementsByTagName("condition")[0].firstChild.nodeValue;
-        var lCondition = map.getElementsByTagName("lost"); // lCondition»ñÈ¡mapÖĞ<lost>Õâ¸ö½Úµã
+        var lCondition = map.getElementsByTagName("lost"); // lConditionè·å–mapä¸­<lost>è¿™ä¸ªèŠ‚ç‚¹
         lostCondition = lCondition[0].getElementsByTagName("condition")[0].firstChild.nodeValue;
-        //ÊµÀı»¯ÎÒ·½½ÇÉ«
-        var roles = map.getElementsByTagName("role"); //roles »ñÈ¡<role>Õâ¸ö½Úµã
-        for (var i = 0; i < roles.length; i++) { //³õÊ¼»¯¸÷¸ö½ÇÉ«µÄĞÅÏ¢£¬°Ñ¸÷¸ö½ÇÉ«Õâ¸ö¶ÔÏó·ÅÔÚrolesArrayÕâ¸öÊı×éÖĞ
-            rolesArray[i] = new roleInfo(); //ÔÚclass.jsÖĞÓĞ¶¨Òå
+        //å®ä¾‹åŒ–æˆ‘æ–¹è§’è‰²
+        var roles = map.getElementsByTagName("role"); //roles è·å–<role>è¿™ä¸ªèŠ‚ç‚¹
+        for (var i = 0; i < roles.length; i++) { //åˆå§‹åŒ–å„ä¸ªè§’è‰²çš„ä¿¡æ¯ï¼ŒæŠŠå„ä¸ªè§’è‰²è¿™ä¸ªå¯¹è±¡æ”¾åœ¨rolesArrayè¿™ä¸ªæ•°ç»„ä¸­
+            rolesArray[i] = new roleInfo(); //åœ¨class.jsä¸­æœ‰å®šä¹‰
             rolesArray[i].id = roles[i].getElementsByTagName("id")[0].firstChild.nodeValue-0;
             rolesArray[i].sx = roles[i].getElementsByTagName("x")[0].firstChild.nodeValue * rpx - 0;
             rolesArray[i].sy = roles[i].getElementsByTagName("y")[0].firstChild.nodeValue * rpx - 0;
@@ -390,10 +390,10 @@ function handleStataChange() {
             rolesArray[i].doubleCRI = role.getElementsByTagName("doubleCRI")[0].firstChild.nodeValue - 0;
             rolesArray[i].tripleCRI = role.getElementsByTagName("tripleCRI")[0].firstChild.nodeValue - 0;
         }
-        //ÊµÀı»¯µĞ·½½ÇÉ«
+        //å®ä¾‹åŒ–æ•Œæ–¹è§’è‰²
         var enemys = map.getElementsByTagName("enemy");
         for (var j = 0; j < enemys.length; j++) {
-            enemysArray[j] = new enemyInfo(); //ÔÚclass.jsÖĞÓĞ¶¨Òå
+            enemysArray[j] = new enemyInfo(); //åœ¨class.jsä¸­æœ‰å®šä¹‰
             enemysArray[j].id = enemys[j].getElementsByTagName("id")[0].firstChild.nodeValue;
             enemysArray[j].sx = enemys[j].getElementsByTagName("x")[0].firstChild.nodeValue * rpx - 0;
             enemysArray[j].sy = enemys[j].getElementsByTagName("y")[0].firstChild.nodeValue * rpx - 0;
@@ -425,9 +425,9 @@ function handleStataChange() {
             enemysArray[j].tripleCRI = enemy.getElementsByTagName("tripleCRI")[0].firstChild.nodeValue - 0;
 			enemysArray[j].type = enemy.getElementsByTagName("type")[0].firstChild.nodeValue - 0;
         }
-		//³õÊ¼»¯ÉÌµê
+		//åˆå§‹åŒ–å•†åº—
 	    store=new myStore();
-		//³õÊ¼»¯ÉÌµêÖĞµÄµÀ¾ß
+		//åˆå§‹åŒ–å•†åº—ä¸­çš„é“å…·
 		var itemStore=map.getElementsByTagName("item");
 		for(var i=0;i<itemStore.length;i++){
 			var itemCopy=new item();
@@ -435,7 +435,7 @@ function handleStataChange() {
 			itemCopy.num=itemStore[i].getElementsByTagName("itemNum")[0].firstChild.nodeValue - 0;
 			store.items.push(itemCopy);
 		}
-		//³õÊ¼»¯ÉÌµêÖĞµÄ×°±¸
+		//åˆå§‹åŒ–å•†åº—ä¸­çš„è£…å¤‡
 		var equipStore=map.getElementsByTagName("equip");
         for(var i=0;i<equipStore.length;i++){
 			var equipCopy=new equipZB();
@@ -443,10 +443,10 @@ function handleStataChange() {
 			equipCopy.num=equipStore[i].getElementsByTagName("equipNum")[0].firstChild.nodeValue - 0;
 			store.equips.push(equipCopy);
 		}
-		//ÊµÀı»¯×ÜµÄµÀ¾ßÊı×é
+		//å®ä¾‹åŒ–æ€»çš„é“å…·æ•°ç»„
 		var items = xmlDoc4.getElementsByTagName("item");
         for (var i = 0; i < items.length; i++){
-				itemArrays[i] = new item(); //ÔÚclass.jsÖĞÓĞ¶¨Òå
+				itemArrays[i] = new item(); //åœ¨class.jsä¸­æœ‰å®šä¹‰
 				itemArrays[i].id = items[i].getElementsByTagName("itemId")[0].firstChild.nodeValue;
 				itemArrays[i].name = items[i].getElementsByTagName("itemName")[0].firstChild.nodeValue;
 				itemArrays[i].img = items[i].getElementsByTagName("itemImg")[0].firstChild.nodeValue;
@@ -457,10 +457,10 @@ function handleStataChange() {
 				itemArrays[i].other = items[i].getElementsByTagName("itemOther")[0].firstChild.nodeValue;
 				itemArrays[i].effect = items[i].getElementsByTagName("effect")[0].firstChild.nodeValue;
         }
-         //--¼¼ÄÜ¹¥»÷µÄXML¶ÁÈ¡²¢·Åµ½skillArraysÊı×éÖĞ£¬Êı×éÖĞµÄÃ¿Ò»¸öÔªËØ¶¼ÊÇÒ»¸ö¼¼ÄÜ¹¥»÷µÄ¶ÔÏó-------------------------------------------------------------------------------------------------------------------
+         //--æŠ€èƒ½æ”»å‡»çš„XMLè¯»å–å¹¶æ”¾åˆ°skillArraysæ•°ç»„ä¸­ï¼Œæ•°ç»„ä¸­çš„æ¯ä¸€ä¸ªå…ƒç´ éƒ½æ˜¯ä¸€ä¸ªæŠ€èƒ½æ”»å‡»çš„å¯¹è±¡-------------------------------------------------------------------------------------------------------------------
          var skills = xmlDoc6.getElementsByTagName("skill");
          for (var m = 0; m < skills.length; m++) {
-                skillArrays[m] = new skill(); //ÔÚclass.jsÖĞÓĞ¶¨Òå
+                skillArrays[m] = new skill(); //åœ¨class.jsä¸­æœ‰å®šä¹‰
                 skillArrays[m].id = skills[m].getElementsByTagName("skillId")[0].firstChild.nodeValue;
                 skillArrays[m].name = skills[m].getElementsByTagName("skillName")[0].firstChild.nodeValue;
                 skillArrays[m].img = skills[m].getElementsByTagName("skillImg")[0].firstChild.nodeValue;
@@ -472,10 +472,10 @@ function handleStataChange() {
                 skillArrays[m].other = skills[m].getElementsByTagName("skillOther")[0].firstChild.nodeValue;
                 skillArrays[m].effect = skills[m].getElementsByTagName("effect")[0].firstChild.nodeValue;
          }
-         //--Å­¹¥»÷µÄXML¶ÁÈ¡²¢·Åµ½powerArraysÊı×éÖĞ£¬Êı×éÖĞµÄÃ¿Ò»¸öÔªËØ¶¼ÊÇÒ»¸öÅ­¹¥»÷µÄ¶ÔÏó------------------------------------------------------------------------
+         //--æ€’æ”»å‡»çš„XMLè¯»å–å¹¶æ”¾åˆ°powerArraysæ•°ç»„ä¸­ï¼Œæ•°ç»„ä¸­çš„æ¯ä¸€ä¸ªå…ƒç´ éƒ½æ˜¯ä¸€ä¸ªæ€’æ”»å‡»çš„å¯¹è±¡------------------------------------------------------------------------
          var powers = xmlDoc7.getElementsByTagName("power");
          for (var n = 0; n < powers.length; n++) {
-                powerArrays[n] = new power(); //ÔÚclass.jsÖĞÓĞ¶¨Òå
+                powerArrays[n] = new power(); //åœ¨class.jsä¸­æœ‰å®šä¹‰
                 powerArrays[n].id = powers[n].getElementsByTagName("powerId")[0].firstChild.nodeValue;
                 powerArrays[n].name = powers[n].getElementsByTagName("powerName")[0].firstChild.nodeValue;
                 powerArrays[n].img = powers[n].getElementsByTagName("powerImg")[0].firstChild.nodeValue;
@@ -487,10 +487,10 @@ function handleStataChange() {
                 powerArrays[n].other = powers[n].getElementsByTagName("powerOther")[0].firstChild.nodeValue;
                 powerArrays[n].effect = powers[n].getElementsByTagName("effect")[0].firstChild.nodeValue;
 		 }
-		 //--¾«ÉñÁ¦µÄXML¶ÁÈ¡²¢·Åµ½spiritArraysÊı×éÖĞ£¬Êı×éÖĞµÄÃ¿Ò»¸öÔªËØ¶¼ÊÇÒ»¸ö¾«ÉñÁ¦µÄ¶ÔÏó----------------------
+		 //--ç²¾ç¥åŠ›çš„XMLè¯»å–å¹¶æ”¾åˆ°spiritArraysæ•°ç»„ä¸­ï¼Œæ•°ç»„ä¸­çš„æ¯ä¸€ä¸ªå…ƒç´ éƒ½æ˜¯ä¸€ä¸ªç²¾ç¥åŠ›çš„å¯¹è±¡----------------------
 		 var spirits = xmlDoc8.getElementsByTagName("spirit");
          for (var i = 0; i < spirits.length; i++) {	
-                spiritArrays[i] = new spirit(); //ÔÚclass.jsÖĞÓĞ¶¨Òå
+                spiritArrays[i] = new spirit(); //åœ¨class.jsä¸­æœ‰å®šä¹‰
                 spiritArrays[i].id = spirits[i].getElementsByTagName("spiritId")[0].firstChild.nodeValue;
                 spiritArrays[i].name = spirits[i].getElementsByTagName("spiritName")[0].firstChild.nodeValue;
                 spiritArrays[i].img = spirits[i].getElementsByTagName("spiritImg")[0].firstChild.nodeValue;
@@ -501,7 +501,7 @@ function handleStataChange() {
                 spiritArrays[i].other = spirits[i].getElementsByTagName("spiritOther")[0].firstChild.nodeValue;
                 spiritArrays[i].effect = spirits[i].getElementsByTagName("effect")[0].firstChild.nodeValue;				
          }
-		 //°ÑËùÓĞµÄ×°±¸³õÊ¼»¯·ÅÈëequipArraysÊı×éÖĞ£¬Êı×éÖĞÃ¿¸öÔªËØ¶¼ÊÇÒ»¸ö×°±¸µÄ¶ÔÏó
+		 //æŠŠæ‰€æœ‰çš„è£…å¤‡åˆå§‹åŒ–æ”¾å…¥equipArraysæ•°ç»„ä¸­ï¼Œæ•°ç»„ä¸­æ¯ä¸ªå…ƒç´ éƒ½æ˜¯ä¸€ä¸ªè£…å¤‡çš„å¯¹è±¡
 		 var equips=xmlDoc9.getElementsByTagName("equip");
 		 for (var i = 0; i < equips.length; i++) {
 		      equipArrays[i]=new equipZB();
@@ -514,13 +514,13 @@ function handleStataChange() {
 			  equipArrays[i].func=equips[i].getElementsByTagName("equipFunc")[0].firstChild.nodeValue;
 			  equipArrays[i].type=equips[i].getElementsByTagName("equipType")[0].firstChild.nodeValue-0;
 		 }
-		 //--°ÑÎÒ·½ÈËÎïµÄitems,skills,powers,spiritÊôĞÔ³õÊ¼»¯-----------------------------------------------------------------------------------------------------
+		 //--æŠŠæˆ‘æ–¹äººç‰©çš„items,skills,powers,spiritå±æ€§åˆå§‹åŒ–-----------------------------------------------------------------------------------------------------
          for (var j = 0; j < rolesArray.length; j++) {
-                var role = xmlDoc5.getElementById(rolesArray[j].id); //role»ñµÃÏàÓ¦µÄÔÚSave.xmlÖĞµÄid
-                var roleItem = role.getElementsByTagName("item"); //·µ»ØµÄÊÇsave.xmlÖĞµÄµÀ¾ßµÄÊı×é
-                var roleSkill = role.getElementsByTagName("skill"); //·µ»ØµÄÊÇsave.xmlÖĞµÄ¼¼ÄÜµÄÊı×é
-                var rolePower = role.getElementsByTagName("power"); //·µ»ØµÄÊÇsave.xmlÖĞµÄÅ­¹¥»÷µÄÊı×é
-				var roleSpirit = role.getElementsByTagName("spirit"); //·µ»ØµÄÊÇsave.xmlÖĞµÄÅ­¹¥»÷µÄÊı×é
+                var role = xmlDoc5.getElementById(rolesArray[j].id); //roleè·å¾—ç›¸åº”çš„åœ¨Save.xmlä¸­çš„id
+                var roleItem = role.getElementsByTagName("item"); //è¿”å›çš„æ˜¯save.xmlä¸­çš„é“å…·çš„æ•°ç»„
+                var roleSkill = role.getElementsByTagName("skill"); //è¿”å›çš„æ˜¯save.xmlä¸­çš„æŠ€èƒ½çš„æ•°ç»„
+                var rolePower = role.getElementsByTagName("power"); //è¿”å›çš„æ˜¯save.xmlä¸­çš„æ€’æ”»å‡»çš„æ•°ç»„
+				var roleSpirit = role.getElementsByTagName("spirit"); //è¿”å›çš„æ˜¯save.xmlä¸­çš„æ€’æ”»å‡»çš„æ•°ç»„
 				
                 for (var k = 0; k < roleItem.length; k++) {
                     rolesArray[j].items[k] = new item();
@@ -539,12 +539,12 @@ function handleStataChange() {
 					rolesArray[j].spirits[n].num = roleSpirit[n].getElementsByTagName("spiritNum")[0].firstChild.nodeValue-0;
                 }
 		 }		 
-		 //³õÊ¼»¯BOSSµÄ¼¼ÄÜ
+		 //åˆå§‹åŒ–BOSSçš„æŠ€èƒ½
          for(var j = 0; j < enemysArray.length; j++){
         	
 		       if(enemysArray[j].type==1){	
 		    	   
-				   //³õÊ¼»¯BOSSµÄÃØ¼¼(skillsÊÇÒ»¸öÊı×é£¬ÀïÃæ·ÅµÄÊÇ±àºÅ)xmlDoc3
+				   //åˆå§‹åŒ–BOSSçš„ç§˜æŠ€(skillsæ˜¯ä¸€ä¸ªæ•°ç»„ï¼Œé‡Œé¢æ”¾çš„æ˜¯ç¼–å·)xmlDoc3
 		    	   var enemyID1=enemysArray[j].id;
 		    	   //alert("0."+enemysArray[j].name+"  "+enemyID1);
 		    	   var enemysID2 = xmlDoc3.getElementById(enemyID1);
@@ -562,10 +562,10 @@ function handleStataChange() {
                     enemysArray[j].skills[l] = enemyrealls[l];              
 				   	}
                    }
-				   //³õÊ¼»¯BOSSµÄÅ­¼¼(powersÊÇÒ»¸öÊı×é£¬ÀïÃæ·ÅµÄÊÇ±àºÅ)
+				   //åˆå§‹åŒ–BOSSçš„æ€’æŠ€(powersæ˜¯ä¸€ä¸ªæ•°ç»„ï¼Œé‡Œé¢æ”¾çš„æ˜¯ç¼–å·)
 				  
 		   
-                   var enemyPower1=enemysID2.getElementsByTagName("power");//½Úµã 
+                   var enemyPower1=enemysID2.getElementsByTagName("power");//èŠ‚ç‚¹ 
                    //alert("2."+enemysArray[j].name+"  "+enemySkill1);
                    if(enemyPower1.length > 0){
 		           for (var x = 0; x < enemyPower1.length; x++) {
@@ -589,7 +589,7 @@ function handleStataChange() {
   }//4
 }
 /*
-¶ÁÈ¡µÈ¼¶ xmlHttp12==LevelShow.xml
+è¯»å–ç­‰çº§ xmlHttp12==LevelShow.xml
 */
 function requestLevel(){
     if (window.ActiveXObject) {
@@ -606,16 +606,16 @@ function readLevel(){
    if (xmlHttp12.readyState == 4) {
         if (xmlHttp12.status == 200) {
             var xmlDoc = xmlHttp12.responseXML;
-			//»ñµÃLevelShow.xmlÖĞrole idµÄ½Úµã
+			//è·å¾—LevelShow.xmlä¸­role idçš„èŠ‚ç‚¹
             var role= xmlDoc.getElementById(rolesArray[roleUpIndex].id); 
-			//»ñµÃ¸ÃroleµÄlevelÊı×é
+			//è·å¾—è¯¥roleçš„levelæ•°ç»„
 	        var roleLevels = role.getElementsByTagName("level");
-			//»ñµÃ¸ÃroleÉı¼¶ºóµÄlevel
+			//è·å¾—è¯¥roleå‡çº§åçš„level
 			var roleUpLevel=roleLevels[rolesArray[roleUpIndex].level-1];
-            //¸üĞÂroleÉı¼¶µ½ÏÂÒ»¼¶µÄ¾­Ñé
-			//console.log("Éı¼¶ÈËÎïµÄµ±Ç°µÈ¼¶"+Number(rolesArray[roleUpIndex].level));
+            //æ›´æ–°roleå‡çº§åˆ°ä¸‹ä¸€çº§çš„ç»éªŒ
+			//console.log("å‡çº§äººç‰©çš„å½“å‰ç­‰çº§"+Number(rolesArray[roleUpIndex].level));
 			rolesArray[roleUpIndex].nextEXP=roleLevels[Number(rolesArray[roleUpIndex].level)].getElementsByTagName("exp")[0].firstChild.nodeValue;
-			//»ñµÃÒªÉı¼¶ºóÒªÔö¼ÓµÄÊôĞÔ
+			//è·å¾—è¦å‡çº§åè¦å¢åŠ çš„å±æ€§
 			//HP
 			var roleAddHp=Number(roleUpLevel.getElementsByTagName("hp")[0].firstChild.nodeValue);
 			rolesArray[roleUpIndex].addHP.push(roleAddHp);
@@ -647,9 +647,9 @@ function readLevel(){
             //info
 		    levelupinfo=roleUpLevel.getElementsByTagName("info")[0].firstChild.nodeValue;
             console.log("levelupinfo "+levelupinfo);
-			//¼ÆÊıÉıÁË¼¸¼¶
+			//è®¡æ•°å‡äº†å‡ çº§
 			++coutLev;
-            //¸üĞÂroleµÄlevel
+            //æ›´æ–°roleçš„level
 			++rolesArray[roleUpIndex].level;
 			if(rolesArray[roleUpIndex].EXP>=rolesArray[roleUpIndex].nextEXP){
 			   requestLevel();
@@ -675,7 +675,7 @@ function readLevel(){
 				},
 				75);
 			}
-			levelUpOk = true;//ÓÃÀ´ÅĞ¶ÏXMLÓĞÃ»ÓĞ¶ÁÈ¡Íê£¬¶ÁÈ¡ÍêÁËÎªTrue
+			levelUpOk = true;//ç”¨æ¥åˆ¤æ–­XMLæœ‰æ²¡æœ‰è¯»å–å®Œï¼Œè¯»å–å®Œäº†ä¸ºTrue
 		}
     }
 }
@@ -683,8 +683,8 @@ function readLevel(){
 
 
 /*
-	¶Ô»°ÊÂ¼şÄÚÈİµÄ¶ÁÈ¡
-ËµÃ÷£ºxmlHttp===Dialog.xml£¬
+	å¯¹è¯äº‹ä»¶å†…å®¹çš„è¯»å–
+è¯´æ˜ï¼šxmlHttp===Dialog.xmlï¼Œ
 */
 function request1() {
     if (window.ActiveXObject) {
@@ -700,7 +700,7 @@ function change1() {
     if (xmlHttp.readyState == 4) {
         if (xmlHttp.status == 200) {
             var xmlDoc = xmlHttp.responseXML;
-            var dialog = xmlDoc.getElementById(dialogContentId); // dialog»ñÈ¡xml/Dialog.xmlÖĞµÄid=1Õâ¸ö½Úµã
+            var dialog = xmlDoc.getElementById(dialogContentId); // dialogè·å–xml/Dialog.xmlä¸­çš„id=1è¿™ä¸ªèŠ‚ç‚¹
             var content = dialog.getElementsByTagName("content");
 			clearArray(dialogString);
             for (var i = 0; i < content.length; i++) {
@@ -708,13 +708,13 @@ function change1() {
                 dialogString[i][0] = content[i].getElementsByTagName("characterName")[0].firstChild.nodeValue;
                 dialogString[i][1] = content[i].getElementsByTagName("sentence")[0].firstChild.nodeValue;
             }
-            finish = true;//ÓÃÀ´ÅĞ¶ÏXMLÓĞÃ»ÓĞ¶ÁÈ¡Íê£¬¶ÁÈ¡ÍêÁËÎªTrue
+            finish = true;//ç”¨æ¥åˆ¤æ–­XMLæœ‰æ²¡æœ‰è¯»å–å®Œï¼Œè¯»å–å®Œäº†ä¸ºTrue
         }
     }
 }
 
 /*
-ÓÎÏ·´æµµ
+æ¸¸æˆå­˜æ¡£
 */
 var xmlHttp10;
 function saveRequest() {
@@ -725,13 +725,13 @@ function saveRequest() {
         xmlHttp10 = new XMLHttpRequest();
     }
 }
-//µã»÷±£´æ°´Å¥µÄÊ±ºò´¥·¢
+//ç‚¹å‡»ä¿å­˜æŒ‰é’®çš„æ—¶å€™è§¦å‘
 function saveData(){
-	 var saveObject = getSaveObject();//µÃµ½ÊµÀı»¯µÄ¶ÔÏó
+	 var saveObject = getSaveObject();//å¾—åˆ°å®ä¾‹åŒ–çš„å¯¹è±¡
 	 //Use the JSON JavaScript library to stringify the Car object
 	 var saveObjectAsJSON = JSON.stringify(saveObject);
 	 console.log("saveobject as JSON:\n " + saveObjectAsJSON);
-	 //·¢ËÍµ½·şÎñÆ÷¶ËµÄÊ±ºò»áÈ¥ÕÒlib/web,xmlÏÂµÄÓ³Éä£¬Í¨¹ıÓ³ÉäÀ´µ÷ÓÃ¶ÔÓ¦µÄservlet
+	 //å‘é€åˆ°æœåŠ¡å™¨ç«¯çš„æ—¶å€™ä¼šå»æ‰¾lib/web,xmlä¸‹çš„æ˜ å°„ï¼Œé€šè¿‡æ˜ å°„æ¥è°ƒç”¨å¯¹åº”çš„servlet
 	 var url = "hello";
 	 saveRequest();
 	 xmlHttp10.open("POST", url, true);
@@ -740,17 +740,17 @@ function saveData(){
 	 xmlHttp10.send(saveObjectAsJSON);
 }
 function data_object(count,mapLevel,mapSx,mapSy,mapMovX,mapMovY){
-	this.count=count;// »ØºÏ
+	this.count=count;// å›åˆ
 	this.mapLevel=mapLevel;
-	this.mapSx=mapSx;//µØÍ¼µÄX×ø±ê
-	this.mapSy=mapSy;//µØÍ¼µÄY×ø±ê
+	this.mapSx=mapSx;//åœ°å›¾çš„Xåæ ‡
+	this.mapSy=mapSy;//åœ°å›¾çš„Yåæ ‡
 	this.mapMovX=mapMovX;
 	this.mapMovY=mapMovY;
 }
 function kaiGuan_object(bigMapoption){
 	this.bigMapoption=bigMapoption;
 }
-//Òª±£´æµÄÀà
+//è¦ä¿å­˜çš„ç±»
 function saveObject(){
 	this.roles=new Array();
 	this.enemys=new Array();
@@ -758,7 +758,7 @@ function saveObject(){
 	this.kaiGuan;
 }
 
-//µÃµ½Òª·¢ËÍµÄÊı¾İ¶ÔÏó
+//å¾—åˆ°è¦å‘é€çš„æ•°æ®å¯¹è±¡
 function getSaveObject(){
 	var saveobject=new saveObject();
 	for(var i=0;i<rolesArray.length;i++){
@@ -772,7 +772,7 @@ function getSaveObject(){
 	return saveobject;
 }
 
-//·¢ËÍÇëÇóµÄ´¦Àíº¯Êı
+//å‘é€è¯·æ±‚çš„å¤„ç†å‡½æ•°
 function handleSaveState() {
   if(xmlHttp10.readyState == 4) {
       if(xmlHttp10.status == 200) {
@@ -781,7 +781,7 @@ function handleSaveState() {
   }
 }
 /*
- ¼ÓÔØÓÎÏ·Êı¾İ
+ åŠ è½½æ¸¸æˆæ•°æ®
 */
 var xmlHttp11;
 function loadDataRequest() {
@@ -856,28 +856,28 @@ function getLoadData(){
 	              rolesArray[i].items = new Array();
 	              rolesArray[i].spirits = new Array();
 	              
-	              //´ÓXMLÖĞ¶ÁÈ¡ĞÂµÄskillID´æÈë	            
+	              //ä»XMLä¸­è¯»å–æ–°çš„skillIDå­˜å…¥	            
 	              var roleskills=roles[i].getElementsByTagName("skill");
 	              for(var n=0;n<roleskills.length;n++){
 	            	  var skillID=roleskills[n].getElementsByTagName("skillId")[0].firstChild.nodeValue- 0;
 	            	  rolesArray[i].skills.push(skillID);
 	              }
 	             
-	              //´ÓXMLÖĞ¶ÁÈ¡ĞÂµÄpowerID´æÈë	           
+	              //ä»XMLä¸­è¯»å–æ–°çš„powerIDå­˜å…¥	           
 	              var rolepowers=roles[i].getElementsByTagName("power");
 	              for(var n=0;n<rolepowers.length;n++){
 	            	  var powerID=rolepowers[n].getElementsByTagName("powerId")[0].firstChild.nodeValue- 0;
 	            	  rolesArray[i].powers.push(powerID);
 	              }    
 	              
-	              //´ÓXMLÖĞ¶ÁÈ¡ĞÂµÄid,num´æÈë
+	              //ä»XMLä¸­è¯»å–æ–°çš„id,numå­˜å…¥
 	              var roleitems=roles[i].getElementsByTagName("item");	           
 	              for (var n = 0; n < roleitems.length; n++) {
 	                  rolesArray[i].items[n] = new item();	                  	           
 	                  rolesArray[i].items[n].id = roleitems[n].getElementsByTagName("itemId")[0].firstChild.nodeValue- 0;	                  
 	                  rolesArray[i].items[n].num =roleitems[n].getElementsByTagName("itemNum")[0].firstChild.nodeValue- 0;	            
 	              }	              
-	              //´ÓXMLÖĞ¶ÁÈ¡ĞÂµÄid,num´æÈë
+	              //ä»XMLä¸­è¯»å–æ–°çš„id,numå­˜å…¥
 	              var rolespirits=roles[i].getElementsByTagName("spirit");
 	              for (var n = 0; n < rolespirits.length; n++) {
 	            	  rolesArray[i].spirits[n] = new spirit();
@@ -926,13 +926,13 @@ function getLoadData(){
 	  			  enemysArray[i].skills = new Array();
 	  			  enemysArray[i].powers = new Array();
 	  			  if(enemysArray[i].type==1){					
-	  				 //´ÓXMLÖĞ¶ÁÈ¡ĞÂµÄskillID´æÈë  						           
+	  				 //ä»XMLä¸­è¯»å–æ–°çš„skillIDå­˜å…¥  						           
 		              var enemyskills=enemys[i].getElementsByTagName("skill");
 		              for(var n=0;n<enemyskills.length;n++){
 		            	  var skillID=enemyskills[n].getElementsByTagName("skillId")[0].firstChild.nodeValue- 0;
 		            	  enemysArray[i].skills.push(skillID);
 		              }
-		              //´ÓXMLÖĞ¶ÁÈ¡ĞÂµÄskillID´æÈë		             
+		              //ä»XMLä¸­è¯»å–æ–°çš„skillIDå­˜å…¥		             
 		              var enemypowers=enemys[i].getElementsByTagName("power");
 		              for(var n=0;n<enemypowers.length;n++){
 		            	  var powerID=enemypowers[n].getElementsByTagName("powerId")[0].firstChild.nodeValue- 0;
@@ -940,7 +940,7 @@ function getLoadData(){
 		              }
 	  			  }
 	    	  }
-	    	  //¼ÓÔØÊı¾İ
+	    	  //åŠ è½½æ•°æ®
 	    	  var data= xmlDoc.getElementsByTagName("data");
 	    	  count=data[0].getElementsByTagName("count")[0].firstChild.nodeValue - 0;
 	    	  mapLevel=data[0].getElementsByTagName("mapLevel")[0].firstChild.nodeValue - 0;
@@ -948,12 +948,12 @@ function getLoadData(){
 	    	  bg.sy=data[0].getElementsByTagName("mapSy")[0].firstChild.nodeValue - 0;
 	    	  mapMovX=data[0].getElementsByTagName("mapMovX")[0].firstChild.nodeValue - 0;
 	    	  mapMovY=data[0].getElementsByTagName("mapMovY")[0].firstChild.nodeValue - 0;
-	    	  //¼ÓÔØ¿ª¹Ø
+	    	  //åŠ è½½å¼€å…³
 	    	  var kaiGuan= xmlDoc.getElementsByTagName("kaiGuan");
 	    	  bigMapoption=kaiGuan[0].getElementsByTagName("bigMapoption")[0].firstChild.nodeValue;
 	    	  if(bigMapoption=="true"){bigMapoption=true;}
 	    	  else{bigMapoption=false;}
-	    	  //´ò¿ªÓÎÏ·½çÃæ
+	    	  //æ‰“å¼€æ¸¸æˆç•Œé¢
 	    	 
 	    	  setTimeout(function() {
 	    		  if(bigMapoption){	

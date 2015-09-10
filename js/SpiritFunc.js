@@ -1,15 +1,15 @@
 /*
-»Ø´º
+å›æ˜¥
 */
 function SRecoverHP(){
 	recoverHP.play();
-    console.log("»Ø´ºµ÷ÓÃ¿ªÊ¼");
+    console.log("å›æ˜¥è°ƒç”¨å¼€å§‹");
     var thp = rolesArray[rolesIndex].HP;
-    rolesArray[rolesIndex].HP +=spiritVar; //Òª¼ÓÑªÈËÎïµÄÔ­À´µÄÑªÁ¿+¾«ÉñÁ¦Òª¼ÓµÄÑªÁ¿
+    rolesArray[rolesIndex].HP +=spiritVar; //è¦åŠ è¡€äººç‰©çš„åŸæ¥çš„è¡€é‡+ç²¾ç¥åŠ›è¦åŠ çš„è¡€é‡
     if (rolesArray[rolesIndex].HP > rolesArray[rolesIndex].fullHP) {
         rolesArray[rolesIndex].HP = rolesArray[rolesIndex].fullHP;
     }
-    thp = rolesArray[rolesIndex].HP - thp;//ÓÃÀ´¼¸ÂÊÊµ¼ÊÉÏ¼ÓÁË¶àÉÙµÄÑªÁ¿
+    thp = rolesArray[rolesIndex].HP - thp;//ç”¨æ¥å‡ ç‡å®é™…ä¸ŠåŠ äº†å¤šå°‘çš„è¡€é‡
     var s = "HP+" + thp;
 //    var t = new text(s, rolesArray[rolesIndex].sx, rolesArray[rolesIndex].sy + 1 / 2 * rpx, "rgb(0,255,0)", "bold 30px FangSong");
     var t = new text(s, rolesArray[rolesIndex].mapX, rolesArray[rolesIndex].mapY + 1 / 2 * rpx, "rgb(0,255,0)", "bold 30px FangSong"); 
@@ -45,14 +45,14 @@ function SRecoverHP(){
 
 }
 /*
-ÎÒ·½»ØºÏ½áÊøÊ±£¬»Ö¸´¸÷ÖÖÓÃ¹ıµÄ¾«ÉñÁ¦
+æˆ‘æ–¹å›åˆç»“æŸæ—¶ï¼Œæ¢å¤å„ç§ç”¨è¿‡çš„ç²¾ç¥åŠ›
 */
 function recoverSpirit(){
-	   //»Ö¸´ĞĞ×ß¿ª¹Ø
+	   //æ¢å¤è¡Œèµ°å¼€å…³
 	   can_walk();
-	   //»Ö¸´ÓÃÁËµÄ¾«ÉñÁ¦
+	   //æ¢å¤ç”¨äº†çš„ç²¾ç¥åŠ›
 	   for (var i = 0; i < rolesArray.length; i++) {
-		                if(nextloading && rolesArray[i].not_sure_use_ShenXing==1){//ÓÃÀ´´¦ÀíÔÚÉñĞĞ×´Ì¬ÏÂ¹ı¹ØµÄÇé¿ö
+		                if(nextloading && rolesArray[i].not_sure_use_ShenXing==1){//ç”¨æ¥å¤„ç†åœ¨ç¥è¡ŒçŠ¶æ€ä¸‹è¿‡å…³çš„æƒ…å†µ
 							rolesArray[i].not_sure_use_ShenXing=0;
 							rolesArray[i].movement-=6;
 							var js=new spirit();
@@ -60,7 +60,7 @@ function recoverSpirit(){
 								 js.num=1;
 						         rolesArray[i].spirits.splice(4,0,js );	
 						    }
-					    //¼Ó»Ø¾øÉ±Õâ¸ö¾«ÉñÁ¦
+					    //åŠ å›ç»æ€è¿™ä¸ªç²¾ç¥åŠ›
 						if(rolesArray[i].spiritJueSha==1){
 							rolesArray[i].spiritJueSha=0;
 							var js=new spirit();
@@ -68,18 +68,18 @@ function recoverSpirit(){
 							js.num=1;
 							rolesArray[i].spirits.splice(1,0,js );
 						}
-						//¼Ó»ØÉñĞĞÕâ¸ö¾«ÉñÁ¦	
-						if(rolesArray[i].has_use_ShenXing==1){//Èç¹ûÉñĞĞµÄ¿ª¹Ø´ò¿ªÁË
+						//åŠ å›ç¥è¡Œè¿™ä¸ªç²¾ç¥åŠ›	
+						if(rolesArray[i].has_use_ShenXing==1){//å¦‚æœç¥è¡Œçš„å¼€å…³æ‰“å¼€äº†
 						    rolesArray[i].not_sure_use_ShenXing=0;
 						    rolesArray[i].has_use_ShenXing=0;
-							 console.log("²å»ØÉñĞĞµ½Êı×é3");
+							 console.log("æ’å›ç¥è¡Œåˆ°æ•°ç»„3");
 						     rolesArray[i].spiritShenXing=0;
 						     var js=new spirit();
 								 js.id=5;
 								 js.num=1;
 						         rolesArray[i].spirits.splice(4,0,js );										
 				        }
-						//¼Ó»ØÉñÉ±Õâ¸ö¾«ÉñÁ¦	
+						//åŠ å›ç¥æ€è¿™ä¸ªç²¾ç¥åŠ›	
 						if(rolesArray[i].spiritSheSha==1){
 							rolesArray[i].spiritSheSha=0;
 							var js=new spirit();
@@ -87,7 +87,7 @@ function recoverSpirit(){
 							js.num=1;
 							rolesArray[i].spirits.splice(2,0,js );								
 				        }
-						//¼Ó»ØÉÁ±ÜÕâ¸ö¾«ÉñÁ¦
+						//åŠ å›é—ªé¿è¿™ä¸ªç²¾ç¥åŠ›
 						if(rolesArray[i].spiritShanBi==1){
 							rolesArray[i].spiritShanBi=0;
 							var js=new spirit();
@@ -99,7 +99,7 @@ function recoverSpirit(){
 }
  
 
-//ÅĞ¶Ï±¾»ØºÏÊÇ·ñ×ß¹ıÁË£¬×ß¹ıÁË£¬»ØºÏ½áÊøÊ±»Ø¸´Îª0ºÍÊ¹ÓÃµÀ¾ß¿ª¹Ø
+//åˆ¤æ–­æœ¬å›åˆæ˜¯å¦èµ°è¿‡äº†ï¼Œèµ°è¿‡äº†ï¼Œå›åˆç»“æŸæ—¶å›å¤ä¸º0å’Œä½¿ç”¨é“å…·å¼€å…³
 function can_walk(){
      for (var i = 0; i < rolesArray.length; i++) {
 	     if(rolesArray[i].walk==1){rolesArray[i].walk=0;}
@@ -107,24 +107,24 @@ function can_walk(){
 		 if(rolesArray[i].has_use_Item==1){rolesArray[i].has_use_Item=0;}
 	 }
 }
-//»Ö¸´ĞĞ×ß¿ª¹Ø
+//æ¢å¤è¡Œèµ°å¼€å…³
 function recover_walk(){
   	if(rolesArray[rolesIndex].walk==1){rolesArray[rolesIndex].has_walk=1;}
 }
-//È·ÊµÊ¹ÓÃÁËÉñĞĞ
+//ç¡®å®ä½¿ç”¨äº†ç¥è¡Œ
 function doUseSX(){
 	if(rolesArray[rolesIndex].has_use_ShenXing==0){
 		if(rolesArray[rolesIndex].not_sure_use_ShenXing==1)
 		{ rolesArray[rolesIndex].has_use_ShenXing=1; 
 		  rolesArray[rolesIndex].movement-=6;
 		  rolesArray[rolesIndex].spiritShenXing=0;
-		  console.log(rolesArray[rolesIndex].name+"È·ÊµÊ¹ÓÃÁËÉñĞĞ£¬ÒÆ¶¯Á¦-6");
+		  console.log(rolesArray[rolesIndex].name+"ç¡®å®ä½¿ç”¨äº†ç¥è¡Œï¼Œç§»åŠ¨åŠ›-6");
 		}
 	}
 	/*
 	if(rolesArray[rolesIndex].spiritShenXing==1){if(nextloading){rolesArray[i].movement-=6;}
 	     rolesArray[rolesIndex].spiritShenXing=0;
-		 console.log(rolesArray[rolesIndex].name+"Ã»ÓĞ·¢¶¯ÉñĞĞ£¬µã»÷´ı»ú");
+		 console.log(rolesArray[rolesIndex].name+"æ²¡æœ‰å‘åŠ¨ç¥è¡Œï¼Œç‚¹å‡»å¾…æœº");
 		 rolesArray[rolesIndex].movement-=6;
 		 var js=new spirit();
 		 js.id=5;
@@ -134,15 +134,15 @@ function doUseSX(){
 	*/
 }
 
-//ÆïÊ¿Ö®½£
+//éª‘å£«ä¹‹å‰‘
 function equipaddATK(obj,equipVar){
   obj.ATK+=equipVar;
 }
-//ÆïÊ¿Ö®¶Ü
+//éª‘å£«ä¹‹ç›¾
 function equipaddDEF(obj,equipVar){
   obj.DEF+=equipVar;
 }
-//Ìì¿ÕÊ¥Ë®
+//å¤©ç©ºåœ£æ°´
 function equipaddHP(obj,equipVar){
   obj.HP+=equipVar;
 }

@@ -1,9 +1,9 @@
 /*
-ËµÃ÷£º¶¨Òå¸÷ÖÖdrawº¯Êı£¬ÕâĞ©drawº¯ÊıÊÇClass.jsÖĞµÄ¸÷¸öÀàµÄ³ÉÔ±·½·¨µÄ¾ßÌåÊµÏÖ(OK)
+è¯´æ˜ï¼šå®šä¹‰å„ç§drawå‡½æ•°ï¼Œè¿™äº›drawå‡½æ•°æ˜¯Class.jsä¸­çš„å„ä¸ªç±»çš„æˆå‘˜æ–¹æ³•çš„å…·ä½“å®ç°(OK)
 */
 
 /*
-	ÔÚ»­²¼ÉÏÏÔÊ¾ÎÄ±¾
+	åœ¨ç”»å¸ƒä¸Šæ˜¾ç¤ºæ–‡æœ¬
 */
 function drawText() {
     ctx.font = this.fonts;
@@ -11,14 +11,14 @@ function drawText() {
     ctx.fillText(this.name, this.sx, this.sy);
 }
 /*
-	ÔÚ»­²¼ÉÏ»­Ò»¸ö·½¸ñ
+	åœ¨ç”»å¸ƒä¸Šç”»ä¸€ä¸ªæ–¹æ ¼
 */
 function drawRect() {
     ctx.fillStyle = this.fillstyle;
     ctx.fillRect(this.sx, this.sy, this.swidth, this.sheight);
 }
 /*
-	ÔÚ»­²¼ÉÏ»­Ò»¸ö·½¿ò
+	åœ¨ç”»å¸ƒä¸Šç”»ä¸€ä¸ªæ–¹æ¡†
 */
 function drawBox() {
     ctx.strokeStyle = this.strokestyle;
@@ -26,7 +26,7 @@ function drawBox() {
     ctx.strokeRect(this.sx, this.sy, this.swidth, this.sheight);
 }
 /*
-	ÔÚ»­²¼ÉÏ»­Ô²½ÇÏßÌõ
+	åœ¨ç”»å¸ƒä¸Šç”»åœ†è§’çº¿æ¡
 */
 function drawRound() {
     ctx.strokeStyle = this.fillstyle;
@@ -38,7 +38,7 @@ function drawRound() {
     ctx.stroke();
 }
 /*
-	ÔÚ»­²¼ÉÏÏÔÊ¾Ò»ÕÅÍ¼Æ¬
+	åœ¨ç”»å¸ƒä¸Šæ˜¾ç¤ºä¸€å¼ å›¾ç‰‡
 */
 function drawAnImage() {
     ctx.drawImage(this.img, this.sx, this.sy, this.swidth, this.sheight);
@@ -47,7 +47,7 @@ function drawPic() {
     ctx.drawImage(this.img, this.dx, this.dy, this.dw, this.dh, this.sx, this.sy, this.sw, this.sh);
 }
 /*
-	ÓÉÈËÎïÀàµ÷ÓÃ£¬ÔÚ»­²¼ÖĞ»æÖÆÈËÎï
+	ç”±äººç‰©ç±»è°ƒç”¨ï¼Œåœ¨ç”»å¸ƒä¸­ç»˜åˆ¶äººç‰©
 */
 function draw() {
     var image = new Image();
@@ -55,9 +55,9 @@ function draw() {
     ctx.drawImage(image, this.dx, this.dy, this.dw, this.dh, this.sx, this.sy, this.sw, this.sh);
 }
 /*
-	ÔÚ»­²¼ÉÏ»æÖÆËùÓĞÊı×éÖĞµÄ¶ÔÏó
+	åœ¨ç”»å¸ƒä¸Šç»˜åˆ¶æ‰€æœ‰æ•°ç»„ä¸­çš„å¯¹è±¡
 */
-//¹Ø¿¨µÄ¶¯»­Ğ§¹û
+//å…³å¡çš„åŠ¨ç”»æ•ˆæœ
 var GK_I=0;
 var a=[0,148,296,444,592,740,909,1097,1267,1430,1595];
 var b=[0,3,4,2,6,2,5,14,4,-2,3];
@@ -87,10 +87,10 @@ var nihao=0;
 var shumei=false;
 function drawAll() {
 
-	//Çå¿Õ»­²¼
+	//æ¸…ç©ºç”»å¸ƒ
      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-	 //»­±³¾°Í¼Æ¬
+	 //ç”»èƒŒæ™¯å›¾ç‰‡
      bg.draw();
 
 	if(mapLevel==1){
@@ -125,7 +125,7 @@ function drawAll() {
 	}
 
 	if(isTouchMove){
-       clearArray(everything3);//Çå³ıÓÉÓÚtouchstart´¥·¢µÄ²Ëµ¥À¸
+       clearArray(everything3);//æ¸…é™¤ç”±äºtouchstartè§¦å‘çš„èœå•æ 
        bg.sx += slideX;
        bg.sy += slideY;
        mapMovX += slideX;
@@ -136,10 +136,10 @@ function drawAll() {
        if(bg.sy >= 0){bg.sy = 0;mapMovY = 0;}
 }
 	
-    changeSxSy(rolesArray);//changeSxSyÓÃÓÚ¸üĞÂÈËÎïµÄ×ø±ê£¬rolesArray·ÅÎÒ·½½ÇÉ«
-    changeSxSy(enemysArray);//changeSxSyÓÃÓÚ¸üĞÂÈËÎïµÄ×ø±ê£¬rolesArray·ÅµĞ·½½ÇÉ«	
+    changeSxSy(rolesArray);//changeSxSyç”¨äºæ›´æ–°äººç‰©çš„åæ ‡ï¼ŒrolesArrayæ”¾æˆ‘æ–¹è§’è‰²
+    changeSxSy(enemysArray);//changeSxSyç”¨äºæ›´æ–°äººç‰©çš„åæ ‡ï¼ŒrolesArrayæ”¾æ•Œæ–¹è§’è‰²	
     changeSxSy(everything1);
-	  drawArr(everything3);//drawArr·½·¨ÓÃÓÚ»­ÄÇĞ©UIÎ»ÖÃ²»ËæµØÍ¼¹ö¶¯±ä»¯µÄUI,¼´Ïà¶ÔÓÚcanvasÊÇ¹Ì¶¨²»±äµÄ,everything3·ÅµÄÊÇ²Ëµ¥£¬²»°üÀ¨ÏµÍ³µÄÄÇ²Ëµ¥
+	  drawArr(everything3);//drawArræ–¹æ³•ç”¨äºç”»é‚£äº›UIä½ç½®ä¸éšåœ°å›¾æ»šåŠ¨å˜åŒ–çš„UI,å³ç›¸å¯¹äºcanvasæ˜¯å›ºå®šä¸å˜çš„,everything3æ”¾çš„æ˜¯èœå•ï¼Œä¸åŒ…æ‹¬ç³»ç»Ÿçš„é‚£èœå•
     changeSxSy(rangeShow);
     drawArr(itemArray);
     drawArr(skillArray);
@@ -160,14 +160,14 @@ function drawAll() {
     if(shumei){window.cancelAnimationFrame(nihao);}
 }
 /*
-	±éÀú¶ÔÏóÊı×é£¬µ÷ÓÃÃ¿¸ö¶ÔÏóµÄdraw·½·¨
+	éå†å¯¹è±¡æ•°ç»„ï¼Œè°ƒç”¨æ¯ä¸ªå¯¹è±¡çš„drawæ–¹æ³•
 */
 function drawArr(arr) {
     for (var i = 0; i < arr.length; i++) arr[i].draw();
 }
 
 /*
-  ¸üĞÂsx,sy
+  æ›´æ–°sx,sy
 */
 function changeSxSy(arr){
     for (var i = 0; i < arr.length; i++) {
@@ -176,17 +176,17 @@ function changeSxSy(arr){
         arr[i].draw();
 	}
 }
-//´óµØÍ¼µÄ»­
+//å¤§åœ°å›¾çš„ç”»
 function drawBigMap(){
 	ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 	drawArr(startShow);
 	drawArr(shadowShow);
-	drawArr(everything1);//×¨ÃÅÓÃÀ´·Å¶¨×¡ºìÉ«µÄ¿ò
-	drawArr(everything2);//·Å¸ú×ÅÊó±êÒÆ¶¯µÄÂÌÉ«µÄ¿ò
-	drawArr(confirmArray);//·Åµ÷ÕûµÀ¾ßÊıÁ¿µÄ±³¾°¿òÒÔ¼°°´Å¥
+	drawArr(everything1);//ä¸“é—¨ç”¨æ¥æ”¾å®šä½çº¢è‰²çš„æ¡†
+	drawArr(everything2);//æ”¾è·Ÿç€é¼ æ ‡ç§»åŠ¨çš„ç»¿è‰²çš„æ¡†
+	drawArr(confirmArray);//æ”¾è°ƒæ•´é“å…·æ•°é‡çš„èƒŒæ™¯æ¡†ä»¥åŠæŒ‰é’®
 	drawArr(tishi);
 }
-//µã»÷·µ»Ø°´Å¥µÄÊ±ºò·¢¶¯
+//ç‚¹å‡»è¿”å›æŒ‰é’®çš„æ—¶å€™å‘åŠ¨
 function clearAll(){
 	ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     clearArray(enemysArray);

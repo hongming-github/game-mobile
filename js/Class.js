@@ -1,40 +1,40 @@
 
 /*
-ËµÃ÷£º¶¨Òå¸÷¸öÀà£¬ÀàµÄ³ÉÔ±Êı¾İºÍ³ÉÔ±·½·¨(OK)
+è¯´æ˜ï¼šå®šä¹‰å„ä¸ªç±»ï¼Œç±»çš„æˆå‘˜æ•°æ®å’Œæˆå‘˜æ–¹æ³•(OK)
 */
 /*
- ÉÌµê
+ å•†åº—
 */
 function myStore(){
  this.items=[];
  this.equips=[];
 }
 /*
-  ²Ö¿âÀà
+  ä»“åº“ç±»
 */
 function cangKu(){
-    this.additems=[];//µÀ¾ßµÄ²Ö¿â
-	this.addpowers=[];//Å­¼¼µÄ²Ö¿â
-	this.addskills=[];//ÃØ¼¼µÄ²Ö¿â
-	this.addequips=[];//×°±¸µÄ²Ö¿â
-	this.tempArr=[];//ÁÙÊ±Êı×é£¬·ÅÖĞ×ªµÄ¶«Î÷£¬Ã»ÓĞÊµ¼ÊÓÃ´¦
+    this.additems=[];//é“å…·çš„ä»“åº“
+	this.addpowers=[];//æ€’æŠ€çš„ä»“åº“
+	this.addskills=[];//ç§˜æŠ€çš„ä»“åº“
+	this.addequips=[];//è£…å¤‡çš„ä»“åº“
+	this.tempArr=[];//ä¸´æ—¶æ•°ç»„ï¼Œæ”¾ä¸­è½¬çš„ä¸œè¥¿ï¼Œæ²¡æœ‰å®é™…ç”¨å¤„
 
 }
 /*
-	·½¿òÀà
+	æ–¹æ¡†ç±»
 */
 function box(mapX,mapY,sx, sy, swidth, sheight, stylestring) {
 	this.mapX=mapX;
 	this.mapY=mapY;
-    this.sx = sx; //xÖá×ø±ê
-    this.sy = sy; //yÖá×ø±ê
-    this.swidth = swidth; //¿í¶È
-    this.sheight = sheight; //¸ß¶È
-    this.strokestyle = stylestring; //ÑÕÉ«
-    this.draw = drawBox; //»æÖÆ·½·¨,ÔÚDraw.jsÖĞ¶¨Òå
+    this.sx = sx; //xè½´åæ ‡
+    this.sy = sy; //yè½´åæ ‡
+    this.swidth = swidth; //å®½åº¦
+    this.sheight = sheight; //é«˜åº¦
+    this.strokestyle = stylestring; //é¢œè‰²
+    this.draw = drawBox; //ç»˜åˆ¶æ–¹æ³•,åœ¨Draw.jsä¸­å®šä¹‰
 }
 /*
-	·½¸ñÀà
+	æ–¹æ ¼ç±»
 */
 function rectangle(mapX,mapY,sx, sy, swidth, sheight, stylestring) {
 	this.mapX=mapX;
@@ -47,7 +47,7 @@ function rectangle(mapX,mapY,sx, sy, swidth, sheight, stylestring) {
     this.draw = drawRect;
 }
 /*
-	Ô²½ÇÏßÌõ
+	åœ†è§’çº¿æ¡
 */
 function round(sx, sy, swidth, sheight, stylestring) {
     this.sx = sx;
@@ -58,7 +58,7 @@ function round(sx, sy, swidth, sheight, stylestring) {
     this.draw = drawRound;
 }
 /*
-	ÎÄ±¾Àà
+	æ–‡æœ¬ç±»
 */
 function text(name, mapX,mapY,sx, sy, stylestring, fontstring) {
     this.name = name;
@@ -67,18 +67,18 @@ function text(name, mapX,mapY,sx, sy, stylestring, fontstring) {
     this.sx = sx;
     this.sy = sy;
     this.fillstyle = stylestring;
-    this.fonts = fontstring; //×ÖÌåÀàĞÍ
+    this.fonts = fontstring; //å­—ä½“ç±»å‹
     this.draw = drawText;
 }
 /*
-	Í¼Æ¬Àà
+	å›¾ç‰‡ç±»
 */
 function picture(mapX,mapY,sx, sy, swidth, sheight, imga) {
 	this.mapX=mapX;
 	this.mapY=mapY;
     this.sx = sx;
     this.sy = sy;
-    this.img = imga; //Í¼Æ¬Ô´
+    this.img = imga; //å›¾ç‰‡æº
     this.swidth = swidth;
     this.sheight = sheight;
     this.draw = drawAnImage;
@@ -87,21 +87,21 @@ function picture(mapX,mapY,sx, sy, swidth, sheight, imga) {
 function pic(mapX,mapY,sx, sy, sw, sh, dx, dy, dw, dh, img) {
     this.mapX=mapX;
 	this.mapY=mapY;
-    this.sx = sx;//Í¼Æ¬Òª»æÖÆµÄ¿ªÊ¼Î»ÖÃ×ø±ê
-    this.sy = sy;//Í¼Æ¬Òª»æÖÆµÄ¿ªÊ¼Î»ÖÃ×ø±ê
-    this.sw = sw;//Í¼Æ¬Òª»æÖÆµÄ¿í¶È
-    this.sh = sh;//Í¼Æ¬Òª»æÖÆµÄ¸ß¶È
-    this.dx = dx;//ÔÚÔ­Í¼Æ¬ÖĞ½ØÈ¡µÄx×ø±ê
-    this.dy = dy;//ÔÚÔ­Í¼Æ¬ÖĞ½ØÈ¡µÄy×ø±ê
-    this.dw = dw;//ÔÚÔ­Í¼Æ¬ÖĞ½ØÈ¡¿í¶È
-    this.dh = dh;//ÔÚÔ­Í¼Æ¬ÖĞ½ØÈ¡¸ß¶È
+    this.sx = sx;//å›¾ç‰‡è¦ç»˜åˆ¶çš„å¼€å§‹ä½ç½®åæ ‡
+    this.sy = sy;//å›¾ç‰‡è¦ç»˜åˆ¶çš„å¼€å§‹ä½ç½®åæ ‡
+    this.sw = sw;//å›¾ç‰‡è¦ç»˜åˆ¶çš„å®½åº¦
+    this.sh = sh;//å›¾ç‰‡è¦ç»˜åˆ¶çš„é«˜åº¦
+    this.dx = dx;//åœ¨åŸå›¾ç‰‡ä¸­æˆªå–çš„xåæ ‡
+    this.dy = dy;//åœ¨åŸå›¾ç‰‡ä¸­æˆªå–çš„yåæ ‡
+    this.dw = dw;//åœ¨åŸå›¾ç‰‡ä¸­æˆªå–å®½åº¦
+    this.dh = dh;//åœ¨åŸå›¾ç‰‡ä¸­æˆªå–é«˜åº¦
     this.img = img;
     this.draw = drawPic;
 }
 
 
 /*
-	½ÇÉ«Àà
+	è§’è‰²ç±»
 */
 function roleInfo(id, sx, sy, name, halfBody, img, HP, MP, pow, equipSkill, furySkill, SP, movement, speed, ATK, range, DEF, EXP, level, errorRate, doubleCRI, tripleCRI) {
     this.id = id;
@@ -109,12 +109,12 @@ function roleInfo(id, sx, sy, name, halfBody, img, HP, MP, pow, equipSkill, fury
     this.sy = sy;
 	this.mapX;
 	this.mapY;
-    this.dx = 0; //½ØÈ¡Í¼Æ¬µÄ×ø±êx
-    this.dy = 0; //½ØÈ¡Í¼Æ¬µÄ×ø±êy
+    this.dx = 0; //æˆªå–å›¾ç‰‡çš„åæ ‡x
+    this.dy = 0; //æˆªå–å›¾ç‰‡çš„åæ ‡y
     this.sw = rpx;
     this.sh = rpx;
-    this.dw = 48; //½ØÈ¡Í¼Æ¬µÄ¿í¶È
-    this.dh = 48; //½ØÈ¡Í¼Æ¬µÄ¸ß¶È
+    this.dw = 48; //æˆªå–å›¾ç‰‡çš„å®½åº¦
+    this.dh = 48; //æˆªå–å›¾ç‰‡çš„é«˜åº¦
     this.draw = draw;
     this.name = name;
     this.halfBody = halfBody;
@@ -147,15 +147,15 @@ function roleInfo(id, sx, sy, name, halfBody, img, HP, MP, pow, equipSkill, fury
     this.errorRate = errorRate;
     this.doubleCRI = doubleCRI;
     this.tripleCRI = tripleCRI;
-	this.spiritJueSha=0;//¾øÉ±µÄ¿ª¹Ø
-	this.spiritSheSha=0;//ÉñÉ±µÄ¿ª¹Ø
-	this.spiritShanBi=0;//ÉÁ±ÜµÄ¿ª¹Ø
-	this.spiritShenXing=0;//ÉñĞĞµÄ¿ª¹Ø,1±íÊ¾´ò¿ªÁË£¬0±íÊ¾Ã»´ò¿ª£¬ÖÁÓÚ×îºóÓĞÃ»ÓĞÓÃ¿´has_used_ShenXingÕâ¸ö±äÁ¿£¬ÈËÎï×´Ì¬À¸ÀïµÄÏÔÊ¾ÊÇ¿´Õâ¸ö±äÁ¿µÄ
-	this.not_sure_use_ShenXing=0;//²»È·¶¨ÊÇ·ñÓÃÁËÉñĞĞ,0±íÊ¾±¾»ØºÏ»¹Ã»Ê¹ÓÃÉñĞĞ£¬1±íÊ¾±¾»ØºÏÒÑ¾­Ê¹ÓÃ¹ıÉñĞĞ£¬µ«»¹ÓĞÈ¡ÏûÒÆ¶¯µÄ¿ÉÄÜ
-	this.has_use_ShenXing=0;//±¾»ØºÏÈ·ÊµÊ¹ÓÃÁËÉñĞĞ£¬0±íÊ¾Ã»ÓĞ£¬1±íÊ¾ÓĞ
-	this.walk=0;//0±íÊ¾±¾»ØºÏ»¹Ã»×ß¹ı£¬1±íÊ¾ÒÑ¾­×ß¹ı
-	this.has_walk=0;//±íÊ¾±¾»ØºÏÈ·Êµ×ß¹ıÁË£¬0±íÊ¾±¾»ØºÏÈ·Êµ»¹Ã»×ß¹ı£¬1±íÊ¾±¾»ØºÏÈ·Êµ×ß¹ıÁË
-	this.has_use_Item = 0;//ÅĞ¶Ï½ÇÉ«±¾»ØºÏÊÇ·ñÓÃ¹ıµÀ¾ß£¬0±íÊ¾±¾»ØºÏ»¹Ã»ÓĞÓÃ¹ı£¬1±íÊ¾±¾»ØºÏÈ·ÊµÓÃ¹ıÁË
+	this.spiritJueSha=0;//ç»æ€çš„å¼€å…³
+	this.spiritSheSha=0;//ç¥æ€çš„å¼€å…³
+	this.spiritShanBi=0;//é—ªé¿çš„å¼€å…³
+	this.spiritShenXing=0;//ç¥è¡Œçš„å¼€å…³,1è¡¨ç¤ºæ‰“å¼€äº†ï¼Œ0è¡¨ç¤ºæ²¡æ‰“å¼€ï¼Œè‡³äºæœ€åæœ‰æ²¡æœ‰ç”¨çœ‹has_used_ShenXingè¿™ä¸ªå˜é‡ï¼Œäººç‰©çŠ¶æ€æ é‡Œçš„æ˜¾ç¤ºæ˜¯çœ‹è¿™ä¸ªå˜é‡çš„
+	this.not_sure_use_ShenXing=0;//ä¸ç¡®å®šæ˜¯å¦ç”¨äº†ç¥è¡Œ,0è¡¨ç¤ºæœ¬å›åˆè¿˜æ²¡ä½¿ç”¨ç¥è¡Œï¼Œ1è¡¨ç¤ºæœ¬å›åˆå·²ç»ä½¿ç”¨è¿‡ç¥è¡Œï¼Œä½†è¿˜æœ‰å–æ¶ˆç§»åŠ¨çš„å¯èƒ½
+	this.has_use_ShenXing=0;//æœ¬å›åˆç¡®å®ä½¿ç”¨äº†ç¥è¡Œï¼Œ0è¡¨ç¤ºæ²¡æœ‰ï¼Œ1è¡¨ç¤ºæœ‰
+	this.walk=0;//0è¡¨ç¤ºæœ¬å›åˆè¿˜æ²¡èµ°è¿‡ï¼Œ1è¡¨ç¤ºå·²ç»èµ°è¿‡
+	this.has_walk=0;//è¡¨ç¤ºæœ¬å›åˆç¡®å®èµ°è¿‡äº†ï¼Œ0è¡¨ç¤ºæœ¬å›åˆç¡®å®è¿˜æ²¡èµ°è¿‡ï¼Œ1è¡¨ç¤ºæœ¬å›åˆç¡®å®èµ°è¿‡äº†
+	this.has_use_Item = 0;//åˆ¤æ–­è§’è‰²æœ¬å›åˆæ˜¯å¦ç”¨è¿‡é“å…·ï¼Œ0è¡¨ç¤ºæœ¬å›åˆè¿˜æ²¡æœ‰ç”¨è¿‡ï¼Œ1è¡¨ç¤ºæœ¬å›åˆç¡®å®ç”¨è¿‡äº†
 	this.addHP=[];
 	this.addSP=[];
 	this.addMP=[];
@@ -166,7 +166,7 @@ function roleInfo(id, sx, sy, name, halfBody, img, HP, MP, pow, equipSkill, fury
 	
 }
 /*
-	µĞÈËÀà
+	æ•Œäººç±»
 */
 function enemyInfo(id, sx, sy, name, halfBody, img, HP, MP, pow, equipSkill,level, furySkill, SP, movement, speed, ATK, range, DEF, EXP, money, errorRate, doubleCRI, tripleCRI,type) {
     this.id = id;
@@ -207,7 +207,7 @@ function enemyInfo(id, sx, sy, name, halfBody, img, HP, MP, pow, equipSkill,leve
     this.errorRate = errorRate;
     this.doubleCRI = doubleCRI;
     this.tripleCRI = tripleCRI;
-	this.type=type;//0±íÊ¾Ğ¡±ø£¬1±íÊ¾BOSS
+	this.type=type;//0è¡¨ç¤ºå°å…µï¼Œ1è¡¨ç¤ºBOSS
 }
 function item(id, name, img, gold, discripe, func, itemVar, other, effect) {
     this.id = id;
@@ -250,26 +250,26 @@ function power(id, name, img, p, discripe, success, func, powerVar, other, effec
 	this.num = 1;
 }
 function spirit(id, name, img, gold, discripe, func, spiritVar, other, effect) {
-    this.id = id;//¾«ÉñÁ¦µÄ±àºÅ
-	this.num;//ÎªÁËÃ¿»ØºÏÖ»ÄÜÊ¹ÓÃÒ»´Î¾øÉ±£¬ÉñÉ±
-    this.name = name;//¾«ÉñÁ¦µÄÃû³Æ
-    this.img = img;//¾«ÉñÁ¦µÄÍ¼Æ¬
-    this.gold = gold;//ĞèÒªÏûºÄ¶àÉÙSP
-    this.discripe = discripe;//¸Ã¾«ÉñÁ¦µÄÃèÊö
-    this.func = func;  //·¢¶¯¸Ã¾«ÉñÁ¦ĞèÒªµ÷ÓÃÕâ¸öº¯Êı
-    this.spiritVar = spiritVar;//Ôì³ÉµÄºó¹û²ÎÊı£¬±ÈÈç»Ö¸´HP¶àÉÙ
+    this.id = id;//ç²¾ç¥åŠ›çš„ç¼–å·
+	this.num;//ä¸ºäº†æ¯å›åˆåªèƒ½ä½¿ç”¨ä¸€æ¬¡ç»æ€ï¼Œç¥æ€
+    this.name = name;//ç²¾ç¥åŠ›çš„åç§°
+    this.img = img;//ç²¾ç¥åŠ›çš„å›¾ç‰‡
+    this.gold = gold;//éœ€è¦æ¶ˆè€—å¤šå°‘SP
+    this.discripe = discripe;//è¯¥ç²¾ç¥åŠ›çš„æè¿°
+    this.func = func;  //å‘åŠ¨è¯¥ç²¾ç¥åŠ›éœ€è¦è°ƒç”¨è¿™ä¸ªå‡½æ•°
+    this.spiritVar = spiritVar;//é€ æˆçš„åæœå‚æ•°ï¼Œæ¯”å¦‚æ¢å¤HPå¤šå°‘
     this.other = other;
-    this.effect = effect;//ÓĞĞ©¾«ÉñÁ¦·¢¶¯»á²úÉúĞ§¹û
+    this.effect = effect;//æœ‰äº›ç²¾ç¥åŠ›å‘åŠ¨ä¼šäº§ç”Ÿæ•ˆæœ
 }
-//×°±¸Àà
+//è£…å¤‡ç±»
 function equipZB(id,name,img,gold,discripe,equipVar,func,type){
-    this.id = id;//×°±¸µÄid
-	this.num;//×°±¸µÄÊıÁ¿
-	this.name = name;//×°±¸µÄÃû³Æ
-	this.img=img;//×°±¸µÄÍ¼Æ¬
-	this.gold=gold;//ĞèÒª»¨¶àÉÙÇ®
-	this.discripe=discripe;//×°±¸µÄÃèÊö
-	this.equipVar=equipVar;//Ôì³É¶àÉÙµÄºó¹û
-	this.func=func;//ÔÚ°ÑÕâ¸ö×°±¸²åÈëµ½ÈËÎïµÄ·Å×°±¸µÄÊı×éÖĞµÄÊ±ºò´¥·¢Õâ¸öº¯Êı
-    this.type=type;//×°±¸µÄÀàĞÍ£¬0±íÊ¾ÊÇÊÖ³ÖµÄ£¬1±íÊ¾ÊÇÊÎÆ·£¬Ò»¸öÈË¿ÉÒÔ×°3¼ş×°±¸£¬2¼şÊÖ³ÖµÄ£¬1¼şÊÎÆ·µÄ
+    this.id = id;//è£…å¤‡çš„id
+	this.num;//è£…å¤‡çš„æ•°é‡
+	this.name = name;//è£…å¤‡çš„åç§°
+	this.img=img;//è£…å¤‡çš„å›¾ç‰‡
+	this.gold=gold;//éœ€è¦èŠ±å¤šå°‘é’±
+	this.discripe=discripe;//è£…å¤‡çš„æè¿°
+	this.equipVar=equipVar;//é€ æˆå¤šå°‘çš„åæœ
+	this.func=func;//åœ¨æŠŠè¿™ä¸ªè£…å¤‡æ’å…¥åˆ°äººç‰©çš„æ”¾è£…å¤‡çš„æ•°ç»„ä¸­çš„æ—¶å€™è§¦å‘è¿™ä¸ªå‡½æ•°
+    this.type=type;//è£…å¤‡çš„ç±»å‹ï¼Œ0è¡¨ç¤ºæ˜¯æ‰‹æŒçš„ï¼Œ1è¡¨ç¤ºæ˜¯é¥°å“ï¼Œä¸€ä¸ªäººå¯ä»¥è£…3ä»¶è£…å¤‡ï¼Œ2ä»¶æ‰‹æŒçš„ï¼Œ1ä»¶é¥°å“çš„
 }

@@ -1,11 +1,11 @@
 /*
-	µÐÈËÐÐ¶¯
+	æ•Œäººè¡ŒåŠ¨
 */
 function enemysAction() {
 	console.log("ai        "+ai);
 	console.log("end        "+end);
 	console.log("enemyIndex        "+enemyIndex+"   "+enemysArray.length);
-	if (ai && end && enemyIndex <enemysArray.length) {//µÐÈËÊÇ·ñ¿ªÊ¼ÐÐ¶¯£¬»ØºÏÊÇ·ñ½áÊø£¬µÐÈËµÄÏÂ±êÊÇ·ñÐ¡ÓÚµÐÈËÊý×éµÄ³¤¶È
+	if (ai && end && enemyIndex <enemysArray.length) {//æ•Œäººæ˜¯å¦å¼€å§‹è¡ŒåŠ¨ï¼Œå›žåˆæ˜¯å¦ç»“æŸï¼Œæ•Œäººçš„ä¸‹æ ‡æ˜¯å¦å°äºŽæ•Œäººæ•°ç»„çš„é•¿åº¦
 		//console.log(enemysArray[enemyIndex].MP)
 		
 		if (enemysArray[enemyIndex].HP <= 0) {			

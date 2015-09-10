@@ -1,5 +1,5 @@
 /*
-	½ÇÉ«ÒÆ¶¯(²»OK)
+	è§’è‰²ç§»åŠ¨(ä¸OK)
 */
 
 function change(arr) {
@@ -38,7 +38,7 @@ function change(arr) {
 					yg = arr[a][1] * rpx;
 					
 				}else{
-					//foot.pause();//×ßÂ·ÉùÒôµÄ¹Ø±Õ
+					//foot.pause();//èµ°è·¯å£°éŸ³çš„å…³é—­
 					find=[];
 					rolesArray[rolesIndex].dx=0;
 					rolesArray[rolesIndex].dy=0;
@@ -104,57 +104,57 @@ function enemyChange(arr) {
 					enemysArray[enemyIndex].dy = 240;
 					clearInterval(tid);
 					countInterval = 0;
-					//ÔÚµĞÈËµÄ¹¥»÷·¶Î§ÄÚ
+					//åœ¨æ•Œäººçš„æ”»å‡»èŒƒå›´å†…
 					if (IsOnEnemyRange(enemysArray[enemyIndex])){
-						    //µĞÈËÆÕÍ¨¹¥»÷ÎÒ·½
-							console.log("µĞÈËÆÕÍ¨¹¥»÷ÎÒ·½");
+						    //æ•Œäººæ™®é€šæ”»å‡»æˆ‘æ–¹
+							console.log("æ•Œäººæ™®é€šæ”»å‡»æˆ‘æ–¹");
 							normalAttack(enemysArray[enemyIndex], roleObj);
-							//¶ÔµĞÈËÆÕÍ¨¹¥»÷ÎÒ·½ÕìÌı
+							//å¯¹æ•Œäººæ™®é€šæ”»å‡»æˆ‘æ–¹ä¾¦å¬
 							var tm1 = setInterval(function() {
 								if (finish) {
 									clearInterval(tm1);
 									finish = false;
 									enemysArray[enemyIndex].dy = 240;
-									//Èç¹ûÎÒ·½ÔÚµĞÈËµÄÆÕÍ¨¹¥»÷ÏÂ»¹»î×Å
-									console.log("ÎÒ·½ÔÚµĞÈËµÄÆÕÍ¨¹¥»÷ÏÂ»¹»î×Å   "+roleObj.name);
+									//å¦‚æœæˆ‘æ–¹åœ¨æ•Œäººçš„æ™®é€šæ”»å‡»ä¸‹è¿˜æ´»ç€
+									console.log("æˆ‘æ–¹åœ¨æ•Œäººçš„æ™®é€šæ”»å‡»ä¸‹è¿˜æ´»ç€   "+roleObj.name);
 									if (roleObj.HP > 0) {
-										//ÎÒ·½ÆÕÍ¨¹¥»÷µĞÈË
-										console.log("½øÈë´óÓÚ0");
+										//æˆ‘æ–¹æ™®é€šæ”»å‡»æ•Œäºº
+										console.log("è¿›å…¥å¤§äº0");
 									     if(IsOnRoleRange(roleObj,enemysArray[enemyIndex])){
 										    normalAttack(roleObj, enemysArray[enemyIndex]);
-											//¶ÔÎÒ·½ÆÕÍ¨¹¥»÷µĞÈËÕìÌı
+											//å¯¹æˆ‘æ–¹æ™®é€šæ”»å‡»æ•Œäººä¾¦å¬
 											var tm2 = setInterval(function() {
 												if (finish) {
 													finish = false;
 													clearInterval(tm2);
 													roleObj.dy = 240;
-													//Èç¹ûµĞÈËÔÚÎÒ·½µÄÆÕÍ¨¹¥»÷ÏÂ»¹»î×Å
+													//å¦‚æœæ•Œäººåœ¨æˆ‘æ–¹çš„æ™®é€šæ”»å‡»ä¸‹è¿˜æ´»ç€
 													if (enemysArray[enemyIndex].HP > 0) {
-														//Èç¹ûÊÇBOSS
+														//å¦‚æœæ˜¯BOSS
 														if(enemysArray[enemyIndex].type==1){
-															//Èç¹ûBOSSµÄÅ­ÖµÊÇÂúµÄ£¬ÔòÓÅÏÈ·¢¶¯
+															//å¦‚æœBOSSçš„æ€’å€¼æ˜¯æ»¡çš„ï¼Œåˆ™ä¼˜å…ˆå‘åŠ¨
 															//if(enemysArray[enemyIndex].pow==enemysArray[enemyIndex].fullPow){
 															
 															  BossPowerAttacked(enemysArray[enemyIndex],roleObj);
 															/*
 															}else{
 															   var n = Math.floor(Math.random() * 100) + 1;
-															   console.log("BOSSÅ­ÖµÃ»Âú£¬Ëæ»ú·¢¶¯   "+n+"  "+powerNumber);
-															   //Èç¹ûËæ»úÊıĞ¡ÓÚµÈÓÚ50£¬ÔòÓÅÏÈ·¢¶¯Å­¹¥»÷
+															   console.log("BOSSæ€’å€¼æ²¡æ»¡ï¼Œéšæœºå‘åŠ¨   "+n+"  "+powerNumber);
+															   //å¦‚æœéšæœºæ•°å°äºç­‰äº50ï¼Œåˆ™ä¼˜å…ˆå‘åŠ¨æ€’æ”»å‡»
 															   if(n<=50){
-																  console.log("½øÈëĞ¡ÓÚ50 ");
+																  console.log("è¿›å…¥å°äº50 ");
 																  BOSS_power_attack();
-																  //BOSSÄ§×¥ÎŞµĞ¼¼ÄÜÖ´ĞĞÍêÁË
+																  //BOSSé­”æŠ“æ— æ•ŒæŠ€èƒ½æ‰§è¡Œå®Œäº†
 																  var boss_power_end1=setInterval(function(){
 																		if(bossPowerEnd){	
 																		   clearInterval(boss_power_end1);
 																		   bossPowerEnd = false;
-																		   //Èç¹ûÎÒ·½ÔÚBOSSµÄÃØ¼¼¹¥»÷ÏÂ»¹»î×Å
+																		   //å¦‚æœæˆ‘æ–¹åœ¨BOSSçš„ç§˜æŠ€æ”»å‡»ä¸‹è¿˜æ´»ç€
 																		   if (roleObj.HP > 0) {
-																				 console.log("ÔÙ´Î·¢¶¯Å­¹¥»÷");
+																				 console.log("å†æ¬¡å‘åŠ¨æ€’æ”»å‡»");
 																				  setTimeout(BOSS_power_attack, 2000); 
 																		   }
-																		   //Èç¹ûÎÒ·½ÔÚBOSSµÄÃØ¼¼¹¥»÷ÏÂËÀÁË
+																		   //å¦‚æœæˆ‘æ–¹åœ¨BOSSçš„ç§˜æŠ€æ”»å‡»ä¸‹æ­»äº†
 																		   else{
 																				powerNumber=2;
 																				deadEvent(null,roleObj);
@@ -180,7 +180,7 @@ function enemyChange(arr) {
 																		if(bossPowerEnd){	
 																		   clearInterval(boss_power_end2);
 																		   bossPowerEnd = false;
-																		   //Èç¹ûÎÒ·½ÔÚBOSSµÄÃØ¼¼¹¥»÷ÏÂ»¹»î×Å
+																		   //å¦‚æœæˆ‘æ–¹åœ¨BOSSçš„ç§˜æŠ€æ”»å‡»ä¸‹è¿˜æ´»ç€
 																		   if (roleObj.HP > 0) {
 																				  enemysArray[enemyIndex].dy = 240;
 																				  enemyIndex++;
@@ -194,7 +194,7 @@ function enemyChange(arr) {
 																				  }
 																			 
 																		   }
-																		   //Èç¹ûÎÒ·½ÔÚBOSSµÄÃØ¼¼¹¥»÷ÏÂËÀÁË
+																		   //å¦‚æœæˆ‘æ–¹åœ¨BOSSçš„ç§˜æŠ€æ”»å‡»ä¸‹æ­»äº†
 																		   else{
 																				powerNumber=2;
 																				deadEvent(null,roleObj);
@@ -217,15 +217,15 @@ function enemyChange(arr) {
 																		}//finish
 																  });//boss_power_end
 															   }
-															   else{//Ôò·¢¶¯ÃØ¼¼¹¥»÷
-																	console.log("½øÈë´óÓÚ50 ");
-															   //Ö´ĞĞBOSSµÄÖ÷¶¯ÃØ¼¼º¯Êı
+															   else{//åˆ™å‘åŠ¨ç§˜æŠ€æ”»å‡»
+																	console.log("è¿›å…¥å¤§äº50 ");
+															   //æ‰§è¡ŒBOSSçš„ä¸»åŠ¨ç§˜æŠ€å‡½æ•°
 																  Boss_skill_attack();
 																  var boss_skill_end=setInterval(function(){
 																		  if(finish){
 																			 clearInterval(boss_skill_end);
 																			 finish = false;
-																			 //Èç¹ûÎÒ·½ÔÚBOSSµÄÃØ¼¼¹¥»÷ÏÂ»¹»î×Å
+																			 //å¦‚æœæˆ‘æ–¹åœ¨BOSSçš„ç§˜æŠ€æ”»å‡»ä¸‹è¿˜æ´»ç€
 																			 if (roleObj.HP > 0) {
 																				 enemyIndex++;
 																				 if (enemyIndex < enemysArray.length) {
@@ -237,7 +237,7 @@ function enemyChange(arr) {
 																					 ai = false;
 																				 }// if (enemyIndex < enemysArray.length) 
 																			 }
-																			 //Èç¹ûÎÒ·½ÔÚBOSSµÄÃØ¼¼¹¥»÷ÏÂËÀÁË
+																			 //å¦‚æœæˆ‘æ–¹åœ¨BOSSçš„ç§˜æŠ€æ”»å‡»ä¸‹æ­»äº†
 																			 else{
 																				deadEvent(null,roleObj);
 																				var tm3 = setInterval(function() {
@@ -264,9 +264,9 @@ function enemyChange(arr) {
 															*/
 														}
 														else
-														//Èç¹ûÊÇĞ¡±ø
+														//å¦‚æœæ˜¯å°å…µ
 														{
-															console.log("ÊÇĞ¡±ø");
+															console.log("æ˜¯å°å…µ");
 															enemyIndex++;
 															if (enemyIndex < enemysArray.length) {
 																setTimeout(enemysAction, 2000);
@@ -278,7 +278,7 @@ function enemyChange(arr) {
 															}
 														}
 													} else 
-													//Èç¹ûµĞÈËÔÚÎÒ·½µÄÆÕÍ¨¹¥»÷ÏÂËÀÁË
+													//å¦‚æœæ•Œäººåœ¨æˆ‘æ–¹çš„æ™®é€šæ”»å‡»ä¸‹æ­»äº†
 													{
 														deadEvent(roleObj,enemysArray[enemyIndex]);
 														att_end = setInterval(function() {
@@ -311,7 +311,7 @@ function enemyChange(arr) {
 												} 
 									     }
 									} else
-									//Èç¹ûÎÒ·½ÔÚµĞÈËµÄÆÕÍ¨¹¥»÷ÏÂËÀÁË
+									//å¦‚æœæˆ‘æ–¹åœ¨æ•Œäººçš„æ™®é€šæ”»å‡»ä¸‹æ­»äº†
 									{
 										deadEvent(null,roleObj);
 										var tm4 = setInterval(function() {
@@ -337,7 +337,7 @@ function enemyChange(arr) {
 								}
 							});
 					}else
-					//²»ÔÚµĞÈËµÄ¹¥»÷·¶Î§ÄÚ
+					//ä¸åœ¨æ•Œäººçš„æ”»å‡»èŒƒå›´å†…
 					{
 						enemyIndex++;
 						if (enemyIndex < enemysArray.length) {
@@ -358,16 +358,16 @@ function enemyChange(arr) {
 }
 //----------------------------------------------------------------------------------------------------
 /*
-	ÈËÎïĞĞ×ß¶¯×÷
+	äººç‰©è¡Œèµ°åŠ¨ä½œ
 */
 function walk(obj) {
-	//foot.play();//×ßÂ·µÄÉùÒô
+	//foot.play();//èµ°è·¯çš„å£°éŸ³
     ctx.clearRect(obj.sx, obj.sy, rpx, rpx);
     if (obj.dx < 192) { //48*4=192
         obj.dx += 48;
 		if((obj instanceof roleInfo)&&(rolesArray[rolesIndex].walk==0)){
-			rolesArray[rolesIndex].walk=1;//±íÊ¾ÒÑ¾­×ß¹ıÁË
-	        console.log("´ò¿ªĞĞ×ß¿ª¹Ø");
+			rolesArray[rolesIndex].walk=1;//è¡¨ç¤ºå·²ç»èµ°è¿‡äº†
+	        console.log("æ‰“å¼€è¡Œèµ°å¼€å…³");
 		}
     }
     if (obj.dx == 192) {
