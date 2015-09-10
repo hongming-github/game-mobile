@@ -1,12 +1,12 @@
 /*
-	Ã“Ã‰envent.jsÃ–ÃcCheck()ÂºÂ¯ÃŠÃ½ÂµÃ·Ã“ÃƒÂ£Â¬Ã‘Â¡Ã”Ã±Ã•Ã½ÃˆÂ·ÂµÃ„ÂµÃÃˆÃ‹Â½Ã¸ÃÃÂ¹Â¥Â»Ã·ÂºÃ³(att=true)Â´Â¥Â·Â¢ÂºÂ¯ÃŠÃ½Â£Â¬Â¿Ã›Â³Ã½ÂµÃÃˆÃ‹Ã’Â»Â¶Â¨Ã‘ÂªÃÂ¿
+	ÓÉenvent.jsÖĞcCheck()º¯Êıµ÷ÓÃ£¬Ñ¡ÔñÕıÈ·µÄµĞÈË½øĞĞ¹¥»÷ºó(att=true)´¥·¢º¯Êı£¬¿Û³ıµĞÈËÒ»¶¨ÑªÁ¿
 */
-
-
-//BOSSÂ±Â»Â¹Â¥Â»Ã·Â£Â¬Â·Â¢Â¶Â¯ÃƒÃ˜Â¼Â¼
+//ÓÃÀ´Ê¹BOSSµÄÅ­¹¥»÷·¢¶¯Á½´Î
+var powerNumber=2;
+//BOSS±»¹¥»÷£¬·¢¶¯ÃØ¼¼
 function Boss_skill_attacked(tIndex){
     var n = Math.floor(Math.random() * 100) + 1;
-	//Â°Ã‘BOSSÂµÃ„ÃƒÃ˜Â¼Â¼ÂºÃÃƒÃ˜Â¼Â¼ÃŠÃ½Ã—Ã©Â½Ã¸ÃÃÂ¹Ã˜ÃÂªÃ†Ã°Ã€Â´
+	//°ÑBOSSµÄÃØ¼¼ºÍÃØ¼¼Êı×é½øĞĞ¹ØÁªÆğÀ´
 	for (var i = 0; i < skillArrays.length; i++) {
          if (enemysArray[tIndex].skills[0] == skillArrays[i].id) {
             fl = skillArrays[i].func;
@@ -18,16 +18,16 @@ function Boss_skill_attacked(tIndex){
          }
     }
 	
-	//ÃˆÃ§Â¹Ã»Â·Â¢Â¶Â¯Â³Ã‰Â¹Â¦
+	//Èç¹û·¢¶¯³É¹¦
 	if((n<skillSuccess)&&(skilltmp<=enemysArray[tIndex].MP)){
-	   console.log("BOSSÂ±Â»Â¹Â¥Â»Ã·Â·Â¢Â¶Â¯ÃƒÃ˜Â¼Â¼");
+	   console.log("BOSS±»¹¥»÷·¢¶¯ÃØ¼¼");
 	   enemysArray[tIndex].MP -= skilltmp;
 	   roleObj=rolesArray[rolesIndex];
        eval(fl + '(tIndex)');
 	}
 	else
-	{//ÃˆÃ§Â¹Ã»Â·Â¢Â¶Â¯ÃŠÂ§Â°Ãœ
-		console.log("Â·Â¢Â¶Â¯ÃŠÂ§Â°Ãœ");
+	{//Èç¹û·¢¶¯Ê§°Ü
+		console.log("·¢¶¯Ê§°Ü");
 	   rolesArray[rolesIndex].dy = 240;
 	   if (judeEnd()) {
 		   recoverSpirit();
@@ -41,11 +41,11 @@ function Boss_skill_attacked(tIndex){
 	}
 	
 }
-//BOSSÃ–Ã·Â¶Â¯Â¹Â¥Â»Ã·Â£Â¬Â·Â¢Â¶Â¯ÃƒÃ˜Â¼Â¼
+//BOSSÖ÷¶¯¹¥»÷£¬·¢¶¯ÃØ¼¼
 function Boss_skill_attack(){
 	var n = Math.floor(Math.random() * 100) + 1;
-	console.log("ÃƒÃ˜Â¼Â¼Â¹Â¥Â»Ã·ÂµÃ„Ã‹Ã¦Â»ÃºÃŠÃ½ÃŠÃ‡   "+n);
-	//Â°Ã‘BOSSÂµÃ„ÃƒÃ˜Â¼Â¼ÂºÃÃƒÃ˜Â¼Â¼ÃŠÃ½Ã—Ã©Â½Ã¸ÃÃÂ¹Ã˜ÃÂªÃ†Ã°Ã€Â´
+	console.log("ÃØ¼¼¹¥»÷µÄËæ»úÊıÊÇ   "+n);
+	//°ÑBOSSµÄÃØ¼¼ºÍÃØ¼¼Êı×é½øĞĞ¹ØÁªÆğÀ´
 	for (var i = 0; i < skillArrays.length; i++) {
          if (enemysArray[enemyIndex].skills[0] == skillArrays[i].id) {
             fl = skillArrays[i].func;
@@ -65,357 +65,174 @@ function Boss_skill_attack(){
 	 finish=true;
 	}
 }
-
-function BossPowerAttacked(a,b){
-	console.log("è¿›å…¥BOSSçš„æ€’æ”»å‡»");
-	for (var i = 0; i < powerArrays.length; i++) {		     
-			if (a.powers[0] == powerArrays[i].id) {
+//BOSS±»¹¥»÷£¬·¢¶¯Å­¼¼
+function Boss_power_attacked(tIndex){
+	    powerNumber--;
+	    console.log("powerNumberÊÇ   "+powerNumber);
+	    var n = Math.floor(Math.random() * 100) + 1;
+		console.log("Å­¹¥»÷Ëæ»úÊınÊÇ   "+n);
+		//°ÑBOSSµÄÃØ¼¼ºÍÅ­¼¼Êı×é½øĞĞ¹ØÁªÆğÀ´
+		for (var i = 0; i < powerArrays.length; i++) {
+			 console.log("tIndex  "+enemysArray[tIndex].name);
+			 if (enemysArray[tIndex].powers[0] == powerArrays[i].id) {
 				fl = powerArrays[i].func;
 				powertmp = powerArrays[i].p;
 				powerVar = powerArrays[i].powerVar;
 				powerSuccess = powerArrays[i].success;
 				effect = powerArrays[i].effect;
 				powerName = powerArrays[i].name;
-			}
-	}
-	//var n = Math.floor(Math.random() * 100) + 1;
-	var n=0;
-    if((n<powerSuccess)&&(powertmp<=a.pow)){
-           console.log("å¼€å§‹è°ƒç”¨æ€’æ”»å‡»");	
-            		   
-		   eval(fl+"(a,b)");  
-	}
+			 }
+		}
+	    roleObj=rolesArray[rolesIndex];
+		if((n<powerSuccess)&&(powertmp<=enemysArray[tIndex].pow)){
+		   console.log("Âú×ã·¢¶¯Ìõ¼ş£¬·¢¶¯³É¹¦ ");
+		   enemysArray[tIndex].pow -= powertmp;
+		   rolesArray[rolesIndex].HP -= powerVar;
+		   console.log("powerSuccessÊÇ   "+powerSuccess);
+		   eval(fl + '(tIndex)');
+		}
+		else
+		{
+		   if(powerNumber==0){
+		      powerNumber=2;
+			  console.log("Å­¹¥»÷2´Î·¢¶¯½áÊø");
+			  bossPowerEnd=true;
+		   }else{  console.log("Å­¹¥»÷·¢¶¯Ê§°Ü");bossPowerEnd=true;}
+		}
+	
+	
+}
+//½â¾ösetTimeout²»´«²ÎÊıµÄÎÊÌâ
+function _Boss_power_attacked(tIndex){
+	return function(){Boss_power_attacked(tIndex);};
+}
+//BOSSÖ÷¶¯¹¥»÷£¬·¢¶¯Å­¼¼
+function BOSS_power_attack(){
+	    //powerNumberÓÃÀ´±íÊ¾BOSSÅ­¹¥»÷µÄ·¢¶¯´ÎÊı£¬²»¹ÜÓĞÃ»ÓĞ·¢¶¯³É¹¦
+	    powerNumber--;
+		console.log("powerNumberÊÇ   "+powerNumber);
+		//²úÉú1--100µÄËæ»úÊı
+		var n = Math.floor(Math.random() * 100) + 1;
+		console.log("Å­¹¥»÷Ëæ»úÊınÊÇ   "+n);
+		//°ÑBOSSµÄÃØ¼¼ºÍÅ­¼¼Êı×é½øĞĞ¹ØÁªÆğÀ´
+		for (var i = 0; i < powerArrays.length; i++) {
+		     console.log("enemyIndex  "+enemyIndex);
+			 if (enemysArray[enemyIndex].powers[0] == powerArrays[i].id) {
+				fl = powerArrays[i].func;
+				powertmp = powerArrays[i].p;
+				powerVar = powerArrays[i].powerVar;
+				powerSuccess = powerArrays[i].success;
+				effect = powerArrays[i].effect;
+				powerName = powerArrays[i].name;
+			 }
+		}
+
+		if((n<powerSuccess)&&(powertmp<=enemysArray[enemyIndex].pow)){
+		   console.log("Âú×ã·¢¶¯Ìõ¼ş£¬·¢¶¯³É¹¦ ");
+		   enemysArray[enemyIndex].pow -= powertmp;
+		   roleObj.HP -= powerVar;  
+		   eval(fl + '(enemyIndex)');  
+		}
+		else
+		{//Èç¹û·¢¶¯¹ıÁ½´ÎÅ­¹¥»÷ÁË£¬²»¹ÜÓĞÃ»ÓĞ³É¹¦
+		  if(powerNumber==0){
+		      powerNumber=2;
+			  console.log("Å­¹¥»÷2´Î·¢¶¯½áÊø");
+			  bossPowerEnd=true;
+		  }else{
+			console.log("·¢¶¯Ê§°Ü");
+		    bossPowerEnd=true;
+		  }
+		 
+		}
+	
 }
 
-function PMoZhuaWuDi(a,b){//a attack b
-	var countpowerNumber=2;
-    console.log("into mozhuawudi");	
-	function realMoZhuaWuDi(a,b){
-	   		
-           countpowerNumber--;
-
-           a.pow -= powertmp;
-		   b.HP -= powerVar;  
-
-		   var tVar1 = Math.floor(rpx * b.HP / b.fullHP) + 1;
-           var hp = new rectangle(b.sx, b.sy - 9,b.sx, b.sy - 9, tVar1, 5, "rgb(0,255,0)");
-           var hpBox = new rectangle(b.sx, b.sy - 10,b.sx, b.sy - 10, rpx, 7, "rgb(0,0,0)");
-           var e = new Image();
-           e.src = effect;
-           var powerShow = new pic(b.mapX - rpx - 6, b.mapY - rpx - 15,b.mapX - rpx - 6, b.mapY - rpx - 15, 3 * rpx, 3 * rpx, 0, 0, 350, 350, e);
-	       var attackText = new text("-" + powerVar,b.mapX + rpx / 4, b.mapY + rpx / 2, b.mapX + rpx / 4, b.mapY + rpx / 2, "rgb(255,0,0)", "bold 30px FangSong");
-	       var h = new Image();
-	       h.src = a.halfBody;
-	       var hs = new picture(48*5-mapMovX, 48*4-mapMovY,48*5-mapMovX, 48*4-mapMovY, 4 * rpx, 4 * rpx, h);
-		   attackShow.push(hs);
-
-		   FuGaiCeng(a,b);
-
-		    var t2 = setInterval(function() {
-	         var sn = new text(powerName.charAt(countInterval), hs.sx-mapMovX + hs.swidth + countInterval * rpx, hs.sy-mapMovY + hs.sheight / 2 + rpx,hs.sx-mapMovX + hs.swidth + countInterval * rpx, hs.sy-mapMovY + hs.sheight / 2 + rpx, "rgb(255,255,255)", "bold 40px KaiTi");
-	         attackShow.push(sn);
-	         countInterval++;
-	         if (countInterval == powerName.length + 1) {
-	               countInterval = 0;
-	               clearInterval(t2);
-	               clearArray(attackShow);
-	               finish = true;
-	          }
-		    }, 500);//t2Â½
-            
-            var t3=setInterval(function(){
-                if (finish) {	
-				  clearInterval(t3);
-		          finish = false;
-		          attackAction(a);
-		          flicker(b);
-		          attackShow.push(attackText);
-		          attackShow.push(powerShow);
-				  var t4 = setInterval(function() {
-						attackText.mapY--;
-						 if (powerShow.dx < 4900) {powerShow.dx += 350; } 
-						 else {powerShow.dx = 0;}
-						
-						 if (attackText.mapY == b.mapY) {
-							   clearInterval(t4);
-							   clearArray(attackShow);
-						  }
-				  },50);//t4
-
-                  if (hp.swidth > 0) {
-			          hpShow.push(hpBox);
-			          hpShow.push(hp);
-                      var tVar2 = Math.floor(rpx * powerVar / b.fullHP) + 1;
-                      var t5 = setInterval(function() {
-	                      hp.swidth--;
-	                      countInterval++;
-	       				  if (countInterval == tVar2 || hp.swidth <= 0) {					  
-	                        countInterval = 0;
-	                        clearInterval(t5);
-	                        clearArray(hpShow);
-						    clearArray(shadowShow);
-						    bossPowerEnd=true;
-				          }
-			          },50);
-			      }else{
-			  	      clearArray(shadowShow);
-				      bossPowerEnd=true;
-		          }
-				  //finish's else
-				}
-            });//t3
-         
-         //
-        if(judeEnd()){
-            var boss_attack_us_boss_power_end=setInterval(function(){
-						    if(bossPowerEnd){
-									clearInterval(boss_attack_us_boss_power_end);
-									bossPowerEnd = false;
-																	  
-									if (b.HP > 0) {
-										console.log("2 time mozhuawudi");
-										console.log("countpowerNumber:   "+countpowerNumber);
-										if(countpowerNumber!=0){
-											setTimeout(function(){
-											   realMoZhuaWuDi(a,b);
-										    }, 2000); 
-										}else{
-											if (b.HP > 0) {
-												console.log("here over");							  
-												a.dy = 240;
-												enemyIndex++;
-												if (enemyIndex < enemysArray.length) {
-														setTimeout(enemysAction, 2000);
-												} else {	
-													enemyIndex = 0;
-													count++;
-													setTimeout(dialogShow, 2000);
-													ai = false;
-												}									 
-											}else{
-												deadEvent(null,b);
-												var tm3 = setInterval(function() {
-														if (finish) {
-															finish = false;
-															clearInterval(tm3);
-															enemyIndex++;
-															if (enemyIndex < enemysArray.length) {
-													            setTimeout(enemysAction, 2000);
-															} else {
-																enemyIndex = 0;
-																count++;
-																setTimeout(dialogShow, 2000);
-																ai = false;
-															}
-														}//finish
-												}); //tm3   
-											}
-										}
-										
-																 
-									}else{
-											deadEvent(null,b);
-											var tm3 = setInterval(function() {
-														if (finish) {
-															finish = false;
-															clearInterval(tm3);
-															enemyIndex++;
-															if (enemyIndex < enemysArray.length) {
-																		setTimeout(enemysAction, 2000);
-															} else {
-																	enemyIndex = 0;
-																	count++;
-																	setTimeout(dialogShow, 2000);
-																	ai = false;
-															}
-														}//finish
-											}); //tm3   
-									}//else
-							}//finish
-			});//boss_power_end1
-        }else{
-           var we_attack_boss_boss_power_end=setInterval(function(){
-                                                     if(bossPowerEnd){
-                                                         console.log("ä¾¦å¬åˆ°ç¬¬ä¸€æ¬¡æ€’æ”»å‡»å‘åŠ¨ç»“æŸï¼ˆä¸ç®¡æœ‰æ²¡æœ‰å‘åŠ¨æˆåŠŸï¼‰");
-                                                          clearInterval(we_attack_boss_boss_power_end);
-                                                          bossPowerEnd = false;
-                                                          if(b.HP>0){
-                                                            if(countpowerNumber!=0){  
-	                                                            setTimeout(function(){
-												                    realMoZhuaWuDi(a,b);
-											                    }, 2000); 
-                                                            }else{
-                                                                   	 b.dy = 240;
-                                                                     if (judeEnd()) {
-                                                                           recoverSpirit();
-                                                                           end = true;
-                                                                           ai = true;
-                                                                           enemyRoundShow();
-                                                                           setTimeout(function() {
-                                                                                enemysAction();
-                                                                           },2000);
-                                                                       }else{end=false;}     
-                                                            }
-                                                          }
-                                                          else{
-                                                                
-                                                                deadEvent(a,b);
-                                                                a.dy = 240;
-                                                                if(a instanceof roleInfo){
-                                                                	console.log("solve still could walk");
-                                                                    var t8 = setInterval(function() {
-													                    if (finish) {
-													                        finish = false;
-													                        clearInterval(t8);
-                                                                            a.dy = 240;
-													                        if (judeEnd()) {
-													                        	console.log("solve still could walk111");
-																					//---Â»Ã–Â¸Â´Â¾Â«Ã‰Ã±ÃÂ¦---
-																					recoverSpirit();
-																					//-----------
-																					enemyRoundShow();
-													                            end = true;
-													                            ai = true;
-													                            setTimeout(enemysAction);
-													                        }else{ console.log("solve still could walk22222");end=false;}
-													                        //drawAll();
-													                    }
-													                });//t8Â½Ã¡ÃŠÃ¸
-                                                                }else{
-                                                                	 var our_role_dead = setInterval(function() {
-	                                                                    if (finish) {
-	                                                                        finish = false;
-	                                                                        clearInterval(our_role_dead);
-	                                                                        if (!judgeOver()) {
-	                                                                            if (judeEnd()) {
-	                                                                                recoverSpirit();
-	                                                                                end = true;
-	                                                                                ai = true;
-	                                                                                enemyRoundShow();
-	                                                                                setTimeout(function() {
-	                                                                                    enemysAction();
-	                                                                                },
-	                                                                                2000);
-	                                                                            }else{end=false;}
-	                                                                        } else {
-	                                                                            game_over_page();
-	                                                                            
-	                                                                        }
-	                                                                    }//finish
-                                                                    });
-                                                                }
-                                                               
-                                                                
-                                                                
-                                                          }//else
-                                                     }//finish
-            });//we_attack_boss_boss_power_end
-        }
-            
-           
-            
-            
-            
-		   
-
-	}//realMoZhuaWuDi
-    console.log("real mozhuawudi");
-    //normal attack
-    if(a instanceof roleInfo){
-          normalAttack(a,b); 
-          att_end = setInterval(function() {
-          if (finish) {
-            finish = false;
-            clearInterval(att_end);
-			
-            if (b.HP > 0) {
-                normalAttack(b,a);
-                var t1 = setInterval(function() {
-                    if (finish) {
-                        finish = false;
-                        clearInterval(t1);
-						//ÃˆÃ§Â¹Ã»ÃÃ’Â·Â½Â»Â¹Â»Ã®Ã—Ã…
-                        if (a.HP > 0) {
-                            
-                            //var n = Math.floor(Math.random() * 100) + 1; //Â²ÃºÃ‰Ãº1---100Ã‹Ã¦Â»ÃºÃŠÃ½
-							var n=0;
-                            if (n <= powerSuccess) { //Ã‹Ã¦Â»ÃºÃŠÃ½<Ã…Â­Â¼Â¼Â³Ã‰Â¹Â¦Ã‚ÃŠ
-							    realMoZhuaWuDi(a,b);
-								
-                            } 	
-							else{
-								console.log("Ã…Â­Â¼Â¼ÃŠÂ¹Ã“ÃƒÃŠÂ§Â°Ãœ");
-                                failAlert("Ã…Â­Â¼Â¼ÃŠÂ¹Ã“ÃƒÃŠÂ§Â°ÃœÂ£Â¡",a);
-									a.dy = 240;
-									if (judeEnd()) {
-										//---Â»Ã–Â¸Â´Â¾Â«Ã‰Ã±ÃÂ¦---
-										 recoverSpirit();
-										//-----------
-										setTimeout(enemyRoundShow,1500);
-										end = true;
-										ai = true;
-										setTimeout(enemysAction,3000);
-									}
-									else{ end=false;}
-                            }
-                        } 
-						//ÃˆÃ§Â¹Ã»ÃÃ’Â·Â½HP<0,Ã‹Ã€ÃÃ‹
-						else {
-                            deadEvent(null,a);
-                            var t7 = setInterval(function() {
-                                if (finish) {
-                                    finish = false;
-                                    clearInterval(t7);
-                                    if (!judgeOver()) {
-                                        if (judeEnd()) {
-											//---Â»Ã–Â¸Â´Â¾Â«Ã‰Ã±ÃÂ¦---
-											 recoverSpirit();
-											//-----------
-											enemyRoundShow();
-                                            end = true;
-                                            ai = true;
-                                            enemysAction();
-                                        }else{end=false;}
-                                    } 
-									else {game_over_page();}
-                                }
-                            });//Â½Ã¡ÃŠÃ¸
-                        }
-                    }//3ÂºÃ…ÃÂ»Â½Ã¡ÃŠÃ¸
-                });//t1Â½Ã¡ÃŠÃ¸
-            }
-			//ÂµÃÃˆÃ‹Ã‹Ã€ÃÃ‹
-			else {
-                a.dy = 240;
-                deadEvent(a,b);
-                var t8 = setInterval(function() {
-                    if (finish) {
-                        finish = false;
-                        clearInterval(t8);
-                        if (judeEnd()) {
-								//---Â»Ã–Â¸Â´Â¾Â«Ã‰Ã±ÃÂ¦---
-								recoverSpirit();
-								//-----------
-								enemyRoundShow();
-                            end = true;
-                            ai = true;
-                            setTimeout(enemysAction);
-                        }else{ end=false;}
-                        //drawAll();
-                    }
-                });//t8Â½Ã¡ÃŠÃ¸
-            }
-        }//4ÂºÃ…ÃÂ»Â½Ã¡ÃŠÃ¸
-    });//tÂ½Ã¡ÃŠÃ¸
-    }else{
-    	realMoZhuaWuDi(a,b);
-    }
-    
+//Ä§×¥ÎŞµĞ¼¼ÄÜ
+function PMoZhuaWuDi(bossId){
+	 console.log("ÔÚÄ§×¥ÎŞµĞÀïÃæ");
+	 var tVar1 = Math.floor(rpx * roleObj.HP / roleObj.fullHP) + 1;
+     var hp = new rectangle(roleObj.sx, roleObj.sy - 9,roleObj.sx, roleObj.sy - 9, tVar1, 5, "rgb(0,255,0)");
+     var hpBox = new rectangle(roleObj.sx, roleObj.sy - 10,roleObj.sx, roleObj.sy - 10, rpx, 7, "rgb(0,0,0)");
+     var e = new Image();
+     e.src = effect;
+     var powerShow = new pic(roleObj.mapX - rpx - 6, roleObj.mapY - rpx - 15,roleObj.mapX - rpx - 6, roleObj.mapY - rpx - 15, 3 * rpx, 3 * rpx, 0, 0, 350, 350, e);
+     var attackText = new text("-" + powerVar,roleObj.mapX + rpx / 4, roleObj.mapY + rpx / 2, roleObj.mapX + rpx / 4, roleObj.mapY + rpx / 2, "rgb(255,0,0)", "bold 30px FangSong");
+     var h = new Image();
+     h.src = enemysArray[bossId].halfBody;
+     var hs = new picture(48*5-mapMovX, 48*4-mapMovY,48*5-mapMovX, 48*4-mapMovY, 4 * rpx, 4 * rpx, h);
+	 attackShow.push(hs);
+//	 drawAll();
+	 //¸²¸Ç²ã
+	 FuGaiCeng(enemysArray[bossId],roleObj);
+	 //Ä§×¥ÎŞµĞ4¸ö×Ö
+     var t2 = setInterval(function() {
+         var sn = new text(powerName.charAt(countInterval), hs.sx-mapMovX + hs.swidth + countInterval * rpx, hs.sy-mapMovY + hs.sheight / 2 + rpx,hs.sx-mapMovX + hs.swidth + countInterval * rpx, hs.sy-mapMovY + hs.sheight / 2 + rpx, "rgb(255,255,255)", "bold 40px KaiTi");
+         attackShow.push(sn);
+   //      drawAll();
+         countInterval++;
+         if (countInterval == powerName.length + 1) {
+               countInterval = 0;
+               clearInterval(t2);
+               clearArray(attackShow);
+               finish = true;
+          }
+		}, 
+	 500);//t2½áÊø 
+		 console.log("ÔÚÄ§×¥ÎŞµĞÀïÃæ1");
+	 var t3=setInterval(function(){
+      if (finish) {	
+		  clearInterval(t3);
+          finish = false;
+          attackAction(enemysArray[bossId]);
+          flicker(roleObj);
+          attackShow.push(attackText);
+          attackShow.push(powerShow);
+		  var t4 = setInterval(function() {
+				attackText.mapY--;
+				 if (powerShow.dx < 4900) {powerShow.dx += 350; } 
+				 else {powerShow.dx = 0;}
+				// drawAll();
+				 if (attackText.mapY == roleObj.mapY) {
+					   clearInterval(t4);
+					   //enemysArray[bossId].dy = 240;
+					   clearArray(attackShow);
+				  }
+			},
+		  50);//t4½áÊø
+		  console.log("ÔÚÄ§×¥ÎŞµĞÀïÃæ2   "+hp.swidth);
+		  if (hp.swidth > 0) {
+			  hpShow.push(hpBox);
+			  hpShow.push(hp);
+              var tVar2 = Math.floor(rpx * powerVar / roleObj.fullHP) + 1;
+			  console.log("ÔÚÄ§×¥ÎŞµĞÀïÃæ3");
+              var t5 = setInterval(function() {
+                 hp.swidth--;
+                 countInterval++;
+        //         drawAll();
+				  console.log("ÔÚÄ§×¥ÎŞµĞÀïÃæ4");
+                 if (countInterval == tVar2 || hp.swidth <= 0) {
+					  console.log("ÔÚÄ§×¥ÎŞµĞÀïÃæ5");
+                    countInterval = 0;
+                    clearInterval(t5);
+                    clearArray(hpShow);
+					clearArray(shadowShow);
+					bossPowerEnd=true;
+					console.log("Å­¹¥»÷·¢¶¯½áÊø");
+			     }
+			   },
+			  50);//t5½áÊø
+          }else{//ÎÒ·½ËÀÁË
+			  	clearArray(shadowShow);
+				bossPowerEnd=true;
+		  }
+	  }//finish
+     });//t3
+	
 }
-/*
-//Ã…Ã§Â»Ã°ÃÃºÂ¼Â¼Ã„Ãœ
+//Åç»ğÁú¼¼ÄÜ
 function SPengHuoLong(bossId){
-  //ÃÃ”ÃŠÂ¾Â°Ã«Ã‰Ã­ÃÃ±
+  //ÏÔÊ¾°ëÉíÏñ
   var tVar1 = Math.floor(rpx * roleObj.HP / roleObj.fullHP) + 1;
   var hp = new rectangle(roleObj.sx, roleObj.sy - 9,roleObj.sx, roleObj.sy - 9, tVar1, 5, "rgb(0,255,0)");
   var hpBox = new rectangle(roleObj.sx, roleObj.sy - 10,roleObj.sx, roleObj.sy - 10, rpx, 7, "rgb(0,0,0)");
@@ -428,7 +245,7 @@ function SPengHuoLong(bossId){
   var hs = new picture(48*5-mapMovX, 48*4-mapMovY,48*5-mapMovX, 48*4-mapMovY, 4 * rpx, 4 * rpx, h);
   attackShow.push(hs);
 //  drawAll();
-  //Ã…Ã§Â»Ã°ÃÃºÃ—Ã–Ã‘Ã¹
+  //Åç»ğÁú×ÖÑù
   var t2 = setInterval(function() {
       var sn = new text(skillName.charAt(countInterval),  hs.sx -mapMovX+ hs.swidth + countInterval * rpx, hs.sy -mapMovY+ hs.sheight / 2 + rpx,hs.sx -mapMovX+ hs.swidth + countInterval * rpx, hs.sy -mapMovY+ hs.sheight / 2 + rpx, "rgb(153,50,204)", "bold 40px KaiTi");
       attackShow.push(sn);
@@ -488,38 +305,37 @@ function SPengHuoLong(bossId){
   
  
 }
-*/
+
 function PSoulAttack() {
-	rolesArray[rolesIndex].pow -= powertmp;
-	//Â±Â£Â´Ã¦ÂµÃÃˆÃ‹ÂµÃ„ÃÃ‚Â±Ãª
+	//±£´æµĞÈËµÄÏÂ±ê
     var tIndex;
     for (var i = 0; i < enemysArray.length; i++) {
        if (Math.floor((x-mapMovX) / rpx) * rpx== enemysArray[i].mapX && Math.floor((y-mapMovY) / rpx) * rpx== enemysArray[i].mapY) {
                tIndex = i;	  
        }
     }
-	//ÃÃ’Â·Â½ÃÃˆÃ†Ã•ÃÂ¨Â¹Â¥Â»Ã·ÂµÃÂ·Â½
-    normalAttack(rolesArray[rolesIndex], enemysArray[tIndex]); //1ÂºÃ…ÃÂ»Â£Â¬ÃÃ’Â·Â½ÃÃˆÃ†Ã•ÃÂ¨Â¹Â¥Â»Ã·ÂµÃÂ·Â½
+	//ÎÒ·½ÏÈÆÕÍ¨¹¥»÷µĞ·½
+    normalAttack(rolesArray[rolesIndex], enemysArray[tIndex]); //1ºÅÎ»£¬ÎÒ·½ÏÈÆÕÍ¨¹¥»÷µĞ·½
     
-	//Â¶Ã”ÃÃ’Â·Â½ÃÃˆÃ†Ã•ÃÂ¨Â¹Â¥Â»Ã·ÂµÃÂ·Â½Ã•Ã¬ÃŒÃ½
-    att_end = setInterval(function() {console.log("ÃÃ’Â·Â½Â½Ã‡Ã‰Â«Ã†Ã•ÃÂ¨Â¹Â¥Â»Ã·ÂµÃÃˆÃ‹ÂºÃ³ÂµÃ„finishÂ£Âº"+finish+"   ");
-        if (finish) {//1ÂºÃ…ÃÂ»Â½Ã¡ÃŠÃ¸ÂºÃ³Â£Â¬finish=trueÂ£Â¬4ÂºÃ…ÃÂ»
+	//¶ÔÎÒ·½ÏÈÆÕÍ¨¹¥»÷µĞ·½ÕìÌı
+    att_end = setInterval(function() {console.log("ÎÒ·½½ÇÉ«ÆÕÍ¨¹¥»÷µĞÈËºóµÄfinish£º"+finish+"   ");
+        if (finish) {//1ºÅÎ»½áÊøºó£¬finish=true£¬4ºÅÎ»
             finish = false;
             clearInterval(att_end);
-			//ÃˆÃ§Â¹Ã»ÂµÃÃˆÃ‹Â»Â¹Â»Ã®Ã—Ã…
+			//Èç¹ûµĞÈË»¹»î×Å
             if (enemysArray[tIndex].HP > 0) {
-                normalAttack(enemysArray[tIndex], rolesArray[rolesIndex]);//2ÂºÃ…ÃÂ»,ÃˆÃ§Â¹Ã»ÂµÃÃˆÃ‹Â»Â¹Â»Ã®Ã—Ã…Â£Â¬ÂµÃÃˆÃ‹Ã†Ã•ÃÂ¨Â¹Â¥Â»Ã·ÃÃ’Â·Â½
+                normalAttack(enemysArray[tIndex], rolesArray[rolesIndex]);//2ºÅÎ»,Èç¹ûµĞÈË»¹»î×Å£¬µĞÈËÆÕÍ¨¹¥»÷ÎÒ·½
                 var t1 = setInterval(function() {
-                    if (finish) {//2ÂºÃ…ÃÂ»Â½Ã¡ÃŠÃ¸ÂºÃ³Â£Â¬finish=trueÂ£Â¬3ÂºÃ…ÃÂ»
+                    if (finish) {//2ºÅÎ»½áÊøºó£¬finish=true£¬3ºÅÎ»
                         finish = false;
                         clearInterval(t1);
-						//ÃˆÃ§Â¹Ã»ÃÃ’Â·Â½Â»Â¹Â»Ã®Ã—Ã…
+						//Èç¹ûÎÒ·½»¹»î×Å
                         if (rolesArray[rolesIndex].HP > 0) {
                             var tVar1 = Math.floor(rpx * enemysArray[tIndex].HP / enemysArray[tIndex].fullHP) + 1;
-                            var n = Math.floor(Math.random() * 100) + 1; //Â²ÃºÃ‰Ãº1---100Ã‹Ã¦Â»ÃºÃŠÃ½
+                            var n = Math.floor(Math.random() * 100) + 1; //²úÉú1---100Ëæ»úÊı
 							//var n=100;
-                            if (n <= powerSuccess) { //Ã‹Ã¦Â»ÃºÃŠÃ½<Ã…Â­Â¼Â¼Â³Ã‰Â¹Â¦Ã‚ÃŠ
-								console.log("Â½Ã¸ÃˆÃ«Ã…Â­Â¹Â¥Â»Ã·Â³Ã‰Â¹Â¦");
+                            if (n <= powerSuccess) { //Ëæ»úÊı<Å­¼¼³É¹¦ÂÊ
+								console.log("½øÈëÅ­¹¥»÷³É¹¦");
                     //            var hp = new rectangle(enemysArray[tIndex].sx, enemysArray[tIndex].sy - 9,enemysArray[tIndex].sx, enemysArray[tIndex].sy - 9, tVar1, 5, "rgb(0,255,0)");
                     //            var hpBox = new rectangle(enemysArray[tIndex].sx, enemysArray[tIndex].sy - 10,enemysArray[tIndex].sx, enemysArray[tIndex].sy - 10, rpx, 7, "rgb(0,0,0)");
                                 var hp = new rectangle(enemysArray[tIndex].mapX, enemysArray[tIndex].mapY - 9,enemysArray[tIndex].sx, enemysArray[tIndex].sy - 9, tVar1, 5, "rgb(0,255,0)");
@@ -532,7 +348,7 @@ function PSoulAttack() {
                                 h.src = rolesArray[rolesIndex].halfBody;
                                 var hs = new picture(48*5-mapMovX, 48*4-mapMovY,48*5-mapMovX, 48*4-mapMovY, 4 * rpx, 4 * rpx, h);
 								attackShow.push(hs);
-								//Â¸Â²Â¸Ã‡Â²Ã£
+								//¸²¸Ç²ã
 								FuGaiCeng(enemysArray[tIndex],rolesArray[rolesIndex]);
                                 var t2 = setInterval(function() {
                                     var sn = new text(powerName.charAt(countInterval), hs.sx-mapMovX + hs.swidth + countInterval * rpx, hs.sy-mapMovY + hs.sheight / 2 + rpx,hs.sx-mapMovX + hs.swidth + countInterval * rpx, hs.sy-mapMovY + hs.sheight / 2 + rpx, "rgb(255,255,255)", "bold 40px KaiTi");
@@ -546,7 +362,7 @@ function PSoulAttack() {
                                         finish = true;
                                     }
 								}, 
-								500);//t2Â½Ã¡ÃŠÃ¸
+								500);//t2½áÊø
 								var t3 = setInterval(function() {
                                     if (finish) {
                                         clearInterval(t3);
@@ -567,7 +383,7 @@ function PSoulAttack() {
 												finish=true;
                                             }
                                         },
-                                        50);//t4Â½Ã¡ÃŠÃ¸
+                                        50);//t4½áÊø
                                         if (hp.swidth > 0) {
                                             hpShow.push(hpBox);
                                             hpShow.push(hp);
@@ -584,8 +400,8 @@ function PSoulAttack() {
 													
                                                 }
                                             },
-                                            50);//t5Â½Ã¡ÃŠÃ¸
-                                        }//  if (hp.swidth > 0) Â½Ã¡ÃŠÃ¸
+                                            50);//t5½áÊø
+                                        }//  if (hp.swidth > 0) ½áÊø
 										var tb=setInterval(function(){
 											if (finish){
 												finish=false;
@@ -598,7 +414,7 @@ function PSoulAttack() {
 															finish = false;
 															clearInterval(att_end);			
 															if (judeEnd()) 
-															{   //---Â»Ã–Â¸Â´Â¾Â«Ã‰Ã±ÃÂ¦---
+															{   //---»Ö¸´¾«ÉñÁ¦---
 															    recoverSpirit();
 																//-----------
 																enemyRoundShow();
@@ -621,18 +437,18 @@ function PSoulAttack() {
 														 else{end=false;}	
 												}
 											}
-										});//tbÂ½Ã¡ÃŠÃ¸
+										});//tb½áÊø
                                        // drawAll();
                                     }
-                                });//t3Â½Ã¡ÃŠÃ¸
+                                });//t3½áÊø
                             } 
-							//ÃˆÃ§Â¹Ã»Â²ÃºÃ‰ÃºÂµÃ„Ã‹Ã¦Â»ÃºÃŠÃ½>powerSuccess,Â·Â¢Â¶Â¯ÃŠÂ§Â°Ãœ
+							//Èç¹û²úÉúµÄËæ»úÊı>powerSuccess,·¢¶¯Ê§°Ü
 							else{
-								console.log("Ã…Â­Â¼Â¼ÃŠÂ¹Ã“ÃƒÃŠÂ§Â°Ãœ");
-                                failAlert("Ã…Â­Â¼Â¼ÃŠÂ¹Ã“ÃƒÃŠÂ§Â°ÃœÂ£Â¡", rolesArray[rolesIndex]);
+								console.log("Å­¼¼Ê¹ÓÃÊ§°Ü");
+                                failAlert("Å­¼¼Ê¹ÓÃÊ§°Ü£¡", rolesArray[rolesIndex]);
 									rolesArray[rolesIndex].dy = 240;
 									if (judeEnd()) {
-										//---Â»Ã–Â¸Â´Â¾Â«Ã‰Ã±ÃÂ¦---
+										//---»Ö¸´¾«ÉñÁ¦---
 										 recoverSpirit();
 										//-----------
 										setTimeout(enemyRoundShow,1500);
@@ -643,7 +459,7 @@ function PSoulAttack() {
 									else{ end=false;}
                             }
                         } 
-						//ÃˆÃ§Â¹Ã»ÃÃ’Â·Â½HP<0,Ã‹Ã€ÃÃ‹
+						//Èç¹ûÎÒ·½HP<0,ËÀÁË
 						else {
                             deadEvent(null,rolesArray[rolesIndex]);
                             var t7 = setInterval(function() {
@@ -652,7 +468,7 @@ function PSoulAttack() {
                                     clearInterval(t7);
                                     if (!judgeOver()) {
                                         if (judeEnd()) {
-											//---Â»Ã–Â¸Â´Â¾Â«Ã‰Ã±ÃÂ¦---
+											//---»Ö¸´¾«ÉñÁ¦---
 											 recoverSpirit();
 											//-----------
 											enemyRoundShow();
@@ -663,12 +479,12 @@ function PSoulAttack() {
                                     } 
 									else {game_over_page();}
                                 }
-                            });//Â½Ã¡ÃŠÃ¸
+                            });//½áÊø
                         }
-                    }//3ÂºÃ…ÃÂ»Â½Ã¡ÃŠÃ¸
-                });//t1Â½Ã¡ÃŠÃ¸
+                    }//3ºÅÎ»½áÊø
+                });//t1½áÊø
             }
-			//ÂµÃÃˆÃ‹Ã‹Ã€ÃÃ‹
+			//µĞÈËËÀÁË
 			else {
                 rolesArray[rolesIndex].dy = 240;
                 deadEvent(rolesArray[rolesIndex],enemysArray[tIndex]);
@@ -677,7 +493,7 @@ function PSoulAttack() {
                         finish = false;
                         clearInterval(t8);
                         if (judeEnd()) {
-								//---Â»Ã–Â¸Â´Â¾Â«Ã‰Ã±ÃÂ¦---
+								//---»Ö¸´¾«ÉñÁ¦---
 								recoverSpirit();
 								//-----------
 								enemyRoundShow();
@@ -687,42 +503,42 @@ function PSoulAttack() {
                         }else{ end=false;}
                         //drawAll();
                     }
-                });//t8Â½Ã¡ÃŠÃ¸
+                });//t8½áÊø
             }
-        }//4ÂºÃ…ÃÂ»Â½Ã¡ÃŠÃ¸
-    });//tÂ½Ã¡ÃŠÃ¸
+        }//4ºÅÎ»½áÊø
+    });//t½áÊø
 }
 //--------------------------------------------------------------------------------------------------------------
 function SSoulKill() {
-	//Ã•Ã’ÂµÂ½ÂµÃÃˆÃ‹ÂµÃ„ÃÃ‚Â±Ãª
+	//ÕÒµ½µĞÈËµÄÏÂ±ê
     var tIndex;
     for (var i = 0; i < enemysArray.length; i++) {
        if (Math.floor((x-mapMovX) / rpx) * rpx== enemysArray[i].mapX && Math.floor((y-mapMovY) / rpx) * rpx== enemysArray[i].mapY) {
                tIndex = i;	  
        }
     }
-	//ÃÃ’Â·Â½Ã†Ã•ÃÂ¨Â¹Â¥Â»Ã·ÂµÃÃˆÃ‹
+	//ÎÒ·½ÆÕÍ¨¹¥»÷µĞÈË
     normalAttack(rolesArray[rolesIndex], enemysArray[tIndex]);
-	//Â¶Ã”ÃÃ’Â·Â½Ã†Ã•ÃÂ¨Â¹Â¥Â»Ã·ÂµÃÃˆÃ‹Â½Ã¸ÃÃÃ•Ã¬ÃŒÃ½
+	//¶ÔÎÒ·½ÆÕÍ¨¹¥»÷µĞÈË½øĞĞÕìÌı
     att_end = setInterval(function() {
-	   console.log("Â¶Ã”ÃÃ’Â·Â½Ã†Ã•ÃÂ¨Â¹Â¥Â»Ã·ÂµÃÃˆÃ‹Â½Ã¸ÃÃÃ•Ã¬ÃŒÃ½");
+	   console.log("¶ÔÎÒ·½ÆÕÍ¨¹¥»÷µĞÈË½øĞĞÕìÌı");
         if (finish) {
             finish = false;
             clearInterval(att_end);
-			//ÃˆÃ§Â¹Ã»ÂµÃÃˆÃ‹Â»Â¹Â»Ã®Ã—Ã…
+			//Èç¹ûµĞÈË»¹»î×Å
             if (enemysArray[tIndex].HP > 0) {
-				//ÂµÃÃˆÃ‹Ã†Ã•ÃÂ¨Â¹Â¥Â»Ã·ÃÃ’Â·Â½
+				//µĞÈËÆÕÍ¨¹¥»÷ÎÒ·½
                 normalAttack(enemysArray[tIndex], rolesArray[rolesIndex]);
-				//Â¶Ã”ÂµÃÃˆÃ‹Ã†Ã•ÃÂ¨Â¹Â¥Â»Ã·ÃÃ’Â·Â½Â½Ã¸ÃÃÃ•Ã¬ÃŒÃ½
+				//¶ÔµĞÈËÆÕÍ¨¹¥»÷ÎÒ·½½øĞĞÕìÌı
                 att_end = setInterval(function() {
                     if (finish) {
                         finish = false;
                         clearInterval(att_end);
-						//ÃˆÃ§Â¹Ã»ÃÃ’Â·Â½Â»Â¹Â»Ã®Ã—Ã…
+						//Èç¹ûÎÒ·½»¹»î×Å
                         if (rolesArray[rolesIndex].HP > 0) {
-							//Â»Ã±ÂµÃƒ1---100ÂµÃ„Ã‹Ã¦Â»ÃºÃŠÃ½
+							//»ñµÃ1---100µÄËæ»úÊı
                             var n = Math.floor(Math.random() * 100) + 1;
-							//Â·Â¢Â¶Â¯ÃƒÃ˜Â¼Â¼
+							//·¢¶¯ÃØ¼¼
                             if (n <= skillSuccess) {	
                                 var tVar1 = Math.floor(rpx * enemysArray[tIndex].HP / enemysArray[tIndex].fullHP) + 1;
                                 var hp = new rectangle(enemysArray[tIndex].mapX, enemysArray[tIndex].mapY - 9,enemysArray[tIndex].sx, enemysArray[tIndex].sy - 9, tVar1, 5, "rgb(0,255,0)");
@@ -803,7 +619,7 @@ function SSoulKill() {
 															finish = false;
 															clearInterval(att_end);
 															if (judeEnd()) {
-																//---Â»Ã–Â¸Â´Â¾Â«Ã‰Ã±ÃÂ¦---
+																//---»Ö¸´¾«ÉñÁ¦---
 															    recoverSpirit();
 																//-----------
 															  enemyRoundShow();
@@ -814,7 +630,7 @@ function SSoulKill() {
 														}
 													});
 												}else{if (judeEnd()) {
-													          	//---Â»Ã–Â¸Â´Â¾Â«Ã‰Ã±ÃÂ¦---
+													          	//---»Ö¸´¾«ÉñÁ¦---
 															    recoverSpirit();
 																//-----------
 																enemyRoundShow();
@@ -829,12 +645,12 @@ function SSoulKill() {
                                     }
                                 });
                             } else
-							//ÃƒÃ˜Â¼Â¼Â·Â¢Â¶Â¯ÃŠÂ§Â°Ãœ
+							//ÃØ¼¼·¢¶¯Ê§°Ü
 							{
-                                failAlert("ÃƒÃ˜Â¼Â¼ÃŠÂ¹Ã“ÃƒÃŠÂ§Â°ÃœÂ£Â¡", rolesArray[rolesIndex]);
+                                failAlert("ÃØ¼¼Ê¹ÓÃÊ§°Ü£¡", rolesArray[rolesIndex]);
                                 rolesArray[rolesIndex].dy = 240;
                                 if (judeEnd()) {
-								//---Â»Ã–Â¸Â´Â¾Â«Ã‰Ã±ÃÂ¦---
+								//---»Ö¸´¾«ÉñÁ¦---
 								 recoverSpirit();
 								//-----------
 										setTimeout(enemyRoundShow,1500);
@@ -844,7 +660,7 @@ function SSoulKill() {
                                 }else{end=false;}
                             }
                         } else 
-						//ÃˆÃ§Â¹Ã»ÃÃ’Â·Â½Ã‹Ã€ÃÃ‹
+						//Èç¹ûÎÒ·½ËÀÁË
 						{
                             deadEvent(null,rolesArray[rolesIndex]);
                             var t7 = setInterval(function() {
@@ -853,7 +669,7 @@ function SSoulKill() {
                                     clearInterval(t7);
                                     if (!judgeOver()) {
                                         if (judeEnd()) {
-												//---Â»Ã–Â¸Â´Â¾Â«Ã‰Ã±ÃÂ¦---
+												//---»Ö¸´¾«ÉñÁ¦---
 												 recoverSpirit();
 												//-----------
 												enemyRoundShow();
@@ -873,7 +689,7 @@ function SSoulKill() {
                     }
                 });
             } else
-			//ÃˆÃ§Â¹Ã»ÂµÃÃˆÃ‹Ã‹Ã€ÃÃ‹
+			//Èç¹ûµĞÈËËÀÁË
 			{
                 rolesArray[rolesIndex].dy = 240;
                 deadEvent(rolesArray[rolesIndex],enemysArray[tIndex]);
@@ -882,7 +698,7 @@ function SSoulKill() {
                         finish = false;
                         clearInterval(att_end);
                         if (judeEnd()) {
-								//---Â»Ã–Â¸Â´Â¾Â«Ã‰Ã±ÃÂ¦---
+								//---»Ö¸´¾«ÉñÁ¦---
 								recoverSpirit();
 								//-----------
 								enemyRoundShow();
@@ -898,36 +714,36 @@ function SSoulKill() {
     });
 }
 //------------------------------------------------------------------------------------------------------------------------------------
-function normalAttack(a, b) {//aÂ¹Â¥Â»Ã·b
-	//Ã†Ã•ÃÂ¨Â¹Â¥Â»Ã·ÂµÃ„Ã’Ã´ÃÂ¿
+function normalAttack(a, b) {//a¹¥»÷b
+	//ÆÕÍ¨¹¥»÷µÄÒôÁ¿
     putongattack.volume=0.1;
-	//Â²Â¥Â·Ã…Ã†Ã•ÃÂ¨Â¹Â¥Â»Ã·
+	//²¥·ÅÆÕÍ¨¹¥»÷
 	putongattack.play();
-	//Â»Ã±ÃˆÂ¡Ã‹Ã¦Â»ÃºÃŠÃ½
+	//»ñÈ¡Ëæ»úÊı
     var n = Math.floor(Math.random() * 100) + 1; 
-	//ÃƒÃ¼Ã–ÃÃŠÂ§ÃÃ³Ã‚ÃŠ 
+	//ÃüÖĞÊ§ÎóÂÊ 
     var x = a.errorRate; 
-	//Ã‹Â«Â±Â¶Â±Â©Â»Ã·Â¼Â¸Ã‚ÃŠ
+	//Ë«±¶±©»÷¼¸ÂÊ
     var y = a.doubleCRI; 
-	//ÃˆÃ½Â±Â¶Â±Â©Â»Ã·Â¼Â¸Ã‚ÃŠ
+	//Èı±¶±©»÷¼¸ÂÊ
     var z = a.tripleCRI;
-	//Â¶Â¨Ã’Ã¥Ã’Â»ÃÃ‚Â²ÃºÃ‰ÃºÂµÃ„Ã‰Ã‹ÂºÂ¦Ã–Âµ
+	//¶¨ÒåÒ»ÏÂ²úÉúµÄÉËº¦Öµ
     var hurt; 
-	//Ã‘ÂªÃŒÃµÂ³Â¤Â¶Ãˆ
+	//ÑªÌõ³¤¶È
     var tVar1 = Math.floor(rpx * b.HP / b.fullHP) + 1;
     var attackText = new text("miss!", b.mapX + rpx / 4,b.mapY + rpx / 2,b.mapX + rpx / 4, b.mapY + rpx / 2, "rgb(255,0,0)", "bold 30px FangSong");
     var hp = new rectangle(b.mapX, b.mapY- 9,b.mapX, b.mapY - 9, tVar1, 5, "rgb(0,255,0)");
     var hpBox = new rectangle(b.mapX, b.mapY - 10,b.mapX, b.mapY - 10, rpx, 7, "rgb(0,0,0)");
-	//Â¶Â¯ÃŒÂ¬ÂµÃ„Â¹Â¥Â»Ã·ÃÂ§Â¹Ã»
+	//¶¯Ì¬µÄ¹¥»÷Ğ§¹û
     attackAction(a); 
-	//ÃŠÂ¹Â±Â»Â¹Â¥Â»Ã·Ã•ÃŸÃ‰ÃÃ’Â»ÃÃ‚
+	//Ê¹±»¹¥»÷ÕßÉÁÒ»ÏÂ
     flicker(b);
-	//-------------------------------------Ã’Ã”ÃÃ‚ÃŠÃ‡Ã…Â­Â¹Â¥Â»Ã·----------------------
-    var m1 = Math.floor(Math.random() * 5) + 1; //Â»Ã±ÃˆÂ¡1---6ÂµÃ„Ã‹Ã¦Â»ÃºÃŠÃ½,Â¸Ã¸ÃÃ’Â·Â½Ã“ÃƒÂµÃ„
-	var m2 = Math.floor(Math.random() * 5) + 1; //Â»Ã±ÃˆÂ¡1---6ÂµÃ„Ã‹Ã¦Â»ÃºÃŠÃ½,Â¸Ã¸ÂµÃÂ·Â½BOSSÃ“ÃƒÂµÃ„
-	//--------------------------------------Ã’Ã”Ã‰ÃÃŠÃ‡Ã…Â­Â¹Â¥Â»Ã·----------------------
-    if ((n <= x)||(a instanceof enemyInfo )&&((b instanceof roleInfo)&&(b.spiritShanBi==1)) ){//-Ã‰ÃÂ±ÃœÂ¹Â¦Ã„ÃœÂµÃ„Ã„Â£Â¿Ã©-ÃˆÃ§Â¹Ã»ÃÃ’Â·Â½Â´Ã²Â¿ÂªÃ‰ÃÂ±ÃœÂ¹Â¦Ã„ÃœÃÃ‹Â£Â¬ÂµÂ±ÂµÃÃˆÃ‹Â¹Â¥Â»Ã·ÃÃ’Â·Â½ÃŠÂ±Â£Â¬Ã†Ã´Â¶Â¯Ã‰ÃÂ±Ãœ--
-		hurt = 0; //ÃˆÃ§Â¹Ã»Â²ÃºÃ‰ÃºÂµÃ„Ã‹Ã¦Â»ÃºÃŠÃ½ÃÂ¡Ã“ÃšÃƒÃ¼Ã–ÃÃŠÂ§ÃÃ³Ã‚ÃŠÂ£Â¬Â¹Â¥Â»Ã·MISSÂ£Â¬
+	//-------------------------------------ÒÔÏÂÊÇÅ­¹¥»÷----------------------
+    var m1 = Math.floor(Math.random() * 5) + 1; //»ñÈ¡1---6µÄËæ»úÊı,¸øÎÒ·½ÓÃµÄ
+	var m2 = Math.floor(Math.random() * 5) + 1; //»ñÈ¡1---6µÄËæ»úÊı,¸øµĞ·½BOSSÓÃµÄ
+	//--------------------------------------ÒÔÉÏÊÇÅ­¹¥»÷----------------------
+    if ((n <= x)||(a instanceof enemyInfo )&&((b instanceof roleInfo)&&(b.spiritShanBi==1)) ){//-ÉÁ±Ü¹¦ÄÜµÄÄ£¿é-Èç¹ûÎÒ·½´ò¿ªÉÁ±Ü¹¦ÄÜÁË£¬µ±µĞÈË¹¥»÷ÎÒ·½Ê±£¬Æô¶¯ÉÁ±Ü--
+		hurt = 0; //Èç¹û²úÉúµÄËæ»úÊıĞ¡ÓÚÃüÖĞÊ§ÎóÂÊ£¬¹¥»÷MISS£¬
 		if((a instanceof roleInfo)&&(a.spiritJueSha==1)){
 			a.spiritJueSha=0;
 		}else
@@ -936,20 +752,20 @@ function normalAttack(a, b) {//aÂ¹Â¥Â»Ã·b
 		   var js=new spirit();
 				js.id=4;
 				js.num=1;
-				b.spirits.splice(3,0,js );//Â¼Ã“Â»Ã˜Ã‰ÃÂ±ÃœÃ•Ã¢Â¸Ã¶Â¾Â«Ã‰Ã±ÃÂ¦
-				console.log("Â²Ã¥Â»Ã˜Ã‰ÃÂ±ÃœÃ•Ã¢Â¸Ã¶Â¾Â«Ã‰Ã±ÃÂ¦ÂµÂ½ÃŠÃ½Ã—Ã©");
+				b.spirits.splice(3,0,js );//¼Ó»ØÉÁ±ÜÕâ¸ö¾«ÉñÁ¦
+				console.log("²å»ØÉÁ±ÜÕâ¸ö¾«ÉñÁ¦µ½Êı×é");
 		}
 	}
     else {
-        //----------------------Ã…Â­Ã–ÂµÂµÃ„Ã‹Ã¦Â»ÃºÃŒÃ­Â¼Ã“--------------------------------------
-		//ÃÃ’Â·Â½Â´Ã²ÂµÃÂ·Â½ÂµÃ„ÃÂ¡Â±Ã¸
+        //----------------------Å­ÖµµÄËæ»úÌí¼Ó--------------------------------------
+		//ÎÒ·½´òµĞ·½µÄĞ¡±ø
 		if((a instanceof roleInfo )&&(b instanceof enemyInfo)&&(b.type==0)){
 			if(a.pow<a.fullPow){
 				a.pow+=m1;
 				if(a.pow>=a.fullPow){a.pow=a.fullPow;}
 				}
 		}else
-		//ÃÃ’Â·Â½Â´Ã²ÂµÃÂ·Â½BOSS
+		//ÎÒ·½´òµĞ·½BOSS
 		if((a instanceof roleInfo )&&(b instanceof enemyInfo)&&(b.type==1)){
 		   if(a.pow<a.fullPow){ 
 			   a.pow+=m1;
@@ -961,16 +777,16 @@ function normalAttack(a, b) {//aÂ¹Â¥Â»Ã·b
 
 		   }
 		}else
-		//ÂµÃÂ·Â½ÃÂ¡Â±Ã¸Â´Ã²ÃÃ’Â·Â½
+		//µĞ·½Ğ¡±ø´òÎÒ·½
 		if((a instanceof enemyInfo)&&(a.type==0)&&(b instanceof roleInfo)){
 		  if(b.pow<b.fullPow){
 		   b.pow+=m1;
 		   if(b.pow>=b.fullPow){b.pow=b.fullPow;}
 		  }
 		 
-		  //console.log("ÂµÃÂ·Â½ÃÂ¡Â±Ã¸Â´Ã²ÃÃ’Â·Â½,ÃÃ’Â·Â½Â¼Ã“Ã…Â­Ã–Âµ"+m1);
+		  //console.log("µĞ·½Ğ¡±ø´òÎÒ·½,ÎÒ·½¼ÓÅ­Öµ"+m1);
 		}else
-		//ÂµÃÂ·Â½BOSSÂ´Ã²ÃÃ’Â·Â½
+		//µĞ·½BOSS´òÎÒ·½
 		if((a instanceof enemyInfo)&&(a.type==1)&&(b instanceof roleInfo)){
 		    if(b.pow<b.fullPow){
 				b.pow+=m1;
@@ -981,81 +797,81 @@ function normalAttack(a, b) {//aÂ¹Â¥Â»Ã·b
 			   if(a.pow>=a.fullPow){a.pow=a.fullPow;}
 			}
 		}
-        //----------------------Ã…Â­Ã–ÂµÂµÃ„Ã‹Ã¦Â»ÃºÃŒÃ­Â¼Ã“Â½Ã¡ÃŠÃ¸--------------------------------------
-		//ÃˆÃ§Â¹Ã»Â²ÃºÃ‰ÃºÂµÃ„Ã‹Ã¦Â»ÃºÃŠÃ½Ã”ÃšÂ¡Â¾ÃƒÃ¼Ã–ÃÃŠÂ§ÃÃ³Ã‚ÃŠ Â£Â¬ÃƒÃ¼Ã–ÃÃŠÂ§ÃÃ³Ã‚ÃŠ +Ã‹Â«Â±Â¶Â±Â©Â»Ã·Â¼Â¸Ã‚ÃŠÂ¡Â¿
+        //----------------------Å­ÖµµÄËæ»úÌí¼Ó½áÊø--------------------------------------
+		//Èç¹û²úÉúµÄËæ»úÊıÔÚ¡¾ÃüÖĞÊ§ÎóÂÊ £¬ÃüÖĞÊ§ÎóÂÊ +Ë«±¶±©»÷¼¸ÂÊ¡¿
 		if (n > x && n <= x + y) {
-			//ÃˆÃ§Â¹Ã»Â¾Ã¸Ã‰Â±ÂºÃÃ‰Ã±Ã‰Â±Â¶Â¼Â·Â¢Â¶Â¯ÃÃ‹Â£Â¬Ã”Ã²Ã‰Ã±Ã‰Â±Â¸Â²Â¸Ã‡Â¾Ã¸Ã‰Â±
+			//Èç¹û¾øÉ±ºÍÉñÉ±¶¼·¢¶¯ÁË£¬ÔòÉñÉ±¸²¸Ç¾øÉ±
 			if(((a.spiritJueSha==1)&&(a.spiritSheSha==1))||(a.spiritSheSha==1)){
 			 	if(a.spiritJueSha==1){
 					a.spiritJueSha=0;
-					//Â°Ã‘Ã‰Â¾ÂµÃ´ÂµÃ„Â¾Ã¸Ã‰Â±Â¼Ã“Â»Ã˜a.spiritsÃŠÃ½Ã—Ã©
+					//°ÑÉ¾µôµÄ¾øÉ±¼Ó»Øa.spiritsÊı×é
 					var js=new spirit();
 					js.id=2;
 					js.num=1;
-					//Â¼Ã“Â»Ã˜Â¾Ã¸Ã‰Â±Ã•Ã¢Â¸Ã¶Â¾Â«Ã‰Ã±ÃÂ¦
+					//¼Ó»Ø¾øÉ±Õâ¸ö¾«ÉñÁ¦
 					a.spirits.splice(1,0,js );
 				}
 			    a.spiritSheSha=0;
 			  	var js=new spirit();
 				js.id=3;
 				js.num=1;
-				//Â¼Ã“Â»Ã˜Ã‰Ã±Ã‰Â±Ã•Ã¢Â¸Ã¶Â¾Â«Ã‰Ã±ÃÂ¦
+				//¼Ó»ØÉñÉ±Õâ¸ö¾«ÉñÁ¦
 				a.spirits.splice(2,0,js );
                 hurt = (a.ATK - b.DEF) * 6; 
 				attackText.name = "Crit:-" + hurt;
 			}else
-			//Ã’Ã²ÃÂªÃŠÂ¹Ã“ÃƒÂ¾Ã¸Ã‰Â±Ã”Ã¬Â³Ã‰ÂµÃ„
+			//ÒòÎªÊ¹ÓÃ¾øÉ±Ôì³ÉµÄ
 			if(a.spiritJueSha==1){
 				a.spiritJueSha=0;
-				//Â°Ã‘Ã‰Â¾ÂµÃ´ÂµÃ„Â¾Ã¸Ã‰Â±Â¼Ã“Â»Ã˜a.spiritsÃŠÃ½Ã—Ã©
+				//°ÑÉ¾µôµÄ¾øÉ±¼Ó»Øa.spiritsÊı×é
 				var js=new spirit();
 				js.id=2;
 				js.num=1;
-				//Â¼Ã“Â»Ã˜Â¾Ã¸Ã‰Â±Ã•Ã¢Â¸Ã¶Â¾Â«Ã‰Ã±ÃÂ¦
+				//¼Ó»Ø¾øÉ±Õâ¸ö¾«ÉñÁ¦
 				a.spirits.splice(1,0,js );
-			    hurt = (a.ATK - b.DEF) * 4; //4Â±Â¶Â¹Â¥Â»Ã·
+			    hurt = (a.ATK - b.DEF) * 4; //4±¶¹¥»÷
 				attackText.name = "Crit:-" + hurt;
 			}else
-			//Ã†Ã•ÃÂ¨ÂµÃ„2Â±Â¶Â¹Â¥Â»Ã·
+			//ÆÕÍ¨µÄ2±¶¹¥»÷
 			{
-				hurt = (a.ATK - b.DEF) * 2; //2Â±Â¶Â¹Â¥Â»Ã·
+				hurt = (a.ATK - b.DEF) * 2; //2±¶¹¥»÷
 				attackText.name = "Crit:-" + hurt;
 		    }	
         } else 
-		//ÃˆÃ§Â¹Ã»Â²ÃºÃ‰ÃºÂµÃ„Ã‹Ã¦Â»ÃºÃŠÃ½Ã”ÃšÂ¡Â¾ÃƒÃ¼Ã–ÃÃŠÂ§ÃÃ³Ã‚ÃŠ Â£Â¬ÃƒÃ¼Ã–ÃÃŠÂ§ÃÃ³Ã‚ÃŠ +Ã‹Â«Â±Â¶Â±Â©Â»Ã·Â¼Â¸Ã‚ÃŠ+ÃˆÃ½Â±Â¶Â±Â©Â»Ã·Â¼Â¸Ã‚ÃŠÂ¡Â¿
+		//Èç¹û²úÉúµÄËæ»úÊıÔÚ¡¾ÃüÖĞÊ§ÎóÂÊ £¬ÃüÖĞÊ§ÎóÂÊ +Ë«±¶±©»÷¼¸ÂÊ+Èı±¶±©»÷¼¸ÂÊ¡¿
 		if (n > x + y && n <= x + y + z) {
 			if(((a.spiritJueSha==1)&&(a.spiritSheSha==1))||(a.spiritSheSha==1)){
 			 		if(a.spiritJueSha==1){
 						a.spiritJueSha=0;
-						//Â°Ã‘Ã‰Â¾ÂµÃ´ÂµÃ„Â¾Ã¸Ã‰Â±Â¼Ã“Â»Ã˜a.spiritsÃŠÃ½Ã—Ã©
+						//°ÑÉ¾µôµÄ¾øÉ±¼Ó»Øa.spiritsÊı×é
 						var js=new spirit();
 						js.id=2;
 						js.num=1;
-						//Â¼Ã“Â»Ã˜Â¾Ã¸Ã‰Â±Ã•Ã¢Â¸Ã¶Â¾Â«Ã‰Ã±ÃÂ¦
+						//¼Ó»Ø¾øÉ±Õâ¸ö¾«ÉñÁ¦
 						a.spirits.splice(1,0,js );
 					}
 			    a.spiritSheSha=0;
 			    var js=new spirit();
 				js.id=3;
 				js.num=1;
-				//Â¼Ã“Â»Ã˜Ã‰Ã±Ã‰Â±Ã•Ã¢Â¸Ã¶Â¾Â«Ã‰Ã±ÃÂ¦
+				//¼Ó»ØÉñÉ±Õâ¸ö¾«ÉñÁ¦
 				a.spirits.splice(2,0,js );
-				//Ã’Ã²ÃÂªÃÂ¬ÃŠÂ±ÃŠÂ¹Ã“ÃƒÃÃ‹Â¾Ã¸Ã‰Â±ÂºÃÃ‰Ã±Ã‰Â±Â»Ã®Ã—Ã…ÃŠÂ¹Ã“ÃƒÃÃ‹Ã‰Ã±Ã‰Â±
+				//ÒòÎªÍ¬Ê±Ê¹ÓÃÁË¾øÉ±ºÍÉñÉ±»î×ÅÊ¹ÓÃÁËÉñÉ±
                 hurt = (a.ATK - b.DEF) * 9;
 				attackText.name = "Crit:-" + hurt;
 			}else
-			if(a.spiritJueSha==1){//Ã’Ã²ÃÂªÃŠÂ¹Ã“ÃƒÂ¾Ã¸Ã‰Â±Ã”Ã¬Â³Ã‰ÂµÃ„
+			if(a.spiritJueSha==1){//ÒòÎªÊ¹ÓÃ¾øÉ±Ôì³ÉµÄ
 				a.spiritJueSha=0;
-				//Â°Ã‘Ã‰Â¾ÂµÃ´ÂµÃ„Â¾Ã¸Ã‰Â±Â¼Ã“Â»Ã˜a.spiritsÃŠÃ½Ã—Ã©
+				//°ÑÉ¾µôµÄ¾øÉ±¼Ó»Øa.spiritsÊı×é
 				var js=new spirit();
 				js.id=2;
 				js.num=1;
-				a.spirits.splice(1,0,js );//Â¼Ã“Â»Ã˜Â¾Ã¸Ã‰Â±Ã•Ã¢Â¸Ã¶Â¾Â«Ã‰Ã±ÃÂ¦
+				a.spirits.splice(1,0,js );//¼Ó»Ø¾øÉ±Õâ¸ö¾«ÉñÁ¦
 				
-			    hurt = (a.ATK - b.DEF) * 6; //6Â±Â¶Â¹Â¥Â»Ã·
+			    hurt = (a.ATK - b.DEF) * 6; //6±¶¹¥»÷
 				attackText.name = "Crit:-" + hurt;
 			}else{
-				hurt = (a.ATK - b.DEF) * 3; //3Â±Â¶Â¹Â¥Â»Ã·
+				hurt = (a.ATK - b.DEF) * 3; //3±¶¹¥»÷
 				attackText.name = "Crit:-" + hurt;
 		    }
         } else
@@ -1063,37 +879,37 @@ function normalAttack(a, b) {//aÂ¹Â¥Â»Ã·b
 			if(((a.spiritJueSha==1)&&(a.spiritSheSha==1))||(a.spiritSheSha==1)){
 				if(a.spiritJueSha==1){
 					a.spiritJueSha=0;
-					//Â°Ã‘Ã‰Â¾ÂµÃ´ÂµÃ„Â¾Ã¸Ã‰Â±Â¼Ã“Â»Ã˜a.spiritsÃŠÃ½Ã—Ã©
+					//°ÑÉ¾µôµÄ¾øÉ±¼Ó»Øa.spiritsÊı×é
 					var js=new spirit();
 					js.id=2;
 					js.num=1;
-					//Â¼Ã“Â»Ã˜Â¾Ã¸Ã‰Â±Ã•Ã¢Â¸Ã¶Â¾Â«Ã‰Ã±ÃÂ¦
+					//¼Ó»Ø¾øÉ±Õâ¸ö¾«ÉñÁ¦
 					a.spirits.splice(1,0,js );
 				}
 			    a.spiritSheSha=0;
 				var js=new spirit();
 				js.id=3;
 				js.num=1;
-				//Â¼Ã“Â»Ã˜Ã‰Ã±Ã‰Â±Ã•Ã¢Â¸Ã¶Â¾Â«Ã‰Ã±ÃÂ¦
+				//¼Ó»ØÉñÉ±Õâ¸ö¾«ÉñÁ¦
 				a.spirits.splice(2,0,js );
-                hurt = (a.ATK - b.DEF) * 3; //2Â±Â¶Â¹Â¥Â»Ã·
+                hurt = (a.ATK - b.DEF) * 3; //2±¶¹¥»÷
 				attackText.name = "Crit:-" + hurt;
 			}else
-			//Ã’Ã²ÃÂªÃŠÂ¹Ã“ÃƒÂ¾Ã¸Ã‰Â±Ã”Ã¬Â³Ã‰ÂµÃ„
+			//ÒòÎªÊ¹ÓÃ¾øÉ±Ôì³ÉµÄ
 			if(a.spiritJueSha==1){
 				a.spiritJueSha=0;
-				//Â°Ã‘Ã‰Â¾ÂµÃ´ÂµÃ„Â¾Ã¸Ã‰Â±Â¼Ã“Â»Ã˜a.spiritsÃŠÃ½Ã—Ã©
+				//°ÑÉ¾µôµÄ¾øÉ±¼Ó»Øa.spiritsÊı×é
 				var js=new spirit();
 				js.id=2;
 				js.num=1;
-				//Â¼Ã“Â»Ã˜Â¾Ã¸Ã‰Â±Ã•Ã¢Â¸Ã¶Â¾Â«Ã‰Ã±ÃÂ¦
+				//¼Ó»Ø¾øÉ±Õâ¸ö¾«ÉñÁ¦
 				a.spirits.splice(1,0,js );
 				recoverSpirit();
-			    hurt = (a.ATK - b.DEF) * 2; //2Â±Â¶Â¹Â¥Â»Ã·
+			    hurt = (a.ATK - b.DEF) * 2; //2±¶¹¥»÷
 				attackText.name = "Crit:-" + hurt;
 			}
 			else{
-				 //Ã†Ã•ÃÂ¨Â¹Â¥Â»Ã·
+				 //ÆÕÍ¨¹¥»÷
 				hurt = a.ATK - b.DEF;
 				attackText.name = "-" + hurt;
 			}
@@ -1138,7 +954,7 @@ function clearArray(arr) {
 function clearArr(arr) {
     while (arr.length > 0) arr.pop();
 }
-//----------------Ã‰Ã2ÃÃ‚------------------------------------------------------
+//----------------ÉÁ2ÏÂ------------------------------------------------------
 function flicker(obj) {
     var tw = obj.sw;
     var th = obj.sh;
@@ -1158,7 +974,7 @@ function flicker(obj) {
     setTimeout(a, 300);
 
 }
-//------------------------------Â¶Â¯ÃŒÂ¬ÂµÃ„Â¹Â¥Â»Ã·--------------------------------
+//------------------------------¶¯Ì¬µÄ¹¥»÷--------------------------------
 function attackAction(obj) {
     obj.dy = 192;
     function a() {
@@ -1183,24 +999,24 @@ function attackAction(obj) {
 //------------------------------------------------------------------------------
 function deadEvent(objAttack,objDead) {
 	clearArray(everything2);
-	//ÃˆÃ§Â¹Ã»Ã‹Ã€ÃÃ¶ÂµÃ„ÃŠÃ‡ÂµÃÃˆÃ‹Ã€Ã ÃÃÂµÃ„
+	//Èç¹ûËÀÍöµÄÊÇµĞÈËÀàĞÍµÄ
 	if(objDead instanceof enemyInfo){
-		//Â¸Ã¼ÃÃ‚ÃˆÂ«Â¶Ã“ÂµÃ„Ã‡Â®
+		//¸üĞÂÈ«¶ÓµÄÇ®
 		teamMoney=teamMoney+objDead.money;
 		roleUpIndex=objAttack.id-1;
-		getSomething("Â½Ã°Ã‡Â®+"+objDead.money,objAttack);
-		getSomething2("Â¾Â­Ã‘Ã©+"+objDead.EXP,objAttack);
-        //Ã”Ã¶Â¼Ã“ÃƒÃ˜Â¼Â¼Ã…Â­Â¼Â¼
+		getSomething("½ğÇ®+"+objDead.money,objAttack);
+		getSomething2("¾­Ñé+"+objDead.EXP,objAttack);
+        //Ôö¼ÓÃØ¼¼Å­¼¼
 		if(objDead.skills.length>0 || objDead.powers.length>0)
 			{
 			for(var i=0;i<objDead.skills.length;i++)
-				storehouse.addskills.push(objDead.skills[i]);			
-			for(var j=0;j<objDead.powers.length;j++)
-			    storehouse.addpowers.push(objDead.powers[j]);
-			}Ã„Â¾Â­Ã‘Ã©
+				objAttack.skills.push(objDead.skills[i]);			
+			//for(var j=0;j<objDead.powers.length;j++)
+			   // objAttack.powers.push(objDead.powers[j]);
+			}
+		//Ö÷½Ç¾­Ñé+µĞÈËµÄ¾­Ñé
 		rolesArray[roleUpIndex].EXP=parseInt(objDead.EXP)+parseInt(rolesArray[roleUpIndex].EXP);
-		//ÃˆÃ§Â¹Ã»Ã–Ã·Â½Ã‡ÂµÂ±Ã‡Â°Â¾Â­Ã‘
-		//Ã–Ã·Â½Ã‡Â¾Â­Ã‘Ã©+ÂµÃÃˆÃ‹ÂµÃ©Â±ÃˆÃÃ‚Ã’Â»ÂµÃˆÂ¼Â¶ÂµÃ„Â¾Â­Ã‘Ã©Ã–Âµ>=,requestLevel()
+		//Èç¹ûÖ÷½Çµ±Ç°¾­Ñé±ÈÏÂÒ»µÈ¼¶µÄ¾­ÑéÖµ>=,requestLevel()
 	    if(rolesArray[roleUpIndex].EXP>=rolesArray[roleUpIndex].nextEXP){requestLevel();}
 	 }
 	else{
