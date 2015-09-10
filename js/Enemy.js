@@ -19,6 +19,7 @@ function enemysAction() {
 				setTimeout(dialogShow, 2000);
 			}
 		}
+		/*
 	    else if (enemysArray[enemyIndex].type==1&& count <= 10&&mapLevel==1) {
 			     enemysArray[enemyIndex].dy = 240;
 			     enemyIndex++;
@@ -31,6 +32,7 @@ function enemysAction() {
 				setTimeout(dialogShow, 2000);
 			}
 		} 
+		*/
 		else {
 			var tempMin=new Array(30);
 			var index = null; 

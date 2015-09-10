@@ -703,8 +703,14 @@ function touchStart(e){//触摸
                 powerAtt = false;
                 end = true;
                 clearArray(rangeShow);
-                rolesArray[rolesIndex].pow -= powertmp; //修改人物的pow值
-                eval(fl + '()');
+                
+                var tIndex;
+                for (var i = 0; i < enemysArray.length; i++) {
+                   if (Math.floor((x-mapMovX) / rpx) * rpx== enemysArray[i].mapX && Math.floor((y-mapMovY) / rpx) * rpx== enemysArray[i].mapY) {
+                           tIndex = i;    
+                   }
+                }
+                eval(fl + '(rolesArray[rolesIndex],enemysArray[tIndex])');
             } else if (MouseClickOnRolesIndex(x, y)) { //鼠标点击在已选中的角色上           
                 clearArray(rangeShow);
                 powerAtt = false;
@@ -757,6 +763,8 @@ function touchStart(e){//触摸
                                             //如果boss的怒值满了，则优先发动
                                             if(enemysArray[tIndex].pow==enemysArray[tIndex].fullPow){
                                                 console.log("因为BOSS满怒值，所以发动怒攻击");
+                                                BossPowerAttacked(enemysArray[tIndex],rolesArray[rolesIndex]);
+                                                /*
                                                 Boss_power_attacked(tIndex);
                                                 var boss_power_end1=setInterval(function(){
                                                      if(bossPowerEnd){
@@ -841,7 +849,8 @@ function touchStart(e){//触摸
                                                                 });
                                                           }//else
                                                      }//finish
-                                                });//var boss_power_end2        
+                                                });//var boss_power_end2       
+                                                */ 
                                             }//if(enemyArray)
                                             else{
                                                 var n = Math.floor(Math.random() * 100) + 1;
